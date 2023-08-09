@@ -2,41 +2,59 @@
   description = "fpletz flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.follows = "nixpkgs";
+      };
+    };
   };
 
-  outputs = { self, nixpkgs, ... }: let
+  outputs = {
+    self,
+    nixpkgs,
+    pre-commit-hooks,
+    ...
+  }: let
     supportedSystems = [
       "x86_64-linux"
-      "i686-linux"
       "aarch64-linux"
-      "riscv64-linux"
     ];
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    packages = ["wofi-emoji"];
+    forAllPackages = nixpkgs.lib.genAttrs packages;
   in {
-    overlays.default = final: prev: {
-      wofi-emoji = let
-        emoji-data = final.runCommandLocal "emoji-data" {} ''
-          cat ${final.fetchurl {
-            url = "https://raw.githubusercontent.com/muan/emojilib/v3.0.10/dist/emoji-en-US.json";
-            hash = "sha256-UhAB5hVp5vV2d1FjIb2TBd2FJ6OPBbiP31HGAEDQFnA=";
-          }} \
-            | ${final.jq}/bin/jq --raw-output '. | to_entries | .[] | .key + " " + (.value | join(" ") | sub("_"; " "; "g"))' > $out
-        '';
-      in final.writers.writeBashBin "wofi-emoji" ''
-        set -euo pipefail
-        emoji=$(${final.wofi}/bin/wofi -p "emoji" --show dmenu -i < ${emoji-data} | cut -d ' ' -f 1 | tr -d '\n')
-        ${final.wtype}/bin/wtype "''${emoji}" || ${final.wl-clipboard}/bin/wl-copy "''${emoji}"
-      '';
-    };
+    overlays.default = final: prev:
+      forAllPackages (
+        pkgname:
+          final.callPackage (./pkgs + "/${pkgname}.nix") {}
+      );
 
-    packages = forAllSystems (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [self.overlays.default];
-      };
-    in {
-      inherit (pkgs) wofi-emoji;
-    });
+    legacyPackages = forAllSystems (system: nixpkgs.legacyPackages.${system}.extend self.overlays.default);
+
+    packages =
+      forAllSystems (system:
+        forAllPackages (pkgname: self.legacyPackages.${system}.${pkgname}));
+
+    formatter = forAllSystems (
+      system:
+        nixpkgs.legacyPackages.${system}.alejandra
+    );
+
+    checks = forAllSystems (
+      system: {
+        pre-commit-check = pre-commit-hooks.lib.${system}.run {
+          src = self;
+          hooks = {
+            alejandra.enable = true;
+            statix.enable = true;
+            nil.enable = true;
+          };
+        };
+      }
+    );
   };
 }

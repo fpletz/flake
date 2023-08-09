@@ -33,8 +33,9 @@
           final.callPackage (./pkgs + "/${pkgname}.nix") {}
       );
 
-    legacyPackages = forAllSystems (system:
-      nixpkgs.legacyPackages.${system}.extend self.overlays.default
+    legacyPackages = forAllSystems (
+      system:
+        nixpkgs.legacyPackages.${system}.extend self.overlays.default
     );
 
     devShells = forAllLegacyPackages (pkgs: {
@@ -43,6 +44,7 @@
           pkgs.nil
           pkgs.alejandra
         ];
+        inherit (self.checks.${pkgs.system}.pre-commit-check) shellHook;
       };
     });
 

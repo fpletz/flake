@@ -22,8 +22,9 @@
     self,
     nixpkgs,
     pre-commit-hooks,
+    home-manager,
     ...
-  }: let
+  } @ inputs: let
     supportedSystems = [
       "x86_64-linux"
       "aarch64-linux"
@@ -56,6 +57,41 @@
     packages =
       forAllSystems (system:
         forAllSelfPackages (pkgname: self.legacyPackages.${system}.${pkgname}));
+
+    homeConfigurations.fpletz = home-manager.lib.homeManagerConfiguration {
+      modules = [
+        ./home/default.nix
+      ];
+    };
+
+    nixosConfigurations = let
+      nixos = system: modules:
+        nixpkgs.lib.nixosSystem {
+          inherit system modules;
+          specialArgs = {inherit inputs;};
+        };
+    in {
+      lolnovo = nixos "x86_64-linux" [
+        {
+          imports = [
+            ./nixos/default.nix
+            ./nixos/home.nix
+            {
+              # FIXME
+              boot.loader.grub = {
+                enable = true;
+                devices = ["/dev/disk/by-diskseq/1"];
+              };
+              fileSystems."/" = {
+                device = "/dev/disk/by-label/nixos";
+                fsType = "ext4";
+              };
+            }
+          ];
+          networking.hostName = "lolnovo";
+        }
+      ];
+    };
 
     formatter = forAllLegacyPackages (pkgs: pkgs.alejandra);
 

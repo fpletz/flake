@@ -24,25 +24,33 @@
       "aarch64-linux"
     ];
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-    packages = ["wofi-emoji"];
-    forAllPackages = nixpkgs.lib.genAttrs packages;
+    forAllSelfPackages = nixpkgs.lib.genAttrs ["wofi-emoji"];
+    forAllLegacyPackages = f: forAllSystems (system: f self.legacyPackages.${system});
   in {
     overlays.default = final: prev:
-      forAllPackages (
+      forAllSelfPackages (
         pkgname:
           final.callPackage (./pkgs + "/${pkgname}.nix") {}
       );
 
-    legacyPackages = forAllSystems (system: nixpkgs.legacyPackages.${system}.extend self.overlays.default);
+    legacyPackages = forAllSystems (system:
+      nixpkgs.legacyPackages.${system}.extend self.overlays.default
+    );
+
+    devShells = forAllLegacyPackages (pkgs: {
+      default = pkgs.mkShell {
+        packages = [
+          pkgs.nil
+          pkgs.alejandra
+        ];
+      };
+    });
 
     packages =
       forAllSystems (system:
-        forAllPackages (pkgname: self.legacyPackages.${system}.${pkgname}));
+        forAllSelfPackages (pkgname: self.legacyPackages.${system}.${pkgname}));
 
-    formatter = forAllSystems (
-      system:
-        nixpkgs.legacyPackages.${system}.alejandra
-    );
+    formatter = forAllLegacyPackages (pkgs: pkgs.alejandra);
 
     checks = forAllSystems (
       system: {

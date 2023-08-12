@@ -45,7 +45,7 @@
     );
 
     devShells = forAllLegacyPackages (pkgs: {
-      default = pkgs.mkShell {
+      default = pkgs.mkShellNoCC {
         packages = [
           pkgs.nil
           pkgs.alejandra

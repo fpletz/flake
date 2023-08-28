@@ -30,7 +30,10 @@
       "aarch64-linux"
     ];
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-    forAllSelfPackages = nixpkgs.lib.genAttrs ["wofi-emoji"];
+    forAllSelfPackages = nixpkgs.lib.genAttrs [
+      "wofi-emoji"
+      "systemd-lock-handler"
+    ];
     forAllLegacyPackages = f: forAllSystems (system: f self.legacyPackages.${system});
   in {
     overlays.default = final: prev:

@@ -34,6 +34,7 @@
       "wofi-emoji"
       "systemd-lock-handler"
       "wayidle"
+      "usbguard-notifier"
     ];
     forAllLegacyPackages = f: forAllSystems (system: f self.legacyPackages.${system});
   in {

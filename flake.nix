@@ -35,6 +35,7 @@
       "systemd-lock-handler"
       "wayidle"
       "usbguard-notifier"
+      "caffeinated"
     ];
     forAllLegacyPackages = f: forAllSystems (system: f self.legacyPackages.${system});
   in {

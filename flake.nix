@@ -33,6 +33,7 @@
     forAllSelfPackages = nixpkgs.lib.genAttrs [
       "wofi-emoji"
       "systemd-lock-handler"
+      "wayidle"
     ];
     forAllLegacyPackages = f: forAllSystems (system: f self.legacyPackages.${system});
   in {

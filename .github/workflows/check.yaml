@@ -13,7 +13,7 @@ jobs:
       - name: Check Nix flake inputs
         uses: DeterminateSystems/flake-checker-action@v5
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v4
+        uses: DeterminateSystems/nix-installer-action@v5
       - uses: DeterminateSystems/magic-nix-cache-action@v2
       - name: Run flake check
         run: nix flake check --no-update-lock-file

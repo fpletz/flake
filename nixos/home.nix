@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   imports = [
     inputs.home-manager.nixosModules.default
   ];
@@ -6,7 +6,8 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.fpletz = ../home/default.nix;
+    users.fpletz = ../home/fpletz.nix;
+    extraSpecialArgs = { inherit inputs; };
   };
 
   users = {
@@ -43,5 +44,5 @@
     };
   };
 
-  nix.settings.trusted-users = ["fpletz"];
+  nix.settings.trusted-users = [ "fpletz" ];
 }

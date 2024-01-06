@@ -1,9 +1,8 @@
-{
-  lib,
-  config,
-  pkgs,
-  inputs,
-  ...
+{ lib
+, config
+, pkgs
+, inputs
+, ...
 }: {
   time.timeZone = "UTC";
   console.keyMap = "us";
@@ -141,7 +140,7 @@
       revision = inputs.nixpkgs.rev;
       versionSuffix =
         lib.mkForce
-        ".${inputs.nixpkgs.shortRev}-${config.system.configurationRevision}";
+          ".${inputs.nixpkgs.shortRev}-${config.system.configurationRevision}";
     };
 
     # make deployment flake and nixpkgs available as well-known path
@@ -172,10 +171,10 @@
     };
 
     settings = {
-      trusted-users = ["nix-build"];
+      trusted-users = [ "nix-build" ];
       connect-timeout = 3;
       http-connections = 150;
-      extra-experimental-features = ["flakes" "nix-command"];
+      extra-experimental-features = [ "flakes" "nix-command" ];
       auto-optimise-store = true;
       builders-use-substitutes = true;
       log-lines = lib.mkDefault 25;
@@ -196,7 +195,7 @@
     libvirtd = {
       qemu = {
         swtpm.enable = true;
-        ovmf.packages = with pkgs; lib.mkForce [OVMFFull.fd];
+        ovmf.packages = with pkgs; lib.mkForce [ OVMFFull.fd ];
       };
       onShutdown = lib.mkDefault "shutdown";
       onBoot = lib.mkDefault "ignore";
@@ -208,7 +207,7 @@
     getty.helpLine = lib.mkForce "";
 
     # no google/cloudflare defaults
-    resolved.fallbackDns = [""];
+    resolved.fallbackDns = [ "" ];
 
     openssh = {
       enable = true;
@@ -220,12 +219,12 @@
           bits = 256;
         }
       ];
-      sftpFlags = ["-f AUTHPRIV" "-l INFO"];
+      sftpFlags = [ "-f AUTHPRIV" "-l INFO" ];
       moduliFile = ../static/ssh-moduli;
       settings = {
         PasswordAuthentication = false;
-        Ciphers = ["chacha20-poly1305@openssh.com"];
-        KexAlgorithms = ["curve25519-sha256@libssh.org"];
+        Ciphers = [ "chacha20-poly1305@openssh.com" ];
+        KexAlgorithms = [ "curve25519-sha256@libssh.org" ];
         Macs = [
           "hmac-sha2-512-etm@openssh.com"
           "hmac-sha2-256-etm@openssh.com"
@@ -247,20 +246,21 @@
       recommendedGzipSettings = lib.mkDefault true;
       recommendedBrotliSettings = lib.mkDefault true;
       recommendedProxySettings = lib.mkDefault true;
-      resolver.addresses = let
-        isIPv6 = addr: builtins.match "^[^\\[]*:.*:.*$" addr != null;
-        escapeIPv6 = addr:
-          if isIPv6 addr
-          then "[${addr}]"
-          else addr;
-        cloudflare = ["1.1.1.1" "[2606:4700:4700::1111]"];
-        resolvers =
-          if config.networking.nameservers != []
-          then config.networking.nameservers
-          else if config.services.resolved.enable
-          then ["127.0.0.53"]
-          else cloudflare;
-      in
+      resolver.addresses =
+        let
+          isIPv6 = addr: builtins.match "^[^\\[]*:.*:.*$" addr != null;
+          escapeIPv6 = addr:
+            if isIPv6 addr
+            then "[${addr}]"
+            else addr;
+          cloudflare = [ "1.1.1.1" "[2606:4700:4700::1111]" ];
+          resolvers =
+            if config.networking.nameservers != [ ]
+            then config.networking.nameservers
+            else if config.services.resolved.enable
+            then [ "127.0.0.53" ]
+            else cloudflare;
+        in
         map escapeIPv6 resolvers;
       logError = "stderr info";
       appendHttpConfig = ''
@@ -291,7 +291,7 @@
     prometheus = {
       exporters.node = {
         enable = lib.mkDefault true;
-        enabledCollectors = ["systemd" "processes"];
+        enabledCollectors = [ "systemd" "processes" ];
       };
     };
   };

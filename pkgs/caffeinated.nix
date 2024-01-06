@@ -1,13 +1,13 @@
-{
-  lib,
-  stdenv,
-  fetchFromGitHub,
-  pkg-config,
-  systemd,
-  libbsd,
-  wayland,
-  wayland-protocols,
-  wayland-scanner,
+{ lib
+, stdenv
+, fetchFromGitHub
+, pkg-config
+, systemd
+, libbsd
+, wayland
+, wayland-protocols
+, wayland-scanner
+,
 }:
 stdenv.mkDerivation rec {
   pname = "caffeinated";
@@ -25,16 +25,16 @@ stdenv.mkDerivation rec {
       --replace "--silence-errors" ""
   '';
 
-  nativeBuildInputs = [pkg-config];
-  buildInputs = [systemd libbsd wayland wayland-protocols wayland-scanner];
-  buildFlags = ["WAYLAND=1"];
-  installFlags = ["DESTDIR=$(out)" "PREFIX=/"];
+  nativeBuildInputs = [ pkg-config ];
+  buildInputs = [ systemd libbsd wayland wayland-protocols wayland-scanner ];
+  buildFlags = [ "WAYLAND=1" ];
+  installFlags = [ "DESTDIR=$(out)" "PREFIX=/" ];
 
   meta = with lib; {
     description = "Prevents the system from entering an idle state";
     homepage = "https://github.com/electrickite/caffeinated";
     license = licenses.mit;
-    maintainers = with maintainers; [fpletz];
+    maintainers = with maintainers; [ fpletz ];
     platforms = platforms.linux;
   };
 }

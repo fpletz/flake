@@ -1,7 +1,7 @@
-{
-  lib,
-  rustPlatform,
-  fetchFromSourcehut,
+{ lib
+, rustPlatform
+, fetchFromSourcehut
+,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "wayidle";
@@ -19,8 +19,8 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "Wait for wayland compositor idle timeouts";
     homepage = "https://git.sr.ht/~whynothugo/wayidle";
-    license = with licenses; [isc];
-    maintainers = with lib; [fpletz];
+    license = with licenses; [ isc ];
+    maintainers = with lib; [ fpletz ];
     platforms = platforms.linux;
   };
 }

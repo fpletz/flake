@@ -1,7 +1,12 @@
 { pkgs
-, lib
+, inputs
 , ...
 }: {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+    ./nixvim
+  ];
+
   home = {
     username = "fpletz";
     homeDirectory = "/home/fpletz";
@@ -104,12 +109,6 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-  };
-
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-    vimdiffAlias = true;
   };
 
   programs.btop = {

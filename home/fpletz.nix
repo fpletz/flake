@@ -10,7 +10,7 @@
   home = {
     username = "fpletz";
     homeDirectory = "/home/fpletz";
-    stateVersion = "23.05";
+    stateVersion = "23.11";
     packages = with pkgs; [
       iperf
       pv
@@ -251,43 +251,24 @@
       pager = "less -FR";
       theme = "catppuccin";
     };
-    themes = {
-      catppuccin = builtins.readFile (pkgs.fetchFromGitHub
-        {
+    themes =
+      let
+        catppuccinTheme = pkgs.fetchFromGitHub {
           owner = "catppuccin";
           repo = "bat";
           rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
           hash = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
-        }
-      + "/Catppuccin-mocha.tmTheme");
-    };
-  };
-
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = false;
-    settings =
-      lib.attrsets.recursiveUpdate
-        (
-          builtins.fromTOML (
-            builtins.readFile (pkgs.runCommand "starship-presets" { HOME = "/tmp"; } ''
-              ${pkgs.starship}/bin/starship preset nerd-font-symbols > $out
-            '')
-          )
-        )
-        {
-          character = {
-            success_symbol = "[➜](bold green)";
-            error_symbol = "[➜](bold red)";
-          };
-          aws.disabled = true;
-          azure.disabled = true;
-          gcloud.disabled = true;
-          shell.disabled = false;
-          git_status.disabled = true;
-          hg_branch.disabled = false;
-          battery.disabled = false;
-          status.disabled = false;
         };
+      in
+      {
+        catppuccin-mocha = {
+          src = catppuccinTheme;
+          file = "Catppuccin-mocha.tmTheme";
+        };
+        catppuccin-latte = {
+          src = catppuccinTheme;
+          file = "Catppuccin-latte.tmTheme";
+        };
+      };
   };
 }

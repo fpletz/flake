@@ -4,104 +4,44 @@
 , inputs
 , ...
 }: {
+  imports = [
+    ./default/networking.nix
+    ./default/nginx.nix
+    ./default/openssh.nix
+    ./default/postgresql.nix
+    ./default/tools.nix
+    ./default/zram.nix
+  ];
+
   time.timeZone = "UTC";
   console.keyMap = "us";
   i18n.defaultLocale = "en_US.UTF-8";
 
   boot = {
-    tmp = {
-      useTmpfs = lib.mkDefault true;
-      # zram to the rescue!
-      tmpfsSize = "200%";
-    };
+    tmp.useTmpfs = lib.mkDefault true;
     kernelPackages = lib.mkOverride 1001 pkgs.linuxPackages_latest;
+    initrd = {
+      compressor = "zstd";
+      compressorArgs = [ "-19" ];
+    };
     loader = {
       timeout = lib.mkForce 2;
       grub.splashImage = null;
       systemd-boot.configurationLimit = 10;
     };
     kernel.sysctl = {
+      # fail fast on oom
       "vm.oom_kill_allocating_task" = 1;
-      "vm.swappiness" = 100;
-      "net.core.default_qdisc" = lib.mkDefault "fq";
-      "net.ipv4.tcp_congestion_control" = "bbr";
-      "net.ipv4.tcp_tw_reuse" = 1;
-      "net.ipv6.conf.all.keep_addr_on_down" = 1;
-      "net.ipv4.udp_l3mdev_accept" = 1;
-      "net.ipv4.tcp_l3mdev_accept" = 1;
     };
   };
 
-  networking.useNetworkd = true;
-
-  # wait-online is broken :/
-  systemd.network.wait-online.enable = false;
-
-  # restart instead of stop/start
-  systemd.services.systemd-networkd.stopIfChanged = false;
-  systemd.services.systemd-resolved.stopIfChanged = false;
-
-  zramSwap = {
-    enable = true;
-    algorithm = "lz4";
-    memoryPercent = 100;
-  };
-
-  environment.systemPackages = with pkgs; [
-    bottom
-    perf-tools
-    lsof
-    ncdu
-    du-dust
-    dua
-    tcpdump
-    iptables
-    ethtool
-    openssl
-    rsync
-    borgbackup
-    sshfs-fuse
-    dmidecode
-    pciutils
-    usbutils
-    hdparm
-    lm_sensors
-    parted
-    ddrescue
-    nmap
-    netcat
-    ngrep
-    file
-    which
-    age
-    sops
-    ripgrep
-    fd
-    di
-    pv
-    ouch
-    viddy
-    alacritty.terminfo
-  ];
-
-  programs = {
-    zsh.enable = true;
-    vim.defaultEditor = true;
-    mtr.enable = true;
-    command-not-found.enable = lib.mkDefault false;
-    tmux.enable = true;
-    git.enable = true;
-    htop.enable = true;
-    iftop.enable = true;
-  };
-
   documentation = {
+    # regular manpages are enough
     doc.enable = false;
     info.enable = false;
   };
 
   users = {
-    defaultUserShell = pkgs.zsh;
     mutableUsers = false;
     users = {
       # unprivileged user for ad-hoc remote builds
@@ -204,89 +144,16 @@
   };
 
   services = {
+    # I know how to find the nixos manual
     getty.helpLine = lib.mkForce "";
 
     # no google/cloudflare defaults
     resolved.fallbackDns = [ "" ];
 
-    openssh = {
-      enable = true;
-      hostKeys = [
-        # only ed25519 hostkey, no rsa
-        {
-          type = "ed25519";
-          path = "/etc/ssh/ssh_host_ed25519_key";
-          bits = 256;
-        }
-      ];
-      sftpFlags = [ "-f AUTHPRIV" "-l INFO" ];
-      moduliFile = ../static/ssh-moduli;
-      settings = {
-        PasswordAuthentication = false;
-        Ciphers = [ "chacha20-poly1305@openssh.com" ];
-        KexAlgorithms = [ "curve25519-sha256@libssh.org" ];
-        Macs = [
-          "hmac-sha2-512-etm@openssh.com"
-          "hmac-sha2-256-etm@openssh.com"
-          "umac-128-etm@openssh.com"
-        ];
-        UseDns = false;
-      };
-    };
-
     journald.extraConfig = ''
       SystemMaxUse=100M
       MaxRetentionSec=3days
     '';
-
-    nginx = {
-      package = lib.mkDefault pkgs.nginxMainline;
-      recommendedOptimisation = lib.mkDefault true;
-      recommendedTlsSettings = lib.mkDefault true;
-      recommendedGzipSettings = lib.mkDefault true;
-      recommendedBrotliSettings = lib.mkDefault true;
-      recommendedProxySettings = lib.mkDefault true;
-      resolver.addresses =
-        let
-          isIPv6 = addr: builtins.match "^[^\\[]*:.*:.*$" addr != null;
-          escapeIPv6 = addr:
-            if isIPv6 addr
-            then "[${addr}]"
-            else addr;
-          cloudflare = [ "1.1.1.1" "[2606:4700:4700::1111]" ];
-          resolvers =
-            if config.networking.nameservers != [ ]
-            then config.networking.nameservers
-            else if config.services.resolved.enable
-            then [ "127.0.0.53" ]
-            else cloudflare;
-        in
-        map escapeIPv6 resolvers;
-      logError = "stderr info";
-      appendHttpConfig = ''
-        log_format json escape=json '{ "time": "$time_iso8601", '
-          '"remote_addr": "$remote_addr", '
-          '"remote_user": "$remote_user", '
-          '"ssl_protocol_cipher": "$ssl_protocol/$ssl_cipher", '
-          '"body_bytes_sent": "$body_bytes_sent", '
-          '"request_time": "$request_time", '
-          '"status": "$status", '
-          '"request": "$request", '
-          '"request_method": "$request_method", '
-          '"http_referrer": "$http_referer", '
-          '"http_x_forwarded_for": "$http_x_forwarded_for", '
-          '"http_cf_ray": "$http_cf_ray", '
-          '"host": "$host", '
-          '"server_name": "$server_name", '
-          '"upstream_address": "$upstream_addr", '
-          '"upstream_status": "$upstream_status", '
-          '"upstream_response_time": "$upstream_response_time", '
-          '"upstream_response_length": "$upstream_response_length", '
-          '"upstream_cache_status": "$upstream_cache_status", '
-          '"http_user_agent": "$http_user_agent" }';
-        access_log syslog:server=unix:/dev/log,facility=local4,severity=debug,nohostname json;
-      '';
-    };
 
     prometheus = {
       exporters.node = {

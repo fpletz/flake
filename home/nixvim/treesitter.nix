@@ -8,8 +8,10 @@
         indent = true;
         #folding = true;
       };
-      refactoring = {
+      treesitter-refactor = {
         enable = true;
+        highlightCurrentScope.enable = true;
+        highlightDefinitions.enable = true;
       };
     };
   };

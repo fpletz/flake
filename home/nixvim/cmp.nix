@@ -72,7 +72,7 @@
 
     extraConfigLua = ''
       local cmp = require('cmp')
-  
+
       cmp.setup.filetype('gitcommit', {
         sources = cmp.config.sources({
           { name = 'git' },
@@ -82,7 +82,7 @@
           { name = 'buffer', keyword_length = 3 },
         })
       })
-  
+
       cmp.setup.cmdline('/', {
         mapping = cmp.mapping.preset.cmdline(),
         formatting = {
@@ -92,7 +92,7 @@
           { name = 'buffer' }
         },
       })
-  
+
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
         formatting = {
@@ -104,9 +104,9 @@
           { name = 'cmdline' }
         })
       })
-  
+
       require("cmp_git").setup()
-  
+
       local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       cmp.event:on(
         'confirm_done',

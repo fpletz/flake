@@ -155,7 +155,6 @@
         enable = true;
       };
       navic.enable = true;
-      bufferline.enable = true;
       indent-blankline.enable = true;
       lastplace.enable = true;
       lualine = {

@@ -108,6 +108,12 @@
       automatic = true;
       options = "--delete-older-than 7d";
       dates = "weekly";
+      randomizedDelaySec = "42min";
+    };
+
+    optimise = {
+      automatic = true;
+      dates = [ "05:30" ];
     };
 
     settings = {
@@ -115,7 +121,6 @@
       connect-timeout = 3;
       http-connections = 150;
       extra-experimental-features = [ "flakes" "nix-command" ];
-      auto-optimise-store = true;
       builders-use-substitutes = true;
       log-lines = lib.mkDefault 25;
     };

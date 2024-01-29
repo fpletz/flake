@@ -10,6 +10,7 @@
             "wayidle"
             "usbguard-notifier"
             "caffeinated"
+            "linux-xanmod"
           ];
         in
         forAllSelfPackages (

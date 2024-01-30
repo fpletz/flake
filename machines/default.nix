@@ -1,12 +1,17 @@
-{ config, inputs, ... }:
+{ config, withSystem, inputs, ... }:
 {
   flake.nixosConfigurations =
     let
-      inherit (inputs.nixpkgs.lib) nixosSystem;
-      nixos = { system, modules }: nixosSystem {
-        inherit system modules;
-        specialArgs = { inherit inputs; };
-      };
+      nixos = { system, modules }: withSystem system (
+        { config, inputs', ... }:
+        inputs.nixpkgs.lib.nixosSystem {
+          inherit system modules;
+          specialArgs = {
+            packages = config.packages;
+            inherit inputs inputs';
+          };
+        }
+      );
     in
     {
       trolovo = nixos {
@@ -14,7 +19,7 @@
         modules = [
           config.flake.nixosModules.default
           config.flake.nixosModules.home
-          {
+          ({ packages, pkgs, ... }: {
             networking.hostName = "trolovo";
             fileSystems."/" = {
               device = "/dev/disk/by-label/nixos";
@@ -23,7 +28,9 @@
             boot.loader.systemd-boot = {
               enable = true;
             };
-          }
+
+            boot.kernelPackages = pkgs.linuxPackagesFor packages.linux-xanmod;
+          })
         ];
       };
     };

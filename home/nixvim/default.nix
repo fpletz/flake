@@ -7,8 +7,10 @@
     ./inc-rename.nix
     ./lsp.nix
     ./notify.nix
+    ./none-ls.nix
     ./telescope.nix
     ./treesitter.nix
+    ./treesj.nix
     ./trouble.nix
     ./yanky.nix
   ];
@@ -143,6 +145,10 @@
       }
     ];
     plugins = {
+      auto-session = {
+        enable = true;
+        sessionLens.loadOnSetup = true;
+      };
       barbar.enable = true;
       barbecue = {
         enable = true;
@@ -204,6 +210,11 @@
       #which-key = {
       #  enable = true;
       #};
+      toggleterm = {
+        enable = true;
+        direction = "float";
+        openMapping = "<c-\\>";
+      };
     };
   };
 }

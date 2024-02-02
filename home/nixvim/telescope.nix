@@ -43,6 +43,12 @@
         action = "require(\"actions-preview\").code_actions";
         lua = true;
       }
+      {
+        mode = "n";
+        key = "<leader>u";
+        action = "require('telescope').extensions.undo.undo";
+        lua = true;
+      }
     ];
 
     plugins = {
@@ -52,6 +58,7 @@
         extensions = {
           fzf-native.enable = true;
           project-nvim.enable = true;
+          undo.enable = true;
         };
         keymaps = {
           "<leader>ff" = "find_files";

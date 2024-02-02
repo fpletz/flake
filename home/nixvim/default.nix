@@ -2,12 +2,16 @@
 {
   imports = [
     ./cmp.nix
+    ./comment.nix
     ./dap.nix
+    ./dial.nix
     ./gitsigns.nix
     ./inc-rename.nix
     ./lsp.nix
+    ./noice.nix
     ./notify.nix
     ./none-ls.nix
+    ./numb.nix
     ./telescope.nix
     ./treesitter.nix
     ./treesj.nix
@@ -60,18 +64,10 @@
           navic.enabled = true;
         };
       };
-      dracula = {
-        enable = true;
-      };
-      gruvbox = {
-        enable = true;
-      };
-      melange = {
-        enable = true;
-      };
-      tokyonight = {
-        enable = true;
-      };
+      dracula.enable = true;
+      gruvbox.enable = true;
+      melange.enable = true;
+      tokyonight.enable = true;
     };
     keymaps = [
       {
@@ -157,9 +153,6 @@
         enable = true;
         enhancedDiffHl = true;
       };
-      comment-nvim = {
-        enable = true;
-      };
       navic.enable = true;
       indent-blankline.enable = true;
       lastplace.enable = true;
@@ -169,33 +162,11 @@
       };
       nix.enable = true;
       nix-develop.enable = true;
-      noice = {
-        enable = true;
-        lsp.override = {
-          "vim.lsp.util.convert_input_to_markdown_lines" = true;
-          "vim.lsp.util.stylize_markdown" = true;
-          "cmp.entry.get_documentation" = true;
-        };
-        presets = {
-          bottom_search = true;
-          command_palette = true;
-          long_message_to_split = true;
-          inc_rename = true;
-          lsp_doc_border = false;
-        };
-        popupmenu.enabled = true;
-        popupmenu.backend = "cmp";
-      };
       neo-tree = {
         enable = true;
       };
       project-nvim = {
         enable = true;
-      };
-      todo-comments = {
-        enable = true;
-        highlight.pattern = ".*<(KEYWORDS)\\s*";
-        search.pattern = "\\b(KEYWORDS)\\b";
       };
       nvim-autopairs = {
         enable = true;

@@ -6,12 +6,16 @@
       treesitter = {
         enable = true;
         indent = true;
-        #folding = true;
+        nixvimInjections = true;
+        incrementalSelection.enable = true;
       };
       treesitter-refactor = {
         enable = true;
         highlightCurrentScope.enable = true;
         highlightDefinitions.enable = true;
+      };
+      ts-autotag = {
+        enable = true;
       };
     };
   };

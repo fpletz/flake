@@ -1,6 +1,7 @@
 { lib, ... }:
 {
   imports = [
+    ./barbar.nix
     ./cmp.nix
     ./comment.nix
     ./dap.nix
@@ -25,11 +26,13 @@
     vimAlias = true;
 
     luaLoader.enable = true;
+
     globals = {
       mapleader = ",";
       loaded_perl_provider = 0;
       loaded_ruby_provider = 0;
     };
+
     options = {
       expandtab = true;
       number = true;
@@ -48,9 +51,11 @@
       updatetime = 2000;
       termguicolors = true;
     };
+
     clipboard = {
       register = "unnamedplus";
     };
+
     colorscheme = lib.mkForce "catppuccin";
     colorschemes = {
       catppuccin = {
@@ -69,6 +74,7 @@
       melange.enable = true;
       tokyonight.enable = true;
     };
+
     keymaps = [
       {
         mode = "n";
@@ -86,48 +92,7 @@
         key = ">";
         action = ">gv|";
       }
-      {
-        mode = "n";
-        key = "<A-,>";
-        action = "<Cmd>BufferPrevious<CR>";
-        options.silent = true;
-      }
-      {
-        mode = "n";
-        key = "<A-.>";
-        action = "<Cmd>BufferNext<CR>";
-        options.silent = true;
-      }
-      {
-        mode = "n";
-        key = "<A-<>";
-        action = "<Cmd>BufferMovePrevious<CR>";
-        options.silent = true;
-      }
-      {
-        mode = "n";
-        key = "<A->>";
-        action = "<Cmd>BufferMoveNext<CR>";
-        options.silent = true;
-      }
-      {
-        mode = "n";
-        key = "<A-c>";
-        action = "<Cmd>BufferClose<CR>";
-        options.silent = true;
-      }
-      {
-        mode = "n";
-        key = "<A-p>";
-        action = "<Cmd>BufferPin<CR>";
-        options.silent = true;
-      }
-      {
-        mode = "n";
-        key = "<C-p>";
-        action = "<Cmd>BufferPick<CR>";
-        options.silent = true;
-      }
+
       {
         mode = "n";
         key = "<leader>G";
@@ -140,12 +105,12 @@
         options.silent = true;
       }
     ];
+
     plugins = {
       auto-session = {
         enable = true;
         sessionLens.loadOnSetup = true;
       };
-      barbar.enable = true;
       barbecue = {
         enable = true;
       };

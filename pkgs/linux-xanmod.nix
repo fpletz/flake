@@ -3,8 +3,8 @@
 let
   suffix = "xanmod1";
   modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-  version = "6.7.2";
-  hash = "sha256-nY7C3Qt5slxafvyVGtTf0celPF+W9MepL6MjsnPzTXg=";
+  version = "6.7.3";
+  hash = "sha256-EJWOrITqnEw/oXmSiQ5O2RrGeaS/Xb2vzpV9R/hAU9Y=";
 in
 linux_xanmod_latest.override (attrs: {
   inherit version modDirVersion;

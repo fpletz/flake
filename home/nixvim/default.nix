@@ -6,6 +6,7 @@
     ./comment.nix
     ./dap.nix
     ./dial.nix
+    ./flash.nix
     ./gitsigns.nix
     ./inc-rename.nix
     ./lsp.nix
@@ -19,6 +20,7 @@
     ./trouble.nix
     ./yanky.nix
   ];
+
   config.programs.nixvim = {
     enable = true;
     defaultEditor = true;
@@ -136,12 +138,6 @@
       nvim-autopairs = {
         enable = true;
         checkTs = true;
-      };
-      flash = {
-        enable = true;
-        modes = {
-          char.jumpLabels = true;
-        };
       };
       #which-key = {
       #  enable = true;

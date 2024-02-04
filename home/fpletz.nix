@@ -1,16 +1,26 @@
 { pkgs
+, config
 , inputs
 , ...
 }: {
   imports = [
+    inputs.nix-colors.homeManagerModule
     inputs.nixvim.homeManagerModules.nixvim
     ./nixvim
+    ./modules/dircolors.nix
+    ./modules/git.nix
+    ./modules/gui.nix
+    ./modules/wob.nix
+    ./modules/wofi.nix
   ];
+
+  colorScheme = inputs.nix-colors.colorSchemes."tokyo-night-dark";
 
   home = {
     username = "fpletz";
     homeDirectory = "/home/fpletz";
     stateVersion = "23.11";
+
     packages = with pkgs; [
       iperf
       pv
@@ -31,7 +41,10 @@
 
   systemd.user.startServices = "sd-switch";
 
+
   programs.home-manager.enable = true;
+
+  xresources.extraConfig = builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/xresources/tokyonight_night.Xresources";
 
   programs.bash = {
     enable = true;
@@ -97,13 +110,40 @@
         source ~/.p10k.zsh
       fi
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-
-      # FIXME: wants to write into plugin store path for cache
-      fast-theme -q ${pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/catppuccin/zsh-fsh/main/themes/catppuccin-mocha.ini";
-        hash = "sha256-7eIiR+ERWFXOq7IR/VMZqGhQgZ8uQ4jfvNR9MWgMSuk=";
-      }} 2>/dev/null
     '';
+  };
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font = {
+        normal.family = "Fira Code";
+        size = 10.0;
+      };
+      scrolling = { history = 20000; };
+      window.opacity = 0.95;
+      hints = {
+        enabled = [
+          {
+            regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\\\s{-}\\\\^⟨⟩`]+";
+            command = "xdg-open";
+            post_processing = true;
+            mouse = {
+              enabled = true;
+              mods = "None";
+            };
+            binding = {
+              key = "U";
+              mods = "Control|Shift";
+            };
+          }
+        ];
+      };
+      live_config_reload = true;
+      import = [
+        "${pkgs.vimPlugins.tokyonight-nvim}/extras/alacritty/tokyonight_night.toml"
+      ];
+    };
   };
 
   programs.direnv = {
@@ -114,84 +154,13 @@
   programs.btop = {
     enable = true;
     settings = {
-      color_theme = "catppuccin_mocha";
+      color_theme = "tokyo-night";
     };
-  };
-  home.file.".config/btop/themes/catppuccin_mocha.theme".source = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/catppuccin/btop/main/themes/catppuccin_mocha.theme";
-    hash = "sha256-TeaxAadm04h4c55aXYUdzHtFc7pb12e0wQmCjSymuug=";
   };
 
   programs.bottom.enable = true;
 
   programs.htop.enable = true;
-
-  programs.git = {
-    enable = true;
-    lfs.enable = true;
-    extraConfig = {
-      user = {
-        name = "Franz Pletz";
-        email = "fpletz@fnordicwalking.de";
-        signingkey = "792617B4";
-      };
-      url = {
-        "git@git.sr.ht:~".insteadOf = "sh:";
-        "git@github.com:".insteadOf = "gh:";
-      };
-      color = {
-        ui = true;
-        diff-highlight = {
-          oldNormal = "red bold";
-          oldHighlight = "red bold 52";
-          newNormal = "green bold";
-          newHighlight = "green bold 22";
-        };
-        diff = {
-          meta = "11";
-          frag = "magenta bold";
-          func = "146 bold";
-          commit = "yellow bold";
-          old = "red bold";
-          new = "green bold";
-          whitespace = "red reverse";
-        };
-      };
-      core = {
-        quotePath = false;
-      };
-      merge.tool = "vimdiff";
-      blame.date = "short";
-      rerere.enabled = true;
-      pull.rebase = true;
-      push = {
-        default = "simple";
-        autoSetupRemote = true;
-      };
-      rebase = {
-        stat = true;
-        autostash = true;
-      };
-      commit = {
-        gpgsign = true;
-        verbose = true;
-      };
-      diff = {
-        algorithm = "histogram";
-        sopsdiffer.textconv = "sops -d";
-      };
-    };
-    aliases = {
-      bp = "cherry-pick -x";
-      co = "commit -v";
-      cpa = "cherry-pick --abort";
-      cpc = "cherry-pick --continue";
-      pfush = "push --force-with-lease --force-if-includes";
-    };
-    diff-so-fancy = {
-      enable = true;
-    };
-  };
 
   programs.lsd = {
     enable = true;
@@ -208,20 +177,19 @@
     defaultOptions = [ "--ansi" ];
     fileWidgetCommand = "fd --type f --color always";
     fileWidgetOptions = [ "--ansi" "--preview 'bat --style=numbers --color=always --line-range :500 {}'" ];
-    # catppuccin-mocha
-    colors = {
-      "bg+" = "#313244";
-      bg = "#1e1e2e";
-      spinner = "#f5e0dc";
-      hl = "#f38ba8";
-      fg = "#cdd6f4";
-      header = "#f38ba8";
-      info = "#cba6f7";
-      pointer = "#f5e0dc";
-      marker = "#f5e0dc";
-      "fg+" = "#cdd6f4";
-      prompt = "#cba6f7";
-      "hl+" = "#f38ba8";
+    colors = with config.colorScheme.palette; {
+      "bg+" = "#${base02}";
+      bg = "#${base00}";
+      spinner = "#${base06}";
+      hl = "#${base08}";
+      fg = "#${base05}";
+      header = "#${base08}";
+      info = "#${base0E}";
+      pointer = "#${base06}";
+      marker = "#${base06}";
+      "fg+" = "#${base05}";
+      prompt = "#${base0E}";
+      "hl+" = "#${base08}";
     };
   };
 
@@ -236,39 +204,41 @@
       set -g status-right-length 0
       set -g set-titles on
       set -g set-titles-string "#H: #W"
-    '';
-    plugins = [
-      {
-        plugin = pkgs.tmuxPlugins.catppuccin;
-        extraConfig = "set -g @catppuccin_flavour 'mocha'";
-      }
-    ];
+    '' + (builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/tmux/tokyonight_night.tmux");
   };
 
   programs.bat = {
     enable = true;
     config = {
       pager = "less -FR";
-      theme = "catppuccin";
+      theme = "tokyonight_dark";
     };
     themes =
       let
-        catppuccinTheme = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-          hash = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
-        };
+        src = "${pkgs.vimPlugins.tokyonight-nvim}/extras/sublime";
       in
       {
-        catppuccin-mocha = {
-          src = catppuccinTheme;
-          file = "Catppuccin-mocha.tmTheme";
+        tokyonight-dark = {
+          inherit src;
+          file = "tokyonight_night.tmTheme";
         };
-        catppuccin-latte = {
-          src = catppuccinTheme;
-          file = "Catppuccin-latte.tmTheme";
+        tokyonight_day = {
+          inherit src;
+          file = "tokyonight_dark.tmTheme";
         };
       };
+  };
+
+  programs.zathura = {
+    enable = true;
+    extraConfig = builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/zathura/tokyonight_night.zathurarc";
+  };
+
+  programs.feh = {
+    enable = true;
+    keybindings = {
+      zoom_in = "plus";
+      zoom_out = "minus";
+    };
   };
 }

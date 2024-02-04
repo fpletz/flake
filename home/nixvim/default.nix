@@ -58,7 +58,7 @@
       register = "unnamedplus";
     };
 
-    colorscheme = lib.mkForce "catppuccin";
+    colorscheme = lib.mkForce "tokyonight";
     colorschemes = {
       catppuccin = {
         enable = true;
@@ -74,7 +74,10 @@
       dracula.enable = true;
       gruvbox.enable = true;
       melange.enable = true;
-      tokyonight.enable = true;
+      tokyonight = {
+        enable = true;
+        style = "night";
+      };
     };
 
     keymaps = [
@@ -115,6 +118,7 @@
       };
       barbecue = {
         enable = true;
+        theme = "tokyonight";
       };
       diffview = {
         enable = true;
@@ -126,6 +130,7 @@
       lualine = {
         enable = true;
         globalstatus = true;
+        theme = "tokyonight";
       };
       nix.enable = true;
       nix-develop.enable = true;

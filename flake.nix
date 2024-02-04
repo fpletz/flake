@@ -28,6 +28,10 @@
         pre-commit-hooks.follows = "pre-commit-hooks";
       };
     };
+    nix-colors = {
+      url = "github:misterio77/nix-colors";
+      inputs.nixpkgs-lib.follows = "flake-parts/nixpkgs-lib";
+    };
   };
 
   outputs = inputs:

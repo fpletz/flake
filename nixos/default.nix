@@ -41,6 +41,9 @@
     info.enable = false;
   };
 
+  sound.enable = lib.mkDefault false;
+  xdg.sounds.enable = false;
+
   users = {
     mutableUsers = false;
     users = {

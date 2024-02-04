@@ -14,7 +14,7 @@
       package = pkgs.fira;
     };
     theme = {
-      name = "Tokyonight-Dark-B";
+      name = "Tokyonight-Dark-BL";
       package = pkgs.tokyo-night-gtk-variants.full;
     };
     iconTheme = {

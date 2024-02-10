@@ -58,6 +58,15 @@
     '';
   };
 
+  programs.bash = {
+    enable = true;
+    historyFileSize = 1000000;
+    historyIgnore = [ "exit" ];
+    shellAliases = {
+      vi = "vim";
+    };
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;

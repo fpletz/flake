@@ -63,4 +63,29 @@
       return config
     '';
   };
+
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "Fira Code";
+      size = 10;
+    };
+    settings = {
+      scrollback_lines = 4000;
+      enable_audio_bell = false;
+      update_check_interval = 0;
+      tab_bar_min_tabs = 2;
+      tab_bar_edge = "bottom";
+      tab_bar_style = "powerline";
+      tab_powerline_style = "slanted";
+      tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+    };
+    shellIntegration = {
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
+    extraConfig = ''
+      include ${pkgs.vimPlugins.tokyonight-nvim}/extras/kitty/tokyonight_night.conf}
+    '';
+  };
 }

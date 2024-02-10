@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  xresources.extraConfig = builtins.readFile
+    "${pkgs.vimPlugins.tokyonight-nvim}/extras/xresources/tokyonight_night.Xresources";
+
   home.pointerCursor = {
     package = pkgs.phinger-cursors;
     name = "phinger-cursors";
@@ -64,5 +67,9 @@
     enable = true;
     platformTheme = "gtk";
     style.name = "gtk2";
+  };
+
+  home.sessionVariables = {
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
   };
 }

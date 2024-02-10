@@ -1,5 +1,4 @@
 { pkgs
-, config
 , inputs
 , ...
 }: {
@@ -7,6 +6,7 @@
     inputs.nix-colors.homeManagerModule
     inputs.nixvim.homeManagerModules.nixvim
     ./nixvim
+    ./modules/browser.nix
     ./modules/dircolors.nix
     ./modules/git.nix
     ./modules/gui.nix
@@ -22,6 +22,12 @@
     username = "fpletz";
     homeDirectory = "/home/fpletz";
     stateVersion = "23.11";
+
+    sessionVariables = {
+      EMAIL = "fpletz@fnordicwalking.de";
+      PAGER = "less";
+      TZ = "Europe/Amsterdam";
+    };
 
     packages = with pkgs; [
       iperf
@@ -43,19 +49,7 @@
 
   systemd.user.startServices = "sd-switch";
 
-
   programs.home-manager.enable = true;
-
-  xresources.extraConfig = builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/xresources/tokyonight_night.Xresources";
-
-  programs.bash = {
-    enable = true;
-    historyFileSize = 1000000;
-    historyIgnore = [ "exit" ];
-    shellAliases = {
-      vi = "vim";
-    };
-  };
 
   programs.btop = {
     enable = true;

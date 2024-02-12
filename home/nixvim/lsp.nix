@@ -39,6 +39,9 @@
           };
           nil_ls = {
             enable = true;
+            extraOptions = {
+              formatting.command = "nixpkgs-fmt";
+            };
           };
           pyright = {
             enable = true;

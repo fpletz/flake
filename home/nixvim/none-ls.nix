@@ -1,6 +1,7 @@
 {
   config.programs.nixvim.plugins.none-ls = {
     enable = true;
+    enableLspFormat = true;
     sources = {
       code_actions = {
         gitsigns.enable = true;
@@ -9,6 +10,7 @@
       };
       diagnostics = {
         shellcheck.enable = true;
+        deadnix.enable = true;
       };
       formatting = {
         isort.enable = true;

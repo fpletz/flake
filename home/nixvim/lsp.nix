@@ -4,7 +4,6 @@
     colorschemes.catppuccin.integrations.native_lsp.enabled = true;
 
     extraPlugins = with pkgs.vimPlugins; [
-      rustaceanvim
       nvim-surround
     ];
 
@@ -79,6 +78,13 @@
         };
       };
       lsp-lines.enable = true;
+      lsp-format.enable = true;
+      rustaceanvim = {
+        enable = true;
+        server = {
+          standalone = false;
+        };
+      };
     };
   };
 }

@@ -1,28 +1,56 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.nixvim = {
     colorschemes.catppuccin.integrations.cmp = true;
-
-    extraPlugins = with pkgs.vimPlugins; [
-      cmp_luasnip
-      friendly-snippets
-    ];
 
     plugins = {
       nvim-cmp = {
         enable = true;
         autoEnableSources = false;
         sources = [
-          { name = "nvim_lsp"; }
-          { name = "nvim_lsp_signature_help"; }
-          { name = "path"; }
-          { name = "luasnip"; }
-          { name = "calc"; }
-          { name = "emoji"; }
-          { name = "treesitter"; }
-          { name = "buffer"; keywordLength = 3; }
-          { name = "rg"; keywordLength = 3; }
-          { name = "spell"; keywordLength = 3; }
+          {
+            name = "nvim_lsp";
+            groupIndex = 1;
+          }
+          {
+            name = "nvim_lsp_signature_help";
+            groupIndex = 1;
+          }
+          {
+            name = "treesitter";
+            groupIndex = 1;
+          }
+          {
+            name = "path";
+            groupIndex = 1;
+          }
+          {
+            name = "calc";
+            groupIndex = 1;
+          }
+          {
+            name = "emoji";
+            groupIndex = 1;
+          }
+          {
+            name = "luasnip";
+            groupIndex = 1;
+          }
+          {
+            name = "buffer";
+            keywordLength = 3;
+            groupIndex = 2;
+          }
+          {
+            name = "rg";
+            keywordLength = 3;
+            groupIndex = 2;
+          }
+          {
+            name = "spell";
+            keywordLength = 3;
+            groupIndex = 3;
+          }
         ];
         mapping = {
           "<C-b>" = "cmp.mapping.scroll_docs(-4)";
@@ -39,6 +67,7 @@
       cmp-cmdline.enable = true;
       cmp-emoji.enable = true;
       cmp-git.enable = true;
+      cmp_luasnip.enable = true;
       cmp-nvim-lsp.enable = true;
       cmp-nvim-lsp-signature-help.enable = true;
       cmp-path.enable = true;
@@ -68,6 +97,7 @@
           };
         };
       };
+      friendly-snippets.enable = true;
     };
 
     extraConfigLua = ''

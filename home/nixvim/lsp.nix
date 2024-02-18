@@ -44,7 +44,6 @@
           };
           pyright = {
             enable = true;
-            installLanguageServer = false;
           };
           ruff-lsp = {
             enable = true;

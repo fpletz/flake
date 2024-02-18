@@ -18,11 +18,11 @@
     };
     theme = {
       name = "Tokyonight-Dark-BL";
-      package = pkgs.tokyo-night-gtk-variants.full;
+      package = pkgs.tokyonight-gtk-theme-variants.full;
     };
     iconTheme = {
       name = "Tokyonight-Dark";
-      package = pkgs.tokyo-night-gtk-variants.icons.dark;
+      package = pkgs.tokyonight-gtk-theme-variants.icons.dark;
     };
     gtk2.extraConfig = ''
       gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ

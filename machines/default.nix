@@ -19,7 +19,7 @@
         modules = [
           config.flake.nixosModules.default
           config.flake.nixosModules.home
-          ({ packages, pkgs, ... }: {
+          ({ config, pkgs, ... }: {
             networking.hostName = "trolovo";
             fileSystems."/" = {
               device = "/dev/disk/by-label/nixos";
@@ -29,7 +29,8 @@
               enable = true;
             };
 
-            boot.kernelPackages = pkgs.linuxPackagesFor packages.linux-xanmod;
+            boot.kernelPackages = pkgs.linuxPackages-xanmod;
+            boot.extraModulePackages = with config.boot.kernelPackages; [ ryzen_smu ];
           })
         ];
       };

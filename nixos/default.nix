@@ -13,6 +13,8 @@
     ./default/zram.nix
   ];
 
+  nixpkgs.overlays = [ inputs.self.overlays.default ];
+
   time.timeZone = "UTC";
   console.keyMap = "us";
   i18n.defaultLocale = "en_US.UTF-8";

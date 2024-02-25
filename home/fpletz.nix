@@ -62,9 +62,14 @@
 
   programs.htop.enable = true;
 
-  programs.lsd = {
+  programs.eza = {
     enable = true;
     enableAliases = true;
+    git = true;
+    icons = true;
+    extraOptions = [
+      "--group-directories-first"
+    ];
   };
 
   programs.jq.enable = true;

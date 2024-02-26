@@ -14,7 +14,7 @@
     users.fpletz = {
       uid = 1000;
       isNormalUser = true;
-      password = "test"; # FIXME
+      group = "users";
       extraGroups = [
         "wheel"
         "libvirtd"
@@ -29,6 +29,7 @@
         "systemd-journal"
       ];
       home = "/home/fpletz";
+      shell = "/run/current-system/sw/bin/zsh";
       subGidRanges = [
         {
           count = 65536;

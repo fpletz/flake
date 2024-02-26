@@ -19,7 +19,8 @@
         modules = [
           config.flake.nixosModules.default
           config.flake.nixosModules.home
-          ({ config, pkgs, ... }: {
+          config.flake.nixosModules.workstation
+          ({ config, ... }: {
             networking.hostName = "trolovo";
             fileSystems."/" = {
               device = "/dev/disk/by-label/nixos";
@@ -29,8 +30,33 @@
               enable = true;
             };
 
-            boot.kernelPackages = pkgs.linuxPackages-xanmod;
             boot.extraModulePackages = with config.boot.kernelPackages; [ ryzen_smu ];
+
+            bpletza.workstation.enable = true;
+          })
+        ];
+      };
+
+      zocknix = nixos {
+        system = "x86_64-linux";
+        modules = [
+          config.flake.nixosModules.default
+          config.flake.nixosModules.home
+          config.flake.nixosModules.workstation
+          ({ ... }: {
+            networking.hostName = "zocknix";
+            fileSystems."/" = {
+              device = "/dev/disk/by-label/nixos";
+              fsType = "ext4";
+            };
+            boot.loader.systemd-boot = {
+              enable = true;
+            };
+
+            bpletza.workstation = {
+              enable = true;
+              nvidia = true;
+            };
           })
         ];
       };

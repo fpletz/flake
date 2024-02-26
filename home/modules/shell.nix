@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -94,5 +94,25 @@
       prompt = "#${base0E}";
       "hl+" = "#${base08}";
     };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = false;
+    settings =
+      lib.attrsets.recursiveUpdate
+        (builtins.fromTOML (builtins.readFile ./shell/starship-presets.toml))
+        {
+          character = {
+            success_symbol = "[➜](bold green)";
+            error_symbol = "[➜](bold red)";
+          };
+          aws.disabled = false;
+          azure.disabled = true;
+          gcloud.disabled = true;
+          shell.disabled = false;
+          battery.disabled = false;
+          status.disabled = false;
+        };
   };
 }

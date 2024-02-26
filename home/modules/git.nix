@@ -71,4 +71,27 @@
     enable = true;
     theme = builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/gitui/tokyonight_night.ron";
   };
+
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git = {
+        paging = {
+          colorArgs = "always";
+          pager = "diff-so-fancy";
+        };
+      };
+      theme = {
+        lightTheme = false;
+        activeBorderColor = [ "#a6e3a1" "bold" ];
+        inactiveBorderColor = [ "#cdd6f4" ]; # Text
+        optionsTextColor = [ "#89b4fa" ]; # Blue
+        selectedLineBgColor = [ "#313244" ]; # Surface0
+        selectedRangeBgColor = [ "#313244" ]; # Surface0
+        cherryPickedCommitBgColor = [ "#94e2d5" ]; # Teal
+        cherryPickedCommitFgColor = [ "#89b4fa" ]; # Blue
+        unstagedChangesColor = [ "red" ]; # Red
+      };
+    };
+  };
 }

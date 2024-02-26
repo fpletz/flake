@@ -52,6 +52,7 @@
         nixosModules = {
           default = ./nixos/default.nix;
           home = ./nixos/home.nix;
+          workstation = ./nixos/workstation.nix;
         };
       };
 

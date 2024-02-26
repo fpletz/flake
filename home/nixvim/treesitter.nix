@@ -11,7 +11,6 @@
       };
       treesitter-refactor = {
         enable = true;
-        highlightCurrentScope.enable = true;
         highlightDefinitions.enable = true;
       };
       ts-autotag = {

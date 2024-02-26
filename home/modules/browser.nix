@@ -27,6 +27,23 @@ in
     MOZ_DBUS_REMOTE = "1";
   };
 
+  xdg.mimeApps = {
+    defaultApplications = lib.genAttrs [
+      "application/x-extension-htm"
+      "application/x-extension-html"
+      "application/x-extension-shtml"
+      "application/xhtml+xml"
+      "application/x-extension-xhtml"
+      "application/x-extension-xht"
+      "text/html"
+      "x-scheme-handler/http"
+      "x-scheme-handler/https"
+      "x-scheme-handler/about"
+      "x-scheme-handler/unknown"
+    ]
+      (_: "librewolf.desktop");
+  };
+
   programs.librewolf = {
     enable = true;
     package = pkgs.librewolf-wayland.override (_attrs: {

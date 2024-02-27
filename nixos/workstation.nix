@@ -2,6 +2,7 @@
 , lib
 , pkgs
 , modulesPath
+, inputs
 , ...
 }:
 let
@@ -300,6 +301,13 @@ in
     nix = {
       daemonCPUSchedPolicy = "idle";
       daemonIOSchedClass = "idle";
+    };
+
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      users.fpletz = ../home/fpletz.nix;
+      extraSpecialArgs = { inherit inputs; };
     };
   };
 }

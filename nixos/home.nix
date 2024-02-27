@@ -3,13 +3,6 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.fpletz = ../home/fpletz.nix;
-    extraSpecialArgs = { inherit inputs; };
-  };
-
   users = {
     users.fpletz = {
       uid = 1000;

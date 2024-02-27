@@ -1,7 +1,6 @@
 { config
 , lib
 , pkgs
-, modulesPath
 , inputs
 , ...
 }:
@@ -23,7 +22,6 @@ in
   };
 
   imports = [
-    "${modulesPath}/programs/wayland/wayland-session.nix"
     ./workstation/nvidia.nix
   ];
 
@@ -137,7 +135,15 @@ in
           };
         };
       };
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-wlr
+      ];
+    };
+
+    security = {
+      polkit.enable = true;
+      pam.services.swaylock = { };
     };
 
     location = {
@@ -270,6 +276,7 @@ in
     programs.light.enable = true;
     programs.wireshark.enable = true;
     programs.flashrom.enable = true;
+    programs.xwayland.enable = true;
 
     programs.gnupg.agent = {
       enable = true;

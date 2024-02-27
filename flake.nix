@@ -20,7 +20,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim";
+      #url = "github:nix-community/nixvim";
+      url = "github:traxys/nixvim/codesniffer";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";

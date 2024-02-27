@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   programs.swaylock = {
     enable = true;
@@ -33,28 +34,33 @@
     };
   };
 
-  services.swayidle = {
-    enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = "swaylock";
-      }
-      {
-        event = "lock";
-        command = "swaylock";
-      }
-    ];
-    timeouts = [
-      {
-        timeout = 180;
-        command = "swaylock";
-      }
-      {
-        timeout = 200;
-        command = "swaymsg 'output * dpms off'";
-        resumeCommand = "swaymsg 'output * dpms on'";
-      }
-    ];
-  };
+  services.swayidle =
+    let
+      swaylock = "${config.programs.swaylock.package}/bin/swaylock";
+      swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
+    in
+    {
+      enable = true;
+      events = [
+        {
+          event = "before-sleep";
+          command = swaylock;
+        }
+        {
+          event = "lock";
+          command = swaylock;
+        }
+      ];
+      timeouts = [
+        {
+          timeout = 180;
+          command = swaylock;
+        }
+        {
+          timeout = 200;
+          command = "${swaymsg} 'output * dpms off'";
+          resumeCommand = "${swaymsg} 'output * dpms on'";
+        }
+      ];
+    };
 }

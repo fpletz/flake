@@ -11,13 +11,12 @@ in
 {
   options.bpletza.workstation = {
     enable = mkEnableOption "fpletz workstation";
-    battery = mkOption {
-      type = types.bool;
-      default = true;
-    };
+    battery = mkEnableOption "machine has battery";
+    spotify = mkEnableOption "unfree spotify client";
     i3status-rs.blocks.temperatures = mkOption {
       type = types.listOf types.attrs;
       default = [ ];
+      description = "temperature blocks in the config";
     };
   };
 

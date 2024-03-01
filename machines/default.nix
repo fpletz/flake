@@ -56,6 +56,7 @@
             bpletza.workstation = {
               enable = true;
               nvidia = true;
+              spotify = true;
             };
           })
         ];

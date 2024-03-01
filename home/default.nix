@@ -7,6 +7,7 @@
     {
       fpletz = homeManagerConfiguration {
         pkgs = import inputs.nixpkgs { };
+        extraSpecialArgs = { inherit inputs; osConfig = { }; };
         modules = [
           ./fpletz.nix
         ];

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.obs-studio = {
     enable = pkgs.system == "x86_64-linux";
@@ -10,6 +10,7 @@
       obs-pipewire-audio-capture
       obs-move-transition
       obs-tuna
+    ] ++ lib.optionals pkgs.config.allowUnfree [
       obs-ndi
     ];
   };

@@ -13,6 +13,7 @@
     ./modules/i3status-rs.nix
     ./modules/nvidia.nix
     ./modules/shell.nix
+    ./modules/spotify-unfree.nix
     ./modules/sway.nix
     ./modules/swaylock.nix
     ./modules/terminal.nix

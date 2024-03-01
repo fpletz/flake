@@ -101,7 +101,7 @@
             format = " $icon  ";
           }
         ]
-        ++ osConfig.bpletza.workstation.i3status-rs.blocks.temperatures
+        ++ osConfig.bpletza.workstation.i3status-rs.blocks.temperatures or [ ]
         ++ [
           {
             block = "battery";

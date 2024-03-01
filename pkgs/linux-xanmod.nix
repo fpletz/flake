@@ -3,8 +3,8 @@
 let
   suffix = "xanmod1";
   modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-  version = "6.7.6";
-  hash = "sha256-gg8B/i6kidgvRBOm3JiMBwP18UtVRH1ELNGQUBkDOMs=";
+  version = "6.7.7";
+  hash = "sha256-Y+SvnvkFOGCxq+hGwpiiymNr1rYbNqppNA0d63TyUmo=";
 in
 linux_xanmod_latest.override (attrs: {
   inherit version modDirVersion;
@@ -85,6 +85,7 @@ linux_xanmod_latest.override (attrs: {
       SCSI_BFA_FC = no;
       SCSI_QLA_ISCSI = no;
       NET_DSA = no;
+      WINESYNC = unset;
     };
 
   extraMeta = attrs.extraMeta // {

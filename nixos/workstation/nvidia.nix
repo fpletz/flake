@@ -10,7 +10,7 @@ in
     nixpkgs.config.allowUnfree = true;
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.production;
       modesetting.enable = true;
       forceFullCompositionPipeline = true;
     };

@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.bpletza.workstation;
-  inherit (lib) types mkEnableOption mkOption mkIf;
+  inherit (lib) types mkEnableOption mkOption mkIf mkDefault;
 in
 {
   options.bpletza.workstation = {
@@ -46,7 +46,7 @@ in
         options v4l2loopback video_nr=23,42 card_label="23,42" exclusive_caps=1
       '';
       kernel.sysctl = {
-        "vm.nr_overcommit_hugepages" = lib.mkDefault 512;
+        "vm.nr_overcommit_hugepages" = mkDefault 512;
       };
       loader.grub = {
         ipxe = {
@@ -56,7 +56,7 @@ in
           '';
         };
         memtest86.enable = config.nixpkgs.system == "x86_64-linux";
-        efiSupport = lib.mkDefault true;
+        efiSupport = mkDefault true;
       };
       loader.systemd-boot = {
         memtest86.enable = true;
@@ -109,7 +109,7 @@ in
     };
 
     networking.wireless = {
-      scanOnLowSignal = lib.mkDefault true;
+      scanOnLowSignal = mkDefault true;
       extraConfig = ''
         preassoc_mac_addr=1
         mac_addr=1
@@ -202,6 +202,7 @@ in
     sound.enable = true;
     hardware.bluetooth = {
       enable = true;
+      powerOnBoot = mkDefault false;
       settings = {
         General = {
           Experimental = true;
@@ -231,7 +232,7 @@ in
           serif = [ "Noto Serif" "Font Awesome 6 Free" "Font Awesome 5 Free" "Noto Color Emoji" ];
         };
         subpixel = {
-          rgba = lib.mkDefault "rgb";
+          rgba = mkDefault "rgb";
         };
       };
       packages = with pkgs; [

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   # vivid master with working tokyonight theme
   vivid = pkgs.vivid.overrideAttrs (attrs: rec {
@@ -21,12 +21,19 @@ let
   });
 in
 {
-  programs.dircolors = {
-    enable = true;
-    settings = builtins.fromJSON (builtins.readFile (pkgs.runCommand "dircolors.json" { } ''
-      ${vivid}/bin/vivid generate tokyonight-night | \
-        ${pkgs.python3}/bin/python3 -c 'import sys, json; print(json.dumps(dict([s.split("=") for s in sys.stdin.read().strip().split(":")])))' \
-        > $out
-    ''));
+  options.bpletza.workstation.dircolors = lib.mkOption {
+    type = lib.types.bool;
+    default = config.bpletza.workstation.shell;
+  };
+
+  config = lib.mkIf config.bpletza.workstation.dircolors {
+    programs.dircolors = {
+      enable = true;
+      settings = builtins.fromJSON (builtins.readFile (pkgs.runCommand "dircolors.json" { } ''
+        ${vivid}/bin/vivid generate tokyonight-night | \
+          ${pkgs.python3}/bin/python3 -c 'import sys, json; print(json.dumps(dict([s.split("=") for s in sys.stdin.read().strip().split(":")])))' \
+          > $out
+      ''));
+    };
   };
 }

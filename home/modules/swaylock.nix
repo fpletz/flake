@@ -3,10 +3,12 @@
   options.bpletza.workstation.swaylock = lib.mkOption
     {
       type = lib.types.bool;
-      default = config.options.bpletza.workstation.sway;
+      default = config.bpletza.workstation.sway;
     };
 
   config = lib.mkIf config.bpletza.workstation.swaylock {
+    services.systemd-lock-handler.enable = true;
+
     programs.swaylock = {
       enable = true;
       settings = {

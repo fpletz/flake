@@ -1,6 +1,11 @@
-{ lib, osConfig, ... }:
+{ lib, config, osConfig, ... }:
 {
-  config = lib.mkIf osConfig.bpletza.workstation.nvidia or false {
+  options.bpletza.workstation.nvidia = lib.mkOption {
+    type = lib.types.bool;
+    default = config.bpletza.workstation.sway && (osConfig.bpletza.workstation.nvidia || false);
+  };
+
+  config = lib.mkIf config.bpletza.workstation.nvidia {
     wayland.windowManager.sway = {
       extraOptions = [ "--unsupported-gpu" ];
     };

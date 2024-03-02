@@ -1,12 +1,8 @@
 { lib, config, inputs, pkgs, ... }:
 {
-  options.bpletza.workstation.swaylock = lib.mkOption
-    {
-      type = lib.types.bool;
-      default = config.options.bpletza.workstation.swaylock;
-    };
+  options.services.systemd-lock-handler.enable = lib.mkEnableOption "systemd user session lock handler";
 
-  config = lib.mkIf config.options.bpletza.workstation.systemd-lock-handler {
+  config = lib.mkIf config.services.systemd-lock-handler.enable {
     systemd.user.services.systemd-lock-handler = {
       Service = {
         ExecStart = "${inputs.self.packages.${pkgs.system}.systemd-lock-handler}/bin/systemd-lock-handler";

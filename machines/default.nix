@@ -32,7 +32,10 @@
 
             boot.extraModulePackages = with config.boot.kernelPackages; [ ryzen_smu ];
 
-            bpletza.workstation.enable = true;
+            bpletza.workstation = {
+              enable = true;
+              battery = true;
+            };
           })
         ];
       };
@@ -56,7 +59,6 @@
             bpletza.workstation = {
               enable = true;
               nvidia = true;
-              spotify = true;
             };
           })
         ];

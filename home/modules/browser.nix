@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 let
   extraPrefs = ''
     pref("ui.systemUsesDarkTheme", 1);
@@ -18,71 +18,78 @@ let
   nativeMessagingHosts = with pkgs; [ ff2mpv browserpass tridactyl-native ];
 in
 {
-  programs.browserpass.enable = true;
-
-  home.sessionVariables = {
-    BROWSER = "librewolf";
-    DEFAULT_BROWSER = "librewolf";
-    MOZ_USE_XINPUT2 = "1";
-    MOZ_DBUS_REMOTE = "1";
+  options.bpletza.workstation.browser = lib.mkOption {
+    type = lib.types.bool;
+    default = config.bpletza.workstation.sway;
   };
 
-  xdg.mimeApps = {
-    defaultApplications = lib.genAttrs [
-      "application/x-extension-htm"
-      "application/x-extension-html"
-      "application/x-extension-shtml"
-      "application/xhtml+xml"
-      "application/x-extension-xhtml"
-      "application/x-extension-xht"
-      "text/html"
-      "x-scheme-handler/http"
-      "x-scheme-handler/https"
-      "x-scheme-handler/about"
-      "x-scheme-handler/unknown"
-    ]
-      (_: "librewolf.desktop");
-  };
+  config = lib.mkIf config.bpletza.workstation.browser {
+    programs.browserpass.enable = true;
 
-  programs.librewolf = {
-    enable = true;
-    package = pkgs.librewolf-wayland.override (_attrs: {
-      extraPrefs = ''
-        pref("webgl.disabled", false);
-        pref("privacy.resistFingerprinting", false);
-      '' + extraPrefs;
+    home.sessionVariables = {
+      BROWSER = "librewolf";
+      DEFAULT_BROWSER = "librewolf";
+      MOZ_USE_XINPUT2 = "1";
+      MOZ_DBUS_REMOTE = "1";
+    };
+
+    xdg.mimeApps = {
+      defaultApplications = lib.genAttrs [
+        "application/x-extension-htm"
+        "application/x-extension-html"
+        "application/x-extension-shtml"
+        "application/xhtml+xml"
+        "application/x-extension-xhtml"
+        "application/x-extension-xht"
+        "text/html"
+        "x-scheme-handler/http"
+        "x-scheme-handler/https"
+        "x-scheme-handler/about"
+        "x-scheme-handler/unknown"
+      ]
+        (_: "librewolf.desktop");
+    };
+
+    programs.librewolf = {
+      enable = true;
+      package = pkgs.librewolf-wayland.override (_attrs: {
+        extraPrefs = ''
+          pref("webgl.disabled", false);
+          pref("privacy.resistFingerprinting", false);
+        '' + extraPrefs;
+        inherit nativeMessagingHosts;
+      });
+    };
+
+    programs.firefox = {
+      enable = lib.mkDefault true;
+      package = pkgs.firefox.override (_: {
+        inherit extraPrefs;
+      });
       inherit nativeMessagingHosts;
-    });
-  };
+    };
 
-  programs.firefox = {
-    enable = lib.mkDefault true;
-    package = pkgs.firefox.override (_: {
-      inherit extraPrefs;
-    });
-    inherit nativeMessagingHosts;
-  };
-
-  programs.chromium = {
-    enable = true;
-    package = pkgs.ungoogled-chromium;
-    commandLineArgs = [
-      "--enable-features=WebRTCPipeWireCapturer,VaapiVideoDecoder"
-      "--ignore-gpu-blocklist"
-      "--enable-gpu-rasterization"
-      "--disable-background-networking"
-      "--enable-accelerated-video-decode"
-      "--enable-zero-copy"
-      "--no-default-browser-check"
-      "--disable-sync"
-      "--disable-features=MediaRouter"
-      "--enable-features=UseOzonePlatform"
-      "--ozone-platform=wayland"
-    ];
-    extensions = [
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-      "pgdnlhfefecpicbbihgmbmffkjpaplco" # ublock extra
-      "naepdomgkenhinolocfifgehidddafch" # browserpass
-    ];
+    programs.chromium = {
+      enable = true;
+      package = pkgs.ungoogled-chromium;
+      commandLineArgs = [
+        "--enable-features=WebRTCPipeWireCapturer,VaapiVideoDecoder"
+        "--ignore-gpu-blocklist"
+        "--enable-gpu-rasterization"
+        "--disable-background-networking"
+        "--enable-accelerated-video-decode"
+        "--enable-zero-copy"
+        "--no-default-browser-check"
+        "--disable-sync"
+        "--disable-features=MediaRouter"
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ];
+      extensions = [
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+        "pgdnlhfefecpicbbihgmbmffkjpaplco" # ublock extra
+        "naepdomgkenhinolocfifgehidddafch" # browserpass
+      ];
+    };
   };
 }

@@ -16,6 +16,7 @@
     ./modules/spotify-unfree.nix
     ./modules/sway.nix
     ./modules/swaylock.nix
+    ./modules/systemd-lock-handler.nix
     ./modules/terminal.nix
     ./modules/obs.nix
     ./modules/wob.nix

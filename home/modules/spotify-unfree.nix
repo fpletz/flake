@@ -1,4 +1,4 @@
-{ config, pkgs, lib, osConfig, ... }:
+{ config, pkgs, lib, ... }:
 let
   cfg = config.programs.spotify-unfree;
 
@@ -36,7 +36,7 @@ in
   options.programs.spotify-unfree = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = osConfig.bpletza.workstation.spotify or false;
+      default = config.bpletza.workstation.sway && pkgs.system == "x86_64-linux";
       description = "Unfree Spotify Client";
     };
   };

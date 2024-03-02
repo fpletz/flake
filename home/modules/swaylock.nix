@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, osConfig, pkgs, ... }:
 {
   options.bpletza.workstation.swaylock = lib.mkOption
     {
@@ -45,7 +45,7 @@
 
     services.swayidle =
       let
-        locker = "loginctl lock-session";
+        locker = "${osConfig.systemd.package}/bin/loginctl lock-session";
         swaymsg = "${config.wayland.windowManager.sway.package}/bin/swaymsg";
       in
       {

@@ -14,12 +14,27 @@
       );
     in
     {
+      server = nixos {
+        system = "x86_64-linux";
+        modules = [
+          config.flake.nixosModules.all
+          {
+            networking.hostName = "server";
+            fileSystems."/" = {
+              device = "/dev/disk/by-label/nixos";
+              fsType = "ext4";
+            };
+            boot.loader.systemd-boot = {
+              enable = true;
+            };
+          }
+        ];
+      };
+
       trolovo = nixos {
         system = "x86_64-linux";
         modules = [
-          config.flake.nixosModules.default
-          config.flake.nixosModules.home
-          config.flake.nixosModules.workstation
+          config.flake.nixosModules.all
           ({ config, ... }: {
             networking.hostName = "trolovo";
             fileSystems."/" = {
@@ -43,9 +58,7 @@
       zocknix = nixos {
         system = "x86_64-linux";
         modules = [
-          config.flake.nixosModules.default
-          config.flake.nixosModules.home
-          config.flake.nixosModules.workstation
+          config.flake.nixosModules.all
           ({ ... }: {
             networking.hostName = "zocknix";
             fileSystems."/" = {

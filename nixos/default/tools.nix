@@ -1,9 +1,5 @@
 { lib, pkgs, ... }:
 {
-  users = {
-    defaultUserShell = pkgs.zsh;
-  };
-
   programs = {
     zsh.enable = true;
     vim.defaultEditor = true;

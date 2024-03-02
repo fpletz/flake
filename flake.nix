@@ -49,13 +49,20 @@
         ./treefmt.nix
       ];
 
-      flake = {
-        nixosModules = {
-          default = ./nixos/default.nix;
-          home = ./nixos/home.nix;
-          workstation = ./nixos/workstation.nix;
+      flake =
+        let
+          modules = {
+            default = ./nixos/default.nix;
+            home = ./nixos/home.nix;
+            workstation = ./nixos/workstation.nix;
+          };
+          all = { imports = builtins.attrValues modules; };
+        in
+        {
+          nixosModules = modules // {
+            inherit all;
+          };
         };
-      };
 
       perSystem = { pkgs, config, lib, ... }: {
         devShells.default = pkgs.mkShellNoCC {

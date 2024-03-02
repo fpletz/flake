@@ -13,7 +13,10 @@
     ./default/zram.nix
   ];
 
-  nixpkgs.overlays = [ inputs.self.overlays.default ];
+  nixpkgs.overlays = [
+    inputs.self.overlays.default
+    inputs.bad_gateway.overlays.default
+  ];
 
   time.timeZone = "UTC";
   console.keyMap = "us";

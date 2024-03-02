@@ -3,11 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs = {
@@ -15,10 +18,12 @@
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixvim = {
       #url = "github:nix-community/nixvim";
       url = "github:traxys/nixvim/codesniffer";
@@ -29,9 +34,15 @@
         pre-commit-hooks.follows = "pre-commit-hooks";
       };
     };
+
     nix-colors = {
       url = "github:misterio77/nix-colors";
       inputs.nixpkgs-lib.follows = "flake-parts/nixpkgs-lib";
+    };
+
+    bad_gateway = {
+      url = "github:mguentner/bad_gateway";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -49,7 +60,7 @@
         ./treefmt.nix
       ];
 
-      flake =
+      flake.nixosModules =
         let
           modules = {
             default = ./nixos/default.nix;
@@ -58,11 +69,7 @@
           };
           all = { imports = builtins.attrValues modules; };
         in
-        {
-          nixosModules = modules // {
-            inherit all;
-          };
-        };
+        modules // { inherit all; };
 
       perSystem = { pkgs, config, lib, ... }: {
         devShells.default = pkgs.mkShellNoCC {

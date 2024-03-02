@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "bad_gateway": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1709160902,
+        "narHash": "sha256-otcbG4AUjRiT796F98NS0aGo1z9PSsaeZmTE7ozli6E=",
+        "owner": "mguentner",
+        "repo": "bad_gateway",
+        "rev": "1eef5c6eeb14c388e56e5100ebb990b02294efba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mguentner",
+        "repo": "bad_gateway",
+        "type": "github"
+      }
+    },
     "base16-schemes": {
       "flake": false,
       "locked": {
@@ -66,7 +87,7 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1701680307,
@@ -260,6 +281,7 @@
     },
     "root": {
       "inputs": {
+        "bad_gateway": "bad_gateway",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "nix-colors": "nix-colors",
@@ -270,6 +292,21 @@
       }
     },
     "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_2": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

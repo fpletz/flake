@@ -108,7 +108,7 @@
         src = "${pkgs.vimPlugins.tokyonight-nvim}/extras/sublime";
       in
       {
-        tokyonight-dark = {
+        tokyonight_dark = {
           inherit src;
           file = "tokyonight_night.tmTheme";
         };
@@ -119,45 +119,4 @@
       };
   };
 
-  programs.zathura = {
-    enable = true;
-    extraConfig = builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/zathura/tokyonight_night.zathurarc";
-  };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "application/pdf" = "org.pwmt.zathura.desktop";
-    };
-  };
-
-  programs.feh = {
-    enable = true;
-    keybindings = {
-      zoom_in = "plus";
-      zoom_out = "minus";
-    };
-  };
-
-  services.easyeffects.enable = true;
-
-  programs.mpv = {
-    enable = true;
-    config = {
-      ytdl-format = "bestvideo[vcodec^=vp9][height<=?1080]+bestaudio[acodec=opus]/bestvideo[height<=?1080]+bestaudio/best";
-      vo = "gpu";
-      gpu-context = "wayland";
-      hwdec = "auto-safe";
-    };
-  };
-
-  services.gammastep = {
-    enable = true;
-    latitude = "48";
-    longitude = "11";
-    temperature = {
-      day = 5500;
-      night = 3800;
-    };
-  };
 }

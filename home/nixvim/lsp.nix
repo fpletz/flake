@@ -24,39 +24,29 @@
       lsp = {
         enable = true;
         servers = {
-          bashls = {
-            enable = true;
-          };
-          clangd = {
-            enable = true;
-          };
-          dockerls = {
-            enable = true;
-          };
-          jsonls = {
-            enable = true;
-          };
+          bashls.enable = true;
+          clangd.enable = true;
+          cmake.enable = true;
+          cssls.enable = true;
+          dockerls.enable = true;
+          gopls.enable = true;
+          html.enable = true;
+          htmx.enable = true;
+          jsonls.enable = true;
+          lemminx.enable = true;
+          lua-ls.enable = true;
           nil_ls = {
             enable = true;
             extraOptions = {
               formatting.command = "nixpkgs-fmt";
             };
           };
-          pyright = {
-            enable = true;
-          };
-          ruff-lsp = {
-            enable = true;
-          };
-          gopls = {
-            enable = true;
-          };
-          lua-ls = {
-            enable = true;
-          };
-          yamlls = {
-            enable = true;
-          };
+          marksman.enable = true;
+          pest_ls.enable = true;
+          pyright.enable = true;
+          ruff-lsp.enable = true;
+          typos-lsp.enable = true;
+          yamlls.enable = true;
         };
         keymaps = {
           diagnostic = {

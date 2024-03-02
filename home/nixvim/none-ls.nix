@@ -4,10 +4,12 @@
     enableLspFormat = true;
     sources = {
       code_actions = {
-        gitsigns.enable = true;
+        gitrebase.enable = true;
         statix.enable = true;
       };
       diagnostics = {
+        actionlint.enable = true;
+        alex.enable = true;
         deadnix.enable = true;
       };
       formatting = {

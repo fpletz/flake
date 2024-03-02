@@ -140,7 +140,10 @@ in
 
     security = {
       polkit.enable = true;
-      pam.services.swaylock = { };
+      pam.services = {
+        swaylock = { };
+        waylock = { };
+      };
     };
 
     location = {

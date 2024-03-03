@@ -1,7 +1,8 @@
+{ lib, config, osConfig, ... }:
 {
-  config.programs.nixvim.plugins.none-ls = {
+  config.programs.nixvim.plugins.none-ls = lib.mkIf osConfig.bpletza.workstation.enable {
     enable = true;
-    enableLspFormat = true;
+    enableLspFormat = config.programs.nixvim.plugins.lsp.enable;
     sources = {
       code_actions = {
         gitrebase.enable = true;

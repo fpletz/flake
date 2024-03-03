@@ -35,7 +35,7 @@
         system = "x86_64-linux";
         modules = [
           config.flake.nixosModules.all
-          ({ config, ... }: {
+          {
             networking.hostName = "trolovo";
             fileSystems."/" = {
               device = "/dev/disk/by-label/nixos";
@@ -45,13 +45,12 @@
               enable = true;
             };
 
-            boot.extraModulePackages = with config.boot.kernelPackages; [ ryzen_smu ];
-
+            bpletza.hardware.thinkpad.a485 = true;
             bpletza.workstation = {
               enable = true;
               battery = true;
             };
-          })
+          }
         ];
       };
 

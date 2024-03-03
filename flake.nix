@@ -63,6 +63,7 @@
         let
           modules = {
             default = ./nixos/default.nix;
+            hardware = ./nixos/hardware.nix;
             home = ./nixos/home.nix;
             workstation = ./nixos/workstation.nix;
           };

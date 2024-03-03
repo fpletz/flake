@@ -68,6 +68,7 @@
               enable = true;
             };
 
+            bpletza.hardware.cpu.amd = true;
             bpletza.workstation = {
               enable = true;
               nvidia = true;

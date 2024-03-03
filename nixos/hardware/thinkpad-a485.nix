@@ -3,32 +3,29 @@
   options.bpletza.hardware.thinkpad.a485 = lib.mkEnableOption "Thinkpad A485";
 
   config = lib.mkIf config.bpletza.hardware.thinkpad.a485 {
+    bpletza.hardware.cpu.amd = true;
+
     boot = {
       initrd.availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-      kernelModules = [ "kvm-amd" ];
-      kernelParams = [ "amd_pstate=active" ];
       extraModulePackages = with config.boot.kernelPackages; [ acpi_call ryzen_smu ];
       extraModprobeConfig = ''
         options thinkpad_acpi fan_control=1
         options psmouse synaptics_intertouch=1
       '';
     };
-    services.fwupd.enable = true;
+
     networking.wireless = {
       enable = true;
       interfaces = [ "wlp2s0" ];
     };
+
     hardware = {
-      cpu.amd.updateMicrocode = true;
       firmware = with pkgs; [ linux-firmware alsa-firmware ];
       trackpoint = {
         enable = true;
       };
       wirelessRegulatoryDatabase = true;
     };
-    powerManagement.cpuFreqGovernor = "schedutil";
-
-    services.power-profiles-daemon.enable = true;
 
     services.thinkfan = {
       enable = true;
@@ -45,6 +42,8 @@
         [ "level full-speed" 85 200 ]
       ];
     };
+
+    services.fwupd.enable = true;
 
     bpletza.workstation = {
       battery = true;

@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ lib, pkgs, osConfig, ... }:
 {
-  programs.nixvim = {
+  programs.nixvim = lib.mkIf osConfig.bpletza.workstation.enable {
     colorschemes.catppuccin.integrations.native_lsp.enabled = true;
 
     extraPlugins = with pkgs.vimPlugins; [

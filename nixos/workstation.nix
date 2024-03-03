@@ -92,13 +92,6 @@ in
       KERNEL=="ttyACM[0-9]*", TAG+="udev-acl", TAG+="uaccess"
     '';
 
-    services.resolved = {
-      llmnr = "false";
-      extraConfig = ''
-        MulticastDNS=false
-      '';
-    };
-
     services.avahi = {
       enable = true;
       ipv4 = true;

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, osConfig, ... }:
 {
   options.bpletza.workstation.shell = lib.mkOption {
     type = lib.types.bool;
@@ -103,7 +103,7 @@
     };
 
     programs.starship = {
-      enable = true;
+      enable = osConfig.bpletza.workstation.enable;
       enableZshIntegration = false;
       settings =
         lib.attrsets.recursiveUpdate

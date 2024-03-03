@@ -52,7 +52,6 @@
       host
       whois
       traceroute
-      alsa-utils
     ];
   };
 

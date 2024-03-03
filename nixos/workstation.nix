@@ -212,6 +212,8 @@ in
       };
     };
 
+    environment.systemPackages = [ pkgs.alsa-utils ];
+
     virtualisation.podman = {
       enable = true;
       dockerCompat = true;

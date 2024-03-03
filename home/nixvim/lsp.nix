@@ -45,7 +45,6 @@
           pest_ls.enable = true;
           pyright.enable = true;
           ruff-lsp.enable = true;
-          typos-lsp.enable = true;
           yamlls.enable = true;
         };
         keymaps = {

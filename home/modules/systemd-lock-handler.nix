@@ -1,11 +1,11 @@
-{ lib, config, inputs, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 {
   options.services.systemd-lock-handler.enable = lib.mkEnableOption "systemd user session lock handler";
 
   config = lib.mkIf config.services.systemd-lock-handler.enable {
     systemd.user.services.systemd-lock-handler = {
       Service = {
-        ExecStart = "${inputs.self.packages.${pkgs.system}.systemd-lock-handler}/bin/systemd-lock-handler";
+        ExecStart = "${pkgs.systemd-lock-handler}/bin/systemd-lock-handler";
         Slice = "session.slice";
         Type = "notify";
         Restart = "on-failure";

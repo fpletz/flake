@@ -31,6 +31,22 @@
         ];
       };
 
+      fpro = nixos {
+        system = "aarch64-linux";
+        modules = [
+          config.flake.nixosModules.all
+          {
+            networking.hostName = "fpro";
+            fileSystems."/" = {
+              device = "/dev/disk/by-label/nixos";
+              fsType = "ext4";
+            };
+
+            bpletza.hardware.pinebook-pro = true;
+            bpletza.workstation.enable = true;
+          }
+        ];
+      };
       trolovo = nixos {
         system = "x86_64-linux";
         modules = [
@@ -46,10 +62,7 @@
             };
 
             bpletza.hardware.thinkpad.a485 = true;
-            bpletza.workstation = {
-              enable = true;
-              battery = true;
-            };
+            bpletza.workstation.enable = true;
           }
         ];
       };

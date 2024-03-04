@@ -1,4 +1,4 @@
-{ config, osConfig, lib, pkgs, inputs, ... }:
+{ config, osConfig, lib, pkgs, ... }:
 {
   options.bpletza.workstation.sway = lib.mkOption {
     type = lib.types.bool;
@@ -163,7 +163,7 @@
           lib.mkOptionDefault {
             "Mod4+Shift+e" = "exec wlogout";
             "Mod4+d" = "exec ${pkgs.wofi}/bin/wofi --show run";
-            "Mod4+Shift+d" = "exec ${inputs.self.packages.${pkgs.system}.wofi-emoji}/bin/wofi-emoji";
+            "Mod4+Shift+d" = "exec ${pkgs.wofi-emoji}/bin/wofi-emoji";
             "Mod4+p" = "exec ${wofi-pass {}}";
             "Mod4+Ctrl+p" = "exec ${wofi-pass { type = true; }}";
             "Mod4+Ctrl+l" = "exec loginctl lock-session";
@@ -259,7 +259,7 @@
         After = [ "sway-session.target" ];
       };
       Service = {
-        ExecStart = "${inputs.self.packages.${pkgs.system}.caffeinated}/bin/caffeinated";
+        ExecStart = "${pkgs.caffeinated}/bin/caffeinated";
         Restart = "on-failure";
       };
     };

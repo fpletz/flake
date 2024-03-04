@@ -7,7 +7,6 @@
     inputs.nixvim.homeManagerModules.nixvim
     ./nixvim
     ./modules/browser.nix
-    ./modules/dircolors.nix
     ./modules/git.nix
     ./modules/gui.nix
     ./modules/i3status-rs.nix

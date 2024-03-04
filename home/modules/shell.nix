@@ -121,5 +121,10 @@
             status.disabled = false;
           };
     };
+
+    programs.dircolors = {
+      enable = true;
+      settings = lib.importJSON ../../static/dircolors.json;
+    };
   };
 }

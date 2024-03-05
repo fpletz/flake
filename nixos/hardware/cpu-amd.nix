@@ -2,7 +2,7 @@
 {
   options.bpletza.hardware.cpu.amd = lib.mkEnableOption "AMD CPUs";
 
-  config = lib.mkIf config.bpletza.hardware.thinkpad.a485 {
+  config = lib.mkIf config.bpletza.hardware.cpu.amd {
     boot = {
       kernelModules = [ "kvm-amd" ];
       kernelParams = [ "amd_pstate=active" ];

@@ -8,6 +8,7 @@ let
     "usbguard-notifier"
     "wayidle"
     "wofi-emoji"
+    "vtcol"
   ];
 in
 {

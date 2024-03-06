@@ -88,11 +88,23 @@
     terminal = "screen-256color";
     baseIndex = 1;
     extraConfig = ''
-      set -g status-interval 0
-      set -g status-right-length 0
       set -g set-titles on
       set -g set-titles-string "#H: #W"
     '' + (builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/tmux/tokyonight_night.tmux");
+    plugins = [
+      pkgs.tmuxPlugins.pain-control
+      {
+        plugin = pkgs.tmuxPlugins.resurrect;
+        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      }
+      {
+        plugin = pkgs.tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '10' # minutes
+        '';
+      }
+    ];
   };
 
   programs.bat = {

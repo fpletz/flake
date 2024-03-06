@@ -13,28 +13,13 @@
         "git@git.sr.ht:~".insteadOf = "sh:";
         "git@github.com:".insteadOf = "gh:";
       };
-      color = {
-        ui = true;
-        diff-highlight = {
-          oldNormal = "red bold";
-          oldHighlight = "red bold 52";
-          newNormal = "green bold";
-          newHighlight = "green bold 22";
-        };
-        diff = {
-          meta = "11";
-          frag = "magenta bold";
-          func = "146 bold";
-          commit = "yellow bold";
-          old = "red bold";
-          new = "green bold";
-          whitespace = "red reverse";
-        };
-      };
       core = {
         quotePath = false;
       };
-      merge.tool = "vimdiff";
+      merge = {
+        tool = "vimdiff";
+        conflictstyle = "diff3";
+      };
       blame.date = "short";
       rerere.enabled = true;
       pull.rebase = true;
@@ -52,6 +37,7 @@
       };
       diff = {
         algorithm = "histogram";
+        colorMoved = "default";
         sopsdiffer.textconv = "sops -d";
       };
       tig.color = {
@@ -67,9 +53,17 @@
       cpc = "cherry-pick --continue";
       pfush = "push --force-with-lease --force-if-includes";
     };
-    diff-so-fancy = {
+    delta = {
       enable = true;
+      options = {
+        dark = true;
+        line-numbers = false;
+        hyperlinks = true;
+      };
     };
+    includes = [
+      { path = "${pkgs.vimPlugins.tokyonight-nvim}/extras/delta/tokyonight_night.gitconfig"; }
+    ];
   };
 
   programs.gitui = {

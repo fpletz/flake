@@ -91,7 +91,7 @@
         enableZshIntegration = true;
       };
       extraConfig = ''
-        include ${pkgs.vimPlugins.tokyonight-nvim}/extras/kitty/tokyonight_night.conf}
+        include ${pkgs.vimPlugins.tokyonight-nvim}/extras/kitty/tokyonight_night.conf
       '';
     };
   };

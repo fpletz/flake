@@ -1,5 +1,4 @@
-{ lib
-, fetchFromGitHub
+{ fetchFromGitHub
 , runCommand
 ,
 }:
@@ -11,12 +10,7 @@ let
     sha256 = "0ac7z3m5mnmk1qhf9pq9s3y6ky8jmd3ggn8m29797z1ng40q3cka";
   };
 in
-runCommand "pinebookpro-ap6256-firmware"
-{
-  meta = with lib; {
-    license = licenses.unfreeRedistributable;
-  };
-} ''
+runCommand "pinebookpro-ap6256-firmware" { } ''
   (PS4=" $ "; set -x
   cp ${src}/"firmware/broadcom/all/bt/BCM4345C5.hcd"               "BCM4345C5.hcd"
   cp ${src}/"firmware/broadcom/all/wifi/fw_bcm43456c5_ag.bin"      "fw_bcm43456c5_ag.bin"

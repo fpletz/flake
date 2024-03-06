@@ -118,13 +118,17 @@
         src = "${pkgs.vimPlugins.tokyonight-nvim}/extras/sublime";
       in
       {
+        tokyonight = {
+          inherit src;
+          file = "tokyonight_night.tmTheme";
+        };
         tokyonight_dark = {
           inherit src;
           file = "tokyonight_night.tmTheme";
         };
         tokyonight_day = {
           inherit src;
-          file = "tokyonight_dark.tmTheme";
+          file = "tokyonight_day.tmTheme";
         };
       };
   };

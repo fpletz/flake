@@ -40,10 +40,14 @@
         colorMoved = "default";
         sopsdiffer.textconv = "sops -d";
       };
-      tig.color = {
-        cursor = "black green";
-        title-focus = "black blue";
-        title-blur = "black blue";
+      tig = {
+        line-graphics = "auto";
+        truncation-delimiter = "utf-8";
+        color = {
+          cursor = "black green bold";
+          title-focus = "black blue bold";
+          title-blur = "black blue";
+        };
       };
     };
     aliases = {

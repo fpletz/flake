@@ -81,7 +81,7 @@
       git = {
         paging = {
           colorArgs = "always";
-          pager = "diff-so-fancy";
+          pager = "delta --paging=never";
         };
       };
       theme = {

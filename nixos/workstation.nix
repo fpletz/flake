@@ -231,23 +231,17 @@ in
           rgba = mkDefault "rgb";
         };
       };
+      enableDefaultPackages = true;
       packages = with pkgs; [
-        cm_unicode
-        dejavu_fonts
         font-awesome_5
         font-awesome_6
-        ttf_bitstream_vera
         ubuntu_font_family
-        unifont
-        inconsolata
-        proggyfonts
         gentium
         source-code-pro
         source-sans-pro
         source-serif-pro
         eb-garamond
         hack-font
-        montserrat
         iosevka
         b612
         fira
@@ -255,12 +249,12 @@ in
         fira-code-symbols
         fira-mono
         noto-fonts
-        noto-fonts-emoji
         powerline-fonts
         corefonts
         (nerdfonts.override (_: {
-          fonts = [ "FiraCode" "FiraMono" "BitstreamVeraSansMono" "DejaVuSansMono" "DroidSansMono" "Inconsolata" ];
+          fonts = [ "FiraCode" "FiraMono" "Hack" "SourceCodePro" "Iosevka" "IosevkaTerm" "IosevkaTermSlab" ];
         }))
+        meslo-lgs-nf
       ];
     };
 

@@ -54,6 +54,11 @@
         algorithm = "histogram";
         sopsdiffer.textconv = "sops -d";
       };
+      tig.color = {
+        cursor = "black green";
+        title-focus = "black blue";
+        title-blur = "black blue";
+      };
     };
     aliases = {
       bp = "cherry-pick -x";

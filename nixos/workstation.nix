@@ -238,11 +238,7 @@ in
         ubuntu_font_family
         gentium
         source-code-pro
-        source-sans-pro
-        source-serif-pro
         eb-garamond
-        hack-font
-        iosevka
         b612
         fira
         fira-code
@@ -252,7 +248,7 @@ in
         powerline-fonts
         corefonts
         (nerdfonts.override (_: {
-          fonts = [ "FiraCode" "FiraMono" "Hack" "SourceCodePro" "Iosevka" "IosevkaTerm" "IosevkaTermSlab" ];
+          fonts = [ "FiraCode" "FiraMono" "SourceCodePro" ];
         }))
         meslo-lgs-nf
       ];

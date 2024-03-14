@@ -57,7 +57,6 @@
         enabledExtensions = [ "notify" "ui-select" ];
         extensions = {
           fzf-native.enable = true;
-          project-nvim.enable = true;
           undo.enable = true;
         };
         keymaps = {

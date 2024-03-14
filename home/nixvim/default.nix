@@ -145,6 +145,7 @@
       };
       project-nvim = {
         enable = true;
+        enableTelescope = true;
       };
       nvim-autopairs = {
         enable = true;

@@ -287,7 +287,7 @@ in
         ${config.programs.gnupg.package}/bin/gpg-agent --supervised \
           --pinentry-program ${pkgs.writers.writeBash "pinentry-chooser" ''
           if [ -z "$WAYLAND_DISPLAY" ]; then
-            ${pkgs.pinentry.gnome3}/bin/pinentry "$@"
+            ${pkgs.pinentry-gnome3}/bin/pinentry "$@"
           else
             ${pkgs.pinentry-bemenu}/bin/pinentry-bemenu -b \
               --fn="Fira Mono 10" \

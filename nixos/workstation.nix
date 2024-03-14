@@ -280,7 +280,6 @@ in
       enableSSHSupport = true;
       enableExtraSocket = true;
       enableBrowserSocket = true;
-      pinentryFlavor = "gnome3";
     };
     systemd.user.services.gpg-agent.serviceConfig.ExecStart = lib.mkForce [
       ""

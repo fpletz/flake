@@ -2,7 +2,7 @@
 {
   config.programs.nixvim.plugins.none-ls = lib.mkIf osConfig.bpletza.workstation.enable {
     enable = true;
-    enableLspFormat = config.programs.nixvim.plugins.lsp.enable;
+    enableLspFormat = true;
     sources = {
       code_actions = {
         gitrebase.enable = true;

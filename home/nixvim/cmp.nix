@@ -36,7 +36,11 @@
             "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
           };
           mappingPresets = [ "insert" ];
-          snippet.expand = "luasnip";
+          snippet.expand = ''
+            function(args)
+              require('luasnip').lsp_expand(args.body)
+            end
+          '';
         };
         filetype.gitcommit.sources.__raw = ''
           cmp.config.sources({

@@ -28,7 +28,12 @@ in
   imports = [ ./workstation/nvidia.nix ];
 
   config = mkIf cfg.enable {
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs = {
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [ "nix-2.16.2" ]; # for nixd
+      };
+    };
 
     services.dbus.implementation = "broker";
 

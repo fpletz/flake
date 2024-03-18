@@ -38,10 +38,10 @@
           jsonls.enable = true;
           lemminx.enable = true;
           lua-ls.enable = true;
-          nil_ls = {
+          nixd = {
             enable = true;
-            extraOptions = {
-              formatting.command = lib.getExe pkgs.nixfmt-rfc-style;
+            settings = {
+              formatting.command = "nixfmt";
             };
           };
           marksman.enable = true;

@@ -18,7 +18,7 @@ buildLinux {
 
   structuredExtraConfig =
     let
-      inherit (lib.kernel) yes no module freeform unset;
+      inherit (lib.kernel) yes no freeform unset;
     in
     {
       # Google's BBRv3 TCP congestion Control
@@ -59,8 +59,6 @@ buildLinux {
       INET6_ESPINTCP = yes;
       IPV6_SIT_6RD = yes;
       IPV6_IOAM6_LWTUNNEL = yes;
-      BPFILTER = yes;
-      BPFILTER_UMH = module;
 
       # for CRIU
       MEM_SOFT_DIRTY = yes;

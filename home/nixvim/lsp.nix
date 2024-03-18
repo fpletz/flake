@@ -42,6 +42,7 @@
             enable = true;
             extraOptions = {
               formatting.command = lib.getExe pkgs.nixfmt-rfc-style;
+              nix.flake.autoEvalInputs = true;
             };
           };
           marksman.enable = true;

@@ -1,7 +1,7 @@
-{ lib, config, osConfig, ... }:
+{ lib, osConfig, ... }:
 {
   config.programs.nixvim.plugins.none-ls = lib.mkIf osConfig.bpletza.workstation.enable {
-    enable = true;
+    enable = false;
     enableLspFormat = true;
     sources = {
       code_actions = {
@@ -14,7 +14,6 @@
         deadnix.enable = true;
       };
       formatting = {
-        isort.enable = true;
         nixpkgs_fmt.enable = true;
         shfmt.enable = true;
       };

@@ -1,12 +1,12 @@
-{ lib, linux_xanmod_latest, fetchFromGitHub, ... }:
+{ lib, stdenv, buildLinux, fetchFromGitHub, ... }:
 
 let
   suffix = "xanmod1";
   modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-  version = "6.7.9";
-  hash = "sha256-/YoZTclMdJBQ8iwpfm/Ne/YLNQneN0hccy95o3fWvGM=";
+  version = "6.8.1";
+  hash = "sha256-FF/1gijFmYzKk4XoXfwtCQ5eGlwFW2l80O43Y4aSx1g=";
 in
-linux_xanmod_latest.override (attrs: {
+buildLinux {
   inherit version modDirVersion;
 
   src = fetchFromGitHub {
@@ -20,7 +20,16 @@ linux_xanmod_latest.override (attrs: {
     let
       inherit (lib.kernel) yes no module freeform unset;
     in
-    attrs.structuredExtraConfig // {
+    {
+      # Google's BBRv3 TCP congestion Control
+      TCP_CONG_BBR = yes;
+      DEFAULT_BBR = yes;
+
+      # Preemptive Full Tickless Kernel at 250Hz
+      HZ = freeform "250";
+      HZ_250 = yes;
+      HZ_1000 = no;
+
       # x86-64-v3 psABI
       GENERIC_CPU3 = yes;
       MODULE_COMPRESS_XZ = lib.modules.mkForce no;
@@ -88,7 +97,8 @@ linux_xanmod_latest.override (attrs: {
       WINESYNC = unset;
     };
 
-  extraMeta = attrs.extraMeta // {
+  extraMeta = {
     branch = lib.versions.majorMinor version;
+    broken = stdenv.isAarch64;
   };
-})
+}

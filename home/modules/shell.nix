@@ -1,4 +1,10 @@
-{ config, pkgs, lib, osConfig, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
 {
   options.bpletza.workstation.shell = lib.mkOption {
     type = lib.types.bool;
@@ -81,11 +87,17 @@
     programs.fzf = {
       enable = true;
       changeDirWidgetCommand = "fd --type d --color always";
-      changeDirWidgetOptions = [ "--ansi" "--preview 'tree -C {} | head -200'" ];
+      changeDirWidgetOptions = [
+        "--ansi"
+        "--preview 'tree -C {} | head -200'"
+      ];
       defaultCommand = "fd --type f --color always";
       defaultOptions = [ "--ansi" ];
       fileWidgetCommand = "fd --type f --color always";
-      fileWidgetOptions = [ "--ansi" "--preview 'bat --style=numbers --color=always --line-range :500 {}'" ];
+      fileWidgetOptions = [
+        "--ansi"
+        "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+      ];
       colors = with config.colorScheme.palette; {
         "bg+" = "#${base02}";
         bg = "#${base00}";
@@ -106,8 +118,7 @@
       enable = osConfig.bpletza.workstation.enable;
       enableZshIntegration = false;
       settings =
-        lib.attrsets.recursiveUpdate
-          (builtins.fromTOML (builtins.readFile ./shell/starship-presets.toml))
+        lib.attrsets.recursiveUpdate (builtins.fromTOML (builtins.readFile ./shell/starship-presets.toml))
           {
             character = {
               success_symbol = "[➜](bold green)";

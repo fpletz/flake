@@ -1,7 +1,4 @@
-{ fetchFromGitHub
-, runCommand
-,
-}:
+{ fetchFromGitHub, runCommand }:
 let
   src = fetchFromGitHub {
     owner = "nix-community";

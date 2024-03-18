@@ -2,13 +2,21 @@
   programs.nixvim = {
     keymaps = [
       {
-        mode = [ "n" "x" "o" ];
+        mode = [
+          "n"
+          "x"
+          "o"
+        ];
         key = "s";
         action = "function() require'flash'.jump() end";
         lua = true;
       }
       {
-        mode = [ "n" "x" "o" ];
+        mode = [
+          "n"
+          "x"
+          "o"
+        ];
         key = "S";
         action = "function() require'flash'.treesitter() end";
         lua = true;
@@ -20,7 +28,10 @@
         lua = true;
       }
       {
-        mode = [ "o" "x" ];
+        mode = [
+          "o"
+          "x"
+        ];
         key = "R";
         action = "function() require'flash'.treesitter_search() end";
         lua = true;

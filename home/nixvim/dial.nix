@@ -1,9 +1,7 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [
-      dial-nvim
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ dial-nvim ];
 
     extraConfigLua = ''
       vim.keymap.set("n", "<C-a>", function()

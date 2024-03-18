@@ -1,4 +1,10 @@
-{ lib, stdenv, buildLinux, fetchFromGitHub, ... }:
+{
+  lib,
+  stdenv,
+  buildLinux,
+  fetchFromGitHub,
+  ...
+}:
 
 let
   suffix = "xanmod1";
@@ -18,7 +24,12 @@ buildLinux {
 
   structuredExtraConfig =
     let
-      inherit (lib.kernel) yes no freeform unset;
+      inherit (lib.kernel)
+        yes
+        no
+        freeform
+        unset
+        ;
     in
     {
       # Google's BBRv3 TCP congestion Control

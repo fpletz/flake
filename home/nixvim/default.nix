@@ -123,7 +123,10 @@
       };
       better-escape = {
         enable = true;
-        mapping = [ "jj" "jk" ];
+        mapping = [
+          "jj"
+          "jk"
+        ];
         clearEmptyLines = true;
       };
       diffview = {

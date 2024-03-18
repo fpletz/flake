@@ -1,15 +1,15 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, autoreconfHook
-, pkg-config
-, libqb
-, usbguard
-, librsvg
-, libnotify
-, catch2
-, asciidoc
-,
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  autoreconfHook,
+  pkg-config,
+  libqb,
+  usbguard,
+  librsvg,
+  libnotify,
+  catch2,
+  asciidoc,
 }:
 stdenv.mkDerivation rec {
   pname = "usbguard-notifier";
@@ -22,8 +22,17 @@ stdenv.mkDerivation rec {
     hash = "sha256-gWvCGSbOuey2ELAPD2WCG4q77IClL0S7rE2RaUJDc1I=";
   };
 
-  nativeBuildInputs = [ autoreconfHook pkg-config asciidoc ];
-  buildInputs = [ libqb usbguard librsvg libnotify ];
+  nativeBuildInputs = [
+    autoreconfHook
+    pkg-config
+    asciidoc
+  ];
+  buildInputs = [
+    libqb
+    usbguard
+    librsvg
+    libnotify
+  ];
 
   configureFlags = [ "CPPFLAGS=-I${catch2}/include/catch2" ];
 

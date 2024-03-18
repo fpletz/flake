@@ -1,9 +1,11 @@
-{ lib
-, config
-, pkgs
-, inputs
-, ...
-}: {
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [
     ./default/networking.nix
     ./default/nginx.nix
@@ -79,16 +81,11 @@
     '';
 
     # include git rev of this repo/flake into the nixos-version
-    configurationRevision =
-      if inputs.self ? rev
-      then lib.substring 0 8 inputs.self.rev
-      else "dirty";
+    configurationRevision = if inputs.self ? rev then lib.substring 0 8 inputs.self.rev else "dirty";
 
     nixos = {
       revision = inputs.nixpkgs.rev;
-      versionSuffix =
-        lib.mkForce
-          ".${inputs.nixpkgs.shortRev}-${config.system.configurationRevision}";
+      versionSuffix = lib.mkForce ".${inputs.nixpkgs.shortRev}-${config.system.configurationRevision}";
     };
 
     # make deployment flake and nixpkgs available as well-known path
@@ -128,7 +125,10 @@
       trusted-users = [ "nix-build" ];
       connect-timeout = 3;
       http-connections = 150;
-      extra-experimental-features = [ "flakes" "nix-command" ];
+      extra-experimental-features = [
+        "flakes"
+        "nix-command"
+      ];
       builders-use-substitutes = true;
       log-lines = lib.mkDefault 25;
     };
@@ -171,7 +171,10 @@
     prometheus = {
       exporters.node = {
         enable = lib.mkDefault true;
-        enabledCollectors = [ "systemd" "processes" ];
+        enabledCollectors = [
+          "systemd"
+          "processes"
+        ];
       };
     };
   };

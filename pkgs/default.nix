@@ -12,28 +12,23 @@ let
   ];
 in
 {
-  perSystem = { pkgs, system, ... }:
+  perSystem =
+    { pkgs, system, ... }:
     {
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
-        overlays = [
-          inputs.self.overlays.default
-        ];
+        overlays = [ inputs.self.overlays.default ];
       };
 
-      packages =
-        forAllSelfPackages (
-          pkgname:
-          pkgs.callPackage (./. + "/${pkgname}.nix") { }
-        );
+      packages = forAllSelfPackages (pkgname: pkgs.callPackage (./. + "/${pkgname}.nix") { });
     };
 
-  flake.overlays.default = final: _prev:
+  flake.overlays.default =
+    final: _prev:
     {
-      linuxPackages-xanmod = (final.linuxPackagesFor final.linux-xanmod).extend
-        (final: _prev: {
-          ryzen_smu = final.callPackage ../pkgs/ryzen_smu.nix { };
-        });
-    } //
-    forAllSelfPackages (pkgname: final.callPackage (./. + "/${pkgname}.nix") { });
+      linuxPackages-xanmod = (final.linuxPackagesFor final.linux-xanmod).extend (
+        final: _prev: { ryzen_smu = final.callPackage ../pkgs/ryzen_smu.nix { }; }
+      );
+    }
+    // forAllSelfPackages (pkgname: final.callPackage (./. + "/${pkgname}.nix") { });
 }

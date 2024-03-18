@@ -1,11 +1,18 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 let
   cfg = config.bpletza.workstation;
-  inherit (lib) types mkEnableOption mkOption mkIf mkDefault;
+  inherit (lib)
+    types
+    mkEnableOption
+    mkOption
+    mkIf
+    mkDefault
+    ;
 in
 {
   options.bpletza.workstation = {
@@ -18,9 +25,7 @@ in
     };
   };
 
-  imports = [
-    ./workstation/nvidia.nix
-  ];
+  imports = [ ./workstation/nvidia.nix ];
 
   config = mkIf cfg.enable {
     nixpkgs.config.allowUnfree = true;
@@ -166,7 +171,10 @@ in
 
     services.printing = {
       enable = true;
-      drivers = with pkgs; [ foomatic-filters gutenprint ];
+      drivers = with pkgs; [
+        foomatic-filters
+        gutenprint
+      ];
     };
 
     services.greetd = {
@@ -176,19 +184,27 @@ in
           command = "sway";
           user = "fpletz";
         };
-        default_session.command = "${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet --time --cmd sway";
+        default_session.command = "${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet --time --cmd sway";
       };
     };
 
     hardware.opengl = {
       enable = true;
-      extraPackages = with pkgs;
-        (lib.optionals (config.nixpkgs.system == "x86_64-linux")
-          [ libvdpau-va-gl vaapiVdpau vulkan-validation-layers ]);
+      extraPackages =
+        with pkgs;
+        (lib.optionals (config.nixpkgs.system == "x86_64-linux") [
+          libvdpau-va-gl
+          vaapiVdpau
+          vulkan-validation-layers
+        ]);
       driSupport32Bit = config.nixpkgs.system == "x86_64-linux";
-      extraPackages32 = with pkgs.pkgsi686Linux;
-        lib.optionals (config.nixpkgs.system == "x86_64-linux")
-          [ libvdpau-va-gl vaapiVdpau vulkan-validation-layers ];
+      extraPackages32 =
+        with pkgs.pkgsi686Linux;
+        lib.optionals (config.nixpkgs.system == "x86_64-linux") [
+          libvdpau-va-gl
+          vaapiVdpau
+          vulkan-validation-layers
+        ];
     };
 
     security.rtkit.enable = true;
@@ -234,9 +250,24 @@ in
         enable = true;
         defaultFonts = {
           emoji = [ "Noto Color Emoji" ];
-          monospace = [ "Fira Code" "Font Awesome 6 Free" "Font Awesome 5 Free" "Noto Color Emoji" ];
-          sansSerif = [ "Fira Sans" "Font Awesome 6 Free" "Font Awesome 5 Free" "Noto Color Emoji" ];
-          serif = [ "Noto Serif" "Font Awesome 6 Free" "Font Awesome 5 Free" "Noto Color Emoji" ];
+          monospace = [
+            "Fira Code"
+            "Font Awesome 6 Free"
+            "Font Awesome 5 Free"
+            "Noto Color Emoji"
+          ];
+          sansSerif = [
+            "Fira Sans"
+            "Font Awesome 6 Free"
+            "Font Awesome 5 Free"
+            "Noto Color Emoji"
+          ];
+          serif = [
+            "Noto Serif"
+            "Font Awesome 6 Free"
+            "Font Awesome 5 Free"
+            "Noto Color Emoji"
+          ];
         };
         subpixel = {
           rgba = mkDefault "rgb";
@@ -259,7 +290,11 @@ in
         powerline-fonts
         corefonts
         (nerdfonts.override (_: {
-          fonts = [ "FiraCode" "FiraMono" "SourceCodePro" ];
+          fonts = [
+            "FiraCode"
+            "FiraMono"
+            "SourceCodePro"
+          ];
         }))
         meslo-lgs-nf
       ];
@@ -286,18 +321,18 @@ in
       ''
         ${config.programs.gnupg.package}/bin/gpg-agent --supervised \
           --pinentry-program ${pkgs.writers.writeBash "pinentry-chooser" ''
-          if [ -z "$WAYLAND_DISPLAY" ]; then
-            ${pkgs.pinentry-gnome3}/bin/pinentry "$@"
-          else
-            ${pkgs.pinentry-bemenu}/bin/pinentry-bemenu -b \
-              --fn="Fira Mono 10" \
-              --tf="#f7768e" \
-              --tb="#2f3549" \
-              --hf="#f7768e" \
-              --hb="#2f3549" \
-              "$@"
-          fi
-        ''}
+            if [ -z "$WAYLAND_DISPLAY" ]; then
+              ${pkgs.pinentry-gnome3}/bin/pinentry "$@"
+            else
+              ${pkgs.pinentry-bemenu}/bin/pinentry-bemenu -b \
+                --fn="Fira Mono 10" \
+                --tf="#f7768e" \
+                --tb="#2f3549" \
+                --hf="#f7768e" \
+                --hb="#2f3549" \
+                "$@"
+            fi
+          ''}
       ''
     ];
 

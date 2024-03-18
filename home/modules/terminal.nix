@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   options.bpletza.workstation.terminal = lib.mkOption {
     type = lib.types.bool;
@@ -13,7 +18,9 @@
           normal.family = "Fira Code";
           size = 10.0;
         };
-        scrolling = { history = 20000; };
+        scrolling = {
+          history = 20000;
+        };
         window.opacity = 0.95;
         hints = {
           enabled = [
@@ -33,9 +40,7 @@
           ];
         };
         live_config_reload = true;
-        import = [
-          "${pkgs.vimPlugins.tokyonight-nvim}/extras/alacritty/tokyonight_night.toml"
-        ];
+        import = [ "${pkgs.vimPlugins.tokyonight-nvim}/extras/alacritty/tokyonight_night.toml" ];
       };
     };
 

@@ -119,7 +119,10 @@
       };
       theme = {
         lightTheme = false;
-        activeBorderColor = [ "#a6e3a1" "bold" ];
+        activeBorderColor = [
+          "#a6e3a1"
+          "bold"
+        ];
         inactiveBorderColor = [ "#cdd6f4" ]; # Text
         optionsTextColor = [ "#89b4fa" ]; # Blue
         selectedLineBgColor = [ "#313244" ]; # Surface0

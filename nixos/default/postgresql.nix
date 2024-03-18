@@ -1,7 +1,5 @@
-{ config
-, lib
-, ...
-}: {
+{ config, lib, ... }:
+{
   config = lib.mkIf config.services.postgresql.enable {
     services.postgresql = {
       settings = {

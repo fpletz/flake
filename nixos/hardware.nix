@@ -1,3 +1,1 @@
-{
-  imports = map (fn: ./hardware + "/${fn}") (builtins.attrNames (builtins.readDir ./hardware));
-}
+{ imports = map (fn: ./hardware + "/${fn}") (builtins.attrNames (builtins.readDir ./hardware)); }

@@ -3,9 +3,7 @@
   programs.nixvim = {
     colorschemes.catppuccin.integrations.gitsigns = true;
 
-    extraPlugins = with pkgs.vimPlugins; [
-      git-conflict-nvim
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ git-conflict-nvim ];
 
     extraConfigLua = ''
       require('git-conflict').setup({

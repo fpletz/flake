@@ -72,6 +72,7 @@
         modules // { inherit all; };
 
       perSystem = { pkgs, config, lib, ... }: {
+        formatter = pkgs.nixfmt-rfc-style;
         devShells.default = pkgs.mkShellNoCC {
           packages = [
             config.treefmt.build.wrapper

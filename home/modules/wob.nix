@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   options.bpletza.workstation.wob = lib.mkOption {
     type = lib.types.bool;

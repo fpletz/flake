@@ -1,4 +1,10 @@
-{ lib, stdenv, fetchFromGitLab, kernel, kmod }:
+{
+  lib,
+  stdenv,
+  fetchFromGitLab,
+  kernel,
+  kmod,
+}:
 
 let
   makeCmd = ''
@@ -21,7 +27,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ kmod ] ++ kernel.moduleBuildDependencies;
 
-  hardeningDisable = [ "format" "pic" ];
+  hardeningDisable = [
+    "format"
+    "pic"
+  ];
 
   buildPhase = ''
     runHook preBuild

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.bpletza.hardware.pinebook-pro = lib.mkEnableOption "Pinebook Pro";
 

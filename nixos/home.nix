@@ -1,13 +1,14 @@
-{ inputs, ... }: {
-  imports = [
-    inputs.home-manager.nixosModules.default
-  ];
+{ inputs, ... }:
+{
+  imports = [ inputs.home-manager.nixosModules.default ];
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     users.fpletz = ../home/fpletz.nix;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+    };
   };
 
   users = {

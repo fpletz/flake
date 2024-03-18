@@ -1,9 +1,7 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [
-      treesj
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ treesj ];
 
     extraConfigLua = ''
       require("treesj").setup({

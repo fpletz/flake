@@ -1,4 +1,10 @@
-{ config, osConfig, lib, pkgs, ... }:
+{
+  config,
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.bpletza.workstation.i3status-rs = lib.mkOption {
     type = lib.types.bool;
@@ -22,7 +28,11 @@
             }
             {
               block = "music";
-              interface_name_exclude = [ "firefox" "chromium" "playerctld" ];
+              interface_name_exclude = [
+                "firefox"
+                "chromium"
+                "playerctld"
+              ];
               format = " $icon {$combo.str(max_w:75,rot_interval:0.5,rot_separator:' | ') $play $next |}";
             }
             {
@@ -108,18 +118,17 @@
             }
           ]
           ++ osConfig.bpletza.workstation.i3status-rs.blocks.temperatures or [ ]
-          ++ lib.optional (osConfig.bpletza.workstation.battery or false)
-            {
-              block = "battery";
-              driver = "upower";
-              format = " $icon $percentage ";
-              full_format = " $icon ";
-              empty_format = " $icon $percentage ";
-              not_charging_format = " $icon $percentage ";
-              missing_format = "";
-              full_threshold = 80;
-              empty_threshold = 5;
-            }
+          ++ lib.optional (osConfig.bpletza.workstation.battery or false) {
+            block = "battery";
+            driver = "upower";
+            format = " $icon $percentage ";
+            full_format = " $icon ";
+            empty_format = " $icon $percentage ";
+            not_charging_format = " $icon $percentage ";
+            missing_format = "";
+            full_threshold = 80;
+            empty_threshold = 5;
+          }
           ++ [
             {
               block = "time";

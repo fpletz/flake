@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   options.services.systemd-lock-handler.enable = lib.mkEnableOption "systemd user session lock handler";
 

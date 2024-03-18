@@ -1,10 +1,15 @@
-{ lib, config, osConfig, pkgs, ... }:
 {
-  options.bpletza.workstation.waylock = lib.mkOption
-    {
-      type = lib.types.bool;
-      default = config.bpletza.workstation.sway;
-    };
+  lib,
+  config,
+  osConfig,
+  pkgs,
+  ...
+}:
+{
+  options.bpletza.workstation.waylock = lib.mkOption {
+    type = lib.types.bool;
+    default = config.bpletza.workstation.sway;
+  };
 
   config = lib.mkIf config.bpletza.workstation.waylock {
     services.systemd-lock-handler.enable = true;

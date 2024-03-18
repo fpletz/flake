@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   services.nginx = {
     package = lib.mkDefault pkgs.nginxMainline;
@@ -11,17 +16,18 @@
     resolver.addresses =
       let
         isIPv6 = addr: builtins.match "^[^\\[]*:.*:.*$" addr != null;
-        escapeIPv6 = addr:
-          if isIPv6 addr
-          then "[${addr}]"
-          else addr;
-        cloudflare = [ "1.1.1.1" "[2606:4700:4700::1111]" ];
+        escapeIPv6 = addr: if isIPv6 addr then "[${addr}]" else addr;
+        cloudflare = [
+          "1.1.1.1"
+          "[2606:4700:4700::1111]"
+        ];
         resolvers =
-          if config.networking.nameservers != [ ]
-          then config.networking.nameservers
-          else if config.services.resolved.enable
-          then [ "127.0.0.53" ]
-          else cloudflare;
+          if config.networking.nameservers != [ ] then
+            config.networking.nameservers
+          else if config.services.resolved.enable then
+            [ "127.0.0.53" ]
+          else
+            cloudflare;
       in
       map escapeIPv6 resolvers;
     logError = "stderr info";

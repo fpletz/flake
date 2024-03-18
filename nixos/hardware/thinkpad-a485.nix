@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.bpletza.hardware.thinkpad.a485 = lib.mkEnableOption "Thinkpad A485";
 
@@ -6,8 +11,19 @@
     bpletza.hardware.cpu.amd = true;
 
     boot = {
-      initrd.availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-      extraModulePackages = with config.boot.kernelPackages; [ acpi_call ryzen_smu ];
+      initrd.availableKernelModules = [
+        "nvme"
+        "ehci_pci"
+        "xhci_pci"
+        "ahci"
+        "usb_storage"
+        "sd_mod"
+        "rtsx_pci_sdmmc"
+      ];
+      extraModulePackages = with config.boot.kernelPackages; [
+        acpi_call
+        ryzen_smu
+      ];
       extraModprobeConfig = ''
         options thinkpad_acpi fan_control=1
         options psmouse synaptics_intertouch=1
@@ -20,7 +36,10 @@
     };
 
     hardware = {
-      firmware = with pkgs; [ linux-firmware alsa-firmware ];
+      firmware = with pkgs; [
+        linux-firmware
+        alsa-firmware
+      ];
       trackpoint = {
         enable = true;
       };
@@ -29,17 +48,58 @@
 
     services.thinkfan = {
       enable = true;
-      extraArgs = [ "-s" "3" "-b" "2.0" ];
+      extraArgs = [
+        "-s"
+        "3"
+        "-b"
+        "2.0"
+      ];
       levels = [
-        [ 0 0 35 ]
-        [ 1 30 40 ]
-        [ 2 35 60 ]
-        [ 3 55 60 ]
-        [ 4 58 65 ]
-        [ 5 64 75 ]
-        [ 6 73 80 ]
-        [ 7 78 90 ]
-        [ "level full-speed" 90 200 ]
+        [
+          0
+          0
+          35
+        ]
+        [
+          1
+          30
+          40
+        ]
+        [
+          2
+          35
+          60
+        ]
+        [
+          3
+          55
+          60
+        ]
+        [
+          4
+          58
+          65
+        ]
+        [
+          5
+          64
+          75
+        ]
+        [
+          6
+          73
+          80
+        ]
+        [
+          7
+          78
+          90
+        ]
+        [
+          "level full-speed"
+          90
+          200
+        ]
       ];
     };
 

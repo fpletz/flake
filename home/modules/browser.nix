@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   extraPrefs = ''
     pref("ui.systemUsesDarkTheme", 1);
@@ -15,7 +20,10 @@ let
     pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
     pref("browser.compactmode.show", true);
   '';
-  nativeMessagingHosts = with pkgs; [ ff2mpv tridactyl-native ];
+  nativeMessagingHosts = with pkgs; [
+    ff2mpv
+    tridactyl-native
+  ];
 in
 {
   options.bpletza.workstation.browser = lib.mkOption {
@@ -46,17 +54,18 @@ in
         "x-scheme-handler/https"
         "x-scheme-handler/about"
         "x-scheme-handler/unknown"
-      ]
-        (_: "librewolf.desktop");
+      ] (_: "librewolf.desktop");
     };
 
     programs.librewolf = {
       enable = true;
       package = pkgs.librewolf-wayland.override (_attrs: {
-        extraPrefs = ''
-          pref("webgl.disabled", false);
-          pref("privacy.resistFingerprinting", false);
-        '' + extraPrefs;
+        extraPrefs =
+          ''
+            pref("webgl.disabled", false);
+            pref("privacy.resistFingerprinting", false);
+          ''
+          + extraPrefs;
         inherit nativeMessagingHosts;
       });
     };

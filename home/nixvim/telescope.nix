@@ -38,7 +38,10 @@
         options.silent = true;
       }
       {
-        mode = [ "v" "n" ];
+        mode = [
+          "v"
+          "n"
+        ];
         key = "<leader>cp";
         action = "require(\"actions-preview\").code_actions";
         lua = true;
@@ -54,7 +57,10 @@
     plugins = {
       telescope = {
         enable = true;
-        enabledExtensions = [ "notify" "ui-select" ];
+        enabledExtensions = [
+          "notify"
+          "ui-select"
+        ];
         extensions = {
           fzf-native.enable = true;
           undo.enable = true;
@@ -76,8 +82,12 @@
               };
             in
             {
-              i = { "<c-t>" = open_with_trouble; };
-              n = { "<c-t>" = open_with_trouble; };
+              i = {
+                "<c-t>" = open_with_trouble;
+              };
+              n = {
+                "<c-t>" = open_with_trouble;
+              };
             };
         };
         extraOptions = {

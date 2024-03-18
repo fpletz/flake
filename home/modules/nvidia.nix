@@ -1,4 +1,9 @@
-{ lib, config, osConfig, ... }:
+{
+  lib,
+  config,
+  osConfig,
+  ...
+}:
 {
   options.bpletza.workstation.nvidia = lib.mkOption {
     type = lib.types.bool;

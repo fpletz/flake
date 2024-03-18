@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   options.bpletza.workstation.gui = lib.mkOption {
     type = lib.types.bool;
@@ -6,8 +11,7 @@
   };
 
   config = lib.mkIf config.bpletza.workstation.gui {
-    xresources.extraConfig = builtins.readFile
-      "${pkgs.vimPlugins.tokyonight-nvim}/extras/xresources/tokyonight_night.Xresources";
+    xresources.extraConfig = builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/xresources/tokyonight_night.Xresources";
 
     home.pointerCursor = {
       package = pkgs.phinger-cursors;

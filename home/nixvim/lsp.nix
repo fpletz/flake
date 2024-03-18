@@ -1,11 +1,14 @@
-{ lib, pkgs, osConfig, ... }:
+{
+  lib,
+  pkgs,
+  osConfig,
+  ...
+}:
 {
   programs.nixvim = lib.mkIf osConfig.bpletza.workstation.enable {
     colorschemes.catppuccin.integrations.native_lsp.enabled = true;
 
-    extraPlugins = with pkgs.vimPlugins; [
-      nvim-surround
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ nvim-surround ];
 
     extraConfigLua = ''
       require("nvim-surround").setup()
@@ -38,7 +41,7 @@
           nil_ls = {
             enable = true;
             extraOptions = {
-              formatting.command = "nixpkgs-fmt";
+              formatting.command = lib.getExe pkgs.nixfmt-rfc-style;
             };
           };
           marksman.enable = true;

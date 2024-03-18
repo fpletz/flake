@@ -66,7 +66,7 @@
       cmp-treesitter.enable = true;
       luasnip = {
         enable = true;
-        fromVscode = [{ }];
+        fromVscode = [ { } ];
       };
       lspkind = {
         enable = true;

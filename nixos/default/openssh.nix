@@ -9,7 +9,10 @@
         bits = 256;
       }
     ];
-    sftpFlags = [ "-f AUTHPRIV" "-l INFO" ];
+    sftpFlags = [
+      "-f AUTHPRIV"
+      "-l INFO"
+    ];
     moduliFile = ../../static/ssh-moduli;
     settings = {
       PasswordAuthentication = false;

@@ -1,4 +1,10 @@
-{ config, osConfig, lib, pkgs, ... }:
+{
+  config,
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.bpletza.workstation.sway = lib.mkOption {
     type = lib.types.bool;
@@ -17,16 +23,15 @@
 
     wayland.windowManager.sway = {
       enable = true;
-      extraSessionCommands =
-        ''
-          export _JAVA_AWT_WM_NONREPARENTING=1
-          export QT_QPA_PLATFORM=wayland
-          export MOZ_ENABLE_WAYLAND="1"
-          export XDG_SESSION_TYPE="wayland"
-          export XDG_CURRENT_DESKTOP="sway"
-          export EGL_PLATFORM=wayland
-          export NIXOS_OZONE_WL=1
-        '';
+      extraSessionCommands = ''
+        export _JAVA_AWT_WM_NONREPARENTING=1
+        export QT_QPA_PLATFORM=wayland
+        export MOZ_ENABLE_WAYLAND="1"
+        export XDG_SESSION_TYPE="wayland"
+        export XDG_CURRENT_DESKTOP="sway"
+        export EGL_PLATFORM=wayland
+        export NIXOS_OZONE_WL=1
+      '';
       systemd.enable = true;
       config = {
         input = {
@@ -63,7 +68,10 @@
           ];
         };
         fonts = {
-          names = [ "Fira Code" "FontAwesome6Free" ];
+          names = [
+            "Fira Code"
+            "FontAwesome6Free"
+          ];
           size = 9.0;
         };
         colors = {
@@ -107,7 +115,10 @@
         bars = [
           {
             fonts = {
-              names = [ "Fira Code" "FontAwesome6Free" ];
+              names = [
+                "Fira Code"
+                "FontAwesome6Free"
+              ];
               size = 9.0;
             };
             colors = with config.colorScheme.palette; {
@@ -150,8 +161,10 @@
         keybindings =
           let
             wofi-pass =
-              { type ? false
-              }: pkgs.writers.writeBash "wofi-pass" ''
+              {
+                type ? false,
+              }:
+              pkgs.writers.writeBash "wofi-pass" ''
                 password=$(${pkgs.fd}/bin/fd --base-directory ''${PASSWORD_STORE_DIR-~/.password-store} --extension gpg |
                   ${pkgs.gnused}/bin/sed 's,\.gpg,,' | ${pkgs.wofi}/bin/wofi -p pass --dmenu "$@")
 
@@ -164,7 +177,7 @@
             "Mod4+Shift+e" = "exec wlogout";
             "Mod4+d" = "exec ${pkgs.wofi}/bin/wofi --show run";
             "Mod4+Shift+d" = "exec ${pkgs.wofi-emoji}/bin/wofi-emoji";
-            "Mod4+p" = "exec ${wofi-pass {}}";
+            "Mod4+p" = "exec ${wofi-pass { }}";
             "Mod4+Ctrl+p" = "exec ${wofi-pass { type = true; }}";
             "Mod4+Ctrl+l" = "exec loginctl lock-session";
             "Mod4+Ctrl+Left" = "move workspace to output left";
@@ -187,14 +200,19 @@
         };
         startup = [
           # we only manage displays in kanshi thus we need to reload on sway reload
-          { command = "${pkgs.kanshi}/bin/kanshictl reload"; always = true; }
+          {
+            command = "${pkgs.kanshi}/bin/kanshictl reload";
+            always = true;
+          }
         ];
       };
       extraConfigEarly = ''
-        include ${pkgs.fetchurl {
-          url = "https://raw.githubusercontent.com/catppuccin/i3/main/themes/catppuccin-mocha";
-          hash = "sha256-eeMloj3UgVMF0zUQBMIiJkqabVeUW/ff1jTarAd4dwI=";
-        }}
+        include ${
+          pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/catppuccin/i3/main/themes/catppuccin-mocha";
+            hash = "sha256-eeMloj3UgVMF0zUQBMIiJkqabVeUW/ff1jTarAd4dwI=";
+          }
+        }
       '';
       wrapperFeatures.gtk = true;
     };

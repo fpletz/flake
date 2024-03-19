@@ -49,11 +49,6 @@
           pest_ls.enable = true;
           pyright.enable = true;
           ruff-lsp.enable = true;
-          rust-analyzer = {
-            enable = true;
-            installCargo = false;
-            installRustc = false;
-          };
           yamlls.enable = true;
         };
         keymaps = {

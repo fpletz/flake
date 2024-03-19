@@ -75,6 +75,7 @@
         enable = true;
         server = {
           standalone = false;
+          onAttach = "__lspOnAttach";
         };
       };
     };

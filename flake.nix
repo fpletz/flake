@@ -90,6 +90,14 @@
             '';
           };
 
+          pre-commit = {
+            check.enable = true;
+            settings.hooks.treefmt = {
+              enable = true;
+              package = config.treefmt.build.wrapper;
+            };
+          };
+
           apps = {
             generate-dircolors.program =
               let

@@ -29,6 +29,9 @@
         };
       };
 
-      pre-commit.settings.hooks.treefmt.enable = true;
+      pre-commit.settings.hooks = {
+        treefmt.enable = true;
+        nil.enable = true;
+      };
     };
 }

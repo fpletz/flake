@@ -12,8 +12,8 @@ let
   emoji-data = runCommandLocal "emoji-data" { } ''
     cat ${
       fetchurl {
-        url = "https://raw.githubusercontent.com/muan/emojilib/v3.0.10/dist/emoji-en-US.json";
-        hash = "sha256-UhAB5hVp5vV2d1FjIb2TBd2FJ6OPBbiP31HGAEDQFnA=";
+        url = "https://raw.githubusercontent.com/muan/emojilib/v3.0.11/dist/emoji-en-US.json";
+        hash = "sha256-WHqCSNgDzc6ZASdVrwPvsU4MtBcYLKDp2D2Hykrq1sI=";
       }
     } \
       | ${jq}/bin/jq --raw-output '. | to_entries | .[] | .key + " " + (.value | join(" ") | sub("_"; " "; "g"))' > $out

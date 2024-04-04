@@ -70,6 +70,7 @@
         fonts = {
           names = [
             "Inter Variable"
+            "Fira Sans"
             "FontAwesome6Free"
           ];
           size = 9.0;
@@ -117,6 +118,7 @@
             fonts = {
               names = [
                 "Inter Variable"
+                "Fira Sans"
                 "FontAwesome6Free"
               ];
               size = 9.0;

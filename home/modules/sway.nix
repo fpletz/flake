@@ -14,7 +14,7 @@
   config = lib.mkIf config.bpletza.workstation.sway {
     services.mako = with config.colorScheme.palette; {
       enable = true;
-      font = "Inter Variable 10";
+      font = "Inter Display 10";
       iconPath = "${pkgs.tokyonight-gtk-theme-variants.icons.dark}/share/icons/Tokyonight-Dark";
       backgroundColor = "#${base00}";
       textColor = "#${base08}";
@@ -65,12 +65,12 @@
           criteria = [
             { "title" = "LibreWolf - Sharing Indicator"; }
             { "title" = "Firefox - Sharing Indicator"; }
+            { "app_id" = "xdg-desktop-portal-gtk"; }
           ];
         };
         fonts = {
           names = [
-            "Inter Variable"
-            "Fira Sans"
+            "Fira Code"
             "FontAwesome6Free"
           ];
           size = 9.0;
@@ -117,8 +117,7 @@
           {
             fonts = {
               names = [
-                "Inter Variable"
-                "Fira Sans"
+                "Fira Code"
                 "FontAwesome6Free"
               ];
               size = 9.0;

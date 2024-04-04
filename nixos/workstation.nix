@@ -257,7 +257,7 @@ in
             "Noto Color Emoji"
           ];
           sansSerif = [
-            "Inter Variable"
+            "Inter Display"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
             "Noto Color Emoji"

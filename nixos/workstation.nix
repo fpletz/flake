@@ -257,7 +257,7 @@ in
             "Noto Color Emoji"
           ];
           sansSerif = [
-            "Fira Sans"
+            "Inter Variable"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
             "Noto Color Emoji"
@@ -297,6 +297,7 @@ in
           ];
         }))
         meslo-lgs-nf
+        inter
       ];
     };
 

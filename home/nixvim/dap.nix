@@ -2,10 +2,10 @@
   programs.nixvim = {
     plugins = {
       dap = {
-        enable = true;
+        enable = false; # FIXME
         extensions = {
-          dap-python.enable = true;
-          dap-ui.enable = true;
+          dap-python.enable = false;
+          dap-ui.enable = false;
         };
       };
     };

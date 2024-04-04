@@ -19,7 +19,7 @@
         #window {
           border: 1px solid #${base01};
           background-color: #${base00};
-          font-family: Fira Sans, system-ui, sans-serif;
+          font-family: Inter Variable, system-ui, sans-serif;
           font-size: 14px;
         }
         #entry:nth-child(odd) {

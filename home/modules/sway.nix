@@ -14,7 +14,7 @@
   config = lib.mkIf config.bpletza.workstation.sway {
     services.mako = with config.colorScheme.palette; {
       enable = true;
-      font = "Fira Sans 10";
+      font = "Inter Variable 10";
       iconPath = "${pkgs.tokyonight-gtk-theme-variants.icons.dark}/share/icons/Tokyonight-Dark";
       backgroundColor = "#${base00}";
       textColor = "#${base08}";
@@ -69,7 +69,7 @@
         };
         fonts = {
           names = [
-            "Fira Code"
+            "Inter Variable"
             "FontAwesome6Free"
           ];
           size = 9.0;
@@ -116,7 +116,7 @@
           {
             fonts = {
               names = [
-                "Fira Code"
+                "Inter Variable"
                 "FontAwesome6Free"
               ];
               size = 9.0;

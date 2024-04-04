@@ -23,7 +23,7 @@
     gtk = {
       enable = true;
       font = {
-        name = "Fira Sans 8";
+        name = "Inter Variable 8";
         package = pkgs.fira;
       };
       theme = {

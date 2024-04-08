@@ -153,6 +153,45 @@ in
         swaylock = { };
         waylock = { };
       };
+      pam.loginLimits = [
+        # Allow audio group to set RT priorities
+        {
+          domain = "@audio";
+          item = "memlock";
+          type = "-";
+          value = "unlimited";
+        }
+        {
+          domain = "@audio";
+          item = "rtprio";
+          type = "-";
+          value = "99";
+        }
+        {
+          domain = "@audio";
+          item = "nice";
+          type = "soft";
+          value = "-11";
+        }
+        {
+          domain = "@audio";
+          item = "nice";
+          type = "hard";
+          value = "-15";
+        }
+        {
+          domain = "@audio";
+          item = "nofile";
+          type = "soft";
+          value = "99999";
+        }
+        {
+          domain = "@audio";
+          item = "nofile";
+          type = "hard";
+          value = "99999";
+        }
+      ];
     };
 
     location = {

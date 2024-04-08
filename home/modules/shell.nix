@@ -41,6 +41,20 @@
           name = "zsh-vi-mode";
           src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
         }
+        {
+          name = "bgnotify";
+          src = pkgs.stdenv.mkDerivation {
+            pname = "oh-my-zsh-bgnotify";
+            inherit (pkgs.oh-my-zsh) version src;
+
+            installPhase = ''
+              mkdir -p $out
+              substitute plugins/bgnotify/bgnotify.plugin.zsh $out/bgnotify.plugin.zsh \
+                --replace '(( ''${+commands[notify-send]} ))' 'true' \
+                --replace 'notify-send' '${pkgs.libnotify}/bin/notify-send'
+            '';
+          };
+        }
       ];
       sessionVariables = {
         ZSH_TMUX_AUTOSTART = "false";

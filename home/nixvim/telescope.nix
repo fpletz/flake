@@ -73,24 +73,24 @@
           "<leader>fs" = "symbols";
           "<leader>fr" = "resume";
         };
-        defaults = {
-          winblend = 10;
-          mappings =
-            let
-              open_with_trouble = {
-                __raw = "require(\"trouble.providers.telescope\").open_with_trouble";
+        settings = {
+          defaults = {
+            winblend = 10;
+            mappings =
+              let
+                open_with_trouble = {
+                  __raw = "require(\"trouble.providers.telescope\").open_with_trouble";
+                };
+              in
+              {
+                i = {
+                  "<c-t>" = open_with_trouble;
+                };
+                n = {
+                  "<c-t>" = open_with_trouble;
+                };
               };
-            in
-            {
-              i = {
-                "<c-t>" = open_with_trouble;
-              };
-              n = {
-                "<c-t>" = open_with_trouble;
-              };
-            };
-        };
-        extraOptions = {
+          };
           extensions = {
             ui-select = {
               __raw = "require'telescope.themes'.get_dropdown()";

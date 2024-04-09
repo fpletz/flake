@@ -74,8 +74,8 @@
         fi
       '';
       initExtra = ''
-        # fix fzf keybinds with zsh-vi-mode
-        zvm_after_init_commands+=('source ${pkgs.fzf}/share/fzf/key-bindings.zsh')
+        # load fzf keybinds after zsh-vi-mode (conflict)
+        zvm_after_init_commands+=('eval "$(${lib.getExe pkgs.fzf} --zsh)"')
 
         if [[ -r ~/.p10k.zsh ]]; then
           source ~/.p10k.zsh
@@ -100,6 +100,7 @@
 
     programs.fzf = {
       enable = true;
+      enableZshIntegration = false;
       changeDirWidgetCommand = "fd --type d --color always";
       changeDirWidgetOptions = [
         "--ansi"

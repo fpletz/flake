@@ -46,63 +46,6 @@
       wirelessRegulatoryDatabase = true;
     };
 
-    services.thinkfan = {
-      enable = true;
-      extraArgs = [
-        "-s"
-        "3"
-        "-b"
-        "2.0"
-      ];
-      levels = [
-        [
-          0
-          0
-          35
-        ]
-        [
-          1
-          30
-          40
-        ]
-        [
-          2
-          35
-          60
-        ]
-        [
-          3
-          55
-          60
-        ]
-        [
-          4
-          58
-          65
-        ]
-        [
-          5
-          64
-          75
-        ]
-        [
-          6
-          73
-          80
-        ]
-        [
-          7
-          78
-          90
-        ]
-        [
-          "level full-speed"
-          90
-          200
-        ]
-      ];
-    };
-
     services.fwupd.enable = true;
 
     bpletza.workstation = {

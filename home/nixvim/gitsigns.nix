@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
-    colorschemes.catppuccin.integrations.gitsigns = true;
+    colorschemes.catppuccin.settings.integrations.gitsigns = true;
 
     extraPlugins = with pkgs.vimPlugins; [ git-conflict-nvim ];
 

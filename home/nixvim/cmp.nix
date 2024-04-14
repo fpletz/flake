@@ -1,7 +1,7 @@
 { ... }:
 {
   programs.nixvim = {
-    colorschemes.catppuccin.integrations.cmp = true;
+    colorschemes.catppuccin.settings.integrations.cmp = true;
 
     plugins = {
       cmp = {

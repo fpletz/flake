@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
-    colorschemes.catppuccin.integrations.telescope.enabled = true;
+    colorschemes.catppuccin.settings.integrations.telescope.enabled = true;
 
     extraPlugins = with pkgs.vimPlugins; [
       telescope-symbols-nvim

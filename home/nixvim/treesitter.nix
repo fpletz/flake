@@ -1,6 +1,6 @@
 {
   programs.nixvim = {
-    colorschemes.catppuccin.integrations.treesitter = true;
+    colorschemes.catppuccin.settings.integrations.treesitter = true;
 
     plugins = {
       treesitter = {

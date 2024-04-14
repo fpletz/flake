@@ -6,7 +6,7 @@
 }:
 {
   programs.nixvim = lib.mkIf osConfig.bpletza.workstation.enable {
-    colorschemes.catppuccin.integrations.native_lsp.enabled = true;
+    colorschemes.catppuccin.settings.integrations.native_lsp.enabled = true;
 
     extraPlugins = with pkgs.vimPlugins; [ nvim-surround ];
 

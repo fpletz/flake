@@ -36,7 +36,7 @@
       loaded_ruby_provider = 0;
     };
 
-    options = {
+    opts = {
       expandtab = true;
       number = true;
       relativenumber = true;
@@ -63,13 +63,15 @@
     colorschemes = {
       catppuccin = {
         enable = true;
-        flavour = "mocha";
-        integrations = {
-          barbar = true;
-          harpoon = true;
-          indent_blankline.enabled = true;
-          noice = true;
-          navic.enabled = true;
+        settings = {
+          flavour = "mocha";
+          integrations = {
+            barbar = true;
+            harpoon = true;
+            indent_blankline.enabled = true;
+            noice = true;
+            navic.enabled = true;
+          };
         };
       };
       dracula.enable = true;
@@ -152,15 +154,19 @@
       };
       nvim-autopairs = {
         enable = true;
-        checkTs = true;
+        settings = {
+          check_ts = true;
+        };
       };
       #which-key = {
       #  enable = true;
       #};
       toggleterm = {
         enable = true;
-        direction = "float";
-        openMapping = "<c-\\>";
+        settings = {
+          direction = "float";
+          open_mapping = "[[<c-\\>]]";
+        };
       };
     };
   };

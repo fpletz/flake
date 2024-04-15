@@ -41,6 +41,10 @@ buildLinux {
       HZ_250 = yes;
       HZ_1000 = no;
 
+      # Full preemption
+      PREEMPT = lib.mkOverride 60 yes;
+      PREEMPT_VOLUNTARY = lib.mkOverride 60 no;
+
       # x86-64-v3 psABI
       GENERIC_CPU3 = yes;
       MODULE_COMPRESS_XZ = lib.modules.mkForce no;

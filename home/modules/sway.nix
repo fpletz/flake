@@ -65,6 +65,7 @@
           criteria = [
             { "title" = "LibreWolf - Sharing Indicator"; }
             { "title" = "Firefox - Sharing Indicator"; }
+            { "class" = "qemu"; }
             { "app_id" = "xdg-desktop-portal-gtk"; }
           ];
         };
@@ -153,7 +154,7 @@
               };
             };
             position = "top";
-            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+            statusCommand = "${lib.getExe pkgs.i3status-rust} config-default.toml";
             extraConfig = ''
               status_padding 0
             '';
@@ -198,6 +199,20 @@
         keycodebindings = {
           "275" = "exec ${pkgs.glib}/bin/gdbus call -e -d net.sourceforge.mumble.mumble -o / -m net.sourceforge.mumble.Mumble.startTalking";
           "--release 275" = "exec ${pkgs.glib}/bin/gdbus call -e -d net.sourceforge.mumble.mumble -o / -m net.sourceforge.mumble.Mumble.stopTalking";
+        };
+        modes = {
+          resize = {
+            Down = "resize grow height 5 px";
+            Escape = "mode default";
+            Left = "resize shrink width 5 px";
+            Return = "mode default";
+            Right = "resize grow width 5 px";
+            Up = "resize shrink height 5 px";
+            h = "resize shrink width 5 px";
+            j = "resize grow height 5 px";
+            k = "resize shrink height 5 px";
+            l = "resize grow width 5 px";
+          };
         };
         startup = [
           # we only manage displays in kanshi thus we need to reload on sway reload

@@ -99,6 +99,7 @@
               criteria = [
                 { "title" = "LibreWolf - Sharing Indicator"; }
                 { "title" = "Firefox - Sharing Indicator"; }
+                { "class" = "qemu"; }
               ];
             };
             fonts = {
@@ -106,7 +107,7 @@
                 "Fira Code"
                 "FontAwesome6Free"
               ];
-              size = 9.0;
+              size = 8.0;
             };
             bars = [
               {
@@ -115,7 +116,7 @@
                     "Fira Code"
                     "FontAwesome6Free"
                   ];
-                  size = 9.0;
+                  size = 8.0;
                 };
                 colors = with config.colorScheme.palette; {
                   statusline = "#${base04}";
@@ -148,19 +149,27 @@
                   };
                 };
                 position = "top";
-                statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+                statusCommand = "${lib.getExe pkgs.i3status-rust} config-default.toml";
               }
             ];
             keybindings = lib.mkOptionDefault {
               "Mod4+p" = "exec passmenu";
               "Mod4+Shift+p" = "exec rofi-pass";
               "Mod4+Ctrl+l" = "exec loginctl lock-session";
+              "Mod4+h" = "focus left";
+              "Mod4+j" = "focus down";
+              "Mod4+k" = "focus up";
+              "Mod4+l" = "focus right";
+              "Mod4+Shift+h" = "move left";
+              "Mod4+Shift+j" = "move down";
+              "Mod4+Shift+k" = "move up";
+              "Mod4+Shift+l" = "move right";
               "Mod4+Ctrl+Left" = "move workspace to output left";
               "Mod4+Ctrl+Right" = "move workspace to output right";
               "Mod4+Ctrl+Up" = "move workspace to output up";
               "Mod4+Ctrl+Down" = "move workspace to output down";
-              "XF86MonBrightnessDown" = "exec light -U 5 && light -G | cut -d'.' -f1 > $XDG_RUNTIME_DIR/wob.sock";
-              "XF86MonBrightnessUp" = "exec light -A 5 && light -G | cut -d'.' -f1 > $XDG_RUNTIME_DIR/wob.sock";
+              "XF86MonBrightnessDown" = "exec light -U 5 && light -G";
+              "XF86MonBrightnessUp" = "exec light -A 5 && light -G";
               "XF86AudioMute" = "exec pamixer --toggle-mute";
               "XF86AudioLowerVolume" = "exec pamixer -ud 2";
               "XF86AudioRaiseVolume" = "exec pamixer -ui 2";
@@ -168,6 +177,20 @@
               "XF86AudioMicMute" = "exec pamixer --default-source --toggle-mute";
               "Mod4+XF86AudioLowerVolume" = "exec pamixer --default-source -ud 2";
               "Mod4+XF86AudioRaiseVolume" = "exec pamixer --default-source -ui 2";
+            };
+            modes = {
+              resize = {
+                Down = "resize grow height 5 px";
+                Escape = "mode default";
+                Left = "resize shrink width 5 px";
+                Return = "mode default";
+                Right = "resize grow width 5 px";
+                Up = "resize shrink height 5 px";
+                h = "resize shrink width 5 px";
+                j = "resize grow height 5 px";
+                k = "resize shrink height 5 px";
+                l = "resize grow width 5 px";
+              };
             };
           };
         };

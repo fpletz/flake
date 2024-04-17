@@ -36,8 +36,8 @@
       Unit = {
         Description = "A lightweight overlay volume/backlight/progress/anything bar for Wayland";
         Documentation = "man:wob(1)";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
+        PartOf = [ "graphical-session-pre.target" ];
+        After = [ "graphical-session-pre.target" ];
         ConditionEnvironment = [ "WAYLAND_DISPLAY" ];
       };
       Socket = {
@@ -47,7 +47,7 @@
         FlushPending = "yes";
       };
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = [ "graphical-session-pre.target" ];
       };
     };
   };

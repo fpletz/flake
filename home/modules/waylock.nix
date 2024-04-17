@@ -19,6 +19,7 @@
         Description = "wayland idle detector";
         PartOf = [ "graphical-session.target" ];
         After = [ "graphical-session.target" ];
+        ConditionEnvironment = [ "WAYLAND_DISPLAY" ];
       };
       Service = {
         ExecStart = "${pkgs.wayidle}/bin/wayidle -t 180 ${osConfig.systemd.package}/bin/loginctl lock-session";
@@ -43,12 +44,15 @@
         ];
       };
 
+    systemd.user.services.swayidle.Unit.ConditionEnvironment = [ "WAYLAND_DISPLAY" ];
+
     systemd.user.services.waylock = {
       Unit = {
         Description = "wayland screen locker";
         PartOf = [ "lock.target" ];
         After = [ "lock.target" ];
         OnSuccess = [ "unlock.target" ];
+        ConditionEnvironment = [ "WAYLAND_DISPLAY" ];
       };
       Service = {
         Type = "forking";

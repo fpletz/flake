@@ -18,6 +18,7 @@ in
   options.bpletza.workstation = {
     enable = mkEnableOption "fpletz workstation";
     battery = mkEnableOption "machine has battery";
+    xorg = mkEnableOption "xorg xserver support";
     i3status-rs.blocks.temperatures = mkOption {
       type = types.listOf types.attrs;
       default = [ ];
@@ -220,7 +221,7 @@ in
       enable = true;
       settings = {
         initial_session = {
-          command = "sway";
+          command = if cfg.xorg then "startx" else "sway";
           user = "fpletz";
         };
         default_session.command = "${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet --time --cmd sway";
@@ -379,6 +380,16 @@ in
     nix = {
       daemonCPUSchedPolicy = "idle";
       daemonIOSchedClass = "idle";
+    };
+
+    services.xserver = {
+      enable = cfg.xorg;
+      windowManager.i3.enable = cfg.xorg;
+      displayManager.startx.enable = cfg.xorg;
+      xkb = {
+        layout = "eu";
+        options = "compose:caps";
+      };
     };
   };
 }

@@ -85,12 +85,13 @@
             }
             {
               block = "toggle";
+              if_command = "swaymsg -t get_inputs";
               command_on = "systemctl --user start caffeinated";
               command_off = "systemctl --user stop caffeinated";
               command_state = pkgs.writers.writeBash "i3status-rs-caffeinated-state" ''
                 systemctl --user status caffeinated 2>&1 >/dev/null
                 if [ "$?" == "0" ]; then
-                echo true
+                  echo true
                 fi
               '';
               format = " $icon  ";

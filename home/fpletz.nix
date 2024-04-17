@@ -18,7 +18,7 @@
     ./modules/obs.nix
     ./modules/wob.nix
     ./modules/wofi.nix
-    ./modules/x11.nix
+    ./modules/xorg.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes."tokyo-night-dark";

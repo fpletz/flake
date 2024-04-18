@@ -79,7 +79,7 @@
       melange.enable = true;
       tokyonight = {
         enable = true;
-        style = "night";
+        settings.style = "night";
       };
     };
 

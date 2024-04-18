@@ -41,8 +41,8 @@
             installPhase = ''
               mkdir -p $out
               substitute plugins/bgnotify/bgnotify.plugin.zsh $out/bgnotify.plugin.zsh \
-                --replace '(( ''${+commands[notify-send]} ))' 'true' \
-                --replace 'notify-send' '${pkgs.libnotify}/bin/notify-send'
+                --replace-fail '(( ''${+commands[notify-send]} ))' 'true' \
+                --replace-fail 'notify-send' '${lib.getExe pkgs.libnotify}'
             '';
           };
         }

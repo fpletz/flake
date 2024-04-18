@@ -19,6 +19,7 @@
       backgroundColor = "#${base00}";
       textColor = "#${base08}";
       borderColor = "#7dcfff";
+      defaultTimeout = 5000;
     };
 
     wayland.windowManager.sway = {

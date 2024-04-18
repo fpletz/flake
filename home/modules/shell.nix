@@ -21,25 +21,16 @@
       };
       plugins = [
         {
+          name = "zsh-vi-mode";
+          src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
+        }
+        {
           name = "nix-zsh-completions";
           src = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
         }
         {
-          name = "zsh-window-title";
-          src = pkgs.fetchFromGitHub {
-            owner = "olets";
-            repo = "zsh-window-title";
-            rev = "v1.0.2";
-            hash = "sha256-efLpDY+cIe2KhRFpTcm85mYUFlTa2ECTIFhP7hjuf+8=";
-          };
-        }
-        {
           name = "fast-syntax-highlighting";
           inherit (pkgs.zsh-fast-syntax-highlighting) src;
-        }
-        {
-          name = "zsh-vi-mode";
-          src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
         }
         {
           name = "bgnotify";
@@ -74,8 +65,17 @@
         fi
       '';
       initExtra = ''
-        # load fzf keybinds after zsh-vi-mode (conflict)
-        zvm_after_init_commands+=('eval "$(${lib.getExe pkgs.fzf} --zsh)"')
+        # load atuin ctr-r keybind after zsh-vi-mode (conflict)
+        zvm_after_init_commands+=(
+          "bindkey -M viins '^r' atuin-search-viins"
+        )
+
+        # don't execute direnv on every zsh init
+        source "${
+          pkgs.runCommand "direnv-hook.zsh" { } ''
+            ${lib.getExe pkgs.direnv} hook zsh > $out
+          ''
+        }"
 
         if [[ -r ~/.p10k.zsh ]]; then
           source ~/.p10k.zsh
@@ -96,11 +96,11 @@
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
+      enableZshIntegration = false;
     };
 
     programs.fzf = {
       enable = true;
-      enableZshIntegration = false;
       changeDirWidgetCommand = "fd --type d --color always";
       changeDirWidgetOptions = [
         "--ansi"
@@ -151,6 +151,20 @@
     programs.dircolors = {
       enable = true;
       settings = lib.importJSON ../../static/dircolors.json;
+    };
+
+    programs.atuin = {
+      enable = true;
+      flags = [
+        "--disable-up-arrow"
+        "--disable-ctrl-r"
+      ];
+      settings = {
+        update_check = false;
+        style = "compact";
+        auto_sync = false;
+        sync.records = true;
+      };
     };
   };
 }

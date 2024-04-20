@@ -19,20 +19,22 @@
         size = 10000000;
         save = 10000000;
       };
-      plugins = [
-        {
-          name = "zsh-vi-mode";
-          src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
-        }
-        {
-          name = "nix-zsh-completions";
-          src = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
-        }
-        {
-          name = "fast-syntax-highlighting";
-          inherit (pkgs.zsh-fast-syntax-highlighting) src;
-        }
-        {
+      plugins =
+        [
+          {
+            name = "zsh-vi-mode";
+            src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
+          }
+          {
+            name = "nix-zsh-completions";
+            src = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
+          }
+          {
+            name = "fast-syntax-highlighting";
+            inherit (pkgs.zsh-fast-syntax-highlighting) src;
+          }
+        ]
+        ++ (lib.optional osConfig.bpletza.workstation.enable {
           name = "bgnotify";
           src = pkgs.stdenv.mkDerivation {
             pname = "oh-my-zsh-bgnotify";
@@ -45,8 +47,7 @@
                 --replace-fail 'notify-send' '${lib.getExe pkgs.libnotify}'
             '';
           };
-        }
-      ];
+        });
       sessionVariables = {
         ZSH_TMUX_AUTOSTART = "false";
         ZSH_TMUX_AUTOCONNECT = "false";
@@ -64,24 +65,27 @@
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
         fi
       '';
-      initExtra = ''
-        # load atuin ctr-r keybind after zsh-vi-mode (conflict)
-        zvm_after_init_commands+=(
-          "bindkey -M viins '^r' atuin-search-viins"
-        )
-
-        # don't execute direnv on every zsh init
-        source "${
-          pkgs.runCommand "direnv-hook.zsh" { } ''
-            ${lib.getExe pkgs.direnv} hook zsh > $out
-          ''
-        }"
-
-        if [[ -r ~/.p10k.zsh ]]; then
-          source ~/.p10k.zsh
-        fi
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      '';
+      initExtra =
+        ''
+          # load atuin ctr-r keybind after zsh-vi-mode (conflict)
+          zvm_after_init_commands+=(
+            "bindkey -M viins '^r' atuin-search-viins"
+          )
+        ''
+        + (lib.optionalString config.programs.direnv.enable ''
+          # don't execute direnv on every zsh init
+          source "${
+            pkgs.runCommand "direnv-hook.zsh" { } ''
+              ${lib.getExe pkgs.direnv} hook zsh > $out
+            ''
+          }"
+        '')
+        + ''
+          if [[ -r ~/.p10k.zsh ]]; then
+            source ~/.p10k.zsh
+          fi
+          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        '';
     };
 
     programs.bash = {
@@ -94,7 +98,7 @@
     };
 
     programs.direnv = {
-      enable = true;
+      enable = osConfig.bpletza.workstation.enable;
       nix-direnv.enable = true;
       enableZshIntegration = false;
     };
@@ -154,7 +158,7 @@
     };
 
     programs.atuin = {
-      enable = true;
+      enable = osConfig.bpletza.workstation.enable;
       flags = [
         "--disable-up-arrow"
         "--disable-ctrl-r"

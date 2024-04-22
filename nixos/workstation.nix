@@ -217,16 +217,22 @@ in
       ];
     };
 
-    services.greetd = {
-      enable = true;
-      settings = {
-        initial_session = {
-          command = if cfg.xorg then "startx" else "sway";
-          user = "fpletz";
+    services.greetd =
+      let
+        command = if cfg.xorg then "startx" else "sway";
+      in
+      {
+        enable = true;
+        settings = {
+          initial_session = {
+            inherit command;
+            user = "fpletz";
+          };
+          default_session.command = "${
+            lib.makeBinPath [ pkgs.greetd.tuigreet ]
+          }/tuigreet --time --cmd ${command}";
         };
-        default_session.command = "${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet --time --cmd sway";
       };
-    };
 
     hardware.opengl = {
       enable = true;

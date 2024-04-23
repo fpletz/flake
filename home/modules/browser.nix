@@ -92,7 +92,6 @@ in
         "--disable-sync"
         "--disable-features=MediaRouter"
         "--enable-features=UseOzonePlatform"
-        "--ozone-platform=wayland"
       ];
       extensions = [
         "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin

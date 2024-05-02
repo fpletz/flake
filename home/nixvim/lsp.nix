@@ -41,7 +41,7 @@
           nixd = {
             enable = true;
             settings = {
-              formatting.command = "nixfmt";
+              formatting.command.__raw = ''{ "${lib.getExe pkgs.nixfmt-rfc-style}" }'';
             };
           };
           marksman.enable = true;

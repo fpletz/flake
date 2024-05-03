@@ -21,6 +21,11 @@
         action = "require(\"lsp_lines\").toggle";
         lua = true;
       }
+      {
+        mode = "n";
+        key = "<leader>=";
+        action = ":FormatToggle<cr>";
+      }
     ];
 
     plugins = {

@@ -20,10 +20,7 @@ let
     pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
     pref("browser.compactmode.show", true);
   '';
-  nativeMessagingHosts = with pkgs; [
-    ff2mpv
-    tridactyl-native
-  ];
+  nativeMessagingHosts = with pkgs; [ tridactyl-native ];
 in
 {
   options.bpletza.workstation.browser = lib.mkOption {

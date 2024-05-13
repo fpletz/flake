@@ -46,7 +46,7 @@
           nixd = {
             enable = true;
             settings = {
-              formatting.command.__raw = ''{ "${lib.getExe pkgs.nixfmt-rfc-style}" }'';
+              formatting.command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
             };
           };
           marksman.enable = true;

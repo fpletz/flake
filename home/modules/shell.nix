@@ -168,6 +168,11 @@
         style = "compact";
         auto_sync = false;
         sync.records = true;
+        history_filter = [
+          "^rm "
+          "^mpv "
+        ];
+        cwd_filter = [ "^/home/fpletz/.password-store" ];
       };
     };
   };

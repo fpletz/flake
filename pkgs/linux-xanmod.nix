@@ -9,8 +9,8 @@
 let
   suffix = "xanmod1";
   modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-  version = "6.8.9";
-  hash = "sha256-OUlT/fiwLGTPnr/7gneyZBio/l8KAWopcJqTpSjBMl0=";
+  version = "6.9.0";
+  hash = "sha256-gTBguLZ48S57BK6VgbFOBSt6nUeZ1Aqlu7lud4tzsuA=";
 in
 buildLinux {
   inherit version modDirVersion;
@@ -59,7 +59,6 @@ buildLinux {
       UCLAMP_TASK_GROUP = yes;
       MTRR_SANITIZER_ENABLE_DEFAULT = freeform "1";
       ADDRESS_MASKING = yes;
-      SLS = yes;
       ENERGY_MODEL = yes;
       WQ_POWER_EFFICIENT_DEFAULT = yes;
       CPU_FREQ_STAT = yes;

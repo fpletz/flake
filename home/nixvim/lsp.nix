@@ -82,6 +82,12 @@
           onAttach = "__lspOnAttach";
         };
       };
+      typescript-tools = {
+        enable = true;
+        settings = {
+          exposeAsCodeAction = "all";
+        };
+      };
     };
   };
 }

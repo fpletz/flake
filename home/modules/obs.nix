@@ -23,6 +23,10 @@
           obs-pipewire-audio-capture
           obs-move-transition
           obs-tuna
+          obs-text-pthread
+          waveform
+          obs-vintage-filter
+          obs-shaderfilter
         ]
         ++ lib.optionals pkgs.config.allowUnfree [ obs-ndi ];
     };

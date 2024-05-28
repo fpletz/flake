@@ -19,22 +19,19 @@
       {
         mode = "n";
         key = "<leader>fh";
-        action = "require'telescope'.extensions.harpoon.marks";
-        lua = true;
+        action.__raw = "require'telescope'.extensions.harpoon.marks";
         options.silent = true;
       }
       {
         mode = "n";
         key = "<leader>fp";
-        action = "require'telescope'.extensions.projects.projects";
-        lua = true;
+        action.__raw = "require'telescope'.extensions.projects.projects";
         options.silent = true;
       }
       {
         mode = "n";
         key = "<leader>fn";
-        action = "require'telescope'.extensions.notify.notify";
-        lua = true;
+        action.__raw = "require'telescope'.extensions.notify.notify";
         options.silent = true;
       }
       {
@@ -43,14 +40,12 @@
           "n"
         ];
         key = "<leader>cp";
-        action = "require(\"actions-preview\").code_actions";
-        lua = true;
+        action.__raw = "require(\"actions-preview\").code_actions";
       }
       {
         mode = "n";
         key = "<leader>u";
-        action = "require('telescope').extensions.undo.undo";
-        lua = true;
+        action.__raw = "require('telescope').extensions.undo.undo";
       }
     ];
 

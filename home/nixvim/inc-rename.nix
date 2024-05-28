@@ -4,12 +4,11 @@
       {
         mode = "n";
         key = "<leader>rn";
-        action = ''
+        action.__raw = ''
           function()
             return ":IncRename " .. vim.fn.expand("<cword>")
           end
         '';
-        lua = true;
         options.expr = true;
       }
     ];

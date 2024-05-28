@@ -18,8 +18,7 @@
       {
         mode = "n";
         key = "<leader>l";
-        action = "require(\"lsp_lines\").toggle";
-        lua = true;
+        action.__raw = "require(\"lsp_lines\").toggle";
       }
       {
         mode = "n";
@@ -77,9 +76,9 @@
       lsp-format.enable = true;
       rustaceanvim = {
         enable = true;
-        server = {
+        settings.server = {
           standalone = false;
-          onAttach = "__lspOnAttach";
+          on_attach = "__lspOnAttach";
         };
       };
       typescript-tools = {

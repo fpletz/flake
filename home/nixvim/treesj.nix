@@ -13,30 +13,26 @@
       {
         mode = "n";
         key = "<leader>tj";
-        action = "require('treesj').join";
-        lua = true;
+        action.__raw = "require('treesj').join";
       }
       {
         mode = "n";
         key = "<leader>ts";
-        action = "require('treesj').split";
-        lua = true;
+        action.__raw = "require('treesj').split";
       }
       {
         mode = "n";
         key = "<leader>m";
-        action = "require('treesj').toggle";
-        lua = true;
+        action.__raw = "require('treesj').toggle";
       }
       {
         mode = "n";
         key = "<leader>M";
-        action = ''
+        action.__raw = ''
           function()
             require('treesj').toggle({ split = { recursive = true } })
           end
         '';
-        lua = true;
       }
     ];
   };

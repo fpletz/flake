@@ -2,7 +2,7 @@
 {
   imports = [
     inputs.treefmt-nix.flakeModule
-    inputs.pre-commit-hooks.flakeModule
+    inputs.git-hooks.flakeModule
   ];
 
   perSystem =
@@ -19,7 +19,7 @@
               ''
                 # First deadnix
                 ${lib.getExe pkgs.deadnix} --edit "$@"
-                # Then nixpkgs-fmt
+                # Then fmt
                 ${lib.getExe pkgs.nixfmt-rfc-style} "$@"
               ''
               "--"

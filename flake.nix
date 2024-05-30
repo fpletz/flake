@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-root.url = "github:srid/flake-root";
+    flake-compat.url = "github:edolstra/flake-compat";
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -16,6 +18,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
       };
     };
 
@@ -29,6 +32,8 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
+        flake-root.follows = "flake-root";
+        flake-compat.follows = "flake-compat";
         home-manager.follows = "home-manager";
         git-hooks.follows = "git-hooks";
       };
@@ -42,6 +47,15 @@
     bad_gateway = {
       url = "github:mguentner/bad_gateway";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixd = {
+      url = "github:nix-community/nixd/release/2.x";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        flake-root.follows = "flake-root";
+      };
     };
   };
 

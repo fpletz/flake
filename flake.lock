@@ -60,7 +60,6 @@
       }
     },
     "flake-compat": {
-      "flake": false,
       "locked": {
         "lastModified": 1696426674,
         "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
@@ -73,20 +72,6 @@
         "owner": "edolstra",
         "repo": "flake-compat",
         "type": "github"
-      }
-    },
-    "flake-compat_2": {
-      "locked": {
-        "lastModified": 1696426674,
-        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
-        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
-        "revCount": 57,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/edolstra/flake-compat/1.0.1/018afb31-abd1-7bff-a5e4-cff7e18efb7a/source.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz"
       }
     },
     "flake-parts": {
@@ -142,7 +127,9 @@
     },
     "git-hooks": {
       "inputs": {
-        "flake-compat": "flake-compat",
+        "flake-compat": [
+          "flake-compat"
+        ],
         "gitignore": "gitignore",
         "nixpkgs": [
           "nixpkgs"
@@ -249,6 +236,33 @@
         "type": "github"
       }
     },
+    "nixd": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "flake-root": [
+          "flake-root"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716529055,
+        "narHash": "sha256-/8Ty1I130vWFidedt+WEaaFHS/zMFVu9vpq4Z3EBjGw=",
+        "owner": "nix-community",
+        "repo": "nixd",
+        "rev": "af2f89cc62038ce1e6bca5a5ea2b4f02b0b0d05a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release/2.x",
+        "repo": "nixd",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1716509168,
@@ -280,11 +294,15 @@
     "nixvim": {
       "inputs": {
         "devshell": "devshell",
-        "flake-compat": "flake-compat_2",
+        "flake-compat": [
+          "flake-compat"
+        ],
         "flake-parts": [
           "flake-parts"
         ],
-        "flake-root": "flake-root",
+        "flake-root": [
+          "flake-root"
+        ],
         "git-hooks": [
           "git-hooks"
         ],
@@ -314,10 +332,13 @@
     "root": {
       "inputs": {
         "bad_gateway": "bad_gateway",
+        "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
+        "flake-root": "flake-root",
         "git-hooks": "git-hooks",
         "home-manager": "home-manager",
         "nix-colors": "nix-colors",
+        "nixd": "nixd",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "treefmt-nix": "treefmt-nix_2"

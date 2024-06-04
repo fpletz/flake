@@ -329,6 +329,26 @@
         "type": "github"
       }
     },
+    "openwrt-imagebuilder": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1717411790,
+        "narHash": "sha256-bxOZLZ3/IKqtEyaU0PTGMT902ExJqJwUT2eN7AzqdXc=",
+        "owner": "astro",
+        "repo": "nix-openwrt-imagebuilder",
+        "rev": "148625d13e4933e6a3fc11b5ac8f39cbfdbd8680",
+        "type": "github"
+      },
+      "original": {
+        "owner": "astro",
+        "repo": "nix-openwrt-imagebuilder",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "bad_gateway": "bad_gateway",
@@ -341,6 +361,7 @@
         "nixd": "nixd",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "openwrt-imagebuilder": "openwrt-imagebuilder",
         "treefmt-nix": "treefmt-nix_2"
       }
     },

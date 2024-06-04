@@ -57,6 +57,11 @@
         flake-root.follows = "flake-root";
       };
     };
+
+    openwrt-imagebuilder = {
+      url = "github:astro/nix-openwrt-imagebuilder";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -69,6 +74,7 @@
 
       imports = [
         ./pkgs
+        ./openwrt
         ./machines
         ./home
         ./treefmt.nix

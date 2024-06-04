@@ -44,8 +44,6 @@
         ];
       };
 
-    systemd.user.services.swayidle.Unit.ConditionEnvironment = [ "WAYLAND_DISPLAY" ];
-
     systemd.user.services.waylock = {
       Unit = {
         Description = "wayland screen locker";

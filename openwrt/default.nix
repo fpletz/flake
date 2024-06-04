@@ -21,6 +21,7 @@
               "luci-app-vnstat2"
               "luci-app-sqm"
               "luci-mod-admin-full"
+              "luci-mod-rpc"
               "prometheus-node-exporter-lua"
               "prometheus-node-exporter-lua-nat_traffic"
               "prometheus-node-exporter-lua-netstat"

@@ -49,7 +49,7 @@
             };
           };
           marksman.enable = true;
-          pest_ls.enable = true;
+          pest-ls.enable = true;
           pyright.enable = true;
           ruff.enable = true;
           yamlls.enable = true;

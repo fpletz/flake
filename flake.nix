@@ -32,7 +32,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
-        flake-root.follows = "flake-root";
         flake-compat.follows = "flake-compat";
         home-manager.follows = "home-manager";
         git-hooks.follows = "git-hooks";

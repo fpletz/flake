@@ -12,7 +12,6 @@
     ./lsp.nix
     ./noice.nix
     ./notify.nix
-    ./none-ls.nix
     ./numb.nix
     ./telescope.nix
     ./treesitter.nix

@@ -27,6 +27,7 @@
           waveform
           obs-vintage-filter
           obs-shaderfilter
+          obs-source-record
         ]
         ++ lib.optionals pkgs.config.allowUnfree [ obs-ndi ];
     };

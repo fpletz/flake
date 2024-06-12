@@ -41,7 +41,7 @@ in
   options.programs.spotify-unfree = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.bpletza.workstation.sway && pkgs.system == "x86_64-linux";
+      default = config.bpletza.workstation.gui && pkgs.system == "x86_64-linux";
       description = "Unfree Spotify Client";
     };
   };

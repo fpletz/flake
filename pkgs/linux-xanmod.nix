@@ -41,6 +41,13 @@ buildLinux {
       HZ_250 = yes;
       HZ_1000 = no;
 
+      RCU_EXPERT = yes;
+      RCU_FANOUT = freeform "64";
+      RCU_FANOUT_LEAF = freeform "16";
+      RCU_BOOST = yes;
+      RCU_BOOST_DELAY = freeform "0";
+      RCU_EXP_KTHREAD = yes;
+
       # Full preemption
       PREEMPT = lib.mkOverride 60 yes;
       PREEMPT_VOLUNTARY = lib.mkOverride 60 no;

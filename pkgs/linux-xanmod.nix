@@ -9,8 +9,8 @@
 let
   suffix = "xanmod1";
   modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-  version = "6.9.4";
-  hash = "sha256-gY0t77aPWOuRZFESNp0OLIsjLAv+rf0NHbab9WF2VtA=";
+  version = "6.9.5";
+  hash = "sha256-Yahc5bUbutwuhwvdbUm1JXa8WCWASNrMewXdSorKnfE=";
 in
 buildLinux {
   inherit version modDirVersion;

@@ -12,7 +12,7 @@
         {
           router = buildOpenwrtImage "cudy_x6-v1" {
             release = "snapshot";
-            sha256 = "sha256-kjxsyyqdwUM4Z0nJh4QCjvYemRPZ9pPxeWGsHHTB42I=";
+            sha256 = "sha256-zA2jctanyHRtObfEc2pg3FAtohVBMHZ5s+/g6wGi8uA=";
             packages = [
               "luci"
               "luci-app-tor"

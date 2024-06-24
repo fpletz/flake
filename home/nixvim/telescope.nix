@@ -74,7 +74,7 @@
             mappings =
               let
                 open_with_trouble = {
-                  __raw = "require(\"trouble.providers.telescope\").open";
+                  __raw = "require(\"trouble.sources.telescope\").open";
                 };
               in
               {

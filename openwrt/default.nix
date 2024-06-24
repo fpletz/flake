@@ -11,8 +11,8 @@
         in
         {
           router = buildOpenwrtImage "cudy_x6-v1" {
-            release = "snapshot";
-            sha256 = "sha256-18GQ3ouG5UJTSmdtw8bIr7goRHntUxIjXvCoX7vp9Sc=";
+            #release = "snapshot";
+            #sha256 = "sha256-18GQ3ouG5UJTSmdtw8bIr7goRHntUxIjXvCoX7vp9Sc=";
             packages = [
               "luci"
               "luci-app-tor"

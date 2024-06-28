@@ -19,7 +19,7 @@ in
       modesetting.enable = true;
       forceFullCompositionPipeline = true;
     };
-    hardware.opengl.extraPackages = [ pkgs.nvidia-vaapi-driver ];
+    hardware.graphics.extraPackages = [ pkgs.nvidia-vaapi-driver ];
     nixpkgs.config.cudaSupport = true;
   };
 }

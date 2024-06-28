@@ -234,23 +234,27 @@ in
         };
       };
 
-    hardware.opengl = {
+    hardware.graphics = {
       enable = true;
-      extraPackages =
-        with pkgs;
-        (lib.optionals (config.nixpkgs.system == "x86_64-linux") [
-          libvdpau-va-gl
-          vaapiVdpau
-          vulkan-validation-layers
-        ]);
-      driSupport32Bit = config.nixpkgs.system == "x86_64-linux";
-      extraPackages32 =
+      extraPackages = (
+        lib.optionals (config.nixpkgs.system == "x86_64-linux") (
+          with pkgs;
+          [
+            libvdpau-va-gl
+            vaapiVdpau
+            vulkan-validation-layers
+          ]
+        )
+      );
+      enable32Bit = config.nixpkgs.system == "x86_64-linux";
+      extraPackages32 = lib.optionals (config.nixpkgs.system == "x86_64-linux") (
         with pkgs.pkgsi686Linux;
-        lib.optionals (config.nixpkgs.system == "x86_64-linux") [
+        [
           libvdpau-va-gl
           vaapiVdpau
           vulkan-validation-layers
-        ];
+        ]
+      );
     };
 
     security.rtkit.enable = true;

@@ -236,17 +236,19 @@
 
     services.kanshi = {
       enable = true;
-      profiles = {
-        undocked = {
-          outputs = [
+      settings = [
+        {
+          profile.name = "undocked";
+          profile.outputs = [
             {
               criteria = "eDP-1";
               position = "0,0";
             }
           ];
-        };
-        home = {
-          outputs = [
+        }
+        {
+          profile.name = "home";
+          profile.outputs = [
             {
               criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
               position = "0,0";
@@ -256,9 +258,10 @@
               position = "2560,0";
             }
           ];
-        };
-        home-docked = {
-          outputs = [
+        }
+        {
+          profile.name = "home-docked";
+          profile.outputs = [
             {
               criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
               position = "0,0";
@@ -272,8 +275,8 @@
               position = "0,1440";
             }
           ];
-        };
-      };
+        }
+      ];
     };
 
     systemd.user.services.caffeinated = {

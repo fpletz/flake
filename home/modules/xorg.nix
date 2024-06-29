@@ -87,7 +87,7 @@
           enable = true;
           config = {
             modifier = "Mod4";
-            terminal = "alacritty";
+            terminal = "kitty";
             menu = "rofi -show run";
             window = {
               titlebar = false;

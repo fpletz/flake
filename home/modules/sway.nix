@@ -55,7 +55,7 @@
           "*".bg = "${../../static/wallpapers/wallhaven-p97l5e.png} fill";
         };
         modifier = "Mod4";
-        terminal = "alacritty";
+        terminal = "kitty";
         window = {
           titlebar = false;
           hideEdgeBorders = "smart";

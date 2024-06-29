@@ -51,5 +51,6 @@
     openssl
     # terminfos
     alacritty.terminfo
+    kitty.terminfo
   ];
 }

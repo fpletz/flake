@@ -60,6 +60,8 @@
         tab_powerline_style = "slanted";
         tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
         wayland_enable_ime = false;
+        background_opacity = "0.95";
+        dynamic_background_opacity = true;
       };
       shellIntegration = {
         enableBashIntegration = true;

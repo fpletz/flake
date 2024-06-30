@@ -47,6 +47,7 @@
     # regular manpages are enough
     doc.enable = false;
     info.enable = false;
+    nixos.extraModules = [ inputs.self.nixosModules.all ];
   };
 
   sound.enable = lib.mkDefault false;
@@ -102,6 +103,8 @@
       nixpkgs.flake = inputs.nixpkgs;
       fpletz.flake = inputs.self;
     };
+
+    channel.enable = false;
 
     nixPath = lib.mkForce [
       # use deployed nixpkgs flake

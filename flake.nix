@@ -94,27 +94,16 @@
         modules // { inherit all; };
 
       perSystem =
-        {
-          pkgs,
-          config,
-          lib,
-          ...
-        }:
+        { pkgs, config, ... }:
         {
           formatter = pkgs.nixfmt-rfc-style;
           devShells.default = pkgs.mkShellNoCC {
-            packages = [ config.treefmt.build.wrapper ] ++ (lib.attrValues config.treefmt.build.programs);
-            shellHook = ''
-              ${config.pre-commit.installationScript}
-            '';
-          };
+            packages = [ pkgs.sops ];
 
-          pre-commit = {
-            check.enable = true;
-            settings.hooks.treefmt = {
-              enable = true;
-              package = config.treefmt.build.wrapper;
-            };
+            inputsFrom = [
+              config.treefmt.build.devShell
+              config.pre-commit.devShell
+            ];
           };
 
           apps = {

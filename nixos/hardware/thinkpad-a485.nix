@@ -44,6 +44,7 @@
         enable = true;
       };
       wirelessRegulatoryDatabase = true;
+      amdgpu.initrd.enable = true;
     };
 
     services.fwupd.enable = true;

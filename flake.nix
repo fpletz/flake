@@ -72,6 +72,7 @@
       ];
 
       imports = [
+        inputs.flake-root.flakeModule
         ./pkgs
         ./openwrt
         ./machines
@@ -101,6 +102,7 @@
             packages = [ pkgs.sops ];
 
             inputsFrom = [
+              config.flake-root.devShell
               config.treefmt.build.devShell
               config.pre-commit.devShell
             ];

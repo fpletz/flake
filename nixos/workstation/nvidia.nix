@@ -24,7 +24,10 @@ in
         modesetting.enable = true;
         forceFullCompositionPipeline = true;
       };
-      graphics.extraPackages = [ pkgs.nvidia-vaapi-driver ];
+      graphics.extraPackages = [
+        pkgs.libva-vdpau-driver
+        pkgs.nvidia-vaapi-driver
+      ];
     };
   };
 }

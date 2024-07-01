@@ -241,7 +241,6 @@ in
           with pkgs;
           [
             libvdpau-va-gl
-            vaapiVdpau
             vulkan-validation-layers
           ]
         )
@@ -251,7 +250,6 @@ in
         with pkgs.pkgsi686Linux;
         [
           libvdpau-va-gl
-          vaapiVdpau
           vulkan-validation-layers
         ]
       );

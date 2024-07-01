@@ -42,8 +42,10 @@
     plugins = {
       flash = {
         enable = true;
-        modes = {
-          char.jumpLabels = true;
+        settings = {
+          modes = {
+            char.jump_labels = true;
+          };
         };
       };
     };

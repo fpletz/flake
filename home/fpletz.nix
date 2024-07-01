@@ -21,7 +21,7 @@
     ./modules/xorg.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes."tokyo-night-dark";
+  colorScheme = inputs.nix-colors.colorSchemes."tokyo-night-terminal-dark";
 
   home = {
     username = "fpletz";

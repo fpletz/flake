@@ -36,6 +36,25 @@
         '';
       });
 
+    programs.fuzzel = {
+      enable = true;
+      settings = {
+        main = {
+          terminal = lib.getExe pkgs.kitty;
+          font = "Inter Display:size=10";
+        };
+        colors = with config.colorScheme.palette; {
+          background = "${base00}dd";
+          text = "${base05}ff";
+          match = "${base08}ff";
+          selection = "${base02}dd";
+          selection-text = "${base05}ff";
+          selection-match = "${base08}ff";
+          border = "${base0D}ff";
+        };
+      };
+    };
+
     wayland.windowManager.sway = {
       enable = true;
       extraSessionCommands = ''
@@ -175,42 +194,27 @@
             '';
           }
         ];
-        keybindings =
-          let
-            wofi-pass =
-              {
-                type ? false,
-              }:
-              pkgs.writers.writeBash "wofi-pass" ''
-                password=$(${pkgs.fd}/bin/fd --base-directory ''${PASSWORD_STORE_DIR-~/.password-store} --extension gpg |
-                  ${pkgs.gnused}/bin/sed 's,\.gpg,,' | ${pkgs.wofi}/bin/wofi -p pass --dmenu "$@")
-
-                [[ -n $password ]] || exit
-
-                ${pkgs.gopass}/bin/gopass show -c "$password" 2>/dev/null ${lib.optionalString type "| ${pkgs.wtype}/bin/wtype -"}
-              '';
-          in
-          lib.mkOptionDefault {
-            "Mod4+Shift+e" = "exec wlogout";
-            "Mod4+d" = "exec ${pkgs.wofi}/bin/wofi --show run";
-            "Mod4+Shift+d" = "exec ${pkgs.wofi-emoji}/bin/wofi-emoji";
-            "Mod4+p" = "exec ${wofi-pass { }}";
-            "Mod4+Ctrl+p" = "exec ${wofi-pass { type = true; }}";
-            "Mod4+Ctrl+l" = "exec loginctl lock-session";
-            "Mod4+Ctrl+Left" = "move workspace to output left";
-            "Mod4+Ctrl+Right" = "move workspace to output right";
-            "Mod4+Ctrl+Up" = "move workspace to output up";
-            "Mod4+Ctrl+Down" = "move workspace to output down";
-            "XF86MonBrightnessDown" = "exec light -U 5 && light -G | cut -d'.' -f1 > $XDG_RUNTIME_DIR/wob.sock";
-            "XF86MonBrightnessUp" = "exec light -A 5 && light -G | cut -d'.' -f1 > $XDG_RUNTIME_DIR/wob.sock";
-            "XF86AudioMute" = "exec pamixer --toggle-mute && ( [ \"$(pamixer --get-mute)\" = \"true\" ] && echo 0 > $XDG_RUNTIME_DIR/wob.sock ) || pamixer --get-volume > $XDG_RUNTIME_DIR/wob.sock";
-            "XF86AudioLowerVolume" = "exec pamixer -ud 2 && pamixer --get-volume > $XDG_RUNTIME_DIR/wob.sock";
-            "XF86AudioRaiseVolume" = "exec pamixer -ui 2 && pamixer --get-volume > $XDG_RUNTIME_DIR/wob.sock";
-            "Mod4+XF86AudioMute" = "exec pamixer --default-source --toggle-mute && ( [ \"$(pamixer --default-source --get-mute)\" = \"true\" ] && echo 0 > $XDG_RUNTIME_DIR/wob.sock ) || pamixer --default-source --get-volume > $XDG_RUNTIME_DIR/wob.sock";
-            "XF86AudioMicMute" = "exec pamixer --default-source --toggle-mute && ( [ \"$(pamixer --default-source --get-mute)\" = \"true\" ] && echo 0 > $XDG_RUNTIME_DIR/wob.sock ) || pamixer --default-source --get-volume > $XDG_RUNTIME_DIR/wob.sock";
-            "Mod4+XF86AudioLowerVolume" = "exec pamixer --default-source -ud 2 && pamixer --default-source --get-volume > $XDG_RUNTIME_DIR/wob.sock";
-            "Mod4+XF86AudioRaiseVolume" = "exec pamixer --default-source -ui 2 && pamixer --default-source --get-volume > $XDG_RUNTIME_DIR/wob.sock";
-          };
+        keybindings = lib.mkOptionDefault {
+          "Mod4+Shift+e" = "exec wlogout";
+          "Mod4+d" = "exec fuzzel";
+          "Mod4+Ctrl+d" = "exec ${pkgs.wofi}/bin/wofi --show run";
+          "Mod4+Shift+d" = "exec ${pkgs.wofi-emoji}/bin/wofi-emoji";
+          "Mod4+p" = "exec ${lib.getExe pkgs.tessen}";
+          "Mod4+Ctrl+l" = "exec loginctl lock-session";
+          "Mod4+Ctrl+Left" = "move workspace to output left";
+          "Mod4+Ctrl+Right" = "move workspace to output right";
+          "Mod4+Ctrl+Up" = "move workspace to output up";
+          "Mod4+Ctrl+Down" = "move workspace to output down";
+          "XF86MonBrightnessDown" = "exec light -U 5 && light -G | cut -d'.' -f1 > $XDG_RUNTIME_DIR/wob.sock";
+          "XF86MonBrightnessUp" = "exec light -A 5 && light -G | cut -d'.' -f1 > $XDG_RUNTIME_DIR/wob.sock";
+          "XF86AudioMute" = "exec pamixer --toggle-mute && ( [ \"$(pamixer --get-mute)\" = \"true\" ] && echo 0 > $XDG_RUNTIME_DIR/wob.sock ) || pamixer --get-volume > $XDG_RUNTIME_DIR/wob.sock";
+          "XF86AudioLowerVolume" = "exec pamixer -ud 2 && pamixer --get-volume > $XDG_RUNTIME_DIR/wob.sock";
+          "XF86AudioRaiseVolume" = "exec pamixer -ui 2 && pamixer --get-volume > $XDG_RUNTIME_DIR/wob.sock";
+          "Mod4+XF86AudioMute" = "exec pamixer --default-source --toggle-mute && ( [ \"$(pamixer --default-source --get-mute)\" = \"true\" ] && echo 0 > $XDG_RUNTIME_DIR/wob.sock ) || pamixer --default-source --get-volume > $XDG_RUNTIME_DIR/wob.sock";
+          "XF86AudioMicMute" = "exec pamixer --default-source --toggle-mute && ( [ \"$(pamixer --default-source --get-mute)\" = \"true\" ] && echo 0 > $XDG_RUNTIME_DIR/wob.sock ) || pamixer --default-source --get-volume > $XDG_RUNTIME_DIR/wob.sock";
+          "Mod4+XF86AudioLowerVolume" = "exec pamixer --default-source -ud 2 && pamixer --default-source --get-volume > $XDG_RUNTIME_DIR/wob.sock";
+          "Mod4+XF86AudioRaiseVolume" = "exec pamixer --default-source -ui 2 && pamixer --default-source --get-volume > $XDG_RUNTIME_DIR/wob.sock";
+        };
         keycodebindings = {
           "275" = "exec ${pkgs.glib}/bin/gdbus call -e -d net.sourceforge.mumble.mumble -o / -m net.sourceforge.mumble.Mumble.startTalking";
           "--release 275" = "exec ${pkgs.glib}/bin/gdbus call -e -d net.sourceforge.mumble.mumble -o / -m net.sourceforge.mumble.Mumble.stopTalking";

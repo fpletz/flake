@@ -144,14 +144,14 @@
             overrides = with config.colorScheme.palette; {
               idle_bg = "#${base00}";
               idle_fg = "#${base05}";
-              info_bg = "#${base0D}";
-              info_fg = "#${base01}";
+              info_bg = "#${base0C}";
+              info_fg = "#${base00}";
               good_bg = "#${base0B}";
-              good_fg = "#${base01}";
+              good_fg = "#${base00}";
               warning_bg = "#${base0A}";
-              warning_fg = "#${base01}";
+              warning_fg = "#${base00}";
               critical_bg = "#${base08}";
-              critical_fg = "#${base01}";
+              critical_fg = "#${base00}";
             };
           };
           icons = {

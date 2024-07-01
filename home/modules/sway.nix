@@ -12,15 +12,29 @@
   };
 
   config = lib.mkIf config.bpletza.workstation.sway {
-    services.mako = with config.colorScheme.palette; {
-      enable = true;
-      font = "Inter Display 10";
-      iconPath = "${pkgs.tokyonight-gtk-theme-variants.icons.dark}/share/icons/Tokyonight-Dark";
-      backgroundColor = "#${base00}";
-      textColor = "#${base08}";
-      borderColor = "#7dcfff";
-      defaultTimeout = 5000;
-    };
+    services.mako =
+      {
+        enable = true;
+        font = "Inter Display 10";
+        iconPath = "${pkgs.tokyonight-gtk-theme-variants.icons.dark}/share/icons/Tokyonight-Dark";
+        defaultTimeout = 5000;
+      }
+      // (with config.colorScheme.palette; {
+        backgroundColor = "#${base00}";
+        textColor = "#${base05}";
+        borderColor = "#${base0D}";
+        extraConfig = ''
+          [urgency=low]
+          background-color=#${base00}
+          text-color=#${base0A}
+          border-color=#${base0D}
+
+          [urgency=high]
+          background-color=#${base00}
+          text-color=#${base08}
+          border-color=#${base0D}
+        '';
+      });
 
     wayland.windowManager.sway = {
       enable = true;
@@ -77,42 +91,42 @@
           ];
           size = 9.0;
         };
-        colors = {
-          background = "$base";
+        colors = with config.colorScheme.palette; {
+          background = "#${base07}";
           focused = {
-            border = "$teal";
-            background = "$base";
-            text = "$text";
-            indicator = "$teal";
-            childBorder = "$teal";
+            border = "#${base05}";
+            background = "#${base0D}";
+            text = "#${base00}";
+            indicator = "#${base0D}";
+            childBorder = "#${base0D}";
           };
           focusedInactive = {
-            border = "$mauve";
-            background = "$base";
-            text = "$text";
-            indicator = "$lavender";
-            childBorder = "$lavender";
+            border = "#${base01}";
+            background = "#${base01}";
+            text = "#${base05}";
+            indicator = "#${base03}";
+            childBorder = "#${base01}";
           };
           unfocused = {
-            border = "$mauve";
-            background = "$base";
-            text = "$text";
-            indicator = "$lavender";
-            childBorder = "$lavender";
+            border = "#${base01}";
+            background = "#${base00}";
+            text = "#${base05}";
+            indicator = "#${base01}";
+            childBorder = "#${base01}";
           };
           urgent = {
-            border = "$peach";
-            background = "$base";
-            text = "$peach";
-            indicator = "$overlay0";
-            childBorder = "$maroon";
+            border = "#${base08}";
+            background = "#${base08}";
+            text = "#${base00}";
+            indicator = "#${base08}";
+            childBorder = "#${base08}";
           };
           placeholder = {
-            border = "$overlay0";
-            background = "$base";
-            text = "$text";
-            indicator = "$overlay0";
-            childBorder = "$overlay0";
+            border = "#${base00}";
+            background = "#${base00}";
+            text = "#${base05}";
+            indicator = "#${base00}";
+            childBorder = "#${base00}";
           };
         };
         bars = [
@@ -223,14 +237,6 @@
           }
         ];
       };
-      extraConfigEarly = ''
-        include ${
-          pkgs.fetchurl {
-            url = "https://raw.githubusercontent.com/catppuccin/i3/main/themes/catppuccin-mocha";
-            hash = "sha256-eeMloj3UgVMF0zUQBMIiJkqabVeUW/ff1jTarAd4dwI=";
-          }
-        }
-      '';
       wrapperFeatures.gtk = true;
     };
 

@@ -8,9 +8,11 @@
   options.bpletza.hardware.pinebook-pro = lib.mkEnableOption "Pinebook Pro";
 
   config = lib.mkIf config.bpletza.hardware.pinebook-pro {
-    # uboot has extlinux support
-    boot.loader.grub.enable = false;
-    boot.loader.generic-extlinux-compatible.enable = true;
+    # tow-boot has extlinux support
+    boot.loader = {
+      grub.enable = false;
+      generic-extlinux-compatible.enable = true;
+    };
 
     # based on https://github.com/NixOS/nixos-hardware
     boot.initrd.kernelModules = [

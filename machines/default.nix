@@ -1,18 +1,31 @@
 {
-  config,
+  self,
   withSystem,
   inputs,
   ...
 }:
 {
+  # FIXME: these are only used for testing, not for actual deployment
   flake.nixosConfigurations =
     let
       nixos =
-        { system, modules }:
+        {
+          system,
+          modules ? [ ],
+          module ? null,
+        }:
         withSystem system (
           { config, inputs', ... }:
           inputs.nixpkgs.lib.nixosSystem {
-            inherit system modules;
+            inherit system;
+            modules =
+              if modules != [ ] then
+                modules
+              else
+                [
+                  self.nixosModules.all
+                  module
+                ];
             specialArgs = {
               packages = config.packages;
               inherit inputs inputs';
@@ -23,83 +36,83 @@
     {
       server = nixos {
         system = "x86_64-linux";
-        modules = [
-          config.flake.nixosModules.all
-          {
-            networking.hostName = "server";
-            fileSystems."/" = {
-              device = "/dev/disk/by-label/nixos";
-              fsType = "ext4";
-            };
-            boot.loader.systemd-boot = {
-              enable = true;
-            };
-          }
-        ];
+        module = {
+          networking.hostName = "server";
+          fileSystems."/" = {
+            device = "/dev/disk/by-label/nixos";
+            fsType = "ext4";
+          };
+          boot.loader.systemd-boot = {
+            enable = true;
+          };
+        };
       };
 
-      # fpro = nixos {
-      #   system = "aarch64-linux";
-      #   modules = [
-      #     config.flake.nixosModules.all
-      #     {
-      #       networking.hostName = "fpro";
-      #       fileSystems."/" = {
-      #         device = "/dev/disk/by-label/nixos";
-      #         fsType = "ext4";
-      #       };
-      #
-      #       bpletza.hardware.pinebook-pro = true;
-      #       bpletza.workstation.enable = true;
-      #     }
-      #   ];
-      # };
-      #
+      hal = nixos {
+        system = "aarch64-linux";
+        module = {
+          networking.hostName = "hal";
+          fileSystems."/" = {
+            device = "/dev/disk/by-label/nixos";
+            fsType = "ext4";
+          };
+          boot.loader = {
+            grub.enable = false;
+            generic-extlinux-compatible.enable = true;
+          };
+        };
+      };
+
+      fpro = nixos {
+        system = "aarch64-linux";
+        module = {
+          networking.hostName = "fpro";
+          fileSystems."/" = {
+            device = "/dev/disk/by-label/nixos";
+            fsType = "ext4";
+          };
+
+          bpletza.hardware.pinebook-pro = true;
+          bpletza.workstation.enable = true;
+        };
+      };
+
       trolovo = nixos {
         system = "x86_64-linux";
-        modules = [
-          config.flake.nixosModules.all
-          {
-            networking.hostName = "trolovo";
-            fileSystems."/" = {
-              device = "/dev/disk/by-label/nixos";
-              fsType = "ext4";
-            };
-            boot.loader.systemd-boot = {
-              enable = true;
-            };
+        module = {
+          networking.hostName = "trolovo";
+          fileSystems."/" = {
+            device = "/dev/disk/by-label/nixos";
+            fsType = "ext4";
+          };
+          boot.loader.systemd-boot = {
+            enable = true;
+          };
 
-            bpletza.hardware.thinkpad.a485 = true;
-            bpletza.workstation.enable = true;
-          }
-        ];
+          bpletza.hardware.thinkpad.a485 = true;
+          bpletza.workstation.enable = true;
+        };
       };
 
       zocknix = nixos {
         system = "x86_64-linux";
-        modules = [
-          config.flake.nixosModules.all
-          (
-            { ... }:
-            {
-              networking.hostName = "zocknix";
-              fileSystems."/" = {
-                device = "/dev/disk/by-label/nixos";
-                fsType = "ext4";
-              };
-              boot.loader.systemd-boot = {
-                enable = true;
-              };
+        module = {
+          networking.hostName = "zocknix";
+          fileSystems."/" = {
+            device = "/dev/disk/by-label/nixos";
+            fsType = "ext4";
+          };
+          boot.loader.systemd-boot = {
+            enable = true;
+          };
 
-              bpletza.hardware.cpu.amd = true;
-              bpletza.workstation = {
-                enable = true;
-                nvidia = true;
-                xorg = true;
-              };
-            }
-          )
-        ];
+          bpletza.hardware.cpu.amd = true;
+          bpletza.workstation = {
+            enable = true;
+            nvidia = true;
+            xorg = true;
+          };
+        };
       };
     };
 }

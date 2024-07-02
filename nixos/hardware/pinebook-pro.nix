@@ -65,7 +65,7 @@
     hardware.firmware = [ pkgs.ap6256-firmware ];
 
     powerManagement = {
-      cpuFreqGovernor = "schedutil";
+      cpuFreqGovernor = "performance";
       scsiLinkPolicy = "min_power";
     };
 

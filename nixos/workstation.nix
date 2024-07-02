@@ -98,17 +98,6 @@ in
       KERNEL=="ttyACM[0-9]*", TAG+="udev-acl", TAG+="uaccess"
     '';
 
-    systemd.services.vtcol = {
-      wantedBy = [ "sysinit.target" ];
-      unitConfig = {
-        DefaultDependencies = false;
-      };
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${lib.getExe pkgs.vtcol} colors set tokyonight";
-      };
-    };
-
     services.avahi = {
       enable = true;
       ipv4 = true;

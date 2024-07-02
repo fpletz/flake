@@ -71,7 +71,7 @@ buildLinux {
       CPU_FREQ_STAT = yes;
       CPU_IDLE_GOV_LADDER = yes;
       CPU_IDLE_GOV_TEO = yes;
-      ARCH_MMAP_RND_BITS = freeform "32";
+      ARCH_MMAP_RND_BITS = if stdenv.hostPlatform.isx86_64 then freeform "32" else freeform "18";
       ARCH_MMAP_RND_COMPAT_BITS = freeform "16";
       RANDOMIZE_KSTACK_OFFSET_DEFAULT = yes;
       NET_IPGRE_BROADCAST = yes;
@@ -118,6 +118,5 @@ buildLinux {
 
   extraMeta = {
     branch = lib.versions.majorMinor version;
-    broken = stdenv.isAarch64;
   };
 }

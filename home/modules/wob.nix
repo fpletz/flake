@@ -13,9 +13,9 @@
   config = lib.mkIf config.bpletza.workstation.wob {
     xdg.configFile."wob/wob.ini".text = with config.colorScheme.palette; ''
       timeout = 750
-      background_color = ${base00}EE
-      bar_color = ${base08}
-      border_color = ${base08}
+      background_color = ${base00}DD
+      bar_color = ${base05}
+      border_color = ${base05}
     '';
 
     systemd.user.services.wob = {

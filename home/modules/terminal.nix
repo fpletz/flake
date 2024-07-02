@@ -5,12 +5,19 @@
   ...
 }:
 {
-  options.bpletza.workstation.terminal = lib.mkOption {
-    type = lib.types.bool;
-    default = config.bpletza.workstation.sway;
+  options.bpletza.workstation.terminal = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = config.bpletza.workstation.sway;
+    };
+
+    default = lib.mkOption {
+      type = lib.types.str;
+      default = lib.getExe pkgs.alacritty;
+    };
   };
 
-  config = lib.mkIf config.bpletza.workstation.terminal {
+  config = lib.mkIf config.bpletza.workstation.terminal.enable {
     programs.alacritty = {
       enable = true;
       settings = {

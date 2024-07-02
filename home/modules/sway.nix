@@ -40,7 +40,7 @@
       enable = true;
       settings = {
         main = {
-          terminal = lib.getExe pkgs.kitty;
+          terminal = config.bpletza.workstation.terminal.default;
           font = "Inter Display:size=10";
         };
         colors = with config.colorScheme.palette; {
@@ -88,7 +88,7 @@
           "*".bg = "${../../static/wallpapers/wallhaven-p97l5e.png} fill";
         };
         modifier = "Mod4";
-        terminal = "kitty";
+        terminal = config.bpletza.workstation.terminal.default;
         window = {
           titlebar = false;
           hideEdgeBorders = "smart";

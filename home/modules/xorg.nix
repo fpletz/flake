@@ -202,7 +202,7 @@
             };
           };
         pass.enable = true;
-        terminal = lib.getExe pkgs.kitty;
+        terminal = config.bpletza.workstation.terminal.default;
       };
 
       services.dunst = {
@@ -243,7 +243,7 @@
           enable = true;
           config = {
             modifier = "Mod4";
-            terminal = "kitty";
+            terminal = config.bpletza.workstation.terminal.default;
             menu = "rofi -show run";
             window = {
               titlebar = false;

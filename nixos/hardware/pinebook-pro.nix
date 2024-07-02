@@ -56,11 +56,6 @@
     # The default powersave makes the wireless connection unusable.
     networking.networkmanager.wifi.powersave = lib.mkDefault false;
 
-    # Fixes some opengl apps like alacritty
-    environment.sessionVariables = {
-      PAN_MESA_DEBUG = "gl3";
-    };
-
     # For bluetooth
     hardware.firmware = [ pkgs.ap6256-firmware ];
 

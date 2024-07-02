@@ -348,8 +348,7 @@
             };
 
             keybindings = lib.mkOptionDefault {
-              "Mod4+p" = "exec passmenu";
-              "Mod4+Shift+p" = "exec rofi-pass";
+              "Mod4+p" = "exec rofi-pass";
               "Mod4+Ctrl+l" = "exec loginctl lock-session";
               "Mod4+h" = "focus left";
               "Mod4+j" = "focus down";

@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, ... }:
 {
   options.bpletza.hardware.pinebook-pro = lib.mkEnableOption "Pinebook Pro";
 
@@ -55,9 +50,6 @@
 
     # The default powersave makes the wireless connection unusable.
     networking.networkmanager.wifi.powersave = lib.mkDefault false;
-
-    # For bluetooth
-    hardware.firmware = [ pkgs.ap6256-firmware ];
 
     powerManagement = {
       cpuFreqGovernor = "performance";

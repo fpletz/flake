@@ -1,7 +1,6 @@
 { lib, inputs, ... }:
 let
   forAllSelfPackages = lib.genAttrs [
-    "ap6256-firmware"
     "caffeinated"
     "linux-xanmod"
     "systemd-lock-handler"

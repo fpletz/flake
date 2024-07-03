@@ -1,12 +1,30 @@
-{ config, lib, ... }:
 {
-  options.bpletza.hardware.pinebook-pro = lib.mkEnableOption "Pinebook Pro";
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.bpletza.hardware.pinebook-pro;
+in
+{
+  options.bpletza.hardware.pinebook-pro = {
+    enable = lib.mkEnableOption "Pinebook Pro";
+    efi = lib.mkEnableOption "Pinebook Pro EFI boot";
+  };
 
-  config = lib.mkIf config.bpletza.hardware.pinebook-pro {
-    # tow-boot has extlinux support
+  config = lib.mkIf cfg.enable {
+    # tow-boot has extlinux and efi support
     boot.loader = {
       grub.enable = false;
-      generic-extlinux-compatible.enable = true;
+      generic-extlinux-compatible.enable = !cfg.efi;
+      efi.canTouchEfiVariables = false;
+      systemd-boot = lib.mkIf cfg.efi {
+        enable = true;
+        consoleMode = "auto";
+        memtest86.enable = lib.mkForce false;
+        netbootxyz.enable = lib.mkForce false;
+      };
     };
 
     # based on https://github.com/NixOS/nixos-hardware
@@ -46,19 +64,25 @@
       "rtc_rk808"
     ];
 
-    hardware.enableRedistributableFirmware = true;
-
-    # The default powersave makes the wireless connection unusable.
-    networking.networkmanager.wifi.powersave = lib.mkDefault false;
+    hardware = {
+      firmware = [ pkgs.raspberrypiWirelessFirmware ];
+      enableRedistributableFirmware = true;
+    };
 
     powerManagement = {
       cpuFreqGovernor = "performance";
       scsiLinkPolicy = "min_power";
     };
 
-    networking.wireless = {
-      enable = true;
-      interfaces = [ "wlan0" ];
+    networking = {
+      useDHCP = false;
+      interfaces.wlan0.useDHCP = true;
+      wireless = {
+        enable = lib.mkDefault true;
+        interfaces = [ "wlan0" ];
+      };
+      # The default powersave makes the wireless connection unusable.
+      networkmanager.wifi.powersave = false;
     };
 
     bpletza.workstation = {

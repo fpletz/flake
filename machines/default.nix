@@ -72,7 +72,10 @@
             fsType = "ext4";
           };
 
-          bpletza.hardware.pinebook-pro = true;
+          bpletza.hardware.pinebook-pro = {
+            enable = true;
+            efi = true;
+          };
           bpletza.workstation.enable = true;
         };
       };

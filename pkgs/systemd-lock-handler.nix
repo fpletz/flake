@@ -24,11 +24,11 @@ buildGoModule rec {
       unlock.target
   '';
 
-  meta = with lib; {
+  meta = {
     description = "Translates systemd-system lock/sleep signals into systemd-user target activations";
     homepage = "https://git.sr.ht/~whynothugo/systemd-lock-handler";
-    license = with licenses; [ isc ];
-    maintainers = with lib; [ fpletz ];
-    platforms = platforms.linux;
+    license = with lib.licenses; [ isc ];
+    maintainers = with lib.maintainers; [ fpletz ];
+    platforms = lib.platforms.linux;
   };
 }

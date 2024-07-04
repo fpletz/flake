@@ -16,11 +16,11 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-zF2s3XSXnN7jVtv/0axzHiIJd/cb6wMYAOQILXp1U5U=";
 
-  meta = with lib; {
+  meta = {
     description = "Wait for wayland compositor idle timeouts";
     homepage = "https://git.sr.ht/~whynothugo/wayidle";
-    license = with licenses; [ isc ];
-    maintainers = with lib; [ fpletz ];
-    platforms = platforms.linux;
+    license = with lib.licenses; [ isc ];
+    maintainers = with lib.maintainers; [ fpletz ];
+    platforms = lib.platforms.linux;
   };
 }

@@ -39,11 +39,11 @@ stdenv.mkDerivation rec {
     "PREFIX=/"
   ];
 
-  meta = with lib; {
+  meta = {
     description = "Prevents the system from entering an idle state";
     homepage = "https://github.com/electrickite/caffeinated";
-    license = licenses.mit;
-    maintainers = with maintainers; [ fpletz ];
-    platforms = platforms.linux;
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ fpletz ];
+    platforms = lib.platforms.linux;
   };
 }

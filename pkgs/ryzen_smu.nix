@@ -44,11 +44,11 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postBuild
   '';
 
-  meta = with lib; {
+  meta = {
     description = "Linux kernel driver to acess SMU for certain AMD Ryzen Processors";
     homepage = "https://gitlab.com/leogx9r/ryzen_smu";
-    license = licenses.gpl2Only;
-    maintainers = with maintainers; [ fpletz ];
-    platforms = platforms.linux;
+    license = lib.licenses.gpl2Only;
+    maintainers = with lib.maintainers; [ fpletz ];
+    platforms = lib.platforms.linux;
   };
 })

@@ -21,7 +21,32 @@
     ./modules/xorg.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes."tokyo-night-terminal-dark";
+  colorScheme = {
+    # FIXME: inputs.nix-colors.colorSchemes."tokyo-night-dark";
+    # Fixed version of tokyo-night-dark which should be tokyo-night-night
+    # but seems mostly the same as tokyo-night-storm which is missing warm colors
+    slug = "tokyo-night-night";
+    name = "Tokyo Night Night";
+    author = "fpletz";
+    palette = {
+      base00 = "#16161E";
+      base01 = "#1A1B26";
+      base02 = "#2F3549";
+      base03 = "#444B6A";
+      base04 = "#787C99";
+      base05 = "#A9B1D6";
+      base06 = "#CBCCD1";
+      base07 = "#D5D6DB";
+      base08 = "#F7768E";
+      base09 = "#FF9E64";
+      base0A = "#E0AF68";
+      base0B = "#9ECE6A";
+      base0C = "#7DCFFF";
+      base0D = "#7AA2f7";
+      base0E = "#9D7CD8";
+      base0F = "#DB4B4B";
+    };
+  };
 
   home = {
     username = "fpletz";

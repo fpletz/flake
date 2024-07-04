@@ -12,9 +12,7 @@
     plugins = {
       yanky = {
         enable = true;
-        picker.telescope = {
-          enable = true;
-        };
+        enableTelescope = true;
       };
     };
   };

@@ -135,7 +135,6 @@
       ];
       builders-use-substitutes = true;
       log-lines = lib.mkDefault 25;
-      allow-import-from-derivation = false;
     };
 
     daemonCPUSchedPolicy = lib.mkDefault "batch";

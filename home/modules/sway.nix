@@ -16,7 +16,7 @@
       {
         enable = true;
         font = "Inter Display 10";
-        iconPath = "${pkgs.tokyonight-gtk-theme-variants.icons.dark}/share/icons/Tokyonight-Dark";
+        iconPath = "${config.gtk.iconTheme.package}/share/icons/${config.gtk.iconTheme.name}";
         defaultTimeout = 5000;
       }
       // (with config.colorScheme.palette; {

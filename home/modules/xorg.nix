@@ -208,8 +208,8 @@
       services.dunst = {
         enable = true;
         iconTheme = {
-          name = "Tokyonight-Dark";
-          package = pkgs.tokyonight-gtk-theme-variants.icons.dark;
+          name = config.gtk.iconTheme.name;
+          package = config.gtk.iconTheme.package;
         };
         settings = with config.colorScheme.palette; {
           global = {

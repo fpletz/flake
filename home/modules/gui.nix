@@ -27,12 +27,12 @@
         package = pkgs.fira;
       };
       theme = {
-        name = "Tokyonight-Dark-BL";
-        package = pkgs.tokyonight-gtk-theme-variants.full;
+        name = "Tokyonight-Dark";
+        package = pkgs.tokyonight-gtk-theme;
       };
       iconTheme = {
         name = "Tokyonight-Dark";
-        package = pkgs.tokyonight-gtk-theme-variants.icons.dark;
+        package = pkgs.tokyonight-gtk-theme;
       };
       gtk2.extraConfig = ''
         gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ

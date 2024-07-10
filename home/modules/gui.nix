@@ -23,8 +23,8 @@
     gtk = {
       enable = true;
       font = {
-        name = "Inter Display 8";
-        package = pkgs.fira;
+        name = "Inter Display";
+        package = pkgs.inter;
       };
       theme = {
         name = "Tokyonight-Dark";

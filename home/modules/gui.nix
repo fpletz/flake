@@ -25,6 +25,7 @@
       font = {
         name = "Inter Display";
         package = pkgs.inter;
+        size = 8;
       };
       theme = {
         name = "Tokyonight-Dark";

@@ -78,7 +78,7 @@
 
       imports = [
         inputs.flake-root.flakeModule
-        ./pkgs
+        ./pkgs.nix
         ./openwrt
         ./machines
         ./home

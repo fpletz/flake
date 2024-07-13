@@ -13,7 +13,7 @@
 
       packages = lib.filesystem.packagesFromDirectoryRecursive {
         inherit (pkgs) callPackage;
-        directory = ./pkgs;
+        directory = ./by-name;
       };
     };
 
@@ -21,11 +21,11 @@
     final: _prev:
     {
       linuxPackages-xanmod = (final.linuxPackagesFor final.linux-xanmod).extend (
-        final: _prev: { ryzen_smu = final.callPackage ../pkgs/ryzen_smu.nix { }; }
+        final: _prev: { ryzen_smu = final.callPackage ./ryzen_smu.nix { }; }
       );
     }
     // lib.filesystem.packagesFromDirectoryRecursive {
       inherit (final) callPackage;
-      directory = ./pkgs;
+      directory = ./by-name;
     };
 }

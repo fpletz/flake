@@ -22,7 +22,7 @@
   ];
 
   nixpkgs.flake = {
-    source = pkgs.path;
+    source = lib.mkDefault pkgs.path;
     setNixPath = lib.mkDefault true;
     setFlakeRegistry = lib.mkDefault true;
   };

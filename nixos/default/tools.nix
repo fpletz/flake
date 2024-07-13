@@ -2,7 +2,10 @@
 {
   programs = {
     zsh.enable = true;
-    vim.defaultEditor = true;
+    vim = {
+      enable = true;
+      defaultEditor = true;
+    };
     mtr.enable = true;
     command-not-found.enable = lib.mkDefault false;
     tmux.enable = true;

@@ -401,11 +401,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1720774249,
-        "narHash": "sha256-i+iGp/iJERUJwnONHiFHcUw5OJt3kiLlIGCMQcb9vak=",
+        "lastModified": 1720859867,
+        "narHash": "sha256-SfW+SSjcNDOc8JN/3iDmEmf5iD2noER2iWZzJC5Gpes=",
         "owner": "astro",
         "repo": "nix-openwrt-imagebuilder",
-        "rev": "e15c2b27095a1cbd78c65cea5b368c5ab7dc6a79",
+        "rev": "ba149ef638b85a22f3ce69faded85bf9f82b029f",
         "type": "github"
       },
       "original": {

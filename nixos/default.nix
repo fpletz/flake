@@ -56,7 +56,6 @@
     nixos.extraModules = [ inputs.self.nixosModules.all ];
   };
 
-  sound.enable = lib.mkDefault false;
   xdg.sounds.enable = false;
 
   users = {

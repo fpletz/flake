@@ -257,7 +257,6 @@ in
       enable = cfg.battery;
     };
 
-    sound.enable = true;
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = mkDefault false;

@@ -21,6 +21,12 @@
     inputs.nixd.overlays.default
   ];
 
+  nixpkgs.flake = {
+    source = pkgs.path;
+    setNixPath = lib.mkDefault true;
+    setFlakeRegistry = lib.mkDefault true;
+  };
+
   time.timeZone = "UTC";
   console.keyMap = "us";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -73,7 +79,7 @@
 
   system = {
     # living on the edge
-    stateVersion = lib.mkDefault "23.11";
+    stateVersion = lib.mkDefault config.system.nixos.version;
 
     # show a diff of the system closure on activation
     activationScripts.diff = ''
@@ -89,29 +95,14 @@
       revision = inputs.nixpkgs.rev;
       versionSuffix = lib.mkForce ".${inputs.nixpkgs.shortRev}-${config.system.configurationRevision}";
     };
-
-    # make deployment flake and nixpkgs available as well-known path
-    extraSystemBuilderCmds = ''
-      ln -s "${inputs.self}" "$out/flake"
-      ln -s "${inputs.nixpkgs}" "$out/nixpkgs"
-    '';
   };
 
   nix = {
-    # set nixpkgs flake on the target to the input of the deployment
     registry = {
-      nixpkgs.flake = inputs.nixpkgs;
       fpletz.flake = inputs.self;
     };
 
     channel.enable = false;
-
-    nixPath = lib.mkForce [
-      # use deployed nixpkgs flake
-      "nixpkgs=/run/current-system/nixpkgs"
-      # disable local nixos-rebuild
-      "nixos-config=/dontuse"
-    ];
 
     gc = {
       automatic = true;

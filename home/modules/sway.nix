@@ -15,7 +15,7 @@
     services.mako =
       {
         enable = true;
-        font = "Inter Display 10";
+        font = "Inter 10";
         iconPath = "${config.gtk.iconTheme.package}/share/icons/${config.gtk.iconTheme.name}";
         defaultTimeout = 5000;
       }
@@ -41,7 +41,7 @@
       settings = {
         main = {
           terminal = config.bpletza.workstation.terminal.default;
-          font = "Inter Display:size=10";
+          font = "Inter:size=10";
         };
         colors = with config.colorScheme.palette; {
           background = "${base00}dd";

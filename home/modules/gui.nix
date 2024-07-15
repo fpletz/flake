@@ -23,7 +23,7 @@
     gtk = {
       enable = true;
       font = {
-        name = "Inter Display";
+        name = "Inter";
         package = pkgs.inter;
         size = 8;
       };

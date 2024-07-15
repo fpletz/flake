@@ -288,21 +288,21 @@ in
           emoji = [ "Noto Color Emoji" ];
           monospace = [
             "Fira Code"
+            "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
-            "Noto Color Emoji"
           ];
           sansSerif = [
-            "Inter Display"
+            "Inter"
+            "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
-            "Noto Color Emoji"
           ];
           serif = [
             "Noto Serif"
+            "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
-            "Noto Color Emoji"
           ];
         };
         subpixel = {

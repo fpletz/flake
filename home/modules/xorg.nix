@@ -44,7 +44,7 @@
 
       programs.rofi = {
         enable = true;
-        font = "Inter Display 10";
+        font = "Inter 10";
         theme =
           let
             inherit (config.lib.formats.rasi) mkLiteral;

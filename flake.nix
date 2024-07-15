@@ -104,7 +104,10 @@
         {
           formatter = pkgs.nixfmt-rfc-style;
           devShells.default = pkgs.mkShellNoCC {
-            packages = [ pkgs.sops ];
+            packages = [
+              pkgs.sops
+              pkgs.nix-fast-build
+            ];
 
             inputsFrom = [
               config.flake-root.devShell

@@ -72,7 +72,7 @@ in
     };
 
     powerManagement = {
-      cpuFreqGovernor = "performance";
+      cpuFreqGovernor = "schedutil";
       scsiLinkPolicy = "min_power";
     };
 

@@ -67,6 +67,8 @@ in
     hardware = {
       firmware = [ pkgs.raspberrypiWirelessFirmware ];
       enableRedistributableFirmware = true;
+      # has lots of settings and the defaults don't provide sound output
+      alsa.enablePersistence = true;
     };
 
     powerManagement = {

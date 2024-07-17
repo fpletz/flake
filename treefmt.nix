@@ -16,7 +16,7 @@
 
     pre-commit.settings.hooks = {
       treefmt.enable = true;
-      nil.enable = true;
+      nil.enable = false; # FIXME: doesn't use lix
     };
   };
 }

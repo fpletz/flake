@@ -33,6 +33,7 @@
       mapleader = ",";
       loaded_perl_provider = 0;
       loaded_ruby_provider = 0;
+      timeoutlen = 500;
     };
 
     opts = {

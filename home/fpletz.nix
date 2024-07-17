@@ -78,6 +78,15 @@
     ];
   };
 
+  nix = {
+    gc = {
+      automatic = true;
+      options = "-d";
+      frequency = "weekly";
+      persistent = true;
+    };
+  };
+
   systemd.user.startServices = "sd-switch";
 
   programs.home-manager.enable = true;

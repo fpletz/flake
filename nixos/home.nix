@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
   imports = [ inputs.home-manager.nixosModules.default ];
 
@@ -31,6 +31,7 @@
       ];
       home = "/home/fpletz";
       shell = "/run/current-system/sw/bin/zsh";
+      linger = lib.mkDefault true;
       subGidRanges = [
         {
           count = 65536;

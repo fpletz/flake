@@ -68,7 +68,7 @@ in
     };
 
     programs.firefox = {
-      enable = lib.mkDefault true;
+      enable = lib.mkDefault false;
       package = pkgs.firefox.override (_: {
         inherit extraPrefs;
       });

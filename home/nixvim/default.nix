@@ -124,11 +124,6 @@
       };
       better-escape = {
         enable = true;
-        mapping = [
-          "jj"
-          "jk"
-        ];
-        clearEmptyLines = true;
       };
       diffview = {
         enable = true;

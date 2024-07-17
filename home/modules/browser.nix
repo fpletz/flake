@@ -96,5 +96,37 @@ in
         "naepdomgkenhinolocfifgehidddafch" # browserpass
       ];
     };
+
+    programs.qutebrowser = {
+      enable = true;
+      keyBindings = {
+        normal = {
+          ",v" = "spawn mpv {url}";
+          ",V" = "hint links spawn mpv {hint-url}";
+        };
+      };
+      quickmarks = {
+        nixpkgs = "https://github.com/NixOS/nixpkgs";
+      };
+      searchEngines = {
+        DEFAULT = "https://www.startpage.com/sp/search?query={}";
+        no = "https://noogle.dev/q?term={}";
+        nw = "https://wiki.nixos.org/index.php?search={}";
+        w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
+      };
+      settings = {
+        colors = {
+          webpage.preferred_color_scheme = "dark";
+        };
+        content = {
+          dns_prefetch = false;
+          cookies.accept = "no-3rdparty";
+        };
+        url = {
+          default_page = "about:blank";
+          start_pages = "about:blank";
+        };
+      };
+    };
   };
 }

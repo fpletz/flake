@@ -115,12 +115,27 @@ in
         w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
       };
       settings = {
+        auto_save = {
+          interval = 60000;
+        };
         colors = {
-          webpage.preferred_color_scheme = "dark";
+          webpage = {
+            preferred_color_scheme = "dark";
+            darkmode.enabled = true;
+          };
         };
         content = {
           dns_prefetch = false;
           cookies.accept = "no-3rdparty";
+          geolocation = false;
+        };
+        fonts = {
+          default_family = "Fira Mono";
+          web.family = {
+            standard = "Inter";
+            fixed = "Fira Mono";
+            sans_serif = "Inter";
+          };
         };
         url = {
           default_page = "about:blank";

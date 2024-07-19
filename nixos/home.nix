@@ -1,8 +1,13 @@
-{ lib, inputs, ... }:
+{
+  lib,
+  inputs,
+  config,
+  ...
+}:
 {
   imports = [ inputs.home-manager.nixosModules.default ];
 
-  home-manager = {
+  home-manager = lib.mkIf (!config.boot.isContainer) {
     useGlobalPkgs = true;
     useUserPackages = true;
     users.fpletz = ../home/fpletz.nix;

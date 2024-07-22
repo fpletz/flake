@@ -85,7 +85,7 @@
           };
         };
         output = {
-          "*".bg = "${../../static/wallpapers/wallhaven-p97l5e.png} fill";
+          "*".bg = "${../../static/wallpapers/by_upload1_2560.jpg} fill";
         };
         modifier = "Mod4";
         terminal = config.bpletza.workstation.terminal.default;

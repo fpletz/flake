@@ -388,7 +388,7 @@
             };
           };
           extraConfig = ''
-            exec --no-startup-id ${lib.getExe pkgs.feh} --bg-fill ${../../static/wallpapers/wallhaven-p97l5e.png}
+            exec --no-startup-id ${lib.getExe pkgs.feh} --bg-fill ${../../static/wallpapers/by_upload1_2560.jpg}
           '';
         };
       };

@@ -130,6 +130,11 @@
         day = 5500;
         night = 3800;
       };
+      settings = {
+        general = {
+          fade = 0;
+        };
+      };
     };
 
     systemd.user.services.lxpolkit = {

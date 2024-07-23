@@ -376,6 +376,10 @@ in
     nix = {
       daemonCPUSchedPolicy = "idle";
       daemonIOSchedClass = "idle";
+      settings = {
+        keep-outputs = true;
+        keep-derivations = true;
+      };
     };
 
     services.xserver = {

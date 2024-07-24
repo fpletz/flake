@@ -41,7 +41,9 @@
       settings = {
         main = {
           terminal = config.bpletza.workstation.terminal.default;
-          font = "Inter:size=10";
+          dpi-aware = true;
+          font = "Inter:size=8";
+          icon-theme = config.gtk.iconTheme.name;
         };
         colors = with config.colorScheme.palette; {
           background = "${base00}dd";
@@ -198,7 +200,7 @@
           "Mod4+Shift+e" = "exec wlogout";
           "Mod4+d" = "exec fuzzel";
           "Mod4+Ctrl+d" = "exec ${pkgs.wofi}/bin/wofi --show run";
-          "Mod4+Shift+d" = "exec ${pkgs.wofi-emoji}/bin/wofi-emoji";
+          "Mod4+Shift+d" = "exec ${lib.getExe pkgs.emoji-picker}";
           "Mod4+p" = "exec ${lib.getExe pkgs.tessen}";
           "Mod4+Ctrl+l" = "exec loginctl lock-session";
           "Mod4+Ctrl+Left" = "move workspace to output left";

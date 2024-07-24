@@ -12,29 +12,45 @@
   };
 
   config = lib.mkIf config.bpletza.workstation.sway {
-    services.mako =
-      {
-        enable = true;
-        font = "Inter 10";
-        iconPath = "${config.gtk.iconTheme.package}/share/icons/${config.gtk.iconTheme.name}";
-        defaultTimeout = 5000;
-      }
-      // (with config.colorScheme.palette; {
-        backgroundColor = "#${base00}";
-        textColor = "#${base05}";
-        borderColor = "#${base0D}";
-        extraConfig = ''
-          [urgency=low]
-          background-color=#${base00}
-          text-color=#${base0A}
-          border-color=#${base0D}
-
-          [urgency=high]
-          background-color=#${base00}
-          text-color=#${base08}
-          border-color=#${base0D}
-        '';
-      });
+    services.fnott = {
+      enable = true;
+      extraFlags = [ "-s" ];
+      settings = (
+        with config.colorScheme.palette;
+        {
+          main = {
+            background = "${base00}ff";
+            border-color = "${base0D}ff";
+            title-color = "${base05}ff";
+            summary-color = "${base05}ff";
+            body-color = "${base05}ff";
+            progress-bar-color = "${base0D}ff";
+            icon-theme = config.gtk.iconTheme.name;
+            # default-timeout = 10;
+            # max-timeout = 30;
+            max-width = 500;
+            title-font = "Inter:size=10";
+            summary-font = "Inter:size=12";
+            body-font = "Inter:size=12";
+            selection-helper = "${lib.getExe pkgs.fuzzel} -d";
+            padding-vertical = 10;
+            padding-horizontal = 10;
+          };
+          low = {
+            background = "${base00}ff";
+            title-color = "${base0A}ff";
+            summary-color = "${base0A}ff";
+            body-color = "${base0A}ff";
+          };
+          critical = {
+            background = "${base00}ff";
+            title-color = "${base08}ff";
+            summary-color = "${base08}ff";
+            body-color = "${base08}ff";
+          };
+        }
+      );
+    };
 
     programs.fuzzel = {
       enable = true;
@@ -202,6 +218,8 @@
           "Mod4+Ctrl+d" = "exec ${pkgs.wofi}/bin/wofi --show run";
           "Mod4+Shift+d" = "exec ${lib.getExe pkgs.emoji-picker}";
           "Mod4+p" = "exec ${lib.getExe pkgs.tessen}";
+          "Mod4+Shift+a" = "exec ${pkgs.fnott}/bin/fnottctl actions";
+          "Mod4+Shift+s" = "exec ${pkgs.fnott}/bin/fnottctl dismiss";
           "Mod4+Ctrl+l" = "exec loginctl lock-session";
           "Mod4+Ctrl+Left" = "move workspace to output left";
           "Mod4+Ctrl+Right" = "move workspace to output right";

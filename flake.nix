@@ -91,6 +91,7 @@
             default = ./nixos/default.nix;
             hardware = ./nixos/hardware.nix;
             home = ./nixos/home.nix;
+            nixpkgs = ./nixos/nixpkgs.nix;
             workstation = ./nixos/workstation.nix;
           };
           all = {

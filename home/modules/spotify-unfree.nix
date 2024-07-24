@@ -46,8 +46,5 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    nixpkgs.config.allowUnfree = true;
-    home.packages = [ package ];
-  };
+  config = lib.mkIf cfg.enable { home.packages = [ package ]; };
 }

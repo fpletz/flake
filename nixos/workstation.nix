@@ -29,7 +29,7 @@ in
   imports = [ ./workstation/nvidia.nix ];
 
   config = mkIf cfg.enable {
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.permittedUnfreePackages = [ "corefonts" ];
 
     services.dbus.implementation = "broker";
 

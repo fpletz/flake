@@ -14,22 +14,20 @@
     programs.obs-studio = {
       enable = true;
       package = pkgs.obs-studio;
-      plugins =
-        with pkgs.obs-studio-plugins;
-        [
-          obs-multi-rtmp
-          obs-gstreamer
-          wlrobs
-          obs-pipewire-audio-capture
-          obs-move-transition
-          obs-tuna
-          obs-text-pthread
-          waveform
-          obs-vintage-filter
-          obs-shaderfilter
-          obs-source-record
-        ]
-        ++ lib.optionals pkgs.config.allowUnfree [ obs-ndi ];
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-multi-rtmp
+        obs-gstreamer
+        wlrobs
+        obs-pipewire-audio-capture
+        obs-move-transition
+        obs-tuna
+        obs-text-pthread
+        waveform
+        obs-vintage-filter
+        obs-shaderfilter
+        obs-source-record
+        obs-ndi
+      ];
     };
   };
 }

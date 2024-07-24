@@ -51,7 +51,7 @@
   home = {
     username = "fpletz";
     homeDirectory = "/home/fpletz";
-    stateVersion = "23.11";
+    stateVersion = "24.05";
 
     sessionVariables = {
       EMAIL = "fpletz@fnordicwalking.de";

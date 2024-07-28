@@ -35,11 +35,12 @@ in
 
     boot = {
       kernel.sysctl = {
-        "vm.dirty_writeback_centisecs" = 1500;
+        "vm.dirty_writeback_centisecs" = 3000;
         "net.core.default_qdisc" = "fq_codel";
         "net.ipv4.tcp_limit_output_bytes" = 65536;
         "fs.inotify.max_user_watches" = 524288;
-        "vm.laptop_mode" = 5;
+        "kernel.nmi_watchdog" = 0;
+        "vm.nr_overcommit_hugepages" = mkDefault 512;
       };
       kernelParams = [
         "snd_hda_intel.power_save=1"
@@ -49,9 +50,6 @@ in
       extraModprobeConfig = ''
         options v4l2loopback video_nr=23,42 card_label="23,42" exclusive_caps=1
       '';
-      kernel.sysctl = {
-        "vm.nr_overcommit_hugepages" = mkDefault 512;
-      };
       loader.grub = {
         ipxe = {
           netbootxyz = ''
@@ -96,6 +94,9 @@ in
 
       # console/modem
       KERNEL=="ttyACM[0-9]*", TAG+="udev-acl", TAG+="uaccess"
+
+      # pci runtime power management
+      SUBSYSTEM=="pci", ATTR{power/control}="auto"
     '';
 
     services.avahi = {

@@ -96,27 +96,6 @@
               '';
               format = " $icon  ";
             }
-            {
-              block = "toggle";
-              command_on = "powerprofilesctl set balanced";
-              command_off = "powerprofilesctl set power-saver";
-              command_state = pkgs.writers.writeBash "i3status-rs-pprofd-state" ''
-                if [ $(powerprofilesctl get) == "balanced" ]; then
-                  echo true
-                fi
-              '';
-              format = " $icon  ";
-            }
-            {
-              block = "toggle";
-              if_command = "wlr-randr --output eDP-1";
-              command_on = "swaymsg output eDP-1 enable";
-              command_off = "swaymsg output eDP-1 disable";
-              command_state = pkgs.writers.writeBash "i3status-rs-edp1-state" ''
-                swaymsg -t get_outputs -r | jq '.[] | select(.name=="eDP-1") | .active' | grep -v false
-              '';
-              format = " $icon  ";
-            }
           ]
           ++ osConfig.bpletza.workstation.i3status-rs.blocks.temperatures or [ ]
           ++ lib.optional (osConfig.bpletza.workstation.battery or false) {

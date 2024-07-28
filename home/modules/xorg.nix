@@ -402,6 +402,10 @@
           4.0e-2
         ];
       };
+
+      systemd.user.services.picom.Unit = {
+        Conflicts = [ "sway-session.target" ];
+      };
     })
   ];
 }

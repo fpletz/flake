@@ -205,37 +205,6 @@
         terminal = config.bpletza.workstation.terminal.default;
       };
 
-      services.dunst = {
-        enable = true;
-        iconTheme = {
-          name = config.gtk.iconTheme.name;
-          package = config.gtk.iconTheme.package;
-        };
-        settings = with config.colorScheme.palette; {
-          global = {
-            transparency = 10;
-            font = "Fira Sans 10";
-            frame_color = "#${base05}";
-            separator_color = "#${base05}";
-          };
-          base16_low = {
-            msg_urgency = "low";
-            background = "#${base01}";
-            foreground = "#${base03}";
-          };
-          base16_normal = {
-            msg_urgency = "normal";
-            background = "#${base02}";
-            foreground = "#${base05}";
-          };
-          base16_critical = {
-            msg_urgency = "critical";
-            background = "#${base08}";
-            foreground = "#${base06}";
-          };
-        };
-      };
-
       xsession = {
         enable = true;
         scriptPath = ".xinitrc";

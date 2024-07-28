@@ -166,52 +166,7 @@
             childBorder = "#${base00}";
           };
         };
-        bars = [
-          {
-            fonts = {
-              names = [
-                "Fira Code"
-                "FontAwesome6Free"
-              ];
-              size = 9.0;
-            };
-            colors = with config.colorScheme.palette; {
-              statusline = "#${base04}";
-              background = "#${base00}";
-              separator = "#${base01}";
-              focusedWorkspace = {
-                border = "#${base05}";
-                background = "#${base0D}";
-                text = "#${base00}";
-              };
-              activeWorkspace = {
-                border = "#${base05}";
-                background = "#${base03}";
-                text = "#${base00}";
-              };
-              inactiveWorkspace = {
-                border = "#${base03}";
-                background = "#${base01}";
-                text = "#${base05}";
-              };
-              urgentWorkspace = {
-                border = "#${base08}";
-                background = "#${base0B}";
-                text = "#${base00}";
-              };
-              bindingMode = {
-                border = "#${base00}";
-                background = "#${base0A}";
-                text = "#${base00}";
-              };
-            };
-            position = "top";
-            statusCommand = "${lib.getExe pkgs.i3status-rust} config-default.toml";
-            extraConfig = ''
-              status_padding 0
-            '';
-          }
-        ];
+        bars = [ ];
         keybindings = lib.mkOptionDefault {
           "Mod4+Shift+e" = "exec wlogout";
           "Mod4+d" = "exec fuzzel";

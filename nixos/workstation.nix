@@ -126,9 +126,9 @@ in
         enable = true;
         settings = {
           screencast = {
-            max_fps = 15;
+            max_fps = 30;
             chooser_type = "dmenu";
-            chooser_cmd = "${pkgs.wofi}/bin/wofi --show dmenu";
+            chooser_cmd = "${lib.getExe pkgs.fuzzel} -d";
           };
         };
       };

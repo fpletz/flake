@@ -332,11 +332,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1722245097,
-        "narHash": "sha256-8d7Xw/i6sRqMcnBBdPLx7Gk1akYjAQkfxriX2+TSLPw=",
+        "lastModified": 1722248252,
+        "narHash": "sha256-GazJ0aLYqJAOBaMexvTuQWfeoRm1SefbHDy/Fg3lHng=",
         "owner": "fpletz",
         "repo": "nixpkgs",
-        "rev": "8515fa1e0e4e5b015d8f2ee3a0d30ce9da2f1def",
+        "rev": "a5304e452973fef2ad1d2bf26f74be02d6928b63",
         "type": "github"
       },
       "original": {

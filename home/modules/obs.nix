@@ -25,6 +25,7 @@
         waveform
         obs-vintage-filter
         obs-shaderfilter
+        obs-composite-blur
         obs-source-record
         obs-ndi
       ];

@@ -171,5 +171,10 @@
         ];
       };
     };
+
+    btrfs.autoScrub = lib.mkIf (config.fileSystems."/".fsType == "btrfs") {
+      enable = true;
+      fileSystems = [ "/" ];
+    };
   };
 }

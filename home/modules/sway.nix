@@ -61,14 +61,15 @@
           font = "Inter:size=8";
           icon-theme = config.gtk.iconTheme.name;
         };
-        colors = with config.colorScheme.palette; {
-          background = "${base00}dd";
-          text = "${base05}ff";
-          match = "${base08}ff";
-          selection = "${base02}dd";
-          selection-text = "${base05}ff";
-          selection-match = "${base08}ff";
-          border = "${base0D}ff";
+        colors = {
+          # https://github.com/folke/tokyonight.nvim/blob/main/extras/fuzzel/tokyonight_storm.ini
+          background = "1f2335ff";
+          text = "c0caf5ff";
+          match = "2ac3deff";
+          selection = "363d59ff";
+          selection-match = "2ac3deff";
+          selection-text = "c0caf5ff";
+          border = "29a4bdff";
         };
       };
     };

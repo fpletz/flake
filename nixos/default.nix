@@ -47,6 +47,11 @@
       # fail fast on oom
       "vm.oom_kill_allocating_task" = 1;
     };
+    supportedFilesystems = {
+      zfs = false;
+      bcachefs = true;
+      btrfs = true;
+    };
   };
 
   documentation = {

@@ -64,9 +64,7 @@ in
         memtest86.enable = true;
         netbootxyz.enable = true;
       };
-      kernelPackages = lib.mkIf (config.nixpkgs.system == "x86_64-linux") (
-        lib.modules.mkDefault pkgs.linuxPackages-xanmod
-      );
+      kernelPackages = lib.mkIf (config.nixpkgs.system == "x86_64-linux") pkgs.linuxPackages-xanmod;
     };
 
     systemd.tmpfiles.rules = [

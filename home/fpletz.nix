@@ -96,6 +96,7 @@
     settings = {
       color_theme = "tokyo-night";
       update_ms = 1000;
+      show_coretemp = false;
     };
   };
 

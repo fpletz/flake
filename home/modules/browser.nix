@@ -19,6 +19,7 @@ let
     pref("geo.enabled", false);
     pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
     pref("browser.compactmode.show", true);
+    pref("identity.fxaccounts.toolbar.pxiToolbarEnabled.monitorEnabled", false);
   '';
   nativeMessagingHosts = with pkgs; [ tridactyl-native ];
 in
@@ -61,6 +62,7 @@ in
           ''
             pref("webgl.disabled", false);
             pref("privacy.resistFingerprinting", false);
+            pref("identity.fxaccounts.enabled", true);
           ''
           + extraPrefs;
         inherit nativeMessagingHosts;

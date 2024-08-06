@@ -207,7 +207,7 @@ in
 
     services.greetd =
       let
-        command = if cfg.xorg then "startx" else "sway";
+        command = "sway";
       in
       {
         enable = true;

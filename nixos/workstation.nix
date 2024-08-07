@@ -40,12 +40,8 @@ in
         "net.ipv4.tcp_limit_output_bytes" = 65536;
         "fs.inotify.max_user_watches" = 524288;
         "kernel.nmi_watchdog" = 0;
-        "vm.nr_overcommit_hugepages" = mkDefault 512;
       };
-      kernelParams = [
-        "snd_hda_intel.power_save=1"
-        "transparent_hugepage=madvise"
-      ];
+      kernelParams = [ "snd_hda_intel.power_save=1" ];
       extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
       extraModprobeConfig = ''
         options v4l2loopback video_nr=23,42 card_label="23,42" exclusive_caps=1
@@ -66,11 +62,6 @@ in
       };
       kernelPackages = lib.mkIf (config.nixpkgs.system == "x86_64-linux") pkgs.linuxPackages-xanmod;
     };
-
-    systemd.tmpfiles.rules = [
-      "w /sys/kernel/mm/transparent_hugepage/defrag - - - - defer+madvise"
-      "w /sys/kernel/mm/transparent_hugepage/shmem_enabled - - - - within_size"
-    ];
 
     systemd = {
       enableEmergencyMode = true;

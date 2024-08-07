@@ -18,6 +18,7 @@
     ./modules/obs.nix
     ./modules/wob.nix
     ./modules/wofi.nix
+    ./modules/workstation.nix
     ./modules/xorg.nix
   ];
 

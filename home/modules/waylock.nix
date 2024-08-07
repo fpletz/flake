@@ -5,6 +5,9 @@
   pkgs,
   ...
 }:
+let
+  systemdPackage = osConfig.systemd.package or pkgs.systemd;
+in
 {
   options.bpletza.workstation.waylock = lib.mkOption {
     type = lib.types.bool;
@@ -22,7 +25,7 @@
         ConditionEnvironment = [ "WAYLAND_DISPLAY" ];
       };
       Service = {
-        ExecStart = "${pkgs.wayidle}/bin/wayidle -t 180 ${osConfig.systemd.package}/bin/loginctl lock-session";
+        ExecStart = "${pkgs.wayidle}/bin/wayidle -t 180 ${systemdPackage}/bin/loginctl lock-session";
         Restart = "always";
         RestartSec = 0;
       };

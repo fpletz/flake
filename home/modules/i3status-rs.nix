@@ -8,7 +8,7 @@
 {
   options.bpletza.workstation.i3status-rs = lib.mkOption {
     type = lib.types.bool;
-    default = config.bpletza.workstation.sway;
+    default = config.bpletza.workstation.sway || config.bpletza.workstation.xorg;
   };
 
   config = lib.mkIf config.bpletza.workstation.i3status-rs {

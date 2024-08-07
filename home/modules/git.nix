@@ -1,8 +1,8 @@
-{ pkgs, osConfig, ... }:
+{ pkgs, config, ... }:
 {
   programs.git = {
     enable = true;
-    lfs.enable = osConfig.bpletza.workstation.enable;
+    lfs.enable = config.bpletza.workstation.enable;
     extraConfig = {
       user = {
         name = "Franz Pletz";
@@ -71,7 +71,7 @@
   };
 
   programs.gitui = {
-    enable = osConfig.bpletza.workstation.enable;
+    enable = config.bpletza.workstation.enable;
     theme = builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/gitui/tokyonight_night.ron";
     keyConfig = ''
       (
@@ -109,7 +109,7 @@
   };
 
   programs.lazygit = {
-    enable = osConfig.bpletza.workstation.enable;
+    enable = config.bpletza.workstation.enable;
     settings = {
       git = {
         paging = {

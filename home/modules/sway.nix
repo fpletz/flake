@@ -1,6 +1,5 @@
 {
   config,
-  osConfig,
   lib,
   pkgs,
   ...
@@ -8,7 +7,7 @@
 {
   options.bpletza.workstation.sway = lib.mkOption {
     type = lib.types.bool;
-    default = osConfig.bpletza.workstation.enable or false;
+    default = config.bpletza.workstation.enable;
   };
 
   config = lib.mkIf config.bpletza.workstation.sway {

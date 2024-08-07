@@ -7,7 +7,7 @@
 {
   options.bpletza.workstation.nvidia = lib.mkOption {
     type = lib.types.bool;
-    default = config.bpletza.workstation.sway && (osConfig.bpletza.workstation.nvidia || false);
+    default = config.bpletza.workstation.sway && (osConfig.bpletza.workstation.nvidia or false);
   };
 
   config = lib.mkIf config.bpletza.workstation.nvidia {

@@ -9,11 +9,11 @@
   options.bpletza.workstation = {
     xorg = lib.mkOption {
       type = lib.types.bool;
-      default = osConfig.bpletza.workstation.xorg;
+      default = osConfig.bpletza.workstation.xorg or false;
     };
     xorg-settings = lib.mkOption {
       type = lib.types.bool;
-      default = osConfig.bpletza.workstation.xorg || config.bpletza.workstation.sway;
+      default = config.bpletza.workstation.xorg || config.bpletza.workstation.sway;
     };
   };
 

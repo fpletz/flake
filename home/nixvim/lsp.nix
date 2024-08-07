@@ -1,11 +1,11 @@
 {
   lib,
   pkgs,
-  osConfig,
+  config,
   ...
 }:
 {
-  programs.nixvim = lib.mkIf osConfig.bpletza.workstation.enable {
+  programs.nixvim = lib.mkIf config.bpletza.workstation.enable {
     colorschemes.catppuccin.settings.integrations.native_lsp.enabled = true;
 
     extraPlugins = with pkgs.vimPlugins; [ nvim-surround ];
@@ -44,9 +44,20 @@
           lua-ls.enable = true;
           nixd = {
             enable = true;
-            settings = {
-              formatting.command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
-            };
+            settings =
+              let
+                localFlake = ''(builtins.getFlake "/home/fpletz/src/flake")'';
+              in
+              {
+                nixpkgs.expr = "import <nixpkgs> {}";
+                formatting.command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
+                options = {
+                  nixos.expr = "${localFlake}.nixosConfigurations.server.options";
+                  home-manager.expr = "${localFlake}.homeConfigurations.fpletz.options";
+                  flake-parts.expr = "${localFlake}.debug.options";
+                  flake-parts2.expr = "${localFlake}.currentSystem.options";
+                };
+              };
           };
           marksman.enable = true;
           pest-ls.enable = true;

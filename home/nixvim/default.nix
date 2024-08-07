@@ -1,4 +1,4 @@
-{ lib, osConfig, ... }:
+{ lib, config, ... }:
 {
   imports = [
     ./barbar.nix
@@ -21,7 +21,7 @@
   ];
 
   config.programs.nixvim = {
-    enable = osConfig.bpletza.workstation.enable;
+    enable = config.bpletza.workstation.enable;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;

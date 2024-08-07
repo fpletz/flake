@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  osConfig,
   ...
 }:
 {
@@ -34,7 +33,7 @@
             inherit (pkgs.zsh-fast-syntax-highlighting) src;
           }
         ]
-        ++ (lib.optional osConfig.bpletza.workstation.enable {
+        ++ (lib.optional config.bpletza.workstation.enable {
           name = "bgnotify";
           src = pkgs.stdenv.mkDerivation {
             pname = "oh-my-zsh-bgnotify";
@@ -98,7 +97,7 @@
     };
 
     programs.direnv = {
-      enable = osConfig.bpletza.workstation.enable;
+      enable = config.bpletza.workstation.enable;
       nix-direnv.enable = true;
       enableZshIntegration = false;
     };
@@ -157,7 +156,7 @@
     };
 
     programs.starship = {
-      enable = osConfig.bpletza.workstation.enable;
+      enable = config.bpletza.workstation.enable;
       enableZshIntegration = false;
       settings =
         lib.attrsets.recursiveUpdate (builtins.fromTOML (builtins.readFile ./shell/starship-presets.toml))
@@ -181,7 +180,7 @@
     };
 
     programs.atuin = {
-      enable = osConfig.bpletza.workstation.enable;
+      enable = config.bpletza.workstation.enable;
       flags = [
         "--disable-up-arrow"
         "--disable-ctrl-r"

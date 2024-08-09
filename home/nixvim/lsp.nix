@@ -94,6 +94,24 @@
             ca = "code_action";
           };
           silent = true;
+          extra = [
+            {
+              action.__raw = "function() require('telescope.builtin').lsp_references() end";
+              key = "gD";
+            }
+            {
+              action.__raw = "function() require('telescope.builtin').lsp_definitions() end";
+              key = "gd";
+            }
+            {
+              action.__raw = "function() require('telescope.builtin').lsp_implementations() end";
+              key = "gi";
+            }
+            {
+              action.__raw = "function() require('telescope.builtin').lsp_type_definitions() end";
+              key = "gt";
+            }
+          ];
         };
       };
       lsp-lines.enable = true;

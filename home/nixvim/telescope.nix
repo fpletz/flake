@@ -67,6 +67,8 @@
           "<leader>fc" = "colorscheme";
           "<leader>fs" = "symbols";
           "<leader>fr" = "resume";
+          "<leader>fq" = "quickfix";
+          "<leader>fd" = "diagnostics";
         };
         settings = {
           defaults = {

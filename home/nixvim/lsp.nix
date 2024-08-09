@@ -18,7 +18,20 @@
       {
         mode = "n";
         key = "<leader>l";
-        action.__raw = "require(\"lsp_lines\").toggle";
+        action.__raw = ''
+          function()
+            vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines, virtual_text = vim.diagnostic.config().virtual_lines })
+          end
+        '';
+      }
+      {
+        mode = "n";
+        key = "<leader>L";
+        action.__raw = ''
+          function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          end
+        '';
       }
       {
         mode = "n";

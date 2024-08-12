@@ -44,13 +44,13 @@
           ];
       });
       wlroots = prev.wlroots.overrideAttrs (_attrs: {
-        version = "0-unstable-2024-08-11";
+        version = "0-unstable-2024-08-13";
         src = final.fetchFromGitLab {
           domain = "gitlab.freedesktop.org";
           owner = "wlroots";
           repo = "wlroots";
-          rev = "6214144735b6b85fa1e191be3afe33d6bea0faee";
-          hash = "sha256-nuG2xXLDFsGh23CnhaTtdOshCBN/yILqKCSmqJ53vgI=";
+          rev = "e6dbe4580e19447abb80e7e4b7b75744dca6d1e5";
+          hash = "sha256-QQDMa6Kbrr1FS52m7d7q5uU9v67d1LZDUr7yJZ3Z3Bo=";
         };
       });
     }

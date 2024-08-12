@@ -46,5 +46,14 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable { home.packages = [ package ]; };
+  config = lib.mkIf cfg.enable {
+    home.packages = [
+      package
+      (pkgs.spotify.overrideAttrs (attrs: {
+        meta = attrs.meta // {
+          priority = 100;
+        };
+      }))
+    ];
+  };
 }

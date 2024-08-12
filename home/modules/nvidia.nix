@@ -18,10 +18,6 @@
     home.sessionVariables = {
       # Hardware cursors not yet working on wlroots
       WLR_NO_HARDWARE_CURSORS = 1;
-      # Set wlroots renderer to Vulkan to avoid flickering
-      WLR_RENDERER = "vulkan";
-      # Fix flickering
-      XWAYLAND_NO_GLAMOR = "1";
       # OpenGL Variables
       GBM_BACKEND = "nvidia-drm";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";

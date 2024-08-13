@@ -18,7 +18,6 @@ in
   options.bpletza.workstation = {
     enable = mkEnableOption "fpletz workstation";
     battery = mkEnableOption "machine has battery";
-    xorg = mkEnableOption "xorg xserver support";
     i3status-rs.blocks.temperatures = mkOption {
       type = types.listOf types.attrs;
       default = [ ];
@@ -372,16 +371,6 @@ in
       settings = {
         keep-outputs = true;
         keep-derivations = true;
-      };
-    };
-
-    services.xserver = {
-      enable = cfg.xorg;
-      windowManager.i3.enable = cfg.xorg;
-      displayManager.startx.enable = cfg.xorg;
-      xkb = {
-        layout = "eu";
-        options = "compose:caps";
       };
     };
   };

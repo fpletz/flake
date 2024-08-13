@@ -113,7 +113,6 @@
           bpletza.workstation = {
             enable = true;
             nvidia = true;
-            xorg = true;
           };
         };
       };

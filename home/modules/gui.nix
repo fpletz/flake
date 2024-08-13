@@ -7,7 +7,7 @@
 {
   options.bpletza.workstation.gui = lib.mkOption {
     type = lib.types.bool;
-    default = config.bpletza.workstation.sway || config.bpletza.workstation.xorg;
+    default = config.bpletza.workstation.sway;
   };
 
   config = lib.mkIf config.bpletza.workstation.gui {

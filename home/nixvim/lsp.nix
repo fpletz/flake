@@ -8,7 +8,10 @@
   programs.nixvim = lib.mkIf config.bpletza.workstation.enable {
     colorschemes.catppuccin.settings.integrations.native_lsp.enabled = true;
 
-    extraPlugins = with pkgs.vimPlugins; [ nvim-surround ];
+    extraPlugins = with pkgs.vimPlugins; [
+      nvim-surround
+      pest-vim
+    ];
 
     extraConfigLua = ''
       require("nvim-surround").setup()
@@ -73,7 +76,12 @@
               };
           };
           marksman.enable = true;
-          pest-ls.enable = true;
+          pest-ls = {
+            enable = true;
+            onAttach.function = ''
+              require("pest-vim").setup()
+            '';
+          };
           pyright.enable = true;
           ruff.enable = true;
           yamlls.enable = true;

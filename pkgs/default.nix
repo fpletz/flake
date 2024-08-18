@@ -26,12 +26,12 @@
         final: _prev: { ryzen_smu = final.callPackage ./ryzen_smu.nix { }; }
       );
       sway-unwrapped = prev.sway-unwrapped.overrideAttrs (attrs: {
-        version = "0-unstable-2024-08-11";
+        version = "0-unstable-2024-08-18";
         src = final.fetchFromGitHub {
           owner = "swaywm";
           repo = "sway";
-          rev = "b44015578a3d53cdd9436850202d4405696c1f52";
-          hash = "sha256-gTsZWtvyEMMgR4vj7Ef+nb+wcXkwGivGfnhnBIfPHOA=";
+          rev = "ae7c1b139a3c71d3e11fe2477d8b21c36de6770e";
+          hash = "sha256-U7IoChVLxGQZ/giTd2B7ubcIIr8gTIPSH6PAPgz8WaQ=";
         };
         buildInputs = attrs.buildInputs ++ [ final.wlroots ];
         mesonFlags =
@@ -44,13 +44,13 @@
           ];
       });
       wlroots = prev.wlroots.overrideAttrs (_attrs: {
-        version = "0-unstable-2024-08-13";
+        version = "0-unstable-2024-08-18";
         src = final.fetchFromGitLab {
           domain = "gitlab.freedesktop.org";
           owner = "wlroots";
           repo = "wlroots";
-          rev = "e6dbe4580e19447abb80e7e4b7b75744dca6d1e5";
-          hash = "sha256-QQDMa6Kbrr1FS52m7d7q5uU9v67d1LZDUr7yJZ3Z3Bo=";
+          rev = "a0450d219fbc8a453876e70f29b9b5c2f76b0c64";
+          hash = "sha256-DkQX2mQcsiDUlaEECBM0i5ERHWp62clOzKqYpVBB9UA=";
         };
       });
     }

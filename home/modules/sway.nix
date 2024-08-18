@@ -175,6 +175,7 @@
           "Mod4+p" = "exec ${lib.getExe pkgs.tessen}";
           "Mod4+Shift+a" = "exec ${pkgs.fnott}/bin/fnottctl actions";
           "Mod4+Shift+s" = "exec ${pkgs.fnott}/bin/fnottctl dismiss";
+          "Mod4+Ctrl+s" = "exec ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp} -d)\" | wl-copy";
           "Mod4+Ctrl+l" = "exec loginctl lock-session";
           "Mod4+Ctrl+Left" = "move workspace to output left";
           "Mod4+Ctrl+Right" = "move workspace to output right";

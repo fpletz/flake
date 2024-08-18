@@ -29,11 +29,11 @@
       };
       theme = {
         name = "Tokyonight-Dark";
-        package = pkgs.tokyonight-gtk-theme;
+        package = pkgs.tokyonight-gtk-theme.override { iconVariants = [ "Dark" ]; };
       };
       iconTheme = {
         name = "Tokyonight-Dark";
-        package = pkgs.tokyonight-gtk-theme;
+        package = config.gtk.theme.package;
       };
       gtk2.extraConfig = ''
         gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ

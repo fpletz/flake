@@ -8,8 +8,10 @@
       ts-context-commentstring.enable = true;
       todo-comments = {
         enable = true;
-        highlight.pattern = ".*<(KEYWORDS)\\s*";
-        search.pattern = "\\b(KEYWORDS)\\b";
+        settings = {
+          highlight.pattern = ".*<(KEYWORDS)\\s*";
+          search.pattern = "\\b(KEYWORDS)\\b";
+        };
       };
     };
   };

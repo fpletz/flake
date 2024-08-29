@@ -16,6 +16,7 @@
     moduliFile = ../../static/ssh-moduli;
     settings = {
       PasswordAuthentication = false;
+      PubkeyAuthOptions = "verify-required";
       # crypto hardening
       Ciphers = [ "chacha20-poly1305@openssh.com" ];
       KexAlgorithms = [ "curve25519-sha256@libssh.org" ];

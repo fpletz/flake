@@ -28,8 +28,8 @@
         src = final.fetchFromGitHub {
           owner = "swaywm";
           repo = "sway";
-          rev = "f9c0f043e5ec39574c9d9b0fb3dece6169a0e67d";
-          hash = "sha256-1kFgXLG1pZ/eMTNzSsx0wYDVz3Q6hUFrjDEeM7QmyZY=";
+          rev = "980a4e02113789d0cca94aa023557c6f6e87ec73";
+          hash = "sha256-qciZeQghlLV5aMuOnex3LvFU9vTa941RMlUkdvj0QTU=";
         };
         buildInputs = attrs.buildInputs ++ [ final.wlroots ];
         mesonFlags =
@@ -47,8 +47,8 @@
           domain = "gitlab.freedesktop.org";
           owner = "wlroots";
           repo = "wlroots";
-          rev = "098cb9b7a3d7c7a8b1633809e04c9bcf34a33784";
-          hash = "sha256-7dAW+t0S2BAuS6dEdCM0bn8jYtIyspZrawrJuY1jnE0=";
+          rev = "beb9a9ad0a38867154b7606911c33ffa5ecf759f";
+          hash = "sha256-ZlNFxwj3c5zKiSfokA27zhJ+Yar8cma4fj6N/ulI0VM=";
         };
       });
     }

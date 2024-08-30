@@ -8,7 +8,10 @@
       kernelParams = [ "amd_pstate=active" ];
     };
 
-    hardware.cpu.amd.updateMicrocode = true;
+    hardware.cpu.amd = {
+      ryzen-smu.enable = true;
+      updateMicrocode = true;
+    };
 
     powerManagement.cpuFreqGovernor = "schedutil";
 

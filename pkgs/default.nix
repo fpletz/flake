@@ -22,9 +22,7 @@
   flake.overlays.default =
     final: prev:
     {
-      linuxPackages-xanmod = (final.linuxPackagesFor final.linux-xanmod).extend (
-        final: _prev: { ryzen_smu = final.callPackage ./ryzen_smu.nix { }; }
-      );
+      linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
       sway-unwrapped = prev.sway-unwrapped.overrideAttrs (attrs: {
         version = "0-unstable-2024-08-19";
         src = final.fetchFromGitHub {

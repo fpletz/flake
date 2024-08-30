@@ -22,7 +22,6 @@
       ];
       extraModulePackages = with config.boot.kernelPackages; [
         acpi_call
-        ryzen_smu
       ];
       extraModprobeConfig = ''
         options thinkpad_acpi fan_control=1

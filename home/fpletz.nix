@@ -16,6 +16,7 @@
     ./modules/systemd-lock-handler.nix
     ./modules/terminal.nix
     ./modules/obs.nix
+    ./modules/waybar.nix
     ./modules/wob.nix
     ./modules/wofi.nix
     ./modules/workstation.nix

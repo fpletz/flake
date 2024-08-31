@@ -293,6 +293,11 @@ in
             resample.quality = 1;
           };
         };
+        client.resample = {
+          stream.properties = {
+            resample.quality = 10;
+          };
+        };
       };
     };
 

@@ -97,6 +97,23 @@
         };
       };
 
+      lolnovo = nixos {
+        system = "x86_64-linux";
+        module = {
+          networking.hostName = "lolnovo";
+          fileSystems."/" = {
+            device = "/dev/disk/by-label/nixos";
+            fsType = "ext4";
+          };
+          boot.loader.systemd-boot = {
+            enable = true;
+          };
+
+          bpletza.hardware.thinkpad.x230 = true;
+          bpletza.workstation.enable = true;
+        };
+      };
+
       zocknix = nixos {
         system = "x86_64-linux";
         module = {

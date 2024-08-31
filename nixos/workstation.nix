@@ -60,6 +60,8 @@ in
         netbootxyz.enable = true;
       };
       kernelPackages = lib.mkIf (config.nixpkgs.system == "x86_64-linux") pkgs.linuxPackages-xanmod;
+      initrd.systemd.enable = true;
+      binfmt.emulatedSystems = lib.optional (config.nixpkgs.system == "x86_64-linux") "aarch64-linux";
     };
 
     systemd = {
@@ -73,22 +75,28 @@ in
       platformio
       android-udev-rules
     ];
-    services.udev.extraRules = ''
-      # SDRs
-      ATTR{idVendor}=="1d50", ATTR{idProduct}=="604b", SYMLINK+="hackrf-jawbreaker-%k", TAG+="uaccess"
-      ATTR{idVendor}=="1d50", ATTR{idProduct}=="6089", SYMLINK+="hackrf-one-%k", TAG+="uaccess"
-      ATTR{idVendor}=="1d50", ATTR{idProduct}=="cc15", SYMLINK+="rad1o-%k", TAG+="uaccess"
-      ATTR{idVendor}=="1fc9", ATTR{idProduct}=="000c", SYMLINK+="nxp-dfu-%k", TAG+="uaccess"
+    services.udev.extraRules =
+      ''
+        # SDRs
+        ATTR{idVendor}=="1d50", ATTR{idProduct}=="604b", SYMLINK+="hackrf-jawbreaker-%k", TAG+="uaccess"
+        ATTR{idVendor}=="1d50", ATTR{idProduct}=="6089", SYMLINK+="hackrf-one-%k", TAG+="uaccess"
+        ATTR{idVendor}=="1d50", ATTR{idProduct}=="cc15", SYMLINK+="rad1o-%k", TAG+="uaccess"
+        ATTR{idVendor}=="1fc9", ATTR{idProduct}=="000c", SYMLINK+="nxp-dfu-%k", TAG+="uaccess"
 
-      # qmk macropad
-      ATTR{idVendor}=="f1f1", ATTR{idProduct}=="0315", SYMLINK+="winry315-%k", TAG+="uaccess"
+        # qmk macropad
+        ATTR{idVendor}=="f1f1", ATTR{idProduct}=="0315", SYMLINK+="winry315-%k", TAG+="uaccess"
 
-      # console/modem
-      KERNEL=="ttyACM[0-9]*", TAG+="udev-acl", TAG+="uaccess"
+        # console/modem
+        KERNEL=="ttyACM[0-9]*", TAG+="udev-acl", TAG+="uaccess"
 
-      # pci runtime power management
-      SUBSYSTEM=="pci", ATTR{power/control}="auto"
-    '';
+        # pci runtime power management
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{power/control}="auto"
+      ''
+      + (lib.optionalString cfg.battery ''
+        ACTION=="add|move", SUBSYSTEM=="net", ENV{INTERFACE}=="enp*", RUN+="${pkgs.ethtool}/bin/ethtool -s %k wol d"
+        ACTION=="add|move", SUBSYSTEM=="net", ENV{INTERFACE}=="wlp*", RUN+="${pkgs.iw}/bin/iw dev %k set power_save on"
+        ACTION=="add", SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="min_power"
+      '');
 
     services.avahi = {
       enable = true;
@@ -214,6 +222,8 @@ in
           }/tuigreet --time --cmd ${command}";
         };
       };
+
+    powerManagement.cpuFreqGovernor = if cfg.battery then "schedutil" else "performance";
 
     hardware.graphics = {
       enable = true;

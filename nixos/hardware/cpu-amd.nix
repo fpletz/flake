@@ -13,8 +13,6 @@
       updateMicrocode = true;
     };
 
-    powerManagement.cpuFreqGovernor = "schedutil";
-
     services.power-profiles-daemon.enable = true;
   };
 }

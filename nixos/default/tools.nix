@@ -12,13 +12,20 @@
     git.enable = true;
     htop.enable = true;
     iftop.enable = true;
+    less = {
+      enable = true;
+      lessopen = null;
+    };
   };
+
+  environment.defaultPackages = [ ];
 
   environment.systemPackages = with pkgs; [
     # introspection
     bottom
     perf-tools
     lsof
+    strace
     # filesystem 
     ncdu
     du-dust

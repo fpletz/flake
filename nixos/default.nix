@@ -32,6 +32,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   boot = {
+    enableContainers = false;
     tmp.useTmpfs = lib.mkDefault true;
     kernelPackages = lib.mkOverride 1001 pkgs.linuxPackages_latest;
     initrd = {
@@ -101,6 +102,11 @@
       revision = inputs.nixpkgs.rev;
       versionSuffix = lib.mkForce ".${inputs.nixpkgs.shortRev}-${config.system.configurationRevision}";
     };
+
+    switch = lib.mkDefault {
+      enable = false;
+      enableNg = true;
+    };
   };
 
   nix = {
@@ -168,6 +174,8 @@
       SystemMaxUse=100M
       MaxRetentionSec=3days
     '';
+
+    userborn.enable = true;
 
     prometheus = {
       exporters.node = {

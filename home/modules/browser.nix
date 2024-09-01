@@ -20,6 +20,8 @@ let
     pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
     pref("browser.compactmode.show", true);
     pref("identity.fxaccounts.toolbar.pxiToolbarEnabled.monitorEnabled", false);
+    pref("widget.gtk.rounded-bottom-corners.enabled", true);
+    pref("browser.uidensity", 1);
   '';
   nativeMessagingHosts = with pkgs; [ tridactyl-native ];
 in

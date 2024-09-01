@@ -23,6 +23,7 @@
     final: prev:
     {
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
+      opencv = prev.opencv.override { enableCuda = false; };
       sway-unwrapped = prev.sway-unwrapped.overrideAttrs (attrs: {
         version = "0-unstable-2024-08-19";
         src = final.fetchFromGitHub {

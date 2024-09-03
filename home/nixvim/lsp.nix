@@ -128,7 +128,6 @@
         enable = true;
         settings.server = {
           standalone = false;
-          on_attach = "__lspOnAttach";
         };
       };
       typescript-tools = {

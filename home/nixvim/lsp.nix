@@ -51,6 +51,7 @@
           clangd.enable = true;
           cmake.enable = true;
           cssls.enable = true;
+          docker-compose-language-service.enable = true;
           dockerls.enable = true;
           gopls.enable = true;
           html.enable = true;
@@ -84,7 +85,9 @@
           };
           pyright.enable = true;
           ruff.enable = true;
+          taplo.enable = true;
           yamlls.enable = true;
+          zls.enable = true;
         };
         keymaps = {
           diagnostic = {

@@ -121,7 +121,7 @@
       };
       barbecue = {
         enable = true;
-        theme = "tokyonight";
+        settings.theme = "tokyonight";
       };
       better-escape = {
         enable = true;

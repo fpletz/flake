@@ -67,7 +67,6 @@
           flavour = "mocha";
           integrations = {
             barbar = true;
-            harpoon = true;
             indent_blankline.enabled = true;
             noice = true;
             navic.enabled = true;

@@ -18,12 +18,6 @@
       }
       {
         mode = "n";
-        key = "<leader>fh";
-        action.__raw = "require'telescope'.extensions.harpoon.marks";
-        options.silent = true;
-      }
-      {
-        mode = "n";
         key = "<leader>fp";
         action.__raw = "require'telescope'.extensions.projects.projects";
         options.silent = true;
@@ -97,10 +91,6 @@
             };
           };
         };
-      };
-      harpoon = {
-        enable = true;
-        enableTelescope = true;
       };
     };
 

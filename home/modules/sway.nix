@@ -56,8 +56,8 @@
       settings = {
         main = {
           terminal = config.bpletza.workstation.terminal.default;
-          dpi-aware = true;
-          font = "Inter:size=8";
+          dpi-aware = false;
+          font = "Inter:size=10";
           icon-theme = config.gtk.iconTheme.name;
         };
         colors = {

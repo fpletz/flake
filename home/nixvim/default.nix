@@ -134,8 +134,10 @@
       lastplace.enable = true;
       lualine = {
         enable = true;
-        globalstatus = true;
-        theme = "tokyonight";
+        settings = {
+          globalstatus = true;
+          theme = "tokyonight";
+        };
       };
       nix.enable = true;
       nix-develop.enable = true;

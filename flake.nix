@@ -104,7 +104,6 @@
       perSystem =
         { pkgs, config, ... }:
         {
-          formatter = pkgs.nixfmt-rfc-style;
           devShells.default = pkgs.mkShellNoCC {
             packages = [
               pkgs.sops

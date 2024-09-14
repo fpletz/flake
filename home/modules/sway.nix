@@ -281,18 +281,6 @@
       ];
     };
 
-    systemd.user.services.caffeinated = {
-      Unit = {
-        PartOf = [ "sway-session.target" ];
-        After = [ "sway-session.target" ];
-        ConditionEnvironment = [ "WAYLAND_DISPLAY" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.caffeinated}/bin/caffeinated";
-        Restart = "on-failure";
-      };
-    };
-
     programs.wlogout = {
       enable = true;
       layout = [

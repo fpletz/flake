@@ -305,7 +305,7 @@ in
     };
 
     hardware.bluetooth = {
-      enable = true;
+      enable = mkDefault true;
       powerOnBoot = mkDefault false;
       settings = {
         General = {
@@ -320,7 +320,7 @@ in
       pkgs.pulsemixer
       pkgs.pamixer
       pkgs.ncpamixer
-    ];
+    ] ++ lib.optional config.hardware.bluetooth.enable pkgs.bluetuith;
 
     virtualisation.podman = {
       enable = true;

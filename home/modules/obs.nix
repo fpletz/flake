@@ -11,6 +11,7 @@
   };
 
   config = lib.mkIf config.bpletza.workstation.obs {
+    home.packages = [ pkgs.obs-cmd ];
     programs.obs-studio = {
       enable = true;
       package = pkgs.obs-studio;

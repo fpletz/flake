@@ -48,6 +48,10 @@
 
     services.fwupd.enable = true;
 
+    environment.systemPackages = [
+      pkgs.radeontop
+    ];
+
     bpletza.workstation = {
       battery = true;
       waybar.wiredInterface = "enp5s0";

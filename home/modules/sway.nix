@@ -11,6 +11,22 @@
   };
 
   config = lib.mkIf config.bpletza.workstation.sway {
+    home.packages = [
+      pkgs.libnotify
+      pkgs.kanshi
+      pkgs.wdisplays
+      pkgs.swaybg
+      pkgs.swaylock
+      pkgs.grim
+      pkgs.slurp
+      pkgs.waypipe
+      pkgs.wf-recorder
+      pkgs.wl-clipboard
+      pkgs.wlprop
+      pkgs.wlr-randr
+      pkgs.wtype
+    ];
+
     services.fnott = {
       enable = true;
       extraFlags = [ "-s" ];

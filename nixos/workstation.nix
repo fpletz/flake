@@ -315,7 +315,12 @@ in
       };
     };
 
-    environment.systemPackages = [ pkgs.alsa-utils ];
+    environment.systemPackages = [
+      pkgs.alsa-utils
+      pkgs.pulsemixer
+      pkgs.pamixer
+      pkgs.ncpamixer
+    ];
 
     virtualisation.podman = {
       enable = true;

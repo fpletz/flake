@@ -29,6 +29,11 @@
       '';
     };
 
+    systemd.network.links."10-dash" = {
+      matchConfig.Path = "pci-0000:04:00.0";
+      linkConfig.Name = "dash";
+    };
+
     networking.wireless = {
       enable = true;
       interfaces = [ "wlp2s0" ];

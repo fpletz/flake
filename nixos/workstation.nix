@@ -18,6 +18,11 @@ in
   options.bpletza.workstation = {
     enable = mkEnableOption "fpletz workstation";
     battery = mkEnableOption "machine has battery";
+    waybar.wiredInterface = mkOption {
+      type = types.str;
+      default = "enp*";
+      description = "Interface name or wildcard for wired interface";
+    };
     i3status-rs.blocks.temperatures = mkOption {
       type = types.listOf types.attrs;
       default = [ ];

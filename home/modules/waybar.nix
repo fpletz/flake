@@ -1,4 +1,5 @@
 {
+  osConfig,
   config,
   lib,
   pkgs,
@@ -139,7 +140,7 @@ in
           icon-size = 16;
         };
         network = {
-          interface = "enp*";
+          interface = osConfig.bpletza.workstation.waybar.wiredInterface;
           format-ethernet = "{bandwidthDownBits} {bandwidthUpBits} ";
           tooltip-format-ethernet = "{ifname} {ipaddr}/{cidr} via {gwaddr}";
           format-linked = "{ifname} (No IP) ";

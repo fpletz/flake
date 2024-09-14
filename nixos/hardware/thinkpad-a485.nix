@@ -50,6 +50,7 @@
 
     bpletza.workstation = {
       battery = true;
+      waybar.wiredInterface = "enp5s0";
       i3status-rs.blocks.temperatures = [
         {
           block = "temperature";

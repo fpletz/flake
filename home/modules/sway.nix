@@ -240,43 +240,80 @@
       enable = true;
       settings = [
         {
-          profile.name = "undocked";
-          profile.outputs = [
-            {
-              criteria = "eDP-1";
-              position = "0,0";
-            }
-          ];
+          profile = {
+            name = "undocked";
+            outputs = [
+              {
+                criteria = "eDP-1";
+                position = "0,0";
+              }
+            ];
+          };
         }
         {
-          profile.name = "home";
-          profile.outputs = [
-            {
-              criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
-              position = "0,0";
-            }
-            {
-              criteria = "Dell Inc. DELL U2520D 79PLGZ2";
-              position = "2560,0";
-            }
-          ];
+          profile = {
+            name = "home";
+            outputs = [
+              {
+                criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
+                position = "0,0";
+              }
+              {
+                criteria = "Dell Inc. DELL U2520D 79PLGZ2";
+                position = "2560,0";
+              }
+            ];
+          };
         }
         {
-          profile.name = "home-docked";
-          profile.outputs = [
-            {
-              criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
-              position = "0,0";
-            }
-            {
-              criteria = "Dell Inc. DELL U2520D 79PLGZ2";
-              position = "2560,0";
-            }
-            {
-              criteria = "eDP-1";
-              position = "0,1440";
-            }
-          ];
+          profile = {
+            name = "home-docked";
+            outputs = [
+              {
+                criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
+                position = "0,0";
+              }
+              {
+                criteria = "Dell Inc. DELL U2520D 79PLGZ2";
+                position = "2560,0";
+              }
+              {
+                criteria = "eDP-1";
+                position = "0,1440";
+              }
+            ];
+          };
+        }
+        {
+          profile = {
+            name = "projector";
+            outputs = [
+              {
+                criteria = "HDMI-A-1";
+                position = "0,0";
+              }
+              {
+                criteria = "eDP-1";
+                position = "0,1080";
+              }
+            ];
+          };
+        }
+        {
+          profile = {
+            name = "muccc";
+            outputs = [
+              {
+                criteria = "AOC U2790B 0x0000579E";
+                position = "0,0";
+                scale = 1.7;
+              }
+              {
+                criteria = "eDP-1";
+                position = "0,1270";
+              }
+            ];
+          };
         }
       ];
     };

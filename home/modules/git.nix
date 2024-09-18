@@ -1,5 +1,9 @@
 { pkgs, config, ... }:
 {
+  home.packages = [
+    pkgs.gitAndTools.tig
+  ];
+
   programs.git = {
     enable = true;
     lfs.enable = config.bpletza.workstation.enable;

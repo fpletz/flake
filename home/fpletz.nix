@@ -76,7 +76,6 @@
       host
       whois
       traceroute
-      nixfmt-rfc-style
     ];
   };
 

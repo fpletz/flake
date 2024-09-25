@@ -164,6 +164,7 @@
           open_mapping = "[[<c-\\>]]";
         };
       };
+      web-devicons.enable = true;
     };
   };
 }

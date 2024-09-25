@@ -31,7 +31,20 @@ in
     boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
     hardware = {
       nvidia = {
-        package = config.boot.kernelPackages.nvidiaPackages.beta;
+        package =
+          let
+            nvidiaPackages = config.boot.kernelPackages.nvidiaPackages.beta;
+          in
+          nvidiaPackages.overrideAttrs {
+            open = nvidiaPackages.open.overrideAttrs {
+              patches = [
+                (pkgs.fetchpatch {
+                  url = "https://patch-diff.githubusercontent.com/raw/NVIDIA/open-gpu-kernel-modules/pull/692.patch";
+                  hash = "sha256-OYw8TsHDpBE5DBzdZCBT45+AiznzO9SfECz5/uXN5Uc=";
+                })
+              ];
+            };
+          };
         modesetting.enable = true;
         forceFullCompositionPipeline = true;
         open = true;

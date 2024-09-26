@@ -18,35 +18,20 @@
         size = 10000000;
         save = 10000000;
       };
-      plugins =
-        [
-          {
-            name = "zsh-vi-mode";
-            src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
-          }
-          {
-            name = "nix-zsh-completions";
-            src = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
-          }
-          {
-            name = "fast-syntax-highlighting";
-            inherit (pkgs.zsh-fast-syntax-highlighting) src;
-          }
-        ]
-        ++ (lib.optional config.bpletza.workstation.enable {
-          name = "bgnotify";
-          src = pkgs.stdenv.mkDerivation {
-            pname = "oh-my-zsh-bgnotify";
-            inherit (pkgs.oh-my-zsh) version src;
-
-            installPhase = ''
-              mkdir -p $out
-              substitute plugins/bgnotify/bgnotify.plugin.zsh $out/bgnotify.plugin.zsh \
-                --replace-fail '(( ''${+commands[notify-send]} ))' 'true' \
-                --replace-fail 'notify-send' '${lib.getExe pkgs.libnotify}'
-            '';
-          };
-        });
+      plugins = [
+        {
+          name = "zsh-vi-mode";
+          src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
+        }
+        {
+          name = "nix-zsh-completions";
+          src = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
+        }
+        {
+          name = "fast-syntax-highlighting";
+          inherit (pkgs.zsh-fast-syntax-highlighting) src;
+        }
+      ];
       sessionVariables = {
         ZSH_TMUX_AUTOSTART = "false";
         ZSH_TMUX_AUTOCONNECT = "false";

@@ -2,6 +2,7 @@
 {
   home.packages = [
     pkgs.gitAndTools.tig
+    pkgs.git-absorb
   ];
 
   programs.git = {

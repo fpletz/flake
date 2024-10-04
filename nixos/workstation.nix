@@ -268,6 +268,9 @@ in
           "context.modules" = [
             {
               name = "libpipewire-module-zeroconf-discover";
+              args = {
+                "pulse.latency" = 500;
+              };
             }
           ];
         };

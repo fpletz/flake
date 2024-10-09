@@ -51,14 +51,14 @@
           clangd.enable = true;
           cmake.enable = true;
           cssls.enable = true;
-          docker-compose-language-service.enable = true;
+          docker_compose_language_service.enable = true;
           dockerls.enable = true;
           gopls.enable = true;
           html.enable = true;
           htmx.enable = true;
           jsonls.enable = true;
           lemminx.enable = true;
-          lua-ls.enable = true;
+          lua_ls.enable = true;
           nixd = {
             enable = true;
             settings =
@@ -77,7 +77,7 @@
               };
           };
           marksman.enable = true;
-          pest-ls = {
+          pest_ls = {
             enable = true;
             onAttach.function = ''
               require("pest-vim").setup()

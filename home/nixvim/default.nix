@@ -116,7 +116,9 @@
     plugins = {
       auto-session = {
         enable = true;
-        sessionLens.loadOnSetup = true;
+        settings = {
+          session_lens.load_on_setup = true;
+        };
       };
       barbecue = {
         enable = true;

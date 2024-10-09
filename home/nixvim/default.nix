@@ -146,19 +146,20 @@
       neo-tree = {
         enable = true;
       };
-      project-nvim = {
+      neogit = {
         enable = true;
-        enableTelescope = true;
       };
+      markview.enable = true;
       nvim-autopairs = {
         enable = true;
         settings = {
           check_ts = true;
         };
       };
-      #which-key = {
-      #  enable = true;
-      #};
+      project-nvim = {
+        enable = true;
+        enableTelescope = true;
+      };
       toggleterm = {
         enable = true;
         settings = {
@@ -167,6 +168,9 @@
         };
       };
       web-devicons.enable = true;
+      #which-key = {
+      #  enable = true;
+      #};
     };
   };
 }

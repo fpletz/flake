@@ -102,7 +102,7 @@ in
     };
 
     programs.qutebrowser = {
-      enable = true;
+      enable = false;
       keyBindings = {
         normal = {
           ",v" = "spawn mpv {url}";

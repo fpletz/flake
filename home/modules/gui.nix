@@ -141,14 +141,14 @@
       };
     };
 
-    systemd.user.services.lxpolkit = {
+    systemd.user.services.pantheon-agent-polkit = {
       Unit = {
         PartOf = [ "graphical-session.target" ];
         After = [ "graphical-session.target" ];
       };
       Install.WantedBy = [ "graphical-session.target" ];
       Service = {
-        ExecStart = "${pkgs.lxsession}/bin/lxpolkit";
+        ExecStart = "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit";
         Restart = "always";
       };
     };

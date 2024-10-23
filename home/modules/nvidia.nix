@@ -16,8 +16,6 @@
     };
 
     home.sessionVariables = {
-      # Hardware cursors not yet working on wlroots
-      WLR_NO_HARDWARE_CURSORS = 1;
       WLR_RENDERER = "vulkan";
       # OpenGL Variables
       GBM_BACKEND = "nvidia-drm";

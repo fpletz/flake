@@ -84,10 +84,14 @@
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     };
 
-    home.packages = with config.colorScheme.palette; [
-      (pkgs.writers.writeBashBin "sm" ''
-        ${lib.getExe pkgs.screen-message} --background=#${base00} --foreground=#${base08}
-      '')
+    home.packages = [
+      (
+        with config.colorScheme.palette;
+        pkgs.writers.writeBashBin "sm" ''
+          ${lib.getExe pkgs.screen-message} --background=#${base00} --foreground=#${base08}
+        ''
+      )
+      pkgs.libva-utils
     ];
 
     programs.zathura = {

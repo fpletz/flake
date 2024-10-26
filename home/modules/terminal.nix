@@ -45,8 +45,10 @@
             }
           ];
         };
-        live_config_reload = true;
-        import = [ "${pkgs.vimPlugins.tokyonight-nvim}/extras/alacritty/tokyonight_night.toml" ];
+        general = {
+          import = [ "${pkgs.vimPlugins.tokyonight-nvim}/extras/alacritty/tokyonight_night.toml" ];
+          live_config_reload = true;
+        };
       };
     };
 

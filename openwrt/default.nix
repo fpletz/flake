@@ -15,7 +15,11 @@
             sha256 = "sha256-9o7PnpoH4y65xY7uXXvccLJmiTkiZpmtgC7srOSua7Y=";
             packages = [
               "luci"
+              "luci-ssl"
+              "luci-app-acme"
+              "acme-acmesh-dnsapi"
               "luci-app-ddns"
+              "drill"
               "luci-proto-wireguard"
               "luci-app-vnstat2"
               "luci-app-sqm"
@@ -25,6 +29,7 @@
               "prometheus-node-exporter-lua-nat_traffic"
               "prometheus-node-exporter-lua-netstat"
               "prometheus-node-exporter-lua-openwrt"
+              "prometheus-node-exporter-lua-hwmon"
               "prometheus-node-exporter-lua-wifi"
               "prometheus-node-exporter-lua-wifi_stations"
               "tcpdump"

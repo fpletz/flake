@@ -12,7 +12,7 @@
         {
           router = buildOpenwrtImage "cudy_x6-v1" {
             release = "snapshot";
-            sha256 = "sha256-zvV+NXmI3df9nHZo3HDRXZ5PPnrNRgrO7wcHfMEh7IA=";
+            sha256 = "sha256-9o7PnpoH4y65xY7uXXvccLJmiTkiZpmtgC7srOSua7Y=";
             packages = [
               "luci"
               "luci-app-ddns"

@@ -8,7 +8,7 @@
         };
         topDown = false;
       };
-      noice.notify.enabled = true;
+      noice.settings.notify.enabled = true;
     };
   };
 }

@@ -22,6 +22,9 @@ let
     pref("identity.fxaccounts.toolbar.pxiToolbarEnabled.monitorEnabled", false);
     pref("widget.gtk.rounded-bottom-corners.enabled", true);
     pref("browser.uidensity", 1);
+    pref("network.proxy.type", 0);
+    pref("webgl.enable-debug-renderer-info", false);
+    pref("media.ffmpeg.vaapi.enabled", true);
   '';
   nativeMessagingHosts = with pkgs; [ tridactyl-native ];
 in

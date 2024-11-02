@@ -20,7 +20,7 @@
       pkgs.grim
       pkgs.slurp
       pkgs.waypipe
-      pkgs.wf-recorder
+      #pkgs.wf-recorder
       pkgs.wl-clipboard
       pkgs.wlprop
       pkgs.wlr-randr

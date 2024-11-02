@@ -2,20 +2,20 @@
   lib,
   stdenv,
   buildLinux,
-  fetchFromGitHub,
+  fetchFromGitLab,
   ...
 }:
 
 let
   suffix = "xanmod1";
   modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-  version = "6.11.5";
-  hash = "sha256-G4u0LQtIeJ0dNAmjNH0OKihmbkivYVbrbXDB9vPw2xI=";
+  version = "6.11.6";
+  hash = "sha256-t0kuKK2f8D1vxoX5dJnodTu3aBmzCc8F7tHwVAUHP1M=";
 in
 buildLinux {
   inherit version modDirVersion;
 
-  src = fetchFromGitHub {
+  src = fetchFromGitLab {
     owner = "xanmod";
     repo = "linux";
     rev = modDirVersion;
@@ -65,7 +65,6 @@ buildLinux {
       UCLAMP_BUCKETS_COUNT = freeform "5";
       UCLAMP_TASK_GROUP = yes;
       MTRR_SANITIZER_ENABLE_DEFAULT = freeform "1";
-      ADDRESS_MASKING = yes;
       ENERGY_MODEL = yes;
       WQ_POWER_EFFICIENT_DEFAULT = yes;
       CPU_FREQ_STAT = yes;

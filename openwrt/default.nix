@@ -12,7 +12,7 @@
         {
           router = buildOpenwrtImage "cudy_x6-v1" {
             release = "snapshot";
-            sha256 = "sha256-9o7PnpoH4y65xY7uXXvccLJmiTkiZpmtgC7srOSua7Y=";
+            sha256 = "sha256-yyeKu5xoaEM2Lpn+n+alrQoFt5sqZktJMUqSwwA3geo=";
             packages = [
               "luci"
               "luci-ssl"

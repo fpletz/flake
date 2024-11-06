@@ -28,7 +28,13 @@ in
       };
     };
     services.xserver.videoDrivers = [ "nvidia" ];
-    boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
+    boot = {
+      kernelParams = [ "nvidia-drm.fbdev=1" ];
+      kernelModules = [
+        # Required by CUDA, isn't loaded automatically when using open modules
+        "nvidia_uvm"
+      ];
+    };
     hardware = {
       nvidia = {
         package = config.boot.kernelPackages.nvidiaPackages.beta;

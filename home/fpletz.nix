@@ -3,6 +3,7 @@
   imports = [
     inputs.nix-colors.homeManagerModule
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.spicetify-nix.homeManagerModules.default
     ./nixvim
     ./modules/browser.nix
     ./modules/git.nix

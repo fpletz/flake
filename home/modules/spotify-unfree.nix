@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
@@ -6,36 +7,6 @@
 }:
 let
   cfg = config.programs.spotify-unfree;
-
-  spotify-adblock = pkgs.rustPlatform.buildRustPackage rec {
-    name = "spotify-adblock";
-    version = "1.0.3";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "abba23";
-      repo = "spotify-adblock";
-      rev = "v${version}";
-      hash = "sha256-UzpHAHpQx2MlmBNKm2turjeVmgp5zXKWm3nZbEo0mYE=";
-    };
-
-    cargoHash = "sha256-oHfk68mAIcmOenW7jn71Xpt8hWVDtxyInWhVN2rH+kk=";
-
-    postPatch = ''
-      substituteInPlace src/lib.rs \
-        --replace-fail 'PathBuf::from("/etc/spotify-adblock/config.toml")' \
-                       'PathBuf::from("${placeholder "out"}/etc/spotify-adblock/config.toml")'
-    '';
-
-    doCheck = false;
-
-    postInstall = ''
-      install -vD config.toml $out/etc/spotify-adblock/config.toml
-    '';
-  };
-
-  package = pkgs.writers.writeBashBin "spotify" ''
-    LD_PRELOAD=${spotify-adblock}/lib/libspotifyadblock.so ${lib.getExe pkgs.spotify}
-  '';
 in
 {
   options.programs.spotify-unfree = {
@@ -47,13 +18,25 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [
-      package
-      (pkgs.spotify.overrideAttrs (attrs: {
-        meta = attrs.meta // {
-          priority = 100;
-        };
-      }))
-    ];
+    programs.spicetify =
+      let
+        spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+      in
+      {
+        enable = true;
+        enabledExtensions = with spicePkgs.extensions; [
+          adblock
+          hidePodcasts
+          shuffle
+          listPlaylistsWithSong
+          playlistIntersection
+          playingSource
+          addToQueueTop
+          history
+          fullAlbumDate
+        ];
+        theme = spicePkgs.themes.catppuccin;
+        colorScheme = "mocha";
+      };
   };
 }

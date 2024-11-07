@@ -77,14 +77,14 @@
           icon-theme = config.gtk.iconTheme.name;
         };
         colors = {
-          # https://github.com/folke/tokyonight.nvim/blob/main/extras/fuzzel/tokyonight_storm.ini
-          background = "1f2335ff";
+          # https://github.com/folke/tokyonight.nvim/blob/main/extras/fuzzel/tokyonight_night.ini
+          background = "16161eff";
           text = "c0caf5ff";
           match = "2ac3deff";
-          selection = "363d59ff";
+          selection = "343a55ff";
           selection-match = "2ac3deff";
           selection-text = "c0caf5ff";
-          border = "29a4bdff";
+          border = "27a1b9ff";
         };
       };
     };

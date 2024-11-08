@@ -46,7 +46,10 @@ in
         "kernel.nmi_watchdog" = 0;
       };
       kernelParams = [ "snd_hda_intel.power_save=1" ];
-      extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+      extraModulePackages = with config.boot.kernelPackages; [
+        v4l2loopback
+        ddcci-driver
+      ];
       extraModprobeConfig = ''
         options v4l2loopback video_nr=23,42 card_label="23,42" exclusive_caps=1
       '';

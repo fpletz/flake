@@ -119,7 +119,7 @@
     programs.mpv = {
       enable = true;
       config = {
-        ytdl-format = "bestvideo[vcodec^=vp9][height<=?1080]+bestaudio[acodec=opus]/bestvideo[height<=?1080]+bestaudio/best";
+        ytdl-format = "bestvideo[vcodec^=vp09][height<=?1080]+bestaudio[acodec=opus]/bestvideo[height<=?1080]+bestaudio/best";
         vo = "gpu";
         gpu-context = "auto";
         hwdec = "auto-safe";

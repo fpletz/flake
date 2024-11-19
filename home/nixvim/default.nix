@@ -162,9 +162,9 @@
         };
       };
       web-devicons.enable = true;
-      #which-key = {
-      #  enable = true;
-      #};
+      which-key = {
+        enable = true;
+      };
     };
   };
 }

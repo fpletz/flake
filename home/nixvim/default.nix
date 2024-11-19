@@ -99,12 +99,6 @@
         key = ">";
         action = ">gv|";
       }
-
-      {
-        mode = "n";
-        key = "<leader>G";
-        action = "<Cmd>Git<CR>";
-      }
       {
         mode = "n";
         key = "<Space><Space>";

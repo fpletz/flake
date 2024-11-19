@@ -61,6 +61,9 @@
           lua_ls.enable = true;
           nixd = {
             enable = true;
+            extraOptions = {
+              offset_encoding = "utf-8";
+            };
             settings =
               let
                 localFlake = ''(builtins.getFlake "/home/fpletz/src/flake")'';

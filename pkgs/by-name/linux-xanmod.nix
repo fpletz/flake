@@ -9,8 +9,8 @@
 let
   suffix = "xanmod1";
   modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-  version = "6.11.9";
-  hash = "sha256-lR7GXFy3eYq75+LwVlXScPYWbdVW6wAV+He0YZ+5AF4=";
+  version = "6.12.0";
+  hash = "sha256-QrKiBqvDB65lu6+L7g6rTjkZtN0Ynpsw2fpRoDJnk3I=";
 in
 buildLinux {
   inherit version modDirVersion;
@@ -53,7 +53,8 @@ buildLinux {
       PREEMPT_VOLUNTARY = lib.mkOverride 60 no;
 
       # x86-64-v3 psABI
-      GENERIC_CPU3 = yes;
+      GENERIC_CPU = yes;
+      X86_64_VERSION = freeform "3";
       MODULE_COMPRESS_XZ = lib.modules.mkForce no;
       MODULE_COMPRESS_ZSTD = yes;
       PERF_EVENTS_AMD_POWER = yes;

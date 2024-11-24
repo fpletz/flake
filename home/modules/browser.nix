@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -72,6 +73,11 @@ in
           + extraPrefs;
         inherit nativeMessagingHosts;
       });
+    };
+
+    home.file.".librewolf/default/chrome" = {
+      source = "${inputs.potatofox}/chrome";
+      recursive = true;
     };
 
     programs.firefox = {

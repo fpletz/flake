@@ -74,6 +74,11 @@
         flake-compat.follows = "flake-compat";
       };
     };
+
+    potatofox = {
+      url = "git+https://codeberg.org/awwpotato/potatofox";
+      flake = false;
+    };
   };
 
   outputs =

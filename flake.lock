@@ -466,6 +466,22 @@
         "type": "github"
       }
     },
+    "potatofox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732311784,
+        "narHash": "sha256-oSBDuV/1ZMfS7f8Ij35daVkzS7aDBlQEmbjeJxdGNKw=",
+        "ref": "refs/heads/main",
+        "rev": "30d46a400d453e87cef2ecf68295214a237fde8f",
+        "revCount": 364,
+        "type": "git",
+        "url": "https://codeberg.org/awwpotato/potatofox"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/awwpotato/potatofox"
+      }
+    },
     "root": {
       "inputs": {
         "bad_gateway": "bad_gateway",
@@ -480,6 +496,7 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "openwrt-imagebuilder": "openwrt-imagebuilder",
+        "potatofox": "potatofox",
         "spicetify-nix": "spicetify-nix",
         "treefmt-nix": "treefmt-nix_3"
       }

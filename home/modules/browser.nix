@@ -104,6 +104,10 @@ in
         "--enable-features=UseOzonePlatform"
       ];
       extensions = [
+        {
+          id = "ocaahdebbfolfmndjeplogmgcagdmblk";
+          updateUrl = "https://raw.githubusercontent.com/NeverDecaf/chromium-web-store/master/updates.xml";
+        }
         "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
         "pgdnlhfefecpicbbihgmbmffkjpaplco" # ublock extra
         "naepdomgkenhinolocfifgehidddafch" # browserpass

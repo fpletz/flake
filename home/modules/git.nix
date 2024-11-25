@@ -8,6 +8,10 @@
   programs.git = {
     enable = true;
     lfs.enable = config.bpletza.workstation.enable;
+    maintenance = {
+      enable = config.bpletza.workstation.enable;
+      repositories = [ "/home/fpletz/src/nixpkgs" ];
+    };
     extraConfig = {
       user = {
         name = "Franz Pletz";
@@ -35,6 +39,10 @@
       rebase = {
         stat = true;
         autostash = true;
+      };
+      maintenance = {
+        auto = false;
+        strategy = "incremental";
       };
       commit = {
         gpgsign = true;

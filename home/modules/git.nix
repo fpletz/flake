@@ -43,6 +43,7 @@
       maintenance = {
         auto = false;
         strategy = "incremental";
+        prefetch.enabled = false;
       };
       commit = {
         gpgsign = true;

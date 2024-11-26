@@ -388,13 +388,9 @@ in
         noto-fonts
         powerline-fonts
         corefonts
-        (nerdfonts.override (_: {
-          fonts = [
-            "FiraCode"
-            "FiraMono"
-            "SourceCodePro"
-          ];
-        }))
+        nerd-fonts.fira-code
+        nerd-fonts.fira-mono
+        nerd-fonts.sauce-code-pro
         meslo-lgs-nf
         inter
       ];

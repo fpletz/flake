@@ -81,6 +81,8 @@
       };
     };
 
+    programs.zoxide.enable = true;
+
     programs.direnv = {
       enable = config.bpletza.workstation.enable;
       nix-direnv.enable = true;

@@ -12,6 +12,9 @@
       enable = config.bpletza.workstation.enable;
       repositories = [ "/home/fpletz/src/nixpkgs" ];
     };
+    attributes = [
+      "*.pdf diff=pdf"
+    ];
     extraConfig = {
       user = {
         name = "Franz Pletz";
@@ -25,9 +28,10 @@
       core = {
         quotePath = false;
       };
+      interactive.singleKey = true;
       merge = {
         tool = "vimdiff";
-        conflictstyle = "diff3";
+        conflictstyle = "zdiff3";
       };
       blame.date = "short";
       rerere.enabled = true;
@@ -38,7 +42,14 @@
       };
       rebase = {
         stat = true;
-        autostash = true;
+        autoStash = true;
+        autoSquash = true;
+        updateRefs = true;
+        missingCommitsCheck = "warn";
+      };
+      advice = {
+        detachedHead = false;
+        statusHints = false;
       };
       maintenance = {
         auto = false;
@@ -70,6 +81,9 @@
       cpa = "cherry-pick --abort";
       cpc = "cherry-pick --continue";
       pfush = "push --force-with-lease --force-if-includes";
+      recommit = "!git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG";
+      blame = "-w -M";
+      pr = "!\"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr\"";
     };
     delta = {
       enable = true;

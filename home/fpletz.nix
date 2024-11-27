@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 {
   imports = [
+    inputs.nix-index-database.hmModules.nix-index
     inputs.nix-colors.homeManagerModule
     inputs.nixvim.homeManagerModules.nixvim
     inputs.spicetify-nix.homeManagerModules.default
@@ -92,6 +93,7 @@
   systemd.user.startServices = "sd-switch";
 
   programs.home-manager.enable = true;
+  programs.nix-index-database.comma.enable = true;
 
   programs.btop = {
     enable = true;

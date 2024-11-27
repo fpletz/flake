@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   home.packages = [
     pkgs.gitAndTools.tig
@@ -100,7 +105,6 @@
 
   programs.gitui = {
     enable = config.bpletza.workstation.enable;
-    theme = builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/gitui/tokyonight_night.ron";
     keyConfig = ''
       (
         open_help: Some(( code: F(1), modifiers: "")),
@@ -135,6 +139,8 @@
       )
     '';
   };
+
+  xdg.configFile."gitui/theme.ron".source = lib.mkForce "${pkgs.vimPlugins.tokyonight-nvim}/extras/gitui/tokyonight_night.ron";
 
   programs.lazygit = {
     enable = config.bpletza.workstation.enable;

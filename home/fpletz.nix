@@ -125,12 +125,11 @@
     clock24 = true;
     terminal = "screen-256color";
     baseIndex = 1;
-    extraConfig =
-      ''
-        set -g set-titles on
-        set -g set-titles-string "#H: #W"
-      ''
-      + (builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/tmux/tokyonight_night.tmux");
+    extraConfig = ''
+      set -g set-titles on
+      set -g set-titles-string "#H: #W"
+      source-file ${pkgs.vimPlugins.tokyonight-nvim}/extras/tmux/tokyonight_night.tmux
+    '';
     plugins = [
       pkgs.tmuxPlugins.pain-control
       {

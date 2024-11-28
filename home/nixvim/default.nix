@@ -53,6 +53,7 @@
       list = true;
       updatetime = 2000;
       termguicolors = true;
+      sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions";
     };
 
     clipboard = {

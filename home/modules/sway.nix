@@ -22,6 +22,7 @@
       pkgs.waypipe
       #pkgs.wf-recorder
       pkgs.wl-clipboard
+      pkgs.wl-mirror
       pkgs.wlprop
       pkgs.wlr-randr
       pkgs.wtype

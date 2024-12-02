@@ -98,6 +98,9 @@
   systemd.user.startServices = "sd-switch";
 
   programs.home-manager.enable = true;
+
+  programs.nix-index.enable = config.bpletza.workstation.enable;
+  programs.nix-index.symlinkToCacheHome = config.bpletza.workstation.enable;
   programs.nix-index-database.comma.enable = config.bpletza.workstation.enable;
 
   programs.btop = {

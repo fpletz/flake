@@ -33,6 +33,7 @@
       core = {
         quotePath = false;
       };
+      init.defaultBranch = "main";
       interactive.singleKey = true;
       merge = {
         tool = "vimdiff";

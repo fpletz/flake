@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.nix-index-database.hmModules.nix-index
@@ -93,7 +98,7 @@
   systemd.user.startServices = "sd-switch";
 
   programs.home-manager.enable = true;
-  programs.nix-index-database.comma.enable = true;
+  programs.nix-index-database.comma.enable = config.bpletza.workstation.enable;
 
   programs.btop = {
     enable = true;

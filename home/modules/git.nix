@@ -12,7 +12,7 @@
 
   programs.git = {
     enable = true;
-    package = if config.bpletza.workstation.enable then pkgs.gitFull else pkgs.gitMinimal;
+    package = if config.bpletza.workstation.enable then pkgs.git else pkgs.gitMinimal;
     lfs.enable = config.bpletza.workstation.enable;
     maintenance = {
       enable = config.bpletza.workstation.enable;

@@ -9,7 +9,10 @@
     mtr.enable = true;
     command-not-found.enable = lib.mkDefault false;
     tmux.enable = true;
-    git.enable = true;
+    git = {
+      enable = true;
+      package = lib.mkDefault pkgs.gitMinimal;
+    };
     htop.enable = true;
     iftop.enable = true;
     less = {
@@ -26,7 +29,7 @@
     perf-tools
     lsof
     strace
-    # filesystem 
+    # filesystem
     ncdu
     du-dust
     dua

@@ -405,6 +405,7 @@ in
     programs.wireshark.enable = true;
     programs.flashrom.enable = true;
     programs.xwayland.enable = true;
+    programs.git.package = pkgs.git;
 
     programs.gnupg.agent = {
       enable = true;

@@ -62,7 +62,15 @@
     nixos.extraModules = [ inputs.self.nixosModules.all ];
   };
 
-  xdg.sounds.enable = false;
+  fonts.fontconfig.enable = lib.mkDefault false;
+
+  xdg = {
+    autostart.enable = lib.mkDefault false;
+    icons.enable = lib.mkDefault false;
+    menus.enable = lib.mkDefault false;
+    mime.enable = lib.mkDefault false;
+    sounds.enable = false;
+  };
 
   users = {
     mutableUsers = false;

@@ -40,7 +40,6 @@ in
     boot = {
       kernel.sysctl = {
         "vm.dirty_writeback_centisecs" = 3000;
-        "net.core.default_qdisc" = "fq_codel";
         "net.ipv4.tcp_limit_output_bytes" = 65536;
         "fs.inotify.max_user_watches" = 524288;
         "kernel.nmi_watchdog" = 0;

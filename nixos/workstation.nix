@@ -406,7 +406,10 @@ in
     programs.iotop.enable = true;
     programs.iftop.enable = true;
     programs.light.enable = true;
-    programs.wireshark.enable = true;
+    programs.wireshark = {
+      enable = true;
+      package = pkgs.wireshark-qt;
+    };
     programs.flashrom.enable = true;
     programs.xwayland.enable = true;
     programs.git.package = pkgs.git;

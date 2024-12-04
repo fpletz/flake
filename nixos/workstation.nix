@@ -304,12 +304,7 @@ in
           };
           "stream.properties" = {
             "node.latency" = "32/48000";
-            "resample.quality" = 1;
-          };
-          "client.resample" = {
-            "stream.properties" = {
-              resample.quality = 10;
-            };
+            "resample.quality" = 8;
           };
         };
       };

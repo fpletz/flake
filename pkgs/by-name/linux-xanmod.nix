@@ -108,12 +108,39 @@ buildLinux {
       HAMRADIO = no;
       WWAN = no;
       ISDN = no;
-      SCSI_LPFC = no;
-      TCM_QLA2XXX = no;
-      SCSI_BFA_FC = no;
-      SCSI_QLA_ISCSI = no;
       NET_DSA = no;
       WINESYNC = unset;
+      DVB_CORE = no;
+      MCB = no;
+      FUSION = lib.modules.mkForce no;
+      TARGET_CORE = no;
+      REISERFS_FS = no;
+      POWER_SEQUENCING = no;
+      RC_CORE = lib.modules.mkForce no;
+      MEDIA_CEC_RC = lib.modules.mkForce unset;
+      MEDIA_CRC_RC = lib.modules.mkForce unset;
+      LIRC = lib.modules.mkForce unset;
+      AGP = lib.modules.mkForce no;
+      # big scsi modules
+      SCSI_LPFC = no;
+      SCSI_BFA_FC = no;
+      SCSI_QLA_ISCSI = no;
+      SCSI_QLA_FC = no;
+      MEGARAID_NEWGEN = lib.modules.mkForce no;
+      MEGARAID_LEGACY = no;
+      MEGARAID_SAS = no;
+      SCSI_MPT3SAS = no;
+      SCSI_MPT2SAS = no;
+      SCSI_MPI3MR = no;
+      SCSI_AACRAID = no;
+      SCSI_AIC7XXX = no;
+      SCSI_AIC79XX = no;
+      SCSI_AIC94XX = no;
+      SCSI_CXGB3_ISCSI = no;
+      SCSI_CXGB4_ISCSI = no;
+      AIC79XX_DEBUG_ENABLE = lib.modules.mkForce unset;
+      AIC7XXX_DEBUG_ENABLE = lib.modules.mkForce unset;
+      AIC94XX_DEBUG = lib.modules.mkForce unset;
     };
 
   extraMeta = {

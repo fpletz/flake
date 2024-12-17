@@ -69,7 +69,10 @@
 
     openwrt-imagebuilder = {
       url = "github:astro/nix-openwrt-imagebuilder";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     spicetify-nix = {

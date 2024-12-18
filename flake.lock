@@ -477,15 +477,16 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1734512159,
-        "narHash": "sha256-WR5apPQBgqBH0dG0P/iIpcXzwE4ePsmZSBfywOPN6Qs=",
-        "owner": "astro",
+        "lastModified": 1734549998,
+        "narHash": "sha256-v064qwQory4FrvF70VDh7nKT6ZDELgB97SrM/UAX8wc=",
+        "owner": "fpletz",
         "repo": "nix-openwrt-imagebuilder",
-        "rev": "afaf2346b4feebe46ed59cdee780dfc40d67dcc4",
+        "rev": "149a6722a10898edf68c580e2bf220e458afd860",
         "type": "github"
       },
       "original": {
-        "owner": "astro",
+        "owner": "fpletz",
+        "ref": "24.10.0-rc2",
         "repo": "nix-openwrt-imagebuilder",
         "type": "github"
       }

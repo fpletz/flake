@@ -11,18 +11,16 @@
         in
         {
           router = buildOpenwrtImage "cudy_x6-v1" {
-            release = "snapshot";
-            sha256 = "sha256-yyeKu5xoaEM2Lpn+n+alrQoFt5sqZktJMUqSwwA3geo=";
+            release = "24.10.0-rc2";
             packages = [
               "luci"
-              "luci-ssl-openssl"
+              "luci-ssl"
               "luci-mod-admin-full"
               "luci-mod-rpc"
               "luci-proto-wireguard"
               "luci-app-vnstat2"
               "luci-app-sqm"
               "luci-app-uhttpd"
-              "wpad-openssl"
               "luci-app-acme"
               "acme-acmesh-dnsapi"
               "luci-app-ddns"

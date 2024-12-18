@@ -102,7 +102,8 @@
       extraConfig = "include theme";
     };
 
-    xdg.configFile."zathura/theme".source = "${pkgs.vimPlugins.tokyonight-nvim}/extras/zathura/tokyonight_night.zathurarc";
+    xdg.configFile."zathura/theme".source =
+      "${pkgs.vimPlugins.tokyonight-nvim}/extras/zathura/tokyonight_night.zathurarc";
 
     xdg.mimeApps = {
       enable = true;

@@ -142,7 +142,8 @@
     '';
   };
 
-  xdg.configFile."gitui/theme.ron".source = lib.mkForce "${pkgs.vimPlugins.tokyonight-nvim}/extras/gitui/tokyonight_night.ron";
+  xdg.configFile."gitui/theme.ron".source =
+    lib.mkForce "${pkgs.vimPlugins.tokyonight-nvim}/extras/gitui/tokyonight_night.ron";
 
   programs.lazygit = {
     enable = config.bpletza.workstation.enable;

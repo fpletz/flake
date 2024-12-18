@@ -123,7 +123,8 @@
     extraOptions = [ "--group-directories-first" ];
   };
 
-  home.file.".config/eza/theme.yml".source = "${pkgs.vimPlugins.tokyonight-nvim}/extras/eza/tokyonight.yml";
+  home.file.".config/eza/theme.yml".source =
+    "${pkgs.vimPlugins.tokyonight-nvim}/extras/eza/tokyonight.yml";
 
   programs.jq.enable = true;
 

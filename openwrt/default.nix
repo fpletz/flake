@@ -11,13 +11,15 @@
         in
         {
           router = buildOpenwrtImage "cudy_x6-v1" {
-            release = "24.10.0-rc2";
+            release = "24.10.0-rc4";
             packages = [
               "luci"
               "luci-ssl"
               "luci-mod-admin-full"
               "luci-mod-rpc"
               "luci-proto-wireguard"
+              "luci-app-uhttpd"
+              "luci-app-lldpd"
               "luci-app-vnstat2"
               "luci-app-sqm"
               "luci-app-uhttpd"

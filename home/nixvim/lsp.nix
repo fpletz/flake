@@ -54,14 +54,6 @@
           docker_compose_language_service.enable = true;
           dockerls.enable = true;
           gopls.enable = true;
-          harper_ls = {
-            enable = true;
-            extraOptions = {
-              linters = {
-                sentence_capitalization = false;
-              };
-            };
-          };
           html.enable = true;
           htmx.enable = true;
           jsonls.enable = true;

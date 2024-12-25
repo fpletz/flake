@@ -58,6 +58,7 @@
           htmx.enable = true;
           jsonls.enable = true;
           lemminx.enable = true;
+          lexical.enable = true;
           lua_ls.enable = true;
           nixd = {
             enable = true;
@@ -87,6 +88,8 @@
           pyright.enable = true;
           ruff.enable = true;
           taplo.enable = true;
+          texlab.enable = true;
+          typos_lsp.enable = true;
           yamlls.enable = true;
           zls.enable = true;
         };

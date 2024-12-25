@@ -74,8 +74,6 @@
                 options = {
                   nixos.expr = "${localFlake}.nixosConfigurations.server.options";
                   home-manager.expr = "${localFlake}.homeConfigurations.fpletz.options";
-                  flake-parts.expr = "${localFlake}.debug.options";
-                  flake-parts2.expr = "${localFlake}.currentSystem.options";
                 };
               };
           };

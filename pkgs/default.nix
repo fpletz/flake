@@ -1,4 +1,12 @@
 { lib, inputs, ... }:
+let
+  byNamePackages =
+    pkgs:
+    lib.filesystem.packagesFromDirectoryRecursive {
+      inherit (pkgs) callPackage;
+      directory = ./by-name;
+    };
+in
 {
   perSystem =
     { pkgs, system, ... }:
@@ -10,10 +18,7 @@
         ];
       };
 
-      packages = lib.filesystem.packagesFromDirectoryRecursive {
-        inherit (pkgs) callPackage;
-        directory = ./by-name;
-      };
+      packages = byNamePackages pkgs;
 
       legacyPackages = pkgs;
     };
@@ -24,8 +29,5 @@
       nix = final.nixVersions.nix_2_25;
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
     }
-    // lib.filesystem.packagesFromDirectoryRecursive {
-      inherit (final) callPackage;
-      directory = ./by-name;
-    };
+    // byNamePackages final;
 }

@@ -16,7 +16,7 @@
       enable = true;
       package = pkgs.obs-studio;
       plugins = with pkgs.obs-studio-plugins; [
-        #obs-multi-rtmp
+        obs-multi-rtmp
         obs-gstreamer
         wlrobs
         obs-pipewire-audio-capture
@@ -28,7 +28,6 @@
         obs-shaderfilter
         obs-composite-blur
         obs-source-record
-        #obs-ndi
       ];
     };
   };

@@ -17,8 +17,9 @@ in
 
   config = {
     nixpkgs.permittedUnfreePackages = [
-      "ndi"
       "spotify"
+      "steam"
+      "steam-unwrapped"
     ];
     nixpkgs.config.allowUnfreePredicate =
       pkg: builtins.elem (lib.getName pkg) cfg.permittedUnfreePackages;

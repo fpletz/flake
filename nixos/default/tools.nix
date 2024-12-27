@@ -69,6 +69,6 @@
     openssl
     # terminfos
     alacritty.terminfo
-    kitty.terminfo
+    ghostty.terminfo
   ];
 }

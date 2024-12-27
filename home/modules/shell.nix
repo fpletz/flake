@@ -55,6 +55,10 @@
           zvm_after_init_commands+=(
             "bindkey -M viins '^r' atuin-search-viins"
           )
+
+          if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+            source $GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration
+          fi
         ''
         + (lib.optionalString config.programs.direnv.enable ''
           # don't execute direnv on every zsh init

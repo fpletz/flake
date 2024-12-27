@@ -13,7 +13,7 @@
 
     default = lib.mkOption {
       type = lib.types.str;
-      default = lib.getExe pkgs.alacritty;
+      default = lib.getExe pkgs.ghostty;
     };
   };
 
@@ -52,30 +52,17 @@
       };
     };
 
-    programs.kitty = {
-      enable = true;
-      font = {
-        name = "Fira Code";
-        size = 10;
-      };
-      settings = {
-        scrollback_lines = 4000;
-        enable_audio_bell = false;
-        update_check_interval = 0;
-        tab_bar_min_tabs = 2;
-        tab_bar_edge = "bottom";
-        tab_bar_style = "powerline";
-        tab_powerline_style = "slanted";
-        tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
-        wayland_enable_ime = false;
-      };
-      shellIntegration = {
-        enableBashIntegration = true;
-        enableZshIntegration = true;
-      };
-      extraConfig = ''
-        include ${pkgs.vimPlugins.tokyonight-nvim}/extras/kitty/tokyonight_night.conf
-      '';
-    };
+    home.packages = [ pkgs.ghostty ];
+
+    home.file.".config/ghostty/config".text = ''
+      theme = tokyonight
+      font-family = "Fira Code"
+      font-size = 10
+      mouse-hide-while-typing = true
+      gtk-adwaita = false
+      auto-update = off
+      gtk-titlebar = false
+      gtk-single-instance = true
+    '';
   };
 }

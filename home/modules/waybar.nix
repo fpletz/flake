@@ -178,7 +178,7 @@ in
               ""
             ];
           };
-          on-click = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.pulsemixer}/bin/pulsemixer";
+          on-click = "${config.bpletza.workstation.terminal.default} -e ${lib.getExe pkgs.pulsemixer}";
         };
         mpris = {
           format = "{player_icon} {dynamic}";

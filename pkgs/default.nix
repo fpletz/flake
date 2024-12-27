@@ -21,6 +21,7 @@
   flake.overlays.default =
     final: _prev:
     {
+      nix = final.nixVersions.nix_2_25;
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
     }
     // lib.filesystem.packagesFromDirectoryRecursive {

@@ -118,6 +118,9 @@
   };
 
   nix = {
+    # FIXME 2.24 hangs on every localbuild build for a long time trying to close fds until INT_MAX :/
+    package = pkgs.nixVersions.nix_2_25;
+
     registry = {
       fpletz.flake = inputs.self;
     };

@@ -12,7 +12,7 @@
             cmp.config.sources({
               { name = 'nvim_lsp' },
               { name = 'nvim_lsp_signature_help' },
-              -- { name = 'treesitter' },
+              { name = 'treesitter' },
               { name = 'path' },
               { name = 'luasnip' },
             }, {
@@ -63,7 +63,7 @@
       cmp-path.enable = true;
       cmp-rg.enable = true;
       cmp-spell.enable = true;
-      # cmp-treesitter.enable = true;
+      cmp-treesitter.enable = true;
       luasnip = {
         enable = true;
         fromVscode = [ { } ];
@@ -82,7 +82,7 @@
             rg = "";
             calc = "";
             emoji = "";
-            # treesitter = "";
+            treesitter = "";
             spell = "";
           };
         };

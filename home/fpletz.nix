@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  osConfig,
   ...
 }:
 {
@@ -68,22 +69,58 @@
       TZ = "Europe/Amsterdam";
     };
 
-    packages = with pkgs; [
-      iperf
-      pv
-      ncdu
-      du-dust
-      dua
-      socat
-      nmap
-      pwgen
-      wget
-      yq
-      dnsutils
-      host
-      whois
-      traceroute
-    ];
+    packages =
+      with pkgs;
+      [
+        iperf
+        pv
+        ncdu
+        du-dust
+        dua
+        socat
+        nmap
+        pwgen
+        wget
+        dnsutils
+        host
+        whois
+        traceroute
+        nix-output-monitor
+      ]
+      ++ lib.optionals config.bpletza.workstation.enable (
+        [
+          stdmanpages
+          man-pages
+          man-pages-posix
+          python3Packages.ptpython
+          typos
+          ncmpcpp
+          mpc-cli
+          sipcalc
+          units
+          sops
+          nurl
+          nix-tree
+          playerctl
+          tmate
+          nixd
+          ruff
+          poetry
+          uv
+          yt-dlp
+          pass
+          gopass
+          virt-manager
+          virt-viewer
+          mumble
+          gimp
+          claws-mail
+        ]
+        ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ])
+      )
+      ++ lib.optionals (pkgs.stdenv.isx86_64 && (osConfig.networking.hostName or "") == "zocknix") [
+        steam
+      ];
   };
 
   nix = {

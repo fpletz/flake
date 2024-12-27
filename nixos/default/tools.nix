@@ -67,6 +67,8 @@
     age
     sops
     openssl
+    # nix
+    nix-output-monitor
     # terminfos
     alacritty.terminfo
     ghostty.terminfo

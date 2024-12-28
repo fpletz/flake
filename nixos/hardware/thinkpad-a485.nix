@@ -20,9 +20,6 @@
         "sd_mod"
         "rtsx_pci_sdmmc"
       ];
-      extraModulePackages = with config.boot.kernelPackages; [
-        acpi_call
-      ];
       extraModprobeConfig = ''
         options thinkpad_acpi fan_control=1
         options psmouse synaptics_intertouch=1

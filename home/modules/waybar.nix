@@ -48,6 +48,7 @@ in
         modules-right = [
           "network"
           "network#wl"
+          "bluetooth"
           "pulseaudio"
           "backlight"
           "upower"
@@ -180,6 +181,13 @@ in
           };
           on-click = "${config.bpletza.workstation.terminal.default} -e ${lib.getExe pkgs.pulsemixer}";
         };
+        bluetooth = {
+          format = " {status}";
+          format-on = "";
+          format-off = "";
+          format-connected = " {device_alias}";
+          format-connected-battery = " {device_alias} {device_battery_percentage}%";
+        };
         mpris = {
           format = "{player_icon} {dynamic}";
           format-paused = "{status_icon} <i>{dynamic}</i>";
@@ -255,6 +263,7 @@ in
         #power-profiles-daemon,
         #upower,
         #pulseaudio,
+        #bluetooth,
         #network,
         #network-wl,
         #systemd-failed-units,
@@ -265,8 +274,12 @@ in
           border-radius: 5px;
         }
 
-        #load {
+        #load, #bluetooth {
           color: #7dcfff;
+        }
+
+        #bluetooth.off {
+          color: #a9b1d6;
         }
 
         #memory {
@@ -313,7 +326,7 @@ in
           color: #24283b;
         }
 
-        #network, #network-wl {
+        #network, #network-wl, #bluetooth.discoverable {
           color: #f7768e;
         }
 

@@ -10,6 +10,7 @@
 
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           awk
+          asm
           bash
           bibtex
           c
@@ -19,6 +20,8 @@
           cpp
           css
           csv
+          desktop
+          devicetree
           dhall
           diff
           disassembly
@@ -30,6 +33,7 @@
           fish
           git-config
           git-rebase
+          gitattributes
           gitcommit
           gitignore
           gleam
@@ -43,10 +47,14 @@
           helm
           html
           http
+          ini
           java
           javascript
+          jq
           json
           json5
+          jsonc
+          jsonnet
           just
           liquidsoap
           lua
@@ -69,6 +77,7 @@
           regex
           requirements
           robots
+          rust
           sql
           ssh-config
           strace
@@ -83,6 +92,8 @@
           vim
           vimdoc
           xml
+          xcompose
+          xresources
           yaml
           zathurarc
           zig

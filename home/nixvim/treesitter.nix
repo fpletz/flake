@@ -55,7 +55,7 @@
           markdown-inline
           meson
           ninja
-          # nix
+          nix
           objdump
           org
           passwd
@@ -91,9 +91,6 @@
           highlight = {
             enable = true;
             additional_vim_regex_highlighting = true;
-            disable = [
-              "nix"
-            ];
           };
           indent.enable = true;
           incremental_selection.enable = true;

@@ -313,11 +313,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1735405165,
-        "narHash": "sha256-6i5R2H8R8YMc47wQwkX+TRv3oaY3aJ4l0n3l1bdD+zk=",
+        "lastModified": 1735430515,
+        "narHash": "sha256-Ve274gexqGQWmepPobe5wBWMnQCeSfLxu+v3iGjs1GE=",
         "owner": "fpletz",
         "repo": "nixpkgs",
-        "rev": "dc824eb7b5def7824325e5515fbe492e2fb807c2",
+        "rev": "d0184a19a9d77e8aeac6e48bfc9eceecba0f02ab",
         "type": "github"
       },
       "original": {

@@ -53,6 +53,7 @@
           cssls.enable = true;
           docker_compose_language_service.enable = true;
           dockerls.enable = true;
+          gitlab_ci_ls.enable = true;
           gopls.enable = true;
           html.enable = true;
           htmx.enable = true;

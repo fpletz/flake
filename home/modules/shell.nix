@@ -76,6 +76,8 @@
         '';
     };
 
+    home.file.".p10k.zsh".source = ./shell/p10k.zsh;
+
     programs.bash = {
       enable = true;
       historyFileSize = 1000000;

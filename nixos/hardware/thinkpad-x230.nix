@@ -38,7 +38,6 @@
     networking.wireless = {
       enable = true;
       interfaces = [ "wlp2s0" ];
-      fallbackToWPA2 = lib.mkForce true;
     };
 
     hardware = {

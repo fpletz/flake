@@ -79,6 +79,45 @@ in
       };
     };
 
+    sops.secrets = lib.mkIf config.networking.wireless.enable {
+      wifi = { };
+    };
+
+    networking.wireless = {
+      secretsFile = config.sops.secrets.wifi.path;
+      networks = {
+
+        "٩(̾●̮̮̃̾•̃̾)۶" = {
+          pskRaw = "ext:psk_٩(̾●̮̮̃̾•̃̾)۶";
+          priority = 42;
+        };
+        mobilpletz = {
+          pskRaw = "ext:psk_mobilpletz";
+          priority = 42;
+        };
+        muccc = {
+          pskRaw = "ext:psk_muccc";
+          priority = 23;
+        };
+        echelon = {
+          pskRaw = "ext:psk_echelon";
+          priority = 5;
+        };
+        "muenchen.freifunk.net/muc_cty" = {
+          priority = 21;
+        };
+        "WIFIonICE" = {
+          priority = 5;
+        };
+        "" = {
+          priority = 1;
+          extraConfig = ''
+            disabled=1
+          '';
+        };
+      };
+    };
+
     services.tailscale.enable = true;
   };
 }

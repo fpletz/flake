@@ -69,6 +69,7 @@
     openssl
     # nix
     nix-output-monitor
+    nom-rebuild
     # terminfos
     alacritty.terminfo
     ghostty.terminfo

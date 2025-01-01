@@ -115,6 +115,8 @@
       enable = false;
       enableNg = true;
     };
+
+    rebuild.enableNg = true;
   };
 
   nix = {

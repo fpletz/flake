@@ -39,10 +39,6 @@
     enableContainers = false;
     tmp.useTmpfs = lib.mkDefault true;
     kernelPackages = lib.mkOverride 1001 pkgs.linuxPackages_latest;
-    initrd = {
-      compressor = "zstd";
-      compressorArgs = [ "-19" ];
-    };
     loader = {
       timeout = lib.mkForce 2;
       grub.splashImage = null;

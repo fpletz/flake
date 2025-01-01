@@ -124,6 +124,13 @@ in
       ipv6 = true;
     };
 
+    networking.firewall = {
+      allowedUDPPorts = [ 5353 ];
+      trustedInterfaces = [
+        "podman+"
+        "virbr+"
+      ];
+    };
     networking.wireless = {
       extraConfig = ''
         preassoc_mac_addr=1
@@ -354,7 +361,6 @@ in
         dates = "weekly";
       };
     };
-    networking.firewall.trustedInterfaces = [ "podman+" ];
 
     fonts = {
       fontconfig = {
@@ -486,6 +492,10 @@ in
         maxJobs = 10;
         speedFactor = 2;
       };
+    };
+
+    virtualisation.libvirtd = {
+      enable = true;
     };
   };
 }

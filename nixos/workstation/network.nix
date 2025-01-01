@@ -28,6 +28,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    networking.useDHCP = false;
+
     systemd.network.networks = {
       "40-trusted-dhcp" = lib.mkIf (cfg.trustedDHCPInterfaces != [ ]) {
         matchConfig.Name = cfg.trustedDHCPInterfaces;

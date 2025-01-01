@@ -2,12 +2,28 @@
   lib,
   config,
   pkgs,
+  osConfig,
   ...
 }:
+let
+  cfg = config.bpletza.workstation;
+in
 {
-  options.bpletza.workstation.gui = lib.mkOption {
-    type = lib.types.bool;
-    default = config.bpletza.workstation.sway;
+  options.bpletza.workstation = {
+    gui = lib.mkOption {
+      type = lib.types.bool;
+      default = config.bpletza.workstation.sway;
+    };
+    ytdlVideoCodec = lib.mkOption {
+      type = lib.types.str;
+      default = osConfig.bpletza.workstation.ytdlVideoCodec or "vp09";
+      description = "youtube-dl video codec";
+    };
+    ytdlMaxRes = lib.mkOption {
+      type = lib.types.int;
+      default = osConfig.bpletza.workstation.ytdlMaxRes or 1080;
+      description = "youtube-dl maximum resolution";
+    };
   };
 
   config = lib.mkIf config.bpletza.workstation.gui {
@@ -125,10 +141,14 @@
     programs.mpv = {
       enable = true;
       config = {
-        ytdl-format = "bestvideo[vcodec^=vp09][height<=?1080]+bestaudio[acodec=opus]/bestvideo[height<=?1080]+bestaudio/best";
         vo = "gpu";
         gpu-context = "auto";
         hwdec = "auto-safe";
+        ytdl-format = lib.concatStringsSep "+" [
+          "bestvideo[vcodec^=${cfg.ytdlVideoCodec}][height<=?${toString cfg.ytdlMaxRes}]"
+          "bestaudio[acodec=opus]/bestvideo[height<=?${toString cfg.ytdlMaxRes}]"
+          "bestaudio/best"
+        ];
       };
     };
 

@@ -89,6 +89,7 @@ in
 
     bpletza.workstation = {
       battery = true;
+      ytdlVideoCodec = "avc1";
       i3status-rs.blocks.temperatures = [
         {
           block = "temperature";

@@ -28,6 +28,16 @@ in
       default = [ ];
       description = "temperature blocks in the config";
     };
+    ytdlVideoCodec = lib.mkOption {
+      type = lib.types.str;
+      default = "av01";
+      description = "youtube-dl video codec";
+    };
+    ytdlMaxRes = lib.mkOption {
+      type = lib.types.int;
+      default = 1080;
+      description = "youtube-dl maximum resolution";
+    };
   };
 
   imports = [

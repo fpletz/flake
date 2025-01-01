@@ -25,6 +25,11 @@
       };
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -146,6 +151,7 @@
           devShells.default = pkgs.mkShellNoCC {
             packages = [
               pkgs.sops
+              pkgs.ssh-to-age
               pkgs.nix-fast-build
               inputs.nixos-anywhere.packages.${system}.default
             ];

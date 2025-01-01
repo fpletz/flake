@@ -1,0 +1,9 @@
+creation_rules:
+  - path_regex: secrets\.yaml$
+    key_groups:
+      - pgp:
+          - 8A39615DCE78AF082E23F303846FDED7792617B4
+        age:
+          - age1sj6kx043vqxcet6fv05mzjs9umpd0yu4xfln99yh8jpkt07w3e6sf9rzxh
+          # lolnovo
+          - age1wcv25mzhklymfkn390qctufd3txrwzhhcj6q9ry9rgvs49e96pmqtgd2tl

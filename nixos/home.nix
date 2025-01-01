@@ -5,6 +5,8 @@
   ...
 }:
 {
+  sops.secrets.fpletz-password.neededForUsers = true;
+
   imports = [ inputs.home-manager.nixosModules.default ];
 
   home-manager = lib.mkIf (!config.boot.isContainer) {
@@ -20,6 +22,7 @@
     users.fpletz = {
       uid = 1000;
       isNormalUser = true;
+      hashedPasswordFile = config.sops.secrets.fpletz-password.path;
       group = "users";
       extraGroups = [
         "wheel"

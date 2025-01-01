@@ -13,6 +13,8 @@
     ./default/postgresql.nix
     ./default/tools.nix
     ./default/zram.nix
+    inputs.disko.nixosModules.default
+    inputs.sops-nix.nixosModules.sops
   ];
 
   nixpkgs.overlays = [
@@ -26,6 +28,8 @@
     setNixPath = lib.mkDefault true;
     setFlakeRegistry = lib.mkDefault true;
   };
+
+  sops.defaultSopsFile = ../secrets.yaml;
 
   time.timeZone = "UTC";
   console.keyMap = "us";

@@ -24,7 +24,6 @@
               else
                 [
                   self.nixosModules.all
-                  inputs.disko.nixosModules.default
                   module
                 ];
             specialArgs = {

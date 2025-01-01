@@ -94,7 +94,7 @@
 
   system = {
     # living on the edge
-    stateVersion = lib.mkDefault config.system.nixos.version;
+    stateVersion = lib.mkOverride 1001 config.system.nixos.version;
 
     # show a diff of the system closure on activation
     activationScripts.diff = ''

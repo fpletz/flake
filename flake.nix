@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "github:fpletz/nixpkgs/master";
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
     flake-root.url = "github:srid/flake-root";
     flake-compat.url = "github:edolstra/flake-compat";
 
@@ -19,6 +22,21 @@
         nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
+      };
+    };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-anywhere = {
+      url = "github:nix-community/nixos-anywhere";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixos-stable.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        disko.follows = "disko";
       };
     };
 
@@ -118,12 +136,18 @@
         modules // { inherit all; };
 
       perSystem =
-        { pkgs, config, ... }:
+        {
+          pkgs,
+          config,
+          system,
+          ...
+        }:
         {
           devShells.default = pkgs.mkShellNoCC {
             packages = [
               pkgs.sops
               pkgs.nix-fast-build
+              inputs.nixos-anywhere.packages.${system}.default
             ];
 
             inputsFrom = [

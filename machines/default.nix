@@ -24,6 +24,7 @@
               else
                 [
                   self.nixosModules.all
+                  inputs.disko.nixosModules.default
                   module
                 ];
             specialArgs = {
@@ -99,19 +100,7 @@
 
       lolnovo = nixos {
         system = "x86_64-linux";
-        module = {
-          networking.hostName = "lolnovo";
-          fileSystems."/" = {
-            device = "/dev/disk/by-label/nixos";
-            fsType = "ext4";
-          };
-          boot.loader.systemd-boot = {
-            enable = true;
-          };
-
-          bpletza.hardware.thinkpad.x230 = true;
-          bpletza.workstation.enable = true;
-        };
+        module = import ./lolnovo.nix;
       };
 
       zocknix = nixos {

@@ -30,7 +30,10 @@ in
     };
   };
 
-  imports = [ ./workstation/nvidia.nix ];
+  imports = [
+    ./workstation/network.nix
+    ./workstation/nvidia.nix
+  ];
 
   config = mkIf cfg.enable {
     nixpkgs.permittedUnfreePackages = [ "corefonts" ];

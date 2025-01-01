@@ -21,6 +21,8 @@
         kernelModules = [ "i915" ];
       };
 
+      kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
+
       kernelModules = [ "kvm-intel" ];
       blacklistedKernelModules = [
         "mei_me"
@@ -36,6 +38,7 @@
     networking.wireless = {
       enable = true;
       interfaces = [ "wlp2s0" ];
+      fallbackToWPA2 = lib.mkForce true;
     };
 
     hardware = {

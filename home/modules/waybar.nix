@@ -37,9 +37,10 @@ in
           "privacy"
           "systemd-failed-units"
           "power-profiles-daemon"
-          "load"
-          "memory"
-          "disk"
+          # "load"
+          # "memory"
+          # "disk"
+          "backlight"
         ];
         modules-center = [
           #"sway/window"
@@ -50,7 +51,6 @@ in
           "network#wl"
           "bluetooth"
           "pulseaudio"
-          "backlight"
           "upower"
           "clock"
           "tray"
@@ -114,7 +114,7 @@ in
           };
         };
         backlight = {
-          format = "{percent}% {icon}";
+          format = "{percent} {icon}";
           format-icons = [
             ""
             ""

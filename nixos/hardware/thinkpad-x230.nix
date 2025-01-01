@@ -58,6 +58,8 @@
 
     environment.systemPackages = with pkgs; [ intel-gpu-tools ];
 
+    services.power-profiles-daemon.enable = true;
+
     bpletza.workstation = {
       battery = true;
       waybar.wiredInterface = "eno0";

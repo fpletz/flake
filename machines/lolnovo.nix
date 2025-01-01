@@ -9,6 +9,12 @@
   bpletza.hardware.thinkpad.x230 = true;
   bpletza.workstation.enable = true;
 
+  home-manager.sharedModules = [
+    {
+      services.easyeffects.enable = lib.mkForce false;
+    }
+  ];
+
   disko.devices = {
     disk.disk1 = {
       device = lib.mkDefault "/dev/disk/by-path/pci-0000:00:1f.2-ata-1";

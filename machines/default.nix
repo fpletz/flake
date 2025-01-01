@@ -82,19 +82,7 @@
 
       trolovo = nixos {
         system = "x86_64-linux";
-        module = {
-          networking.hostName = "trolovo";
-          fileSystems."/" = {
-            device = "/dev/disk/by-label/nixos";
-            fsType = "ext4";
-          };
-          boot.loader.systemd-boot = {
-            enable = true;
-          };
-
-          bpletza.hardware.thinkpad.a485 = true;
-          bpletza.workstation.enable = true;
-        };
+        module = import ./trolovo.nix;
       };
 
       lolnovo = nixos {

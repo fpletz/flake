@@ -1,4 +1,11 @@
+[files]
+extend-exclude = [
+    "home/modules/shell/p10k.zsh",
+    "static/dircolors.json",
+    "secrets.yaml",
+]
+
 [default.extend-words]
+noice = "noice"
 hda = "hda"
 caf = "caf"
-noice = "noice"

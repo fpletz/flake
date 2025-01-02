@@ -48,6 +48,11 @@
         };
       };
 
+      ananas = nixos {
+        system = "x86_64-linux";
+        module = import ./ananas.nix;
+      };
+
       hal = nixos {
         system = "aarch64-linux";
         module = {

@@ -6,6 +6,7 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/AA36-B5EB";
     fsType = "vfat";
+    options = [ "umask=0077" ];
   };
 
   fileSystems."/" = {

@@ -19,12 +19,19 @@ in
       default = "fpletz";
       description = "username";
     };
+    passwordFromSecrets = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Use secrets for password hash";
+    };
   };
 
   imports = [ inputs.home-manager.nixosModules.default ];
 
   config = lib.mkIf cfg.enable {
-    sops.secrets."${cfg.user}-password".neededForUsers = true;
+    sops.secrets."${cfg.user}-password" = lib.mkIf cfg.passwordFromSecrets {
+      neededForUsers = true;
+    };
 
     home-manager = lib.mkIf (!config.boot.isContainer) {
       useGlobalPkgs = true;
@@ -39,7 +46,9 @@ in
       users.${cfg.user} = {
         uid = 1000;
         isNormalUser = true;
-        hashedPasswordFile = config.sops.secrets."${cfg.user}-password".path;
+        hashedPasswordFile =
+          lib.mkIf cfg.passwordFromSecrets
+            config.sops.secrets."${cfg.user}-password".path;
         group = "users";
         extraGroups = [
           "wheel"

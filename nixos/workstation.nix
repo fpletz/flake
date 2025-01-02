@@ -18,6 +18,10 @@ in
   options.bpletza.workstation = {
     enable = mkEnableOption "fpletz workstation";
     battery = mkEnableOption "machine has battery";
+    libvirt = mkOption {
+      type = types.bool;
+      description = "libvirtd";
+    };
     waybar.wiredInterface = mkOption {
       type = types.str;
       default = "enp*";
@@ -46,6 +50,8 @@ in
   ];
 
   config = mkIf cfg.enable {
+    bpletza.workstation.libvirt = lib.mkOptionDefault (!cfg.battery);
+
     nixpkgs.permittedUnfreePackages = [ "corefonts" ];
 
     services.dbus.implementation = "broker";
@@ -495,7 +501,7 @@ in
     };
 
     virtualisation.libvirtd = {
-      enable = true;
+      enable = cfg.libvirt;
     };
   };
 }

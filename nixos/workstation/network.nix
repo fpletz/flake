@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.bpletza.workstation.network;
 in
@@ -30,10 +35,16 @@ in
   config = lib.mkIf cfg.enable {
     networking.useDHCP = false;
 
+    systemd.services."systemd-networkd-wait-online" = {
+      serviceConfig.ExecStart = [
+        ""
+        "${pkgs.systemd}/lib/systemd/systemd-networkd-wait-online --any --timeout=30"
+      ];
+    };
+
     systemd.network.networks = {
       "40-trusted-dhcp" = lib.mkIf (cfg.trustedDHCPInterfaces != [ ]) {
         matchConfig.Name = cfg.trustedDHCPInterfaces;
-        linkConfig.RequiredForOnline = false;
         networkConfig = {
           DHCP = true;
           IPv6AcceptRA = true;
@@ -60,7 +71,6 @@ in
       };
       "40-public-uplink" = lib.mkIf (cfg.publicUplinks != [ ]) {
         matchConfig.Name = cfg.publicUplinks;
-        linkConfig.RequiredForOnline = false;
         networkConfig = {
           DHCP = true;
           IPv6AcceptRA = true;

@@ -272,21 +272,14 @@ in
         pkgs.libvdpau-va-gl
         pkgs.vulkan-validation-layers
       ];
-      # enable32Bit = pkgs.stdenv.hostPlatform.isx86_64;
-      # extraPackages32 = lib.optionals (pkgs.stdenv.hostPlatform.isx86_64) (
-      #   with pkgs.pkgsi686Linux;
-      #   [
-      #     libvdpau-va-gl
-      #     vulkan-validation-layers
-      #   ]
-      # );
+      enable32Bit = pkgs.stdenv.hostPlatform.isx86_64;
     };
 
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
-      # alsa.support32Bit = pkgs.stdenv.hostPlatform.isx86_64;
+      alsa.support32Bit = pkgs.stdenv.hostPlatform.isx86_64;
       pulse.enable = true;
       jack.enable = true;
       wireplumber.extraConfig.bluetoothEnhancements = {

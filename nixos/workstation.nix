@@ -78,16 +78,16 @@ in
             chain --autofree https://boot.netboot.xyz
           '';
         };
-        memtest86.enable = config.nixpkgs.system == "x86_64-linux";
+        memtest86.enable = pkgs.stdenv.hostPlatform.isx86_64;
         efiSupport = mkDefault true;
       };
       loader.systemd-boot = {
         memtest86.enable = true;
         netbootxyz.enable = true;
       };
-      kernelPackages = lib.mkIf (config.nixpkgs.system == "x86_64-linux") pkgs.linuxPackages-xanmod;
+      kernelPackages = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 pkgs.linuxPackages-xanmod;
       initrd.systemd.enable = true;
-      binfmt.emulatedSystems = lib.optional (config.nixpkgs.system == "x86_64-linux") "aarch64-linux";
+      binfmt.emulatedSystems = lib.optional pkgs.stdenv.hostPlatform.isx86_64 "aarch64-linux";
     };
 
     systemd = {
@@ -268,30 +268,25 @@ in
 
     hardware.graphics = {
       enable = true;
-      extraPackages = (
-        lib.optionals (config.nixpkgs.system == "x86_64-linux") (
-          with pkgs;
-          [
-            libvdpau-va-gl
-            vulkan-validation-layers
-          ]
-        )
-      );
-      enable32Bit = config.nixpkgs.system == "x86_64-linux";
-      extraPackages32 = lib.optionals (config.nixpkgs.system == "x86_64-linux") (
-        with pkgs.pkgsi686Linux;
-        [
-          libvdpau-va-gl
-          vulkan-validation-layers
-        ]
-      );
+      extraPackages = lib.optionals (pkgs.stdenv.hostPlatform.isx86) [
+        pkgs.libvdpau-va-gl
+        pkgs.vulkan-validation-layers
+      ];
+      # enable32Bit = pkgs.stdenv.hostPlatform.isx86_64;
+      # extraPackages32 = lib.optionals (pkgs.stdenv.hostPlatform.isx86_64) (
+      #   with pkgs.pkgsi686Linux;
+      #   [
+      #     libvdpau-va-gl
+      #     vulkan-validation-layers
+      #   ]
+      # );
     };
 
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
-      alsa.support32Bit = config.nixpkgs.system == "x86_64-linux";
+      # alsa.support32Bit = pkgs.stdenv.hostPlatform.isx86_64;
       pulse.enable = true;
       jack.enable = true;
       wireplumber.extraConfig.bluetoothEnhancements = {
@@ -420,7 +415,7 @@ in
       ];
     };
 
-    programs.adb.enable = config.nixpkgs.system == "x86_64-linux";
+    programs.adb.enable = pkgs.stdenv.hostPlatform.isx86_64;
     programs.dconf.enable = true;
     programs.noisetorch.enable = true;
     programs.iotop.enable = true;

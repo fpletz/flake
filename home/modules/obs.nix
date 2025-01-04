@@ -7,7 +7,7 @@
 {
   options.bpletza.workstation.obs = lib.mkOption {
     type = lib.types.bool;
-    default = config.bpletza.workstation.sway && pkgs.system == "x86_64-linux";
+    default = config.bpletza.workstation.sway && pkgs.stdenv.hostPlatform.isx86_64;
   };
 
   config = lib.mkIf config.bpletza.workstation.obs {

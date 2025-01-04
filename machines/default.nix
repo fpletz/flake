@@ -111,6 +111,7 @@
           bpletza.workstation = {
             enable = true;
             nvidia = true;
+            gaming = true;
           };
         };
       };

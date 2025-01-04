@@ -118,7 +118,7 @@
         ]
         ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ])
       )
-      ++ lib.optionals (pkgs.stdenv.isx86_64 && (osConfig.networking.hostName or "") == "zocknix") [
+      ++ lib.optionals (pkgs.stdenv.isx86_64 && (osConfig.bpletza.workstation.gaming or false)) [
         steam
       ];
   };

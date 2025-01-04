@@ -56,6 +56,10 @@
   };
 
   documentation = {
+    man = {
+      enable = true;
+      generateCaches = true;
+    };
     # regular manpages are enough
     doc.enable = false;
     info.enable = false;

@@ -155,6 +155,12 @@
       ];
       builders-use-substitutes = true;
       log-lines = lib.mkDefault 25;
+      substituters = [
+        "https://nixos.tvix.store"
+      ];
+      trusted-substituters = [
+        "https://nixos.tvix.store"
+      ];
     };
 
     daemonCPUSchedPolicy = lib.mkDefault "batch";

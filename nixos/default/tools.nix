@@ -19,6 +19,7 @@
       enable = true;
       lessopen = null;
     };
+    bandwhich.enable = true;
   };
 
   environment.sessionVariables = {
@@ -29,6 +30,8 @@
   environment.defaultPackages = [ ];
 
   environment.systemPackages = with pkgs; [
+    # system
+    molly-guard
     # introspection
     bottom
     perf-tools

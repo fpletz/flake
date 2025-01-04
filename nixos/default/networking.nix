@@ -2,6 +2,8 @@
 {
   networking.useNetworkd = true;
 
+  systemd.network.wait-online.anyInterface = true;
+
   boot.kernel.sysctl = {
     # Increase TCP buffer sizes for increased throughput
     "net.ipv4.tcp_rmem" = "4096	1000000	16000000";

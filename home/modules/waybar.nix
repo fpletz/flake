@@ -224,8 +224,8 @@ in
         * {
           border: none;
           border-radius: 0;
-          font-family: Inter, Fira Sans;
-          font-size: 12px;
+          font-family: "Departure Mono";
+          font-size: 10pt;
           min-height: 0;
         }
 

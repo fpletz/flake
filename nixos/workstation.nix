@@ -363,7 +363,7 @@ in
         defaultFonts = {
           emoji = [ "Noto Color Emoji" ];
           monospace = [
-            "Fira Code"
+            "CommitMono"
             "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
@@ -389,23 +389,17 @@ in
       packages = with pkgs; [
         font-awesome_5
         font-awesome_6
-        ubuntu_font_family
-        gentium
-        source-code-pro
-        eb-garamond
         b612
-        fira
-        fira-code
-        fira-code-symbols
-        fira-mono
+        ubuntu_font_family
         noto-fonts
-        powerline-fonts
-        corefonts
+        fira-code
+        fira-mono
+        fira-sans
         nerd-fonts.fira-code
         nerd-fonts.fira-mono
-        nerd-fonts.sauce-code-pro
-        meslo-lgs-nf
         inter
+        commit-mono
+        departure-mono
       ];
     };
 

@@ -22,7 +22,7 @@
       enable = true;
       settings = {
         font = {
-          normal.family = "Fira Code";
+          normal.family = "CommitMono";
           size = 10.0;
         };
         scrolling = {
@@ -56,7 +56,13 @@
 
     home.file.".config/ghostty/config".text = ''
       theme = tokyonight
-      font-family = "Fira Code"
+      font-family = "CommitMono"
+      font-feature = ss01
+      font-feature = ss02
+      font-feature = ss03
+      font-feature = ss04
+      font-feature = ss05
+      font-feature = cv08
       font-size = 10
       mouse-hide-while-typing = true
       gtk-adwaita = false

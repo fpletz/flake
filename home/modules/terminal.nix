@@ -64,11 +64,14 @@
       font-feature = ss05
       font-feature = cv08
       font-size = 10
+      background-opacity = 0.8
       mouse-hide-while-typing = true
       gtk-adwaita = false
       auto-update = off
       gtk-titlebar = false
       gtk-single-instance = true
+      shell-integration = none
+      linux-cgroup = always
     '';
   };
 }

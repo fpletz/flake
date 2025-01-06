@@ -445,12 +445,10 @@ in
 
     programs.ssh.knownHosts =
       {
-        "aarch64.nixos.community".publicKey =
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMUTz5i9u5H2FHNAmZJyoJfIGyUm/HfGhfwnc142L3ds";
         "build-box.nix-community.org".publicKey =
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H";
         "darwin-build-box.nix-community.org".publicKey =
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDZw+Zk6dKiiXVx2Zlo67b6uQ3o+BhPn9UU9BC6SIgZ4";
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKMHhlcn7fUpUuiOFeIhDqBzBNFsbNqq+NpzuGX3e6zv";
       }
       // lib.genAttrs [ "zocknix" "zocknix.evs" ] (_: {
         publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZwZu77INAei0k/SmiQU3F6a2iO6Pz17oxm7bHmoxTe";

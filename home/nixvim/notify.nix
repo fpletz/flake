@@ -1,14 +1,12 @@
 {
-  programs.nixvim = {
-    plugins = {
-      notify = {
-        enable = true;
-        render = {
-          __raw = "\"compact\"";
-        };
-        topDown = false;
+  plugins = {
+    notify = {
+      enable = true;
+      render = {
+        __raw = "\"compact\"";
       };
-      noice.settings.notify.enabled = true;
+      topDown = false;
     };
+    noice.settings.notify.enabled = true;
   };
 }

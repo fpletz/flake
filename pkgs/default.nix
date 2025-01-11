@@ -15,10 +15,16 @@ in
         inherit system;
         overlays = [
           inputs.self.overlays.default
+          inputs.nixd.overlays.default
         ];
       };
 
-      packages = byNamePackages pkgs;
+      packages = {
+        nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+          inherit pkgs;
+          module = import ../home/nixvim;
+        };
+      } // byNamePackages pkgs;
 
       legacyPackages = pkgs;
     };

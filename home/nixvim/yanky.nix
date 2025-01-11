@@ -1,19 +1,17 @@
 {
-  programs.nixvim = {
-    keymaps = [
-      {
-        mode = "n";
-        key = "<leader>fy";
-        action = "<cmd>Telescope yank_history<cr>";
-        options.silent = true;
-      }
-    ];
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>fy";
+      action = "<cmd>Telescope yank_history<cr>";
+      options.silent = true;
+    }
+  ];
 
-    plugins = {
-      yanky = {
-        enable = true;
-        enableTelescope = true;
-      };
+  plugins = {
+    yanky = {
+      enable = true;
+      enableTelescope = true;
     };
   };
 }

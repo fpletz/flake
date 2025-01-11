@@ -9,13 +9,12 @@
   imports = [
     inputs.nix-index-database.hmModules.nix-index
     inputs.nix-colors.homeManagerModule
-    inputs.nixvim.homeManagerModules.nixvim
     inputs.spicetify-nix.homeManagerModules.default
-    ./nixvim
     ./modules/browser.nix
     ./modules/git.nix
     ./modules/gui.nix
     ./modules/i3status-rs.nix
+    ./modules/nixvim.nix
     ./modules/nvidia.nix
     ./modules/shell.nix
     ./modules/spotify-unfree.nix

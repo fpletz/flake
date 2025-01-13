@@ -44,7 +44,7 @@
 
       programs.rofi = {
         enable = true;
-        font = "Inter 10";
+        font = "Departure Mono 11";
         theme =
           let
             inherit (config.lib.formats.rasi) mkLiteral;
@@ -229,19 +229,17 @@
             };
             fonts = {
               names = [
-                "Fira Code"
-                "FontAwesome6Free"
+                "Departure Mono"
               ];
-              size = 8.0;
+              size = 10.0;
             };
             bars = [
               {
                 fonts = {
                   names = [
-                    "Fira Code"
-                    "FontAwesome6Free"
+                    "Departure Mono"
                   ];
-                  size = 8.0;
+                  size = 10.0;
                 };
                 colors = with config.colorScheme.palette; {
                   statusline = "#${base04}";

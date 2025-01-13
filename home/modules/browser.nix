@@ -26,6 +26,7 @@ let
     pref("network.proxy.type", 0);
     pref("webgl.enable-debug-renderer-info", false);
     pref("media.ffmpeg.vaapi.enabled", true);
+    pref("privacy.donottrackheader.enabled", true);
   '';
   nativeMessagingHosts = with pkgs; [ tridactyl-native ];
 in

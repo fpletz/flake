@@ -12,7 +12,7 @@ in
   options.bpletza.workstation = {
     gui = lib.mkOption {
       type = lib.types.bool;
-      default = config.bpletza.workstation.sway;
+      default = config.bpletza.workstation.sway || config.bpletza.workstation.xorg;
     };
     ytdlVideoCodec = lib.mkOption {
       type = lib.types.str;

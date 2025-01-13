@@ -18,6 +18,7 @@ in
   options.bpletza.workstation = {
     enable = mkEnableOption "fpletz workstation";
     battery = mkEnableOption "machine has battery";
+    xorg = mkEnableOption "xorg xserver support";
     libvirt = mkOption {
       type = types.bool;
       description = "libvirtd";
@@ -250,7 +251,7 @@ in
 
     services.greetd =
       let
-        command = "sway";
+        command = if cfg.xorg then "startx" else "sway";
       in
       {
         enable = true;
@@ -485,6 +486,16 @@ in
 
     virtualisation.libvirtd = {
       enable = cfg.libvirt;
+    };
+
+    services.xserver = {
+      enable = cfg.xorg;
+      windowManager.i3.enable = cfg.xorg;
+      displayManager.startx.enable = cfg.xorg;
+      xkb = {
+        layout = "eu";
+        options = "compose:caps";
+      };
     };
   };
 }

@@ -88,7 +88,6 @@
         ruff.enable = true;
         taplo.enable = true;
         texlab.enable = true;
-        typos_lsp.enable = true;
         yamlls.enable = true;
         zls.enable = true;
       };

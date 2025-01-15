@@ -93,7 +93,6 @@
           man-pages
           man-pages-posix
           python3Packages.ptpython
-          typos
           ncmpcpp
           mpc-cli
           sipcalc

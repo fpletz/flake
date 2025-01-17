@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -35,11 +34,18 @@ in
   config = lib.mkIf cfg.enable {
     networking.useDHCP = false;
 
-    systemd.services."systemd-networkd-wait-online" = {
-      serviceConfig.ExecStart = [
-        ""
-        "${pkgs.systemd}/lib/systemd/systemd-networkd-wait-online --any --timeout=30"
-      ];
+    systemd.network.config = {
+      dhcpV4Config = {
+        DUIDType = "link-layer";
+      };
+      dhcpV6Config = {
+        DUIDType = "link-layer";
+      };
+    };
+
+    systemd.network.wait-online = {
+      timeout = 10;
+      anyInterface = true;
     };
 
     systemd.network.networks = {
@@ -79,10 +85,12 @@ in
         };
         dhcpV4Config = {
           UseHostname = false;
+          SendHostname = false;
           RouteMetric = 23;
         };
         dhcpV6Config = {
           UseHostname = false;
+          SendHostname = false;
           RouteMetric = 23;
         };
         ipv6AcceptRAConfig = {
@@ -98,7 +106,6 @@ in
     networking.wireless = {
       secretsFile = config.sops.secrets.wifi.path;
       networks = {
-
         "٩(̾●̮̮̃̾•̃̾)۶" = {
           pskRaw = "ext:psk_٩(̾●̮̮̃̾•̃̾)۶";
           priority = 42;

@@ -10,7 +10,7 @@
       projectRootFile = "flake.lock";
       programs = {
         deadnix.enable = true;
-        nixfmt-rfc-style.enable = true;
+        nixfmt.enable = true;
       };
     };
 

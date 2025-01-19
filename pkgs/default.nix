@@ -15,6 +15,7 @@ in
         inherit system;
         overlays = [
           inputs.self.overlays.default
+          inputs.lix-module.overlays.default
           inputs.nixd.overlays.default
         ];
       };
@@ -32,7 +33,6 @@ in
   flake.overlays.default =
     final: _prev:
     {
-      nix = final.nixVersions.nix_2_25;
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
     }
     // byNamePackages final;

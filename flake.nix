@@ -131,6 +131,7 @@
             hardware = ./nixos/hardware.nix;
             home = ./nixos/home.nix;
             nixpkgs = ./nixos/nixpkgs.nix;
+            secureboot = ./nixos/secureboot.nix;
             workstation = ./nixos/workstation.nix;
           };
           all = {

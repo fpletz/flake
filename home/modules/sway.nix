@@ -260,7 +260,7 @@
         }
         {
           output = {
-            criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
+            criteria = "Dell Inc. DELL U2520D 79PLGZ2";
             status = "enable";
             position = "2560,0";
             alias = "home-right";

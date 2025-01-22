@@ -6,6 +6,7 @@
       action.__raw = ''
         function() require("trouble").toggle("diagnostics") end
       '';
+      options.desc = "Trouble diagnostics";
     }
     {
       mode = "n";
@@ -13,6 +14,7 @@
       action.__raw = ''
         function() require("trouble").toggle("quickfix") end
       '';
+      options.desc = "Trouble quickfix";
     }
     {
       mode = "n";
@@ -20,6 +22,7 @@
       action.__raw = ''
         function() require("trouble").toggle("loclist") end
       '';
+      options.desc = "Trouble loclist";
     }
   ];
   plugins = {

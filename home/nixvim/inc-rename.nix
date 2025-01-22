@@ -8,7 +8,10 @@
           return ":IncRename " .. vim.fn.expand("<cword>")
         end
       '';
-      options.expr = true;
+      options = {
+        expr = true;
+        desc = "IncRename";
+      };
     }
   ];
 

@@ -80,7 +80,10 @@
       mode = "n";
       key = "<leader>n";
       action = ":set number! number? relativenumber! relativenumber?<CR>";
-      options.silent = true;
+      options = {
+        silent = true;
+        desc = "Toggle line numbers";
+      };
     }
     {
       mode = "x";

@@ -12,20 +12,29 @@
     {
       mode = "n";
       key = "<leader>ft";
-      action = "<cmd>Telescope<cr>";
-      options.silent = true;
+      action.__raw = ''require'telescope.builtin'.builtin'';
+      options = {
+        silent = true;
+        desc = "Telescope";
+      };
     }
     {
       mode = "n";
       key = "<leader>fp";
       action.__raw = "require'telescope'.extensions.projects.projects";
-      options.silent = true;
+      options = {
+        silent = true;
+        desc = "Telescope projects";
+      };
     }
     {
       mode = "n";
       key = "<leader>fn";
       action.__raw = "require'telescope'.extensions.notify.notify";
-      options.silent = true;
+      options = {
+        silent = true;
+        desc = "Telescope notify";
+      };
     }
     {
       mode = [
@@ -34,11 +43,19 @@
       ];
       key = "<leader>cp";
       action.__raw = "require(\"actions-preview\").code_actions";
+      options = {
+        silent = true;
+        desc = "code actions preview";
+      };
     }
     {
       mode = "n";
       key = "<leader>u";
       action.__raw = "require('telescope').extensions.undo.undo";
+      options = {
+        silent = true;
+        desc = "Undo";
+      };
     }
   ];
 

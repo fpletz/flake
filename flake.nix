@@ -46,6 +46,7 @@
         nixos-stable.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         disko.follows = "disko";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
 
@@ -53,6 +54,7 @@
       url = "github:nix-community/lanzaboote/master";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
         pre-commit-hooks-nix.follows = "git-hooks";
       };
     };
@@ -75,6 +77,7 @@
         flake-compat.follows = "flake-compat";
         home-manager.follows = "home-manager";
         git-hooks.follows = "git-hooks";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
 
@@ -94,6 +97,7 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         flake-root.follows = "flake-root";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
 

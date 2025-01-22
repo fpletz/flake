@@ -8,6 +8,12 @@
   options.bpletza.hardware.thinkpad.p14s-gen5 = lib.mkEnableOption "Thinkpad P14s Gen5";
 
   config = lib.mkIf config.bpletza.hardware.thinkpad.p14s-gen5 {
+    boot.kernelParams = [
+      # fixes intermittent screen corruption issues
+      # https://gitlab.freedesktop.org/drm/amd/-/issues/3388
+      "amdgpu.sg_display=0"
+    ];
+
     boot.initrd.availableKernelModules = [
       "nvme"
       "xhci_pci"

@@ -24,6 +24,7 @@
           vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines, virtual_text = vim.diagnostic.config().virtual_lines })
         end
       '';
+      options.desc = "Toggle lsp virtual lines";
     }
     {
       mode = "n";
@@ -33,11 +34,13 @@
           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
         end
       '';
+      options.desc = "Toggle lsp inlay hints";
     }
     {
       mode = "n";
       key = "<leader>=";
       action = ":FormatToggle<cr>";
+      options.desc = "Toggle lsp format";
     }
   ];
 

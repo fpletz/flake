@@ -10,6 +10,7 @@
     ./gitsigns.nix
     ./inc-rename.nix
     ./lsp.nix
+    ./neogit.nix
     ./noice.nix
     ./notify.nix
     ./numb.nix
@@ -130,9 +131,6 @@
     nix.enable = true;
     nix-develop.enable = true;
     neo-tree = {
-      enable = true;
-    };
-    neogit = {
       enable = true;
     };
     markview.enable = true;

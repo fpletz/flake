@@ -16,10 +16,38 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [
-      pkgs.nixfmt-rfc-style
-      pkgs.docker-compose
-      pkgs.podman-compose
-    ];
+    home.packages =
+      with pkgs;
+      [
+        nixfmt-rfc-style
+        docker-compose
+        podman-compose
+        stdmanpages
+        man-pages
+        man-pages-posix
+        python3Packages.ptpython
+        ncmpcpp
+        mpc-cli
+        sipcalc
+        units
+        sops
+        nurl
+        nix-tree
+        playerctl
+        tmate
+        nixd
+        ruff
+        poetry
+        uv
+        yt-dlp
+        pass
+        gopass
+        virt-manager
+        virt-viewer
+        mumble
+        gimp
+        claws-mail
+      ]
+      ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
   };
 }

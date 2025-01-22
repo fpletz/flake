@@ -87,36 +87,6 @@
         traceroute
         nix-output-monitor
       ]
-      ++ lib.optionals config.bpletza.workstation.enable (
-        [
-          stdmanpages
-          man-pages
-          man-pages-posix
-          python3Packages.ptpython
-          ncmpcpp
-          mpc-cli
-          sipcalc
-          units
-          sops
-          nurl
-          nix-tree
-          playerctl
-          tmate
-          nixd
-          ruff
-          poetry
-          uv
-          yt-dlp
-          pass
-          gopass
-          virt-manager
-          virt-viewer
-          mumble
-          gimp
-          claws-mail
-        ]
-        ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ])
-      )
       ++ lib.optionals (pkgs.stdenv.isx86_64 && (osConfig.bpletza.workstation.gaming or false)) [
         steam
       ];

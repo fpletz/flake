@@ -9,7 +9,7 @@
     in
     {
       router = buildOpenwrtImage "cudy_x6-v1" {
-        release = "24.10.0-rc4";
+        release = "24.10.0-rc6";
         packages = [
           "luci"
           "luci-ssl"

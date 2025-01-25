@@ -9,8 +9,8 @@
 let
   suffix = "xanmod1";
   modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-  version = "6.12.10";
-  hash = "sha256-nuy46eooZqCn/JZeiG2VqxNm9WbKr5/WJBvu8lZT1DU=";
+  version = "6.13.0";
+  hash = "sha256-eEKKXIbjW2Lo89AN6Ay6KzoGGgbXQsrgzaDnh7Zsees=";
 in
 buildLinux {
   inherit version modDirVersion;
@@ -114,7 +114,6 @@ buildLinux {
       MCB = no;
       FUSION = lib.modules.mkForce no;
       TARGET_CORE = no;
-      REISERFS_FS = no;
       POWER_SEQUENCING = no;
       RC_CORE = lib.modules.mkForce no;
       MEDIA_CEC_RC = lib.modules.mkForce unset;

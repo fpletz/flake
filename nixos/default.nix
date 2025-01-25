@@ -158,7 +158,10 @@
     };
 
     settings = {
-      trusted-users = [ "nix-build" ];
+      trusted-users = [
+        "nix-build"
+        "@wheel"
+      ];
       connect-timeout = 3;
       http-connections = 150;
       extra-experimental-features = [

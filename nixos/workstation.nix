@@ -465,23 +465,64 @@ in
         keep-derivations = true;
       };
       distributedBuilds = true;
-      buildMachines = lib.optional (config.networking.hostName != "zocknix") {
-        hostName = "zocknix.evs";
-        protocol = "ssh-ng";
-        sshUser = "nix-build";
-        sshKey = "/home/fpletz/.ssh/id_aarch64-build";
-        systems = [
-          "i686-linux"
-          "x86_64-linux"
+      buildMachines =
+        (lib.optional (config.networking.hostName != "zocknix") {
+          hostName = "zocknix.evs";
+          protocol = "ssh-ng";
+          sshUser = "nix-build";
+          sshKey = "/home/fpletz/.ssh/id_build";
+          systems = [
+            "i686-linux"
+            "x86_64-linux"
+          ];
+          supportedFeatures = [
+            "kvm"
+            "big-parallel"
+            "nixos-test"
+          ];
+          maxJobs = 10;
+          speedFactor = 2;
+        })
+        ++ [
+          {
+            hostName = "aarch64-build-box.nix-community.org";
+            protocol = "ssh-ng";
+            maxJobs = 8;
+            sshKey = "/home/fpletz/.ssh/id_build";
+            sshUser = "fpletz";
+            system = "aarch64-linux";
+            supportedFeatures = [
+              "kvm"
+              "big-parallel"
+              "nixos-test"
+            ];
+          }
+          {
+            hostName = "build-box.nix-community.org";
+            protocol = "ssh-ng";
+            maxJobs = 2;
+            sshKey = "/home/fpletz/.ssh/id_build";
+            sshUser = "fpletz";
+            system = "x86_64-linux";
+            supportedFeatures = [
+              "kvm"
+              "big-parallel"
+              "nixos-test"
+            ];
+          }
+          {
+            hostName = "darwin-build-box.nix-community.org";
+            protocol = "ssh-ng";
+            maxJobs = 4;
+            sshKey = "/home/fpletz/.ssh/id_build";
+            sshUser = "fpletz";
+            system = "aarch64-darwin";
+            supportedFeatures = [
+              "kvm"
+              "big-parallel"
+            ];
+          }
         ];
-        supportedFeatures = [
-          "kvm"
-          "big-parallel"
-          "nixos-test"
-        ];
-        maxJobs = 10;
-        speedFactor = 2;
-      };
     };
 
     virtualisation.libvirtd = {

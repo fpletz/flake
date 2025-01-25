@@ -44,7 +44,7 @@ in
         ];
         modules-center = [
           #"sway/window"
-          "mpris"
+          # "mpris"
         ];
         modules-right = [
           "network"

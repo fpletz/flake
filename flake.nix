@@ -50,9 +50,10 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
+      url = "github:nix-community/lanzaboote/master";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        pre-commit-hooks-nix.follows = "git-hooks";
       };
     };
 

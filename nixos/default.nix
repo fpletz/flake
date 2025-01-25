@@ -113,10 +113,12 @@
     # living on the edge
     stateVersion = lib.mkOverride 1001 config.system.nixos.version;
 
-    # show a diff of the system closure on activation
-    activationScripts.diff = ''
+    # shows a diff of the system closure
+    activationScripts.preActivation = ''
       if [[ -e /run/current-system ]]; then
-        ${pkgs.nix}/bin/nix store diff-closures /run/current-system "$systemConfig"
+        echo "--- diff to current-system"
+        ${pkgs.nvd}/bin/nvd --nix-bin-dir=${config.nix.package}/bin diff /run/current-system "$systemConfig"
+        echo "---"
       fi
     '';
 

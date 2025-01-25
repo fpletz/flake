@@ -244,27 +244,43 @@
       enable = true;
       settings = [
         {
-          profile = {
-            name = "undocked";
-            outputs = [
-              {
-                criteria = "eDP-1";
-                position = "0,0";
-              }
-            ];
+          output = {
+            criteria = "eDP-1";
+            status = "enable";
+            alias = "internal";
+          };
+        }
+        {
+          output = {
+            criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
+            status = "enable";
+            position = "0,0";
+            alias = "home-left";
+          };
+        }
+        {
+          output = {
+            criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
+            status = "enable";
+            position = "2560,0";
+            alias = "home-right";
+          };
+        }
+        {
+          output = {
+            criteria = "AOC U2790B 0x0000579E";
+            status = "enable";
+            scale = 1.7;
+            alias = "muccc";
           };
         }
         {
           profile = {
-            name = "home";
+            name = "undocked";
             outputs = [
               {
-                criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
+                criteria = "$internal";
                 position = "0,0";
-              }
-              {
-                criteria = "Dell Inc. DELL U2520D 79PLGZ2";
-                position = "2560,0";
               }
             ];
           };
@@ -273,17 +289,36 @@
           profile = {
             name = "home-docked";
             outputs = [
+              { criteria = "$home-left"; }
+              { criteria = "$home-right"; }
               {
-                criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
+                criteria = "$internal";
+                status = "disable";
+                position = "0,1440";
+              }
+            ];
+          };
+        }
+        {
+          profile = {
+            name = "home";
+            outputs = [
+              { criteria = "$home-left"; }
+              { criteria = "$home-right"; }
+            ];
+          };
+        }
+        {
+          profile = {
+            name = "muccc-docked";
+            outputs = [
+              {
+                criteria = "$muccc";
                 position = "0,0";
               }
               {
-                criteria = "Dell Inc. DELL U2520D 79PLGZ2";
-                position = "2560,0";
-              }
-              {
-                criteria = "eDP-1";
-                position = "0,1440";
+                criteria = "$internal";
+                position = "0,1270";
               }
             ];
           };
@@ -297,24 +332,8 @@
                 position = "0,0";
               }
               {
-                criteria = "eDP-1";
+                criteria = "$internal";
                 position = "0,1080";
-              }
-            ];
-          };
-        }
-        {
-          profile = {
-            name = "muccc";
-            outputs = [
-              {
-                criteria = "AOC U2790B 0x0000579E";
-                position = "0,0";
-                scale = 1.7;
-              }
-              {
-                criteria = "eDP-1";
-                position = "0,1270";
               }
             ];
           };

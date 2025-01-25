@@ -52,26 +52,31 @@
       };
     };
 
-    home.packages = [ pkgs.ghostty ];
-
-    home.file.".config/ghostty/config".text = ''
-      theme = tokyonight
-      font-family = "CommitMono"
-      font-feature = ss01
-      font-feature = ss02
-      font-feature = ss03
-      font-feature = ss04
-      font-feature = ss05
-      font-feature = cv08
-      font-size = 10
-      background-opacity = 0.8
-      mouse-hide-while-typing = true
-      gtk-adwaita = false
-      auto-update = off
-      gtk-titlebar = false
-      gtk-single-instance = true
-      shell-integration = none
-      linux-cgroup = always
-    '';
+    programs.ghostty = {
+      enable = true;
+      settings = {
+        theme = "tokyonight";
+        background = "black";
+        window-padding-color = "background";
+        font-family = "CommitMono";
+        font-feature = [
+          "ss01"
+          "ss02"
+          "ss03"
+          "ss04"
+          "ss05"
+          "cv08"
+        ];
+        font-size = 10;
+        background-opacity = 1.0;
+        mouse-hide-while-typing = true;
+        gtk-adwaita = false;
+        auto-update = "off";
+        gtk-titlebar = false;
+        gtk-single-instance = true;
+        shell-integration = "none";
+        linux-cgroup = "always";
+      };
+    };
   };
 }

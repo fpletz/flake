@@ -55,10 +55,6 @@
           zvm_after_init_commands+=(
             "bindkey -M viins '^r' atuin-search-viins"
           )
-
-          if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
-            source $GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration
-          fi
         ''
         + (lib.optionalString config.programs.direnv.enable ''
           # don't execute direnv on every zsh init
@@ -85,11 +81,6 @@
       shellAliases = {
         vi = "vim";
       };
-      profileExtra = ''
-        if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
-          source $GHOSTTY_RESOURCES_DIR/shell-integration/bash/ghostty.bash
-        fi
-      '';
     };
 
     programs.zoxide.enable = true;

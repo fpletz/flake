@@ -81,7 +81,6 @@ in
           DHCP = true;
           IPv6AcceptRA = true;
           IPv6PrivacyExtensions = true;
-          IgnoreCarrierLoss = "5s";
         };
         dhcpV4Config = {
           UseHostname = false;

@@ -4,7 +4,6 @@
     ./barbar.nix
     ./cmp.nix
     ./comment.nix
-    ./dap.nix
     ./dial.nix
     ./flash.nix
     ./gitsigns.nix

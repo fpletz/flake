@@ -136,6 +136,7 @@
             { "title" = "Firefox - Sharing Indicator"; }
             { "class" = "qemu"; }
             { "app_id" = "xdg-desktop-portal-gtk"; }
+            { "app_id" = "org.keepassxc.KeePassXC"; }
           ];
         };
         fonts = {

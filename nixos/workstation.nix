@@ -126,31 +126,6 @@ in
         ACTION=="add", SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="min_power"
       '');
 
-    services.avahi = {
-      enable = true;
-      ipv4 = true;
-      ipv6 = true;
-    };
-
-    networking.firewall = {
-      allowedUDPPorts = [ 5353 ];
-      trustedInterfaces = [
-        "podman+"
-        "virbr+"
-      ];
-    };
-    networking.wireless = {
-      extraConfig = ''
-        preassoc_mac_addr=1
-        mac_addr=1
-        p2p_disabled=1
-        passive_scan=1
-        fast_reauth=1
-      '';
-      fallbackToWPA2 = false;
-      userControlled.enable = true;
-    };
-
     xdg = {
       icons.enable = true;
       menus.enable = true;

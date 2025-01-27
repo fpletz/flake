@@ -141,5 +141,31 @@ in
       enable = true;
       openFirewall = true;
     };
+
+    services.avahi = {
+      enable = lib.mkDefault true;
+      ipv4 = true;
+      ipv6 = true;
+    };
+
+    networking.firewall = {
+      allowedUDPPorts = lib.optionals config.services.avahi.enable 5353;
+      trustedInterfaces = [
+        "podman+"
+        "virbr+"
+      ];
+    };
+
+    networking.wireless = {
+      extraConfig = ''
+        preassoc_mac_addr=1
+        mac_addr=1
+        p2p_disabled=1
+        passive_scan=1
+        fast_reauth=1
+      '';
+      fallbackToWPA2 = false;
+      userControlled.enable = true;
+    };
   };
 }

@@ -513,5 +513,12 @@ in
         options = "compose:caps";
       };
     };
+
+    services.syncthing = {
+      enable = true;
+      user = "fpletz";
+      dataDir = "/home/fpletz";
+      openDefaultPorts = true;
+    };
   };
 }

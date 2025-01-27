@@ -398,26 +398,8 @@ in
       enableSSHSupport = true;
       enableExtraSocket = true;
       enableBrowserSocket = true;
+      pinentryPackage = pkgs.pinentry-gnome3;
     };
-    systemd.user.services.gpg-agent.serviceConfig.ExecStart = lib.mkForce [
-      ""
-      ''
-        ${config.programs.gnupg.package}/bin/gpg-agent --supervised \
-          --pinentry-program ${pkgs.writers.writeBash "pinentry-chooser" ''
-            if [ -z "$WAYLAND_DISPLAY" ]; then
-              ${pkgs.pinentry-gnome3}/bin/pinentry "$@"
-            else
-              ${pkgs.pinentry-bemenu}/bin/pinentry-bemenu -b \
-                --fn="Fira Mono 10" \
-                --tf="#f7768e" \
-                --tb="#2f3549" \
-                --hf="#f7768e" \
-                --hb="#2f3549" \
-                "$@"
-            fi
-          ''}
-      ''
-    ];
 
     programs.ssh.knownHosts =
       {

@@ -12,6 +12,9 @@
       # fixes intermittent screen corruption issues
       # https://gitlab.freedesktop.org/drm/amd/-/issues/3388
       "amdgpu.sg_display=0"
+      # disable PSR to fix stutters
+      # https://gitlab.freedesktop.org/drm/amd/-/issues/3647
+      "amdgpu.dcdebugmask=0x10"
     ];
 
     boot.initrd.availableKernelModules = [

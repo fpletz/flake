@@ -184,6 +184,7 @@ in
         bluetooth = {
           format = " {status}";
           format-no-controller = "";
+          format-disabled = "";
           format-on = "";
           format-off = "󰂲";
           format-connected = " {device_alias}";
@@ -283,7 +284,7 @@ in
           color: #7dcfff;
         }
 
-        #bluetooth.off {
+        #bluetooth.off, #bluetooth.disabled {
           color: #a9b1d6;
         }
 

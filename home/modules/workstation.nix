@@ -47,7 +47,22 @@ in
         mumble
         gimp
         claws-mail
+        keepassxc
       ]
       ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
+
+    systemd.user.services.keepassxc = {
+      Unit = {
+        Description = "KeepassXC";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+      Service = {
+        ExecStart = lib.getExe pkgs.keepassxc;
+        Restart = "on-failure";
+      };
+      Install.WantedBy = [ "graphical-session.target" ];
+    };
   };
 }

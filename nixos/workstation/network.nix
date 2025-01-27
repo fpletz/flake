@@ -148,7 +148,7 @@ in
     };
 
     networking.firewall = {
-      allowedUDPPorts = lib.optionals config.services.avahi.enable 5353;
+      allowedUDPPorts = lib.optional config.services.avahi.enable 5353;
       trustedInterfaces = [
         "podman+"
         "virbr+"

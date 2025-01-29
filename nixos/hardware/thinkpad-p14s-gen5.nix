@@ -26,7 +26,14 @@
       "usb_storage"
       "sd_mod"
     ];
-    hardware.firmware = [ pkgs.firmwareLinuxNonfree ];
+    boot.extraModprobeConfig = ''
+      options thinkpad_acpi fan_control=1
+    '';
+
+    hardware.firmware = [
+      pkgs.firmwareLinuxNonfree
+      pkgs.sof-firmware
+    ];
     hardware.amdgpu.initrd.enable = true;
     bpletza.hardware.cpu.amd = true;
 
@@ -37,6 +44,13 @@
       enable = true;
       interfaces = [ "wlp2s0" ];
     };
+
+    hardware.trackpoint.enable = true;
+
+    services.udev.extraRules = ''
+      # Disable wakeup via touchpad events
+      KERNEL=="i2c-SYNA8018:00", SUBSYSTEM=="i2c", ATTR{power/wakeup}="disabled"
+    '';
 
     nixpkgs.config.rocmSupport = true;
 

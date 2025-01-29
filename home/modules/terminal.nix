@@ -76,6 +76,8 @@
         gtk-single-instance = true;
         shell-integration = "none";
         linux-cgroup = "always";
+        window-vsync = false;
+        resize-overlay = "never";
       };
     };
   };

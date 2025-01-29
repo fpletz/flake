@@ -25,6 +25,7 @@
           "acme-acmesh-dnsapi"
           "luci-app-ddns"
           "luci-app-unbound"
+          "luci-app-adblock-fast"
           "drill"
           "prometheus-node-exporter-lua"
           "prometheus-node-exporter-lua-hostapd_stations"

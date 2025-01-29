@@ -24,6 +24,7 @@
           "luci-app-acme"
           "acme-acmesh-dnsapi"
           "luci-app-ddns"
+          "luci-app-unbound"
           "drill"
           "prometheus-node-exporter-lua"
           "prometheus-node-exporter-lua-hostapd_stations"

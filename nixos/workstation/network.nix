@@ -22,6 +22,14 @@ in
       '';
     };
 
+    trustedWifis = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ "٩(̾●̮̮̃̾•̃̾)۶" ];
+      description = ''
+        Trusted Wifi SSIDs on public uplinks
+      '';
+    };
+
     publicUplinks = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ "wl*" ];
@@ -48,55 +56,77 @@ in
       anyInterface = true;
     };
 
-    systemd.network.networks = {
-      "40-trusted-dhcp" = lib.mkIf (cfg.trustedDHCPInterfaces != [ ]) {
-        matchConfig.Name = cfg.trustedDHCPInterfaces;
-        networkConfig = {
-          DHCP = true;
-          IPv6AcceptRA = true;
-          MulticastDNS = true;
-          LLDP = true;
-          EmitLLDP = true;
-          LinkLocalAddressing = "ipv6";
+    systemd.network.networks =
+      let
+        trustedNetworkConfig = {
+          networkConfig = {
+            DHCP = true;
+            IPv6AcceptRA = true;
+            MulticastDNS = true;
+            LLDP = true;
+            EmitLLDP = true;
+            LinkLocalAddressing = "ipv6";
+            DNSOverTLS = false;
+          };
+          dhcpV4Config = {
+            UseHostname = true;
+            UseDNS = true;
+            UseNTP = true;
+            RouteMetric = 5;
+          };
+          dhcpV6Config = {
+            UseHostname = true;
+            UseDNS = true;
+            UseNTP = true;
+            RouteMetric = 5;
+          };
+          ipv6AcceptRAConfig = {
+            RouteMetric = 5;
+          };
         };
-        dhcpV4Config = {
-          UseHostname = true;
-          UseDNS = true;
-          UseNTP = true;
-          RouteMetric = 5;
-        };
-        dhcpV6Config = {
-          UseHostname = true;
-          UseDNS = true;
-          UseNTP = true;
-          RouteMetric = 5;
-        };
-        ipv6AcceptRAConfig = {
-          RouteMetric = 5;
+      in
+      {
+        "40-trusted-dhcp" = lib.mkIf (cfg.trustedDHCPInterfaces != [ ]) (
+          {
+            matchConfig.Name = cfg.trustedDHCPInterfaces;
+          }
+          // trustedNetworkConfig
+        );
+        "41-trusted-wifi-uplinks" = lib.mkIf (cfg.publicUplinks != [ ] && cfg.trustedWifis != [ ]) (
+          {
+            matchConfig = {
+              Name = cfg.publicUplinks;
+              SSID = cfg.trustedWifis;
+            };
+          }
+          // trustedNetworkConfig
+        );
+        "50-public-uplink" = lib.mkIf (cfg.publicUplinks != [ ]) {
+          matchConfig.Name = cfg.publicUplinks;
+          networkConfig = {
+            DHCP = true;
+            IPv6AcceptRA = true;
+            LinkLocalAddressing = "ipv6";
+            IPv6PrivacyExtensions = true;
+            IPv6LinkLocalAddressGenerationMode = "random";
+            DNSDefaultRoute = false;
+            DNSOverTLS = false;
+          };
+          dhcpV4Config = {
+            UseHostname = false;
+            SendHostname = false;
+            RouteMetric = 23;
+          };
+          dhcpV6Config = {
+            UseHostname = false;
+            SendHostname = false;
+            RouteMetric = 23;
+          };
+          ipv6AcceptRAConfig = {
+            RouteMetric = 23;
+          };
         };
       };
-      "40-public-uplink" = lib.mkIf (cfg.publicUplinks != [ ]) {
-        matchConfig.Name = cfg.publicUplinks;
-        networkConfig = {
-          DHCP = true;
-          IPv6AcceptRA = true;
-          IPv6PrivacyExtensions = true;
-        };
-        dhcpV4Config = {
-          UseHostname = false;
-          SendHostname = false;
-          RouteMetric = 23;
-        };
-        dhcpV6Config = {
-          UseHostname = false;
-          SendHostname = false;
-          RouteMetric = 23;
-        };
-        ipv6AcceptRAConfig = {
-          RouteMetric = 23;
-        };
-      };
-    };
 
     sops.secrets = lib.mkIf config.networking.wireless.enable {
       wifi = { };

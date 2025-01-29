@@ -36,7 +36,13 @@
       interfaces = [ "wlp2s0" ];
     };
 
-    environment.systemPackages = [ pkgs.radeontop ];
+    nixpkgs.config.rocmSupport = true;
+
+    environment.systemPackages = [
+      pkgs.radeontop
+      pkgs.rocmPackages.rocminfo
+      pkgs.rocmPackages.rocm-smi
+    ];
 
     bpletza.workstation = {
       battery = true;

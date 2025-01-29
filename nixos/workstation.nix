@@ -44,6 +44,7 @@ in
       description = "youtube-dl maximum resolution";
     };
     gaming = mkEnableOption "gaming support";
+    ai = mkEnableOption "AI";
   };
 
   imports = [
@@ -501,6 +502,10 @@ in
       user = "fpletz";
       dataDir = "/home/fpletz";
       openDefaultPorts = true;
+    };
+
+    services.ollama = {
+      enable = cfg.ai;
     };
   };
 }

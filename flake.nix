@@ -102,7 +102,7 @@
     };
 
     openwrt-imagebuilder = {
-      url = "github:fpletz/nix-openwrt-imagebuilder/24.10";
+      url = "github:fpletz/nix-openwrt-imagebuilder";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";

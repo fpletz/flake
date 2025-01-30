@@ -15,7 +15,6 @@ in
         inherit system;
         overlays = [
           inputs.self.overlays.default
-          inputs.lix-module.overlays.default
           inputs.nixd.overlays.default
         ];
       };

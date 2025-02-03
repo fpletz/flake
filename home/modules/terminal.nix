@@ -54,6 +54,8 @@
 
     programs.ghostty = {
       enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
       settings = {
         theme = "tokyonight";
         background = "black";
@@ -70,7 +72,6 @@
         font-size = 10;
         background-opacity = 1.0;
         mouse-hide-while-typing = true;
-        gtk-adwaita = false;
         auto-update = "off";
         gtk-titlebar = false;
         gtk-single-instance = true;

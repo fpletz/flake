@@ -8,10 +8,7 @@
 {
   options.bpletza.workstation.obs = lib.mkOption {
     type = lib.types.bool;
-    default =
-      osConfig.bpletza.workstation.gaming
-      && config.bpletza.workstation.sway
-      && pkgs.stdenv.hostPlatform.isx86_64;
+    default = osConfig.bpletza.workstation.enable && pkgs.stdenv.hostPlatform.isx86_64;
   };
 
   config = lib.mkIf config.bpletza.workstation.obs {

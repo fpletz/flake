@@ -133,6 +133,7 @@ in
     };
 
     networking.wireless = {
+      allowAuxiliaryImperativeNetworks = true;
       secretsFile = config.sops.secrets.wifi.path;
       networks = {
         "٩(̾●̮̮̃̾•̃̾)۶" = {

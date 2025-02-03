@@ -32,13 +32,13 @@
     }
     {
       mode = "n";
-      key = "<A-p>";
+      key = "<A-P>";
       action = "<Cmd>BufferPin<CR>";
       options.silent = true;
     }
     {
       mode = "n";
-      key = "<C-p>";
+      key = "<A-p>";
       action = "<Cmd>BufferPick<CR>";
       options.silent = true;
     }

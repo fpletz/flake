@@ -5,6 +5,7 @@
     ./cmp.nix
     ./comment.nix
     ./dial.nix
+    ./dropbar.nix
     ./flash.nix
     ./gitsigns.nix
     ./inc-rename.nix
@@ -19,8 +20,6 @@
     ./trouble.nix
     ./yanky.nix
   ];
-
-  luaLoader.enable = true;
 
   globals = {
     mapleader = ",";
@@ -57,7 +56,6 @@
   colorschemes = {
     catppuccin = {
       enable = true;
-      lazyLoad.enable = true;
       settings = {
         flavour = "mocha";
         integrations = {
@@ -109,10 +107,6 @@
         session_lens.load_on_setup = true;
       };
     };
-    barbecue = {
-      enable = true;
-      settings.theme = "tokyonight";
-    };
     better-escape = {
       enable = true;
     };
@@ -120,7 +114,6 @@
       enable = true;
       enhancedDiffHl = true;
     };
-    navic.enable = true;
     indent-blankline.enable = true;
     lastplace.enable = true;
     lualine = {

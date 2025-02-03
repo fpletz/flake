@@ -141,6 +141,8 @@
   };
 
   nix = {
+    package = pkgs.nixVersions.latest;
+
     registry = {
       fpletz.flake = inputs.self;
     };

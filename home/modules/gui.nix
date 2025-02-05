@@ -108,7 +108,15 @@ in
         ''
       )
       pkgs.libva-utils
+      pkgs.twitch-hls-client
     ];
+
+    xdg.configFile."twitch-hls-client/config".text = ''
+      quality=best
+      player=mpv
+      force-https=true
+      servers=https://lb-eu.cdn-perfprod.com/live/[channel],https://lb-eu2.cdn-perfprod.com/live/[channel]
+    '';
 
     programs.zathura = {
       enable = true;

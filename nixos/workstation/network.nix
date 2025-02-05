@@ -24,7 +24,10 @@ in
 
     trustedWifis = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [ "٩(̾●̮̮̃̾•̃̾)۶" ];
+      default = [
+        "٩(̾●̮̮̃̾•̃̾)۶"
+        "muccc"
+      ];
       description = ''
         Trusted Wifi SSIDs on public uplinks
       '';

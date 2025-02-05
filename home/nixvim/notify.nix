@@ -2,10 +2,10 @@
   plugins = {
     notify = {
       enable = true;
-      render = {
-        __raw = "\"compact\"";
+      settings = {
+        render = "compact";
+        top_down = false;
       };
-      topDown = false;
     };
     noice.settings.notify.enabled = true;
   };

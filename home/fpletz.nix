@@ -146,17 +146,6 @@
     '';
     plugins = [
       pkgs.tmuxPlugins.pain-control
-      {
-        plugin = pkgs.tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-      }
-      {
-        plugin = pkgs.tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '10' # minutes
-        '';
-      }
     ];
   };
 

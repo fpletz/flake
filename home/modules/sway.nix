@@ -1,4 +1,5 @@
 {
+  osConfig,
   config,
   lib,
   pkgs,
@@ -20,7 +21,8 @@
       pkgs.grim
       pkgs.slurp
       pkgs.waypipe
-      #pkgs.wf-recorder
+      pkgs.wev
+      pkgs.wf-recorder
       pkgs.wl-clipboard
       pkgs.wl-mirror
       pkgs.wlprop
@@ -249,6 +251,7 @@
             criteria = "eDP-1";
             status = "enable";
             alias = "internal";
+            scale = lib.mkIf osConfig.bpletza.hardware.thinkpad.p14s-gen5 1.7;
           };
         }
         {

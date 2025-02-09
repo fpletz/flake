@@ -43,9 +43,18 @@
       blame.date = "short";
       rerere.enabled = true;
       pull.rebase = true;
+      fetch = {
+        parallel = 0;
+        writeCommitGraph = true;
+        negotiationAlgorithm = "skipping";
+      };
       push = {
         default = "simple";
         autoSetupRemote = true;
+      };
+      checkout = {
+        workers = 0;
+        thresholdForParallelism = 100;
       };
       rebase = {
         stat = true;
@@ -57,6 +66,13 @@
       advice = {
         detachedHead = false;
         statusHints = false;
+      };
+      feature = {
+        manyFiles = true;
+      };
+      pack = {
+        allowPackReuse = "multi";
+        useBitmapBoundaryTraversal = true;
       };
       maintenance = {
         auto = false;
@@ -72,6 +88,8 @@
         colorMoved = "default";
         sopsdiffer.textconv = "sops -d";
       };
+      submodule.fetchJobs = 5;
+      http.maxRequests = 10;
       tig = {
         line-graphics = "auto";
         truncation-delimiter = "utf-8";

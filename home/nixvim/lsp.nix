@@ -133,7 +133,8 @@
     lsp-lines.enable = true;
     lsp-format.enable = true;
     rustaceanvim = {
-      enable = true;
+      # FIXME: neotest broken
+      enable = false;
       settings.server = {
         standalone = false;
       };

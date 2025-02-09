@@ -15,11 +15,12 @@
             { name = 'path' },
             { name = 'luasnip' },
           }, {
-            { name = 'buffer', keywordLength = 3 },
+            { name = 'buffer' },
             { name = 'calc' },
             { name = 'emoji' },
+            { name = 'cmp_yanky' },
           }, {
-            { name = 'rg', keywordLength = 3 },
+            { name = 'rg', keywordLength = 6 },
             { name = 'spell', keywordLength = 3 },
           })
         '';
@@ -44,10 +45,10 @@
       filetype.gitcommit.sources.__raw = ''
         cmp.config.sources({
           { name = 'git' },
+        }, {
+          { name = 'buffer' },
           { name = 'path' },
           { name = 'emoji' },
-        }, {
-          { name = 'buffer', keyword_length = 3 },
         })
       '';
     };
@@ -58,11 +59,13 @@
     cmp-git.enable = true;
     cmp_luasnip.enable = true;
     cmp-nvim-lsp.enable = true;
+    cmp-nvim-lsp-document-symbol.enable = true;
     cmp-nvim-lsp-signature-help.enable = true;
     cmp-path.enable = true;
     cmp-rg.enable = true;
     cmp-spell.enable = true;
     cmp-treesitter.enable = true;
+    cmp_yanky.enable = true;
     luasnip = {
       enable = true;
       fromVscode = [ { } ];
@@ -83,6 +86,7 @@
           emoji = "";
           treesitter = "";
           spell = "";
+          cmp_yanky = "";
         };
       };
     };
@@ -98,7 +102,9 @@
         fields = { "abbr" },
       },
       sources = {
-        { name = 'buffer' }
+        { name = 'nvim_lsp_document_symbol' },
+      }, {
+        { name = 'buffer' },
       },
     })
 

@@ -45,6 +45,11 @@ in
   config = lib.mkIf cfg.enable {
     networking.useDHCP = false;
 
+    services.resolved.extraConfig = ''
+      StaleRetentionSec=1800
+      Cache=no-negative
+    '';
+
     systemd.network.config = {
       dhcpV4Config = {
         DUIDType = "link-layer";

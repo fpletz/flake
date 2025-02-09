@@ -204,7 +204,7 @@
     getty.helpLine = lib.mkForce "";
 
     resolved = {
-      dnsovertls = "true";
+      dnsovertls = "opportunistic";
       # no google/cloudflare defaults
       fallbackDns = [
         "2620:fe::10#dns.quad9.net"

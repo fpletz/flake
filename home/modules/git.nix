@@ -67,9 +67,6 @@
         detachedHead = false;
         statusHints = false;
       };
-      feature = {
-        manyFiles = true;
-      };
       pack = {
         allowPackReuse = "multi";
         useBitmapBoundaryTraversal = true;

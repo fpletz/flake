@@ -36,10 +36,10 @@ buildLinux {
       TCP_CONG_BBR = yes;
       DEFAULT_BBR = yes;
 
-      # Preemptive Full Tickless Kernel at 250Hz
-      HZ = freeform "250";
-      HZ_250 = yes;
-      HZ_1000 = no;
+      # Preemptive Full Tickless Kernel at 1000Hz
+      HZ = freeform "1000";
+      HZ_250 = no;
+      HZ_1000 = yes;
 
       RCU_EXPERT = yes;
       RCU_FANOUT = freeform "64";

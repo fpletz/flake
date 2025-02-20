@@ -21,12 +21,6 @@
     inputs.self.overlays.default
     inputs.bad_gateway.overlays.default
     inputs.nixd.overlays.default
-    (final: prev: {
-      nix = final.nixVersions.nix_2_26;
-      nix-eval-jobs = prev.nix-eval-jobs.override (_: {
-        nix = final.nix;
-      });
-    })
   ];
 
   nixpkgs.flake = {

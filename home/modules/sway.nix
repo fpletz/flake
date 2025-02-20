@@ -78,6 +78,8 @@
           dpi-aware = false;
           font = "Inter:size=10";
           icon-theme = config.gtk.iconTheme.name;
+          show-actions = true;
+          use-bold = true;
         };
         colors = {
           # https://github.com/folke/tokyonight.nvim/blob/main/extras/fuzzel/tokyonight_night.ini

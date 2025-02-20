@@ -137,7 +137,9 @@
           titlebar = false;
           criteria = [
             { "title" = "LibreWolf - Sharing Indicator"; }
+            { "title" = "LibreWolf - Choose User Profile"; }
             { "title" = "Firefox - Sharing Indicator"; }
+            { "title" = "Firefox - Choose User Profile"; }
             { "class" = "qemu"; }
             { "app_id" = "xdg-desktop-portal-gtk"; }
             { "app_id" = "org.keepassxc.KeePassXC"; }

@@ -31,6 +31,11 @@
 
   sops.defaultSopsFile = ../secrets.yaml;
 
+  environment.sessionVariables = {
+    # https://consoledonottrack.com/
+    DO_NOT_TRACK = "1";
+  };
+
   time.timeZone = "UTC";
   console.keyMap = "us";
   i18n = {

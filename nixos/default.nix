@@ -172,6 +172,7 @@
       ];
       builders-use-substitutes = true;
       log-lines = lib.mkDefault 25;
+      narinfo-cache-negative-ttl = 300;
     };
 
     daemonCPUSchedPolicy = lib.mkDefault "batch";

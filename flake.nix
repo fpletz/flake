@@ -11,6 +11,11 @@
     flake-root.url = "github:srid/flake-root";
     flake-compat.url = "github:edolstra/flake-compat";
 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -146,7 +151,7 @@
             workstation = ./nixos/workstation.nix;
           };
           all = {
-            imports = builtins.attrValues modules;
+            imports = (builtins.attrValues modules) ++ [ inputs.lix-module.nixosModules.default ];
           };
         in
         modules // { inherit all; };

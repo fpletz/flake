@@ -74,10 +74,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
-        flake-compat.follows = "flake-compat";
-        home-manager.follows = "home-manager";
-        git-hooks.follows = "git-hooks";
-        treefmt-nix.follows = "treefmt-nix";
       };
     };
 

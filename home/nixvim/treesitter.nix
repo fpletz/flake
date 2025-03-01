@@ -64,7 +64,6 @@
         ninja
         nix
         objdump
-        org
         passwd
         pem
         perl

@@ -116,7 +116,7 @@
 
   system = {
     # living on the edge
-    stateVersion = lib.mkOverride 1001 config.system.nixos.version;
+    stateVersion = lib.mkOverride 1001 "25.05";
 
     # shows a diff of the system closure
     activationScripts.preActivation = ''

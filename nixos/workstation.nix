@@ -47,10 +47,7 @@ in
     ai = mkEnableOption "AI";
   };
 
-  imports = [
-    ./workstation/network.nix
-    ./workstation/nvidia.nix
-  ];
+  imports = lib.filesystem.listFilesRecursive ./workstation;
 
   config = mkIf cfg.enable {
     bpletza.workstation.libvirt = lib.mkOptionDefault (!cfg.battery);
@@ -243,23 +240,6 @@ in
         gutenprint
       ];
     };
-
-    services.greetd =
-      let
-        command = if cfg.xorg then "startx" else "sway";
-      in
-      {
-        enable = true;
-        settings = {
-          initial_session = {
-            inherit command;
-            user = "fpletz";
-          };
-          default_session.command = "${
-            lib.makeBinPath [ pkgs.greetd.tuigreet ]
-          }/tuigreet --time --cmd ${command}";
-        };
-      };
 
     powerManagement.cpuFreqGovernor = if cfg.battery then "schedutil" else "performance";
 

@@ -60,7 +60,7 @@
     tmp.useTmpfs = lib.mkDefault true;
     kernelPackages = lib.mkOverride 1001 pkgs.linuxPackages_latest;
     loader = {
-      timeout = lib.mkForce 2;
+      timeout = lib.mkDefault 2;
       grub.splashImage = null;
       systemd-boot.configurationLimit = 10;
     };

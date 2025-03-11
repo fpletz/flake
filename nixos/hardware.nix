@@ -1,1 +1,4 @@
-{ imports = map (fn: ./hardware + "/${fn}") (builtins.attrNames (builtins.readDir ./hardware)); }
+{ lib, ... }:
+{
+  imports = lib.filesystem.listFilesRecursive ./hardware;
+}

@@ -8,10 +8,7 @@
       kernelParams = [ "amd_pstate=active" ];
     };
 
-    hardware.cpu.amd = {
-      ryzen-smu.enable = true;
-      updateMicrocode = true;
-    };
+    hardware.cpu.amd.updateMicrocode = true;
 
     services.power-profiles-daemon.enable = true;
   };

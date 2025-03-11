@@ -8,7 +8,7 @@
 {
   options.bpletza.hardware.gpu.amd = lib.mkEnableOption "AMD GPUs";
 
-  config = lib.mkIf config.bpletza.hardware.cpu.amd {
+  config = lib.mkIf config.bpletza.hardware.gpu.amd {
     hardware.amdgpu = {
       opencl.enable = true;
       amdvlk.enable = true;

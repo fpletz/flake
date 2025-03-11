@@ -8,7 +8,10 @@
   options.bpletza.hardware.thinkpad.a485 = lib.mkEnableOption "Thinkpad A485";
 
   config = lib.mkIf config.bpletza.hardware.thinkpad.a485 {
-    bpletza.hardware.cpu.amd = true;
+    bpletza.hardware = {
+      cpu.amd = true;
+      gpu.amd = true;
+    };
 
     boot = {
       initrd.availableKernelModules = [
@@ -45,14 +48,9 @@
         enable = true;
       };
       wirelessRegulatoryDatabase = true;
-      amdgpu.initrd.enable = true;
     };
 
     services.fwupd.enable = true;
-
-    environment.systemPackages = [
-      pkgs.radeontop
-    ];
 
     bpletza.workstation = {
       battery = true;

@@ -34,8 +34,10 @@
       pkgs.firmwareLinuxNonfree
       pkgs.sof-firmware
     ];
-    hardware.amdgpu.initrd.enable = true;
-    bpletza.hardware.cpu.amd = true;
+    bpletza.hardware = {
+      cpu.amd = true;
+      gpu.amd = true;
+    };
 
     services.fwupd.enable = true;
     services.fprintd.enable = true;
@@ -51,14 +53,6 @@
       # Disable wakeup via touchpad events
       KERNEL=="i2c-SYNA8018:00", SUBSYSTEM=="i2c", ATTR{power/wakeup}="disabled"
     '';
-
-    nixpkgs.config.rocmSupport = true;
-
-    environment.systemPackages = [
-      pkgs.radeontop
-      pkgs.rocmPackages.rocminfo
-      pkgs.rocmPackages.rocm-smi
-    ];
 
     bpletza.workstation = {
       battery = true;

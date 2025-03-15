@@ -20,7 +20,6 @@
             { name = 'emoji' },
             { name = 'cmp_yanky' },
           }, {
-            { name = 'rg', keywordLength = 6 },
             { name = 'spell', keywordLength = 3 },
           })
         '';

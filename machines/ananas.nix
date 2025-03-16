@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   networking.hostName = "ananas";
   networking.useDHCP = true;
@@ -45,4 +46,9 @@
     Storage=volatile
   '';
 
+  environment.systemPackages = with pkgs; [ ipmitool ];
+
+  services.prometheus.exporters.ipmi = {
+    enable = true;
+  };
 }

@@ -87,13 +87,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixd = {
-      url = "github:nix-community/nixd/release/2.x";
+    nil = {
+      url = "github:oxalica/nil";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        flake-root.follows = "flake-root";
-        treefmt-nix.follows = "treefmt-nix";
       };
     };
 

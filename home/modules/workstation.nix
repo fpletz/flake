@@ -35,7 +35,7 @@ in
         nix-tree
         playerctl
         tmate
-        nixd
+        nil
         ruff
         uv
         yt-dlp

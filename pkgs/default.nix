@@ -11,14 +11,11 @@ in
   perSystem =
     { pkgs, system, ... }:
     {
-      _module.args.pkgs = import inputs.nixpkgs {
-        inherit system;
-        overlays = [
-          inputs.self.overlays.default
-          inputs.lix-module.overlays.default
-          inputs.nixd.overlays.default
-        ];
-      };
+      _module.args.pkgs = lib.foldl (p: p.extend) inputs.nixpkgs.legacyPackages.${system} [
+        inputs.self.overlays.default
+        inputs.lix-module.overlays.default
+        inputs.nil.overlays.default
+      ];
 
       packages = {
         nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {

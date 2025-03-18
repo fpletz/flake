@@ -93,7 +93,7 @@ in
       enable = true;
       package = pkgs.ungoogled-chromium;
       commandLineArgs = [
-        "--enable-features=WebRTCPipeWireCapturer,VaapiVideoDecoder"
+        "--enable-features=WebRTCPipeWireCapturer,VaapiVideoDecoder,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL"
         "--ignore-gpu-blocklist"
         "--enable-gpu-rasterization"
         "--disable-background-networking"
@@ -103,6 +103,7 @@ in
         "--disable-sync"
         "--disable-features=MediaRouter"
         "--enable-features=UseOzonePlatform"
+        "--ozone-platform-hint=auto"
       ];
       extensions = [
         {

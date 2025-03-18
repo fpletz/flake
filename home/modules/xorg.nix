@@ -25,16 +25,6 @@
         "Xft.antialias" = "1";
         "Xft.rgba" = "rgb";
       };
-
-      services.xsettingsd = {
-        enable = true;
-        settings = {
-          "Xft/Hinting" = true;
-          "Xft/HintStyle" = "hintslight";
-          "Xft/Antialias" = true;
-          "Xft/RGBA" = "rgb";
-        };
-      };
     })
 
     (lib.mkIf config.bpletza.workstation.xorg {

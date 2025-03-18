@@ -48,6 +48,7 @@ in
         gimp
         claws-mail
         keepassxc
+        swww
       ]
       ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
 
@@ -60,6 +61,20 @@ in
       };
       Service = {
         ExecStart = lib.getExe pkgs.keepassxc;
+        Restart = "on-failure";
+      };
+      Install.WantedBy = [ "graphical-session.target" ];
+    };
+
+    systemd.user.services.swww = {
+      Unit = {
+        Description = "swww";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+      Service = {
+        ExecStart = lib.getExe' pkgs.swww "swww-daemon";
         Restart = "on-failure";
       };
       Install.WantedBy = [ "graphical-session.target" ];

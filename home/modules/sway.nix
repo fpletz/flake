@@ -123,9 +123,6 @@
             middle_emulation = "enabled";
           };
         };
-        output = {
-          "*".bg = "${../../static/wallpapers/by_upload1_2560.jpg} fill";
-        };
         modifier = "Mod4";
         terminal = config.bpletza.workstation.terminal.default;
         window = {

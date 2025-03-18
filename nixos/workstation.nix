@@ -403,36 +403,23 @@ in
       };
       distributedBuilds = true;
       buildMachines =
-        (lib.optional (config.networking.hostName != "zocknix") {
-          hostName = "zocknix.evs";
-          protocol = "ssh-ng";
-          sshUser = "nix-build";
-          sshKey = "/home/fpletz/.ssh/id_build";
-          systems = [
-            "i686-linux"
-            "x86_64-linux"
-          ];
-          supportedFeatures = [
-            "kvm"
-            "big-parallel"
-            "nixos-test"
-          ];
-          maxJobs = 10;
-          speedFactor = 2;
-        })
-        ++ [
+        (lib.optionals (config.networking.hostName != "zocknix") [
           {
-            hostName = "aarch64-build-box.nix-community.org";
+            hostName = "zocknix.evs";
             protocol = "ssh-ng";
-            maxJobs = 8;
+            sshUser = "nix-build";
             sshKey = "/home/fpletz/.ssh/id_build";
-            sshUser = "fpletz";
-            system = "aarch64-linux";
+            systems = [
+              "i686-linux"
+              "x86_64-linux"
+            ];
             supportedFeatures = [
               "kvm"
               "big-parallel"
               "nixos-test"
             ];
+            maxJobs = 10;
+            speedFactor = 2;
           }
           {
             hostName = "build-box.nix-community.org";
@@ -441,6 +428,21 @@ in
             sshKey = "/home/fpletz/.ssh/id_build";
             sshUser = "fpletz";
             system = "x86_64-linux";
+            supportedFeatures = [
+              "kvm"
+              "big-parallel"
+              "nixos-test"
+            ];
+          }
+        ])
+        ++ [
+          {
+            hostName = "aarch64-build-box.nix-community.org";
+            protocol = "ssh-ng";
+            maxJobs = 8;
+            sshKey = "/home/fpletz/.ssh/id_build";
+            sshUser = "fpletz";
+            system = "aarch64-linux";
             supportedFeatures = [
               "kvm"
               "big-parallel"

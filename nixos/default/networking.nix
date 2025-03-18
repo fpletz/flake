@@ -32,6 +32,7 @@
     llmnr = "false";
     extraConfig = ''
       MulticastDNS=false
+      Cache=no-negative
     '';
   };
 }

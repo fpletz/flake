@@ -28,10 +28,6 @@ let
     pref("media.ffmpeg.vaapi.enabled", true);
     pref("privacy.donottrackheader.enabled", true);
   '';
-  nativeMessagingHosts = with pkgs; [
-    tridactyl-native
-    keepassxc
-  ];
 in
 {
   options.bpletza.workstation.browser = lib.mkOption {
@@ -41,6 +37,35 @@ in
 
   config = lib.mkIf config.bpletza.workstation.browser {
     programs.browserpass.enable = true;
+
+    home.file =
+      (
+        let
+          # FIXME: why is nativeMessagingHosts broken in the hm modules :(
+          nativeMessagingHosts = {
+            keepassxc = {
+              package = pkgs.keepassxc;
+              file = "org.keepassxc.keepassxc_browser.json";
+            };
+            tridactyl = {
+              package = pkgs.tridactyl-native;
+              file = "tridactyl.json";
+            };
+          };
+        in
+        lib.mapAttrs' (
+          _k: v:
+          lib.nameValuePair ".librewolf/native-messaging-hosts/${v.file}" {
+            source = "${v.package}/lib/mozilla/native-messaging-hosts/${v.file}";
+          }
+        ) nativeMessagingHosts
+      )
+      // {
+        "librewolf/default/chrome" = {
+          source = "${inputs.potatofox}/chrome";
+          recursive = true;
+        };
+      };
 
     home.sessionVariables = {
       BROWSER = "librewolf";
@@ -76,12 +101,6 @@ in
           ''
           + extraPrefs;
       });
-      inherit nativeMessagingHosts;
-    };
-
-    home.file.".librewolf/default/chrome" = {
-      source = "${inputs.potatofox}/chrome";
-      recursive = true;
     };
 
     programs.firefox = {
@@ -89,7 +108,6 @@ in
       package = pkgs.firefox.override (_: {
         inherit extraPrefs;
       });
-      inherit nativeMessagingHosts;
     };
 
     programs.chromium = {

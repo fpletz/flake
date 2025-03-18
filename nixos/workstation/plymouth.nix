@@ -7,7 +7,7 @@
 
 {
   options.bpletza.workstation.plymouth = lib.mkEnableOption "bootsplash" // {
-    default = config.bpletza.workstation.enable;
+    default = false;
   };
 
   config = lib.mkIf config.bpletza.workstation.plymouth {

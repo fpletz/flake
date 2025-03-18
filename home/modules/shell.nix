@@ -170,10 +170,7 @@
 
     programs.atuin = {
       enable = config.bpletza.workstation.enable;
-      flags = [
-        "--disable-up-arrow"
-        "--disable-ctrl-r"
-      ];
+      daemon.enable = true;
       settings = {
         update_check = false;
         style = "compact";

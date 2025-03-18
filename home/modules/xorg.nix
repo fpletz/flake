@@ -34,7 +34,7 @@
 
       programs.rofi = {
         enable = true;
-        font = "Departure Mono 11";
+        font = "Recursive Sans Casual Static 11";
         theme =
           let
             inherit (config.lib.formats.rasi) mkLiteral;
@@ -219,7 +219,7 @@
             };
             fonts = {
               names = [
-                "Departure Mono"
+                "Recursive Sans Casual Static"
               ];
               size = 10.0;
             };
@@ -227,7 +227,7 @@
               {
                 fonts = {
                   names = [
-                    "Departure Mono"
+                    "Recursive Sans Casual Static"
                   ];
                   size = 10.0;
                 };

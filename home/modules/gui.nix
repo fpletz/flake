@@ -39,8 +39,8 @@ in
     gtk = {
       enable = true;
       font = {
-        name = "Inter";
-        package = pkgs.inter;
+        name = "Recursive Sans Casual Static";
+        package = pkgs.recursive;
         size = 8;
       };
       theme = {

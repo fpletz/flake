@@ -26,7 +26,7 @@
           blur = true;
         };
         font = {
-          normal.family = "CommitMono";
+          normal.family = "Recursive Mono Casual Static";
           size = 11.0;
         };
         scrolling = {
@@ -64,17 +64,9 @@
         theme = "tokyonight";
         background = "black";
         window-padding-color = "background";
-        font-family = "CommitMono";
-        font-feature = [
-          "ss01"
-          "ss02"
-          "ss03"
-          "ss04"
-          "ss05"
-          "cv08"
-        ];
-        font-size = 10;
-        background-opacity = 1.0;
+        font-family = "Recursive Mono Casual Static";
+        font-size = 11;
+        background-opacity = 0.8;
         mouse-hide-while-typing = true;
         auto-update = "off";
         gtk-titlebar = false;

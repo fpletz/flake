@@ -47,9 +47,9 @@
             # default-timeout = 10;
             # max-timeout = 30;
             max-width = 500;
-            title-font = "Inter:size=10";
-            summary-font = "Inter:size=12";
-            body-font = "Inter:size=12";
+            title-font = "Recursive Sans Casual Static:size=11";
+            summary-font = "Recursive Sans Casual Static:size=12";
+            body-font = "Recursive Sans Casual Static:size=12";
             selection-helper = "${lib.getExe pkgs.fuzzel} -d";
             padding-vertical = 10;
             padding-horizontal = 10;
@@ -76,7 +76,7 @@
         main = {
           terminal = config.bpletza.workstation.terminal.default;
           dpi-aware = false;
-          font = "Inter:size=10";
+          font = "Recursive Sans Casual Static:size=11";
           icon-theme = config.gtk.iconTheme.name;
           show-actions = true;
           use-bold = true;

@@ -339,19 +339,19 @@ in
         defaultFonts = {
           emoji = [ "Noto Color Emoji" ];
           monospace = [
-            "CommitMono"
+            "Recursive Mono Casual Static"
             "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
           ];
           sansSerif = [
-            "Inter"
+            "Recursive Sans Casual Static"
             "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
           ];
           serif = [
-            "Noto Serif"
+            "Recursive Sans Casual Static"
             "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
@@ -376,6 +376,7 @@ in
         inter
         commit-mono
         departure-mono
+        recursive
       ];
     };
 

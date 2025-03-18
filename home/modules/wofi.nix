@@ -19,8 +19,8 @@
         #window {
           border: 1px solid #${base01};
           background-color: #${base00};
-          font-family: Inter, system-ui, sans-serif;
-          font-size: 14px;
+          font-family: Recursive Sans Casual Static, system-ui, sans-serif;
+          font-size: 11pt;
         }
         #entry:nth-child(odd) {
           background-color: #${base00};

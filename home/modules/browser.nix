@@ -149,11 +149,11 @@ in
           geolocation = false;
         };
         fonts = {
-          default_family = "Fira Mono";
+          default_family = "Recursive Mono Casual Static";
           web.family = {
-            standard = "Inter";
-            fixed = "Fira Mono";
-            sans_serif = "Inter";
+            standard = "Recursive Sans Casual Static";
+            fixed = "Recursive Mono Casual Static";
+            sans_serif = "Recursive Sans Casual Static";
           };
         };
         url = {

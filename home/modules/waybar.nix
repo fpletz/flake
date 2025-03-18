@@ -225,7 +225,7 @@ in
         * {
           border: none;
           border-radius: 0;
-          font-family: "Departure Mono";
+          font-family: "Recursive Sans Casual Static";
           font-size: 10pt;
           min-height: 0;
         }

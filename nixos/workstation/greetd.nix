@@ -32,8 +32,8 @@ in
         package = pkgs.phinger-cursors;
       };
       font = {
-        name = "Departure Mono";
-        package = pkgs.departure-mono;
+        name = "Recursive Sans Casual Static";
+        package = pkgs.recursive;
         size = 16;
       };
       theme = {

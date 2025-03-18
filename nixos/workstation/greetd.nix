@@ -11,18 +11,6 @@ in
   config = lib.mkIf cfg.enable {
     services.greetd = {
       enable = true;
-      settings.default_session.command =
-        let
-          swayConfig = pkgs.writeText "greetd-sway-config" ''
-            exec "${lib.getExe config.programs.regreet.package}; swaymsg exit"
-            bindsym Mod4+shift+e exec swaynag \
-              -t warning \
-              -m 'What do you want to do?' \
-              -b 'Poweroff' 'systemctl poweroff' \
-              -b 'Reboot' 'systemctl reboot'
-          '';
-        in
-        "${pkgs.dbus}/bin/dbus-run-session ${lib.getExe pkgs.sway} --config ${swayConfig}";
     };
 
     programs.regreet = {
@@ -56,10 +44,7 @@ in
       };
     };
 
-    programs.sway = {
-      enable = true;
-      extraPackages = [ ];
-      wrapperFeatures.gtk = true;
-    };
+    programs.niri.enable = true;
+    services.gnome.gnome-keyring.enable = false; # set by niri NixOS module
   };
 }

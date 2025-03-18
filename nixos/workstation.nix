@@ -147,29 +147,7 @@ in
       icons.enable = true;
       menus.enable = true;
       mime.enable = true;
-      portal = {
-        enable = true;
-        config.common = {
-          default = "gtk";
-          "org.freedesktop.impl.portal.ScreenCast" = "wlr";
-          "org.freedesktop.impl.portal.Screenshot" = "wlr";
-          "org.freedesktop.impl.portal.Inhibit" = "none";
-        };
-        wlr = {
-          enable = true;
-          settings = {
-            screencast = {
-              max_fps = 30;
-              chooser_type = "dmenu";
-              chooser_cmd = "${lib.getExe pkgs.fuzzel} -d";
-            };
-          };
-        };
-        extraPortals = [
-          pkgs.xdg-desktop-portal-gtk
-          pkgs.xdg-desktop-portal-wlr
-        ];
-      };
+      portal.enable = true;
     };
 
     security = {
@@ -390,7 +368,6 @@ in
       package = pkgs.wireshark-qt;
     };
     programs.flashrom.enable = true;
-    programs.xwayland.enable = true;
     programs.git.package = pkgs.git;
 
     programs.gnupg.agent = {

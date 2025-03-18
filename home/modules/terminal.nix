@@ -8,7 +8,7 @@
   options.bpletza.workstation.terminal = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.bpletza.workstation.sway;
+      default = config.bpletza.workstation.wayland;
     };
 
     default = lib.mkOption {

@@ -11,10 +11,14 @@ in
 {
   options.bpletza.workstation.swaylock = lib.mkOption {
     type = lib.types.bool;
-    default = config.bpletza.workstation.sway;
+    default = config.bpletza.workstation.wayland;
   };
 
   config = lib.mkIf config.bpletza.workstation.swaylock {
+    home.packages = [
+      pkgs.swaylock
+    ];
+
     services.systemd-lock-handler.enable = true;
 
     home.file.".config/swaylock/config".text = ''

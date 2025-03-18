@@ -13,7 +13,7 @@
     };
     xorg-settings = lib.mkOption {
       type = lib.types.bool;
-      default = config.bpletza.workstation.xorg || config.bpletza.workstation.sway;
+      default = config.bpletza.workstation.xorg || config.bpletza.workstation.wayland;
     };
   };
 

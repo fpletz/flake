@@ -36,7 +36,7 @@ in
 {
   options.bpletza.workstation.browser = lib.mkOption {
     type = lib.types.bool;
-    default = config.bpletza.workstation.sway;
+    default = config.bpletza.workstation.wayland;
   };
 
   config = lib.mkIf config.bpletza.workstation.browser {
@@ -67,7 +67,7 @@ in
 
     programs.librewolf = {
       enable = true;
-      package = pkgs.librewolf-wayland.override (_attrs: {
+      package = pkgs.librewolf.override (_attrs: {
         extraPrefs =
           ''
             pref("webgl.disabled", false);
@@ -75,8 +75,8 @@ in
             pref("identity.fxaccounts.enabled", true);
           ''
           + extraPrefs;
-        inherit nativeMessagingHosts;
       });
+      inherit nativeMessagingHosts;
     };
 
     home.file.".librewolf/default/chrome" = {

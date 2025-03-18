@@ -25,7 +25,7 @@
     ./modules/terminal.nix
     ./modules/obs.nix
     ./modules/waybar.nix
-    ./modules/wob.nix
+    ./modules/wayland.nix
     ./modules/wofi.nix
     ./modules/workstation.nix
     ./modules/xorg.nix

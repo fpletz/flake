@@ -12,7 +12,7 @@ in
   options.bpletza.workstation.waybar = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.bpletza.workstation.sway;
+      default = config.bpletza.workstation.wayland;
     };
   };
 
@@ -21,18 +21,18 @@ in
       enable = cfg.enable;
       package = pkgs.waybar.override {
         hyprlandSupport = false;
+        swaySupport = false;
       };
-      systemd = {
-        enable = true;
-        target = lib.mkIf config.bpletza.workstation.sway "sway-session.target";
-      };
+      systemd.enable = true;
       settings.mainBar = {
         layer = "top";
         position = "top";
         reload_style_on_change = true;
+        margin-top = 4;
+        margin-left = 4;
+        margin-right = 4;
         modules-left = [
-          "sway/workspaces"
-          "sway/mode"
+          "niri/workspaces"
           "idle_inhibitor"
           "privacy"
           "systemd-failed-units"
@@ -43,7 +43,6 @@ in
           "backlight"
         ];
         modules-center = [
-          #"sway/window"
           # "mpris"
         ];
         modules-right = [
@@ -51,14 +50,15 @@ in
           "network#wl"
           "bluetooth"
           "pulseaudio"
+          "temperature"
           "upower"
           "clock"
           "tray"
         ];
-        "sway/workspaces" = { };
-        "sway/mode" = {
-          format = " {}";
-        };
+        # "sway/workspaces" = { };
+        # "sway/mode" = {
+        #   format = " {}";
+        # };
         privacy = {
           icon-size = 16;
           modules = [
@@ -126,19 +126,31 @@ in
             ""
             ""
           ];
-          on-scroll-up = "${lib.getExe pkgs.light} -U 5";
-          on-scroll-down = "${lib.getExe pkgs.light} -A 5";
+          on-scroll-up = "${lib.getExe' pkgs.swayosd "swayosd-client"} --brightness=raise";
+          on-scroll-down = "${lib.getExe' pkgs.swayosd "swayosd-client"} --brightness=lower";
         };
         power-profiles-daemon = {
           format-icons = {
-            default = "";
+            default = "⏻";
             performance = "";
             balanced = "";
             power-saver = "";
           };
         };
+        temperature = {
+          interval = 2;
+          format = "{temperatureC}°C {icon}";
+          format-icons = [
+            "󱃃"
+            "󰔏"
+            "󱃂"
+          ];
+          warning-threshold = 80;
+          critical-thrshold = 90;
+        };
         upower = {
           icon-size = 16;
+          format = "{percentage} {time}";
         };
         network = {
           interface = osConfig.bpletza.workstation.waybar.wiredInterface;
@@ -236,8 +248,7 @@ in
         }
 
         #workspaces {
-          background-color: #24283b;
-          margin: 0px;
+          background-color: rgba(0,0,0,0.8);
           border-radius: 5px;
         }
 
@@ -273,6 +284,7 @@ in
         #network,
         #network-wl,
         #systemd-failed-units,
+        #temperature,
         #tray {
           background-color: #24283b;
           padding: 5px 10px;
@@ -280,7 +292,7 @@ in
           border-radius: 5px;
         }
 
-        #load, #bluetooth {
+        #load, #bluetooth, #temperature {
           color: #7dcfff;
         }
 
@@ -294,10 +306,6 @@ in
 
         #disk {
           color: #9ece6a;
-        }
-
-        #tray {
-          margin: 0;
         }
 
         #mode,
@@ -332,7 +340,9 @@ in
           color: #24283b;
         }
 
-        #network, #network-wl, #bluetooth.discoverable {
+        #network, #network-wl,
+        #temperature.critical,
+        #bluetooth.discoverable {
           color: #f7768e;
         }
 

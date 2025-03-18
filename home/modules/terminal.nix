@@ -21,9 +21,13 @@
     programs.alacritty = {
       enable = true;
       settings = {
+        window = {
+          opacity = 0.85;
+          blur = true;
+        };
         font = {
           normal.family = "CommitMono";
-          size = 10.0;
+          size = 11.0;
         };
         scrolling = {
           history = 20000;

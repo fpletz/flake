@@ -176,7 +176,6 @@ in
       polkit.enable = true;
       pam.services = {
         swaylock = { };
-        waylock = { };
       };
       pam.loginLimits = [
         # Allow audio group to set RT priorities

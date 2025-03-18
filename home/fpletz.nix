@@ -20,7 +20,7 @@
     ./modules/shell.nix
     ./modules/spotify-unfree.nix
     ./modules/sway.nix
-    ./modules/waylock.nix
+    ./modules/swaylock.nix
     ./modules/systemd-lock-handler.nix
     ./modules/terminal.nix
     ./modules/obs.nix

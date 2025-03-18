@@ -92,8 +92,8 @@ in
 
     qt = {
       enable = true;
-      platformTheme.name = "gtk";
-      style.name = "gtk2";
+      platformTheme.name = "gtk3";
+      style.name = "gtk3";
     };
 
     home.sessionVariables = {

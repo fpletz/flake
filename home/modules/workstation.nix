@@ -37,7 +37,6 @@ in
         tmate
         nixd
         ruff
-        poetry
         uv
         yt-dlp
         pass

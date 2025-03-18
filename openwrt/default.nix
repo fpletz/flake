@@ -25,6 +25,7 @@
           "acme-acmesh-dnsapi"
           "luci-app-ddns"
           "luci-app-unbound"
+          "unbound-control"
           "luci-app-adblock-fast"
           "drill"
           "prometheus-node-exporter-lua"
@@ -37,6 +38,10 @@
           "prometheus-node-exporter-lua-wifi_stations"
           "tcpdump"
           "htop"
+          "kmod-veth"
+          "ip-full"
+          "kmod-jool-netfilter"
+          "jool-tools-netfilter"
         ];
       };
     }

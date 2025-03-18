@@ -28,7 +28,10 @@ let
     pref("media.ffmpeg.vaapi.enabled", true);
     pref("privacy.donottrackheader.enabled", true);
   '';
-  nativeMessagingHosts = with pkgs; [ tridactyl-native ];
+  nativeMessagingHosts = with pkgs; [
+    tridactyl-native
+    keepassxc
+  ];
 in
 {
   options.bpletza.workstation.browser = lib.mkOption {

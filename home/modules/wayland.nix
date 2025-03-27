@@ -60,15 +60,19 @@
             body-color = "${base05}ff";
             progress-bar-color = "${base0D}ff";
             icon-theme = config.gtk.iconTheme.name;
+            max-icon-size = 64;
             # default-timeout = 10;
             # max-timeout = 30;
-            max-width = 500;
+            min-width = 300;
+            max-width = 1000;
             title-font = "Recursive Sans Casual Static:size=11";
-            summary-font = "Recursive Sans Casual Static:size=12";
-            body-font = "Recursive Sans Casual Static:size=12";
+            summary-font = "Recursive Sans Casual Static:size=11";
+            body-font = "Recursive Sans Casual Static:size=11";
             selection-helper = "${lib.getExe pkgs.fuzzel} -d";
-            padding-vertical = 10;
-            padding-horizontal = 10;
+            summary-format = "<b>%s</b>";
+            padding-vertical = 15;
+            padding-horizontal = 15;
+
           };
           low = {
             background = "${base00}ff";

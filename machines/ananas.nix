@@ -11,8 +11,6 @@
     "usb_storage"
     "usbhid"
     "sd_mod"
-    "crc32_pclmul"
-    "crc32c_intel"
   ];
   boot.kernelModules = [ "kvm-intel" ];
 

@@ -13,3 +13,16 @@ creation_rules:
           - age1c3q8neuw3zrty97wkr5txqx4amydwn3d4h2uwc2zcpwcp3dcs3aq252etp
           # ananas
           - age108jh49zkvddns9xr4trcagpjdgxjlejyq0sjjhltgm5w56w8k33qxfntqy
+          - age108jh49zkvddns9xr4trcagpjdgxjlejyq0sjjhltgm5w56w8k33qxfntqy
+  - path_regex: secrets\/nina\.yaml$
+    key_groups:
+      - age:
+          - age10m6nkz6fngkeygfnsf4xkwx43qjt0lkefrzl2fntsma0ul8e5czs4qk9u2
+          # nina
+          - age1gm5z6pfx6thenk90luymyczmasa0kncqtnxy6k9gd2ytsvucy40qa5y9ng
+  - path_regex: secrets\/secunovo\.yaml$
+    key_groups:
+      - age:
+          - age10m6nkz6fngkeygfnsf4xkwx43qjt0lkefrzl2fntsma0ul8e5czs4qk9u2
+          # secunovo
+          - age1v0r7ukkzf782w4y54489enm909hd6zltvv3a7rchz4394zr3tassyg44dx

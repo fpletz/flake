@@ -55,6 +55,8 @@
     ];
   };
 
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+
   boot = {
     enableContainers = false;
     tmp.useTmpfs = lib.mkDefault true;

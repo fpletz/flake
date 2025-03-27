@@ -15,16 +15,14 @@
     "crc32c_intel"
   ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.supportedFilesystems.f2fs = true;
+
+  powerManagement.cpuFreqGovernor = "schedutil";
 
   fileSystems."/" = {
-    device = "/dev/disk/by-id/usb-HP_iLO_Internal_SD-CARD_000002660A01-0:0-part3";
-    fsType = "f2fs";
+    device = "UUID=117c6766-f084-4c17-9df1-8d377be90234";
+    fsType = "bcachefs";
     options = [
       "noatime"
-      "flush_merge"
-      "lazytime"
-      "discard"
     ];
   };
 

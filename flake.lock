@@ -333,15 +333,15 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1737234286,
-        "narHash": "sha256-CCKIAE84dzkrnlxJCKFyffAxP3yfsOAbdvydUGqq24g=",
-        "rev": "2837da71ec1588c1187d2e554719b15904a46c8b",
+        "lastModified": 1742622332,
+        "narHash": "sha256-z652gNdFc/95Fheq4DzVObERYRo+j9RdCF6tzkR8r80=",
+        "rev": "6059cbb031e49e05dd5d16208e2e50d3ab2611db",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/2837da71ec1588c1187d2e554719b15904a46c8b.tar.gz?rev=2837da71ec1588c1187d2e554719b15904a46c8b"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/6059cbb031e49e05dd5d16208e2e50d3ab2611db.tar.gz?rev=6059cbb031e49e05dd5d16208e2e50d3ab2611db"
       },
       "original": {
         "type": "tarball",
-        "url": "https://git.lix.systems/lix-project/lix/archive/2.92.0.tar.gz"
+        "url": "https://git.lix.systems/lix-project/lix/archive/main.tar.gz"
       }
     },
     "lix-module": {
@@ -354,15 +354,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1737237494,
-        "narHash": "sha256-YMLrcBpf0TR5r/eaqm8lxzFPap2TxCor0ZGcK3a7+b8=",
-        "rev": "b90bf629bbd835e61f1317b99e12f8c831017006",
+        "lastModified": 1741894565,
+        "narHash": "sha256-2FD0NDJbEjUHloVrtEIms5miJsj1tvQCc/0YK5ambyc=",
+        "rev": "a6da43f8193d9e329bba1795c42590c27966082e",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/b90bf629bbd835e61f1317b99e12f8c831017006.tar.gz?rev=b90bf629bbd835e61f1317b99e12f8c831017006"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/a6da43f8193d9e329bba1795c42590c27966082e.tar.gz?rev=a6da43f8193d9e329bba1795c42590c27966082e"
       },
       "original": {
         "type": "tarball",
-        "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz"
+        "url": "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz"
       }
     },
     "nil": {

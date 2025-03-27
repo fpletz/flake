@@ -169,7 +169,7 @@
     };
 
     programs.atuin = {
-      enable = config.bpletza.workstation.enable;
+      enable = true;
       daemon.enable = true;
       settings = {
         update_check = false;

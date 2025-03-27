@@ -226,14 +226,12 @@ in
         pkgs.libvdpau-va-gl
         pkgs.vulkan-validation-layers
       ];
-      enable32Bit = pkgs.stdenv.hostPlatform.isx86_64 && cfg.gaming;
     };
 
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
-      alsa.support32Bit = pkgs.stdenv.hostPlatform.isx86_64 && cfg.gaming;
       pulse.enable = true;
       jack.enable = true;
       wireplumber.extraConfig.bluetoothEnhancements = {

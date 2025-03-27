@@ -61,7 +61,7 @@ in
         ) nativeMessagingHosts
       )
       // {
-        "librewolf/default/chrome" = {
+        ".librewolf/default/chrome" = {
           source = "${inputs.potatofox}/chrome";
           recursive = true;
         };

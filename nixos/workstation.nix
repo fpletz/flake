@@ -297,7 +297,7 @@ in
       pkgs.alsa-utils
       pkgs.pulsemixer
       pkgs.pamixer
-      # pkgs.ncpamixer
+      pkgs.ncpamixer
     ] ++ lib.optional config.hardware.bluetooth.enable pkgs.bluetuith;
 
     virtualisation.podman = {

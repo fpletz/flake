@@ -395,9 +395,6 @@ in
       settings = {
         keep-outputs = true;
         keep-derivations = true;
-        substituters = lib.mkBefore [
-          "https://nixos.tvix.store"
-        ];
       };
       distributedBuilds = true;
       buildMachines =

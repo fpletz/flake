@@ -34,9 +34,13 @@ in
           addToQueueTop
           history
           fullAlbumDate
+          playNext
+          betterGenres
+          history
         ];
-        theme = spicePkgs.themes.catppuccin;
-        colorScheme = "mocha";
+        theme = spicePkgs.themes.comfy;
+        # theme = spicePkgs.themes.catppuccin;
+        # colorScheme = "mocha";
       };
   };
 }

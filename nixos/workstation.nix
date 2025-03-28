@@ -398,7 +398,7 @@ in
       };
       distributedBuilds = true;
       buildMachines =
-        (lib.optionals (config.networking.hostName != "zocknix") [
+        lib.optionals (config.networking.hostName != "zocknix") [
           {
             hostName = "zocknix.evs";
             protocol = "ssh-ng";
@@ -416,20 +416,7 @@ in
             maxJobs = 10;
             speedFactor = 2;
           }
-          {
-            hostName = "build-box.nix-community.org";
-            protocol = "ssh-ng";
-            maxJobs = 2;
-            sshKey = "/home/fpletz/.ssh/id_build";
-            sshUser = "fpletz";
-            system = "x86_64-linux";
-            supportedFeatures = [
-              "kvm"
-              "big-parallel"
-              "nixos-test"
-            ];
-          }
-        ])
+        ]
         ++ [
           {
             hostName = "aarch64-build-box.nix-community.org";

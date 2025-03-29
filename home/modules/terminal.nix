@@ -27,7 +27,7 @@
         };
         font = {
           normal.family = "Recursive Mono Casual Static";
-          size = 11.0;
+          size = 10.0;
         };
         scrolling = {
           history = 20000;
@@ -65,7 +65,7 @@
         background = "black";
         window-padding-color = "background";
         font-family = "Recursive Mono Casual Static";
-        font-size = 11;
+        font-size = 10;
         background-opacity = 0.8;
         mouse-hide-while-typing = true;
         auto-update = "off";

@@ -54,6 +54,7 @@
 
     bpletza.workstation = {
       battery = true;
+      eDPScale = 1.0;
       waybar.wiredInterface = "enp5s0";
       ytdlVideoCodec = "vp9";
       i3status-rs.blocks.temperatures = [

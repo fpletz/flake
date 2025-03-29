@@ -122,7 +122,9 @@
             criteria = "eDP-1";
             status = "enable";
             alias = "internal";
-            scale = lib.mkIf osConfig.bpletza.hardware.thinkpad.p14s-gen5 1.7;
+            scale = lib.mkIf (
+              !isNull osConfig.bpletza.workstation.eDPScale
+            ) osConfig.bpletza.workstation.eDPScale;
           };
         }
         {

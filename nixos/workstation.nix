@@ -45,6 +45,11 @@ in
     };
     gaming = mkEnableOption "gaming support";
     ai = mkEnableOption "AI";
+    eDPScale = lib.mkOption {
+      type = lib.types.nullOr lib.types.float;
+      default = null;
+      description = "Set scale of internal display";
+    };
   };
 
   imports = lib.filesystem.listFilesRecursive ./workstation;

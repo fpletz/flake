@@ -25,7 +25,6 @@
       ];
       extraModprobeConfig = ''
         options thinkpad_acpi fan_control=1
-        options psmouse synaptics_intertouch=1
       '';
     };
 
@@ -38,6 +37,11 @@
       enable = true;
       interfaces = [ "wlp2s0" ];
     };
+
+    services.udev.extraRules = ''
+      # default wifi card has issues on some access points if power saving is on
+      ACTION=="add", SUBSYSTEM=="net", ID_NET_DRIVER=="rtw_8822be", RUN+="${lib.getExe pkgs.iw} dev $name set power_save off"
+    '';
 
     hardware = {
       firmware = with pkgs; [

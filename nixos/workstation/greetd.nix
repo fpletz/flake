@@ -15,6 +15,11 @@ in
 
     programs.regreet = {
       enable = true;
+      cageArgs = [
+        "-s"
+        "-m"
+        "last"
+      ];
       cursorTheme = {
         name = "phinger-cursors-dark";
         package = pkgs.phinger-cursors;

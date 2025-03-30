@@ -66,6 +66,7 @@
     # disks
     parted
     ddrescue
+    smartmontools
     # crypto
     age
     sops

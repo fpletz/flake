@@ -17,7 +17,7 @@
   powerManagement.cpuFreqGovernor = "schedutil";
 
   fileSystems."/" = {
-    device = "UUID=117c6766-f084-4c17-9df1-8d377be90234";
+    device = "UUID=6a981d19-cd1c-4b88-b04b-6c54e04f5e19";
     fsType = "bcachefs";
     options = [
       "noatime"

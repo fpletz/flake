@@ -49,6 +49,18 @@ in
       };
     };
 
+    xdg.portal.config = {
+      preferred = {
+        default = [
+          "gnome"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.Access" = "gtk";
+        "org.freedesktop.impl.portal.FileChooser" = "gtk";
+        "org.freedesktop.impl.portal.Notification" = "gtk";
+      };
+    };
+
     programs.niri.enable = true;
     services.gnome.gnome-keyring.enable = false; # set by niri NixOS module
   };

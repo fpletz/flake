@@ -14,7 +14,6 @@ let
     pref("gfx.webrender.enabled", true);
     pref("gfx.webrender.all", true);
     pref("gfx.webrender.compositor", true);
-    pref("gfx.webrender.compositor.force-enabled", true);
     pref("network.dns.echconfig.enabled", true);
     pref("network.dns.http3_echconfig.enabled", true);
     pref("geo.enabled", false);
@@ -24,8 +23,6 @@ let
     pref("widget.gtk.rounded-bottom-corners.enabled", true);
     pref("browser.uidensity", 1);
     pref("network.proxy.type", 0);
-    pref("webgl.enable-debug-renderer-info", false);
-    pref("media.ffmpeg.vaapi.enabled", true);
     pref("privacy.donottrackheader.enabled", true);
   '';
 in

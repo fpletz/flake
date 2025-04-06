@@ -1,8 +1,10 @@
-name: nix-flake-check
+name: Flake Checks
 on:
   pull_request:
   push:
     branches: [main]
+
+permissions: {}
 
 jobs:
   check:
@@ -10,9 +12,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Check Nix flake inputs
-        uses: DeterminateSystems/flake-checker-action@v9
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v16
+        with:
+          persist-credentials: false
+      - name: Install Lix
+        uses: samueldr/lix-gha-installer-action@latest
       - name: Run flake checks
         run: nix develop -c nix-fast-build --no-nom --no-download

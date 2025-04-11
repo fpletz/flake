@@ -166,6 +166,39 @@ in
       };
     };
 
+    services.mopidy = {
+      enable = true;
+      extensionPackages = [
+        pkgs.mopidy-mpd
+        pkgs.mopidy-mpris
+        pkgs.mopidy-somafm
+        pkgs.mopidy-youtube
+        pkgs.mopidy-soundcloud
+        pkgs.mopidy-ytmusic
+        pkgs.mopidy-iris
+      ];
+      settings = {
+        file = {
+          media_dirs = [ "Music" ];
+          follow_symlinks = true;
+        };
+        youtube = {
+          enabled = true;
+          musicapi_enabled = true;
+          youtube_dl_package = "yt_dlp";
+        };
+        core = {
+          restore_state = true;
+        };
+        audio = {
+          output = "pulsesink";
+        };
+        logging = {
+          format = "%(levelname)-8s [%(process)d:%(threadName)s] %(name)s  %(message)s";
+        };
+      };
+    };
+
     services.gammastep = {
       enable = true;
       latitude = "48";

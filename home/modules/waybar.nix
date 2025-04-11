@@ -43,7 +43,7 @@ in
           "backlight"
         ];
         modules-center = [
-          # "mpris"
+          "mpris"
         ];
         modules-right = [
           "network"
@@ -220,7 +220,13 @@ in
             firefox = "";
             librewolf = "";
             chromium = "";
+            YoutubeMusic = "";
           };
+          ignored-players = [
+            "firefox"
+            "librewolf"
+            "chromium"
+          ];
           status-icons = {
             paused = "";
           };
@@ -285,6 +291,7 @@ in
         #network-wl,
         #systemd-failed-units,
         #temperature,
+        #mpris,
         #tray {
           background-color: #24283b;
           padding: 5px 10px;
@@ -300,7 +307,7 @@ in
           color: #a9b1d6;
         }
 
-        #memory {
+        #memory, #mpris {
           color: #bb9af7;
         }
 
@@ -327,7 +334,7 @@ in
           color: #9ece6a;
         }
 
-        #systemd-failed-units.ok {
+        #systemd-failed-units.ok, #mpris.spotify {
           color: #9ece6a;
         }
 
@@ -346,7 +353,7 @@ in
           color: #f7768e;
         }
 
-        #pulseaudio {
+        #pulseaudio, #mpris.paused {
           color: #e0af68;
         }
       '';

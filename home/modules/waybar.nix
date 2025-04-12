@@ -139,7 +139,7 @@ in
         };
         temperature = {
           interval = 2;
-          format = "{temperatureC}°C {icon}";
+          format = "{temperatureC}°C {icon} ";
           format-icons = [
             "󱃃"
             "󰔏"

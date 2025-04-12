@@ -36,18 +36,6 @@
       enable = true;
     };
 
-    services.wob = {
-      enable = true;
-      settings = with config.colorScheme.palette; {
-        "" = {
-          timeout = 750;
-          background_color = "${base00}DD";
-          bar_color = base05;
-          border_color = base05;
-        };
-      };
-    };
-
     services.fnott = {
       enable = true;
       extraFlags = [ "-s" ];
@@ -261,6 +249,5 @@
         }
       ];
     };
-
   };
 }

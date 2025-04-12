@@ -304,6 +304,7 @@ in
       pkgs.pulsemixer
       pkgs.pamixer
       pkgs.ncpamixer
+      pkgs.efibootmgr
     ] ++ lib.optional config.hardware.bluetooth.enable pkgs.bluetuith;
 
     virtualisation.podman = {

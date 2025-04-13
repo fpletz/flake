@@ -273,7 +273,7 @@ in
     };
 
     services.upower = {
-      enable = cfg.battery;
+      enable = mkIf cfg.battery true;
     };
 
     hardware.bluetooth = {

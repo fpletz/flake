@@ -51,8 +51,6 @@ in
   config = mkIf cfg.enable {
     bpletza.workstation.libvirt = lib.mkOptionDefault (!cfg.battery);
 
-    nixpkgs.permittedUnfreePackages = [ "corefonts" ];
-
     services.dbus.implementation = "broker";
 
     boot = {
@@ -151,10 +149,6 @@ in
 
     security = {
       polkit.enable = true;
-      soteria.enable = true;
-      pam.services = {
-        swaylock = { };
-      };
       pam.loginLimits = [
         # Allow audio group to set RT priorities
         {

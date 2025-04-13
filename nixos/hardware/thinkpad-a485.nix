@@ -56,6 +56,17 @@
 
     services.fwupd.enable = true;
 
+    home-manager.sharedModules = [
+      {
+        programs.waybar.settings.mainBar.temperature = {
+          hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
+          input-filename = "temp1_input";
+          warning-threshold = 80;
+          critical-threshold = 90;
+        };
+      }
+    ];
+
     bpletza.workstation = {
       battery = true;
       eDPScale = 1.0;

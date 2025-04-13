@@ -14,7 +14,6 @@
     ./modules/git.nix
     ./modules/gnupg.nix
     ./modules/gui.nix
-    ./modules/i3status-rs.nix
     ./modules/nixvim.nix
     ./modules/nvidia.nix
     ./modules/shell.nix

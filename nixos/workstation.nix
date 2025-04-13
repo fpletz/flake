@@ -18,7 +18,6 @@ in
   options.bpletza.workstation = {
     enable = mkEnableOption "fpletz workstation";
     battery = mkEnableOption "machine has battery";
-    xorg = mkEnableOption "xorg xserver support";
     libvirt = mkOption {
       type = types.bool;
       description = "libvirtd";
@@ -27,11 +26,6 @@ in
       type = types.str;
       default = "enp*";
       description = "Interface name or wildcard for wired interface";
-    };
-    i3status-rs.blocks.temperatures = mkOption {
-      type = types.listOf types.attrs;
-      default = [ ];
-      description = "temperature blocks in the config";
     };
     ytdlVideoCodec = lib.mkOption {
       type = lib.types.str;
@@ -460,9 +454,6 @@ in
     };
 
     services.xserver = {
-      enable = cfg.xorg;
-      windowManager.i3.enable = cfg.xorg;
-      displayManager.startx.enable = cfg.xorg;
       xkb = {
         layout = "eu";
         options = "compose:caps";

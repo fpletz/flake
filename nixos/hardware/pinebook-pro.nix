@@ -88,18 +88,6 @@ in
     bpletza.workstation = {
       battery = true;
       ytdlVideoCodec = "avc1";
-      i3status-rs.blocks.temperatures = [
-        {
-          block = "temperature";
-          interval = 5;
-          good = 30;
-          idle = 50;
-          info = 60;
-          warning = 70;
-          chip = "cpu_thermal-virtual-0";
-          format = "  $icon $max|C ";
-        }
-      ];
     };
   };
 }

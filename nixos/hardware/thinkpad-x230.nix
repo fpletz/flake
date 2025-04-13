@@ -64,18 +64,6 @@
       battery = true;
       waybar.wiredInterface = "eno0";
       ytdlVideoCodec = "avc1";
-      i3status-rs.blocks.temperatures = [
-        {
-          block = "temperature";
-          interval = 2;
-          good = 40;
-          idle = 60;
-          info = 75;
-          warning = 80;
-          chip = "coretemp-isa-0000";
-          format = "  $icon $max|C ";
-        }
-      ];
     };
   };
 }

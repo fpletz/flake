@@ -61,18 +61,6 @@
       eDPScale = 1.0;
       waybar.wiredInterface = "enp5s0";
       ytdlVideoCodec = "vp9";
-      i3status-rs.blocks.temperatures = [
-        {
-          block = "temperature";
-          interval = 2;
-          good = 40;
-          idle = 60;
-          info = 75;
-          warning = 80;
-          chip = "k10temp-pci-00c3";
-          format = "  $icon $max|C ";
-        }
-      ];
     };
   };
 }

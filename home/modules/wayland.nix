@@ -30,6 +30,8 @@
       pkgs.emoji-picker
     ];
 
+    home.file.".config/niri/config.kdl".source = ../../static/niri.kdl;
+
     services.swayosd = {
       enable = true;
     };

@@ -9,9 +9,10 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    services.desktopManager.cosmic.enable = true;
-    services.displayManager.cosmic-greeter.enable = true;
-    networking.networkmanager.enable = lib.mkForce false;
+    services.greetd = {
+      enable = true;
+      settings.default_session.command = lib.getExe pkgs.greetd.tuigreet;
+    };
 
     xdg.portal.config = {
       preferred = {

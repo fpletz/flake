@@ -198,12 +198,6 @@ window-rule {
 }
 
 window-rule {
-  match is-active=false
-  exclude app-id=r#"(librewolf|firefox|thunderbird|mpv)$"#
-  opacity 0.9
-}
-
-window-rule {
   match is-window-cast-target=true
 
   focus-ring {

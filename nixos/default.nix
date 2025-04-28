@@ -20,7 +20,7 @@
   nixpkgs.overlays = [
     inputs.self.overlays.default
     inputs.bad_gateway.overlays.default
-    inputs.nil.overlays.default
+    inputs.nixd.overlays.default
   ];
 
   nixpkgs.flake = {

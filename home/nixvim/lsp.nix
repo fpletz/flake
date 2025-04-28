@@ -61,15 +61,8 @@
         jsonls.enable = true;
         lemminx.enable = true;
         lua_ls.enable = true;
-        nil_ls = {
-          enable = true;
-          settings = {
-            nix.maxMemoryMB = 4096;
-            formatting.command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
-          };
-        };
         nixd = {
-          enable = false; # FIXME: buggy and uses legacy nix :/
+          enable = true;
           extraOptions = {
             offset_encoding = "utf-8";
           };

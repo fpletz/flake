@@ -39,8 +39,7 @@ in
           history
         ];
         theme = spicePkgs.themes.comfy;
-        # theme = spicePkgs.themes.catppuccin;
-        # colorScheme = "mocha";
+        colorScheme = "catppuccin-mocha";
       };
   };
 }

@@ -28,9 +28,6 @@ in
         layer = "top";
         position = "top";
         reload_style_on_change = true;
-        margin-top = 4;
-        margin-left = 4;
-        margin-right = 4;
         modules-left = [
           "niri/workspaces"
           "idle_inhibitor"

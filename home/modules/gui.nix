@@ -204,7 +204,7 @@ in
       latitude = "48";
       longitude = "11";
       temperature = {
-        day = 5500;
+        day = 6000;
         night = 3800;
       };
       settings = {

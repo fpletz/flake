@@ -138,7 +138,14 @@
             criteria = "AOC U2790B 0x0000579E";
             status = "enable";
             scale = 1.7;
-            alias = "muccc";
+            alias = "muccc1";
+          };
+        }
+        {
+          output = {
+            criteria = "Dell Inc. DELL U2713HM GK0KD2AC662L";
+            status = "enable";
+            alias = "muccc2";
           };
         }
         {
@@ -177,15 +184,30 @@
         }
         {
           profile = {
-            name = "muccc-docked";
+            name = "muccc1-docked";
             outputs = [
               {
-                criteria = "$muccc";
+                criteria = "$muccc1";
                 position = "0,0";
               }
               {
                 criteria = "$internal";
                 position = "0,1270";
+              }
+            ];
+          };
+        }
+        {
+          profile = {
+            name = "muccc2-docked";
+            outputs = [
+              {
+                criteria = "$muccc2";
+                position = "0,0";
+              }
+              {
+                criteria = "$internal";
+                position = "0,1200";
               }
             ];
           };

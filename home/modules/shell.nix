@@ -43,20 +43,20 @@
       localVariables = {
         POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD = "true";
       };
-      initContent = ''
-        # p10k prompt cache
-        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-        fi
-      '';
-      initExtra =
+      initContent = lib.mkMerge [
+        (lib.mkBefore ''
+          # p10k prompt cache
+          if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+            source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+          fi
+        '')
         ''
           # load atuin ctr-r keybind after zsh-vi-mode (conflict)
           zvm_after_init_commands+=(
             "bindkey -M viins '^r' atuin-search-viins"
           )
         ''
-        + (lib.optionalString config.programs.direnv.enable ''
+        (lib.optionalString config.programs.direnv.enable ''
           # don't execute direnv on every zsh init
           source "${
             pkgs.runCommand "direnv-hook.zsh" { } ''
@@ -64,12 +64,13 @@
             ''
           }"
         '')
-        + ''
+        ''
           if [[ -r ~/.p10k.zsh ]]; then
             source ~/.p10k.zsh
           fi
           source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        '';
+        ''
+      ];
     };
 
     home.file.".p10k.zsh".source = ./shell/p10k.zsh;

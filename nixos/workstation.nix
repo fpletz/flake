@@ -295,6 +295,10 @@ in
       pkgs.efibootmgr
     ] ++ lib.optional config.hardware.bluetooth.enable pkgs.bluetuith;
 
+    systemd.user.services.mpris-proxy.wantedBy = lib.mkIf config.hardware.bluetooth.enable [
+      "graphical-session.target"
+    ];
+
     virtualisation.podman = {
       enable = true;
       dockerCompat = true;

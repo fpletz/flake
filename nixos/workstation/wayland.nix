@@ -43,5 +43,11 @@ in
         ExecStart = lib.getExe pkgs.xwayland-satellite;
       };
     };
+
+    qt = {
+      enable = true;
+      platformTheme = "gtk2";
+      style = "gtk2";
+    };
   };
 }

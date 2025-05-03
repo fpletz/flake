@@ -410,16 +410,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1746122609,
-        "narHash": "sha256-C+rTQHGJ0cqQ8kv02rKWuu4EhJHugSYnN61zMRfMKuw=",
-        "owner": "NixOS",
+        "lastModified": 1746264080,
+        "narHash": "sha256-W0Wrf8QrxsMlh2SqoX1m0DlIAjBBt/7vs00r1+XSkMU=",
+        "owner": "fpletz",
         "repo": "nixpkgs",
-        "rev": "a85a037d481695e6f16053c5b9079a8cb0d50d77",
+        "rev": "54be66949b0105ef8e82df3c6bd90b187938db86",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable-small",
+        "owner": "fpletz",
+        "ref": "pkgs/librewolf-138.0-1",
         "repo": "nixpkgs",
         "type": "github"
       }

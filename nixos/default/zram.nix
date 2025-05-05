@@ -1,8 +1,9 @@
+{ lib, ... }:
 {
   zramSwap = {
     enable = true;
-    algorithm = "zstd";
-    memoryPercent = 100;
+    algorithm = lib.mkDefault "zstd";
+    memoryPercent = lib.mkDefault 100;
   };
 
   boot = {

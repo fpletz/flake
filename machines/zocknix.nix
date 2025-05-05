@@ -20,6 +20,9 @@
   boot.kernelModules = [ "it87" ];
   hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
 
+  # increase for big builds in tmpfs
+  zramSwap.memoryPercent = 200;
+
   boot.initrd.luks.devices."nvme0crypt" = {
     device = "/dev/disk/by-uuid/da89ead5-c015-4ac8-923b-5b7ca1965740";
     allowDiscards = true;

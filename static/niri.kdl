@@ -153,7 +153,7 @@ window-rule {
   match app-id=r#"librewolf$"# title=r#"^Picture-in-Picture$"#
   match app-id=r#"librewolf$"# title=r#"^Extension:"#
   match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-  match app-id=r#"thunderbird$"# title=r.#".*Reminder.*"#
+  match app-id=r#"thunderbird$"# title=r#".*Reminder.*"#
   open-floating true
 }
 

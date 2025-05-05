@@ -202,6 +202,7 @@ in
           tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+          on-click = "${config.bpletza.workstation.terminal.default} -e ${lib.getExe pkgs.bluetuith}";
         };
         mpris = {
           format = "{player_icon} {dynamic}";

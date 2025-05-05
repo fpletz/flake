@@ -198,20 +198,5 @@ in
         };
       };
     };
-
-    services.gammastep = {
-      enable = true;
-      latitude = "48";
-      longitude = "11";
-      temperature = {
-        day = 6000;
-        night = 3800;
-      };
-      settings = {
-        general = {
-          fade = 0;
-        };
-      };
-    };
   };
 }

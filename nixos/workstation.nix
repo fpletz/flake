@@ -377,6 +377,8 @@ in
       pinentryPackage = pkgs.pinentry-gnome3;
     };
 
+    programs.nh.enable = true;
+
     programs.ssh.knownHosts =
       {
         "build-box.nix-community.org".publicKey =

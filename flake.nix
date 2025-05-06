@@ -2,7 +2,7 @@
   description = "fpletz flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:fpletz/nixpkgs/pr/404700-fix";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

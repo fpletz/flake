@@ -157,7 +157,6 @@
         {
           devShells.default = pkgs.mkShellNoCC {
             packages = [
-              pkgs.nom-rebuild
               pkgs.sops
               pkgs.ssh-to-age
               pkgs.nix-fast-build

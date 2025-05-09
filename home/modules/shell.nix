@@ -20,10 +20,6 @@
       };
       plugins = [
         {
-          name = "zsh-vi-mode";
-          src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
-        }
-        {
           name = "nix-zsh-completions";
           src = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
         }
@@ -40,40 +36,7 @@
         p = "$PAGER";
         vi = "vim";
       };
-      localVariables = {
-        POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD = "true";
-      };
-      initContent = lib.mkMerge [
-        (lib.mkBefore ''
-          # p10k prompt cache
-          if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-            source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-          fi
-        '')
-        ''
-          # load atuin ctr-r keybind after zsh-vi-mode (conflict)
-          zvm_after_init_commands+=(
-            "bindkey -M viins '^r' atuin-search-viins"
-          )
-        ''
-        (lib.optionalString config.programs.direnv.enable ''
-          # don't execute direnv on every zsh init
-          source "${
-            pkgs.runCommand "direnv-hook.zsh" { } ''
-              ${lib.getExe pkgs.direnv} hook zsh > $out
-            ''
-          }"
-        '')
-        ''
-          if [[ -r ~/.p10k.zsh ]]; then
-            source ~/.p10k.zsh
-          fi
-          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        ''
-      ];
     };
-
-    home.file.".p10k.zsh".source = ./shell/p10k.zsh;
 
     programs.bash = {
       enable = true;
@@ -89,7 +52,6 @@
     programs.direnv = {
       enable = config.bpletza.workstation.enable;
       nix-direnv.enable = true;
-      enableZshIntegration = false;
     };
 
     programs.fzf = {
@@ -147,7 +109,6 @@
 
     programs.starship = {
       enable = config.bpletza.workstation.enable;
-      enableZshIntegration = false;
       settings =
         lib.attrsets.recursiveUpdate (builtins.fromTOML (builtins.readFile ./shell/starship-presets.toml))
           {

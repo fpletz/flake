@@ -32,7 +32,10 @@
 
   bpletza.hardware.thinkpad.a485 = true;
   bpletza.secureboot = true;
-  bpletza.workstation.enable = true;
+  bpletza.workstation = {
+    enable = true;
+    gaming = true;
+  };
 
   sops = {
     secrets = {

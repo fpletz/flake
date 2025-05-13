@@ -40,7 +40,7 @@
 
     services.udev.extraRules = ''
       # default wifi card has issues on some access points if power saving is on
-      ACTION=="add", SUBSYSTEM=="net", ID_NET_DRIVER=="rtw_8822be", RUN+="${lib.getExe pkgs.iw} dev $name set power_save off"
+      ACTION=="add", SUBSYSTEM=="net", DRIVER=="rtw_8822be", RUN+="${lib.getExe pkgs.iw} dev $name set power_save off"
     '';
 
     hardware = {

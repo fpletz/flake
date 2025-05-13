@@ -28,10 +28,6 @@
           inherit (pkgs.zsh-fast-syntax-highlighting) src;
         }
       ];
-      sessionVariables = {
-        ZSH_TMUX_AUTOSTART = "false";
-        ZSH_TMUX_AUTOCONNECT = "false";
-      };
       shellAliases = {
         p = "$PAGER";
         vi = "vim";
@@ -47,7 +43,7 @@
       };
     };
 
-    programs.zoxide.enable = true;
+    programs.zoxide.enable = config.bpletza.workstation.enable;
 
     programs.direnv = {
       enable = config.bpletza.workstation.enable;
@@ -108,20 +104,64 @@
     };
 
     programs.starship = {
-      enable = config.bpletza.workstation.enable;
+      enable = true;
       settings =
         lib.attrsets.recursiveUpdate (builtins.fromTOML (builtins.readFile ./shell/starship-presets.toml))
           {
-            character = {
-              success_symbol = "[➜](bold green)";
-              error_symbol = "[➜](bold red)";
+            command_timeout = 2000;
+            status.disabled = false;
+            username = {
+              disabled = false;
+              style_user = "bold cyan";
+              format = "[$user]($style)[@](white bold)";
+              show_always = true;
             };
-            aws.disabled = false;
-            azure.disabled = true;
-            gcloud.disabled = true;
+            hostname = {
+              disabled = false;
+              style = "bold blue";
+              format = "[$ssh_symbol$hostname]($style) ";
+              ssh_symbol = "󰣀";
+              ssh_only = false;
+            };
+            directory = {
+              disabled = false;
+              truncation_length = 23;
+              truncation_symbol = "…/";
+            };
+            direnv = {
+              disabled = false;
+              format = "[$symbol$loaded$allowed]($style) ";
+              symbol = "󰚝 ";
+              loaded_msg = "";
+              unloaded_msg = " ";
+              allowed_msg = "";
+              not_allowed_msg = "󰌾";
+              denied_msg = "󰌾";
+            };
+            nix_shell = {
+              disabled = false;
+              format = "[$symbol$state(\($name\))]($style) ";
+              symbol = " ";
+              impure_msg = "*";
+              pure_msg = "";
+              unknown_msg = "?";
+            };
             shell.disabled = false;
             battery.disabled = false;
-            status.disabled = false;
+            git_branch = {
+              disabled = false;
+              symbol = " ";
+              format = "[$symbol$branch(:$remote_branch)]($style) ";
+            };
+            git_commit = {
+              disabled = false;
+              tag_disabled = false;
+            };
+            package.disabled = true;
+            aws.disabled = true;
+            azure.disabled = true;
+            gcloud.disabled = true;
+            vcsh.disabled = true;
           };
     };
 

@@ -29,6 +29,7 @@
         obs-shaderfilter
         obs-composite-blur
         obs-source-record
+        obs-source-clone
       ];
     };
   };

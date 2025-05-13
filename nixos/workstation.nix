@@ -472,6 +472,7 @@ in
 
     services.ollama = {
       enable = cfg.ai;
+      host = "[::]";
     };
   };
 }

@@ -196,6 +196,7 @@ in
       trustedInterfaces = [
         "podman+"
         "virbr+"
+        "tailscale+"
       ];
     };
 

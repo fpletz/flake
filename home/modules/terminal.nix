@@ -77,5 +77,23 @@
         resize-overlay = "never";
       };
     };
+
+    systemd.user.services.ghostty = {
+      Unit = {
+        Description = "ghostty";
+        PartOf = "graphical-session.target";
+        After = "graphical-session.target";
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${lib.getExe config.programs.ghostty.package} --initial-window=false --quit-after-last-window-closed=false";
+        Slice = "app.slice";
+        Restart = "on-failure";
+      };
+
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
   };
 }

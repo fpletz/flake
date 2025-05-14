@@ -399,7 +399,7 @@ in
         keep-outputs = true;
         keep-derivations = true;
         substituters = lib.mkBefore [
-          "https://nixos.tvix.store"
+          "https://nixos.snix.store"
         ];
       };
       distributedBuilds = true;

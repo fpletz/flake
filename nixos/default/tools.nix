@@ -2,6 +2,7 @@
 {
   programs = {
     zsh.enable = true;
+    fish.enable = true;
     vim = {
       enable = true;
       defaultEditor = true;

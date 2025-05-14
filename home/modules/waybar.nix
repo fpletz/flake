@@ -34,9 +34,7 @@ in
           "privacy"
           "systemd-failed-units"
           "power-profiles-daemon"
-          # "load"
-          # "memory"
-          # "disk"
+          "temperature"
           "backlight"
         ];
         modules-center = [
@@ -47,15 +45,10 @@ in
           "network#wl"
           "bluetooth"
           "pulseaudio"
-          "temperature"
           "upower"
           "clock"
           "tray"
         ];
-        # "sway/workspaces" = { };
-        # "sway/mode" = {
-        #   format = " {}";
-        # };
         privacy = {
           icon-size = 16;
           modules = [
@@ -77,18 +70,6 @@ in
             activated = "";
             deactivated = "";
           };
-        };
-        load = {
-          format = "{load1} 󰣖";
-          interval = 2;
-        };
-        memory = {
-          format = "{percentage}%/{swapPercentage}% ";
-          interval = 2;
-        };
-        disk = {
-          format = "{free} {path}";
-          path = "/";
         };
         clock = {
           timezones = [
@@ -152,19 +133,25 @@ in
         network = {
           interface = osConfig.bpletza.workstation.waybar.wiredInterface;
           format-ethernet = "{bandwidthDownBits} {bandwidthUpBits} ";
-          tooltip-format-ethernet = "{ifname} {ipaddr}/{cidr} via {gwaddr}";
+          tooltip-format-ethernet = "{ifname}";
           format-linked = "{ifname} (No IP) ";
-          format-disconnected = "";
+          format-disconnected = "󰈂";
           format-alt = "{ifname} {ipaddr}/{cidr}";
           interval = 2;
         };
         "network#wl" = {
           interface = "wlp*";
-          format-wifi = "{bandwidthDownBits} {bandwidthUpBits} {essid} {signalStrength}% ";
-          tooltip-format-wifi = "{ipaddr}/{cidr} via {gwaddr} with {signaldBm}dBm";
-          format-linked = "{ifname} (No IP) ";
-          format-disconnected = "";
+          format-wifi = "{bandwidthDownBits} {bandwidthUpBits} {essid} {icon}";
+          tooltip-format-wifi = "{ifname}";
+          format-linked = "{ifname} (No IP) {icon}";
+          format-disconnected = "󰤭";
           format-alt = "{ifname} {ipaddr}/{cidr}";
+          format-icons = [
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
           interval = 2;
         };
         pulseaudio = {
@@ -191,13 +178,13 @@ in
           on-click = "${config.bpletza.workstation.terminal.default} -e ${lib.getExe pkgs.pulsemixer}";
         };
         bluetooth = {
-          format = " {status}";
+          format = "{status} ";
           format-no-controller = "";
           format-disabled = "";
           format-on = "";
           format-off = "󰂲";
-          format-connected = " {device_alias}";
-          format-connected-battery = " {device_alias} {device_battery_percentage}%";
+          format-connected = "{device_alias} ";
+          format-connected-battery = "{device_alias} {device_battery_percentage}% ";
           tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
           tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
@@ -220,11 +207,6 @@ in
             chromium = "";
             YoutubeMusic = "";
           };
-          ignored-players = [
-            "firefox"
-            "librewolf"
-            "chromium"
-          ];
           status-icons = {
             paused = "";
           };
@@ -237,126 +219,123 @@ in
           user = true;
         };
       };
-      style = ''
-        * {
-          border: none;
-          border-radius: 0;
-          font-family: "Recursive Sans Casual Static";
-          font-size: 10pt;
-          min-height: 0;
-        }
+      style = # css
+        ''
+          * {
+            border: none;
+            border-radius: 0;
+            font-family: "Recursive Sans Casual Static";
+            font-size: 10pt;
+            min-height: 0;
+          }
 
-        window#waybar {
-          background-color: rgba(0,0,0,0);
-          color: #A9B1D6;
-        }
+          window#waybar {
+            background-color: rgba(0,0,0,0);
+            color: #A9B1D6;
+          }
 
-        #workspaces {
-          background-color: rgba(0,0,0,0.8);
-          border-radius: 5px;
-        }
+          #workspaces {
+            background-color: rgba(0,0,0,0.8);
+            border-radius: 5px;
+          }
 
-        #workspaces button {
-          padding: 5px 5px;
-          color: #c0caf5;
-        }
+          #workspaces button {
+            padding: 5px 5px;
+            color: #c0caf5;
+          }
 
-        #workspaces button.focused {
-          color: #24283b;
-          background-color: #7aa2f7;
-          border-radius: 5px;
-        }
+          #workspaces button.focused {
+            color: #24283b;
+            background-color: #7aa2f7;
+            border-radius: 5px;
+          }
 
-        #workspaces button:hover {
-          background-color: #7dcfff;
-          color: #24283b;
-          border-radius: 5px;
-        }
+          #workspaces button:hover {
+            background-color: #7dcfff;
+            color: #24283b;
+            border-radius: 5px;
+          }
 
-        #load,
-        #memory,
-        #disk,
-        #mode,
-        #privacy,
-        #idle_inhibitor,
-        #backlight,
-        #clock,
-        #power-profiles-daemon,
-        #upower,
-        #pulseaudio,
-        #bluetooth,
-        #network,
-        #network-wl,
-        #systemd-failed-units,
-        #temperature,
-        #mpris,
-        #tray {
-          background-color: #24283b;
-          padding: 5px 10px;
-          margin: 0px 2px;
-          border-radius: 5px;
-        }
+          #mode,
+          #privacy,
+          #idle_inhibitor,
+          #backlight,
+          #clock,
+          #power-profiles-daemon,
+          #upower,
+          #pulseaudio,
+          #bluetooth,
+          #network,
+          #network-wl,
+          #systemd-failed-units,
+          #temperature,
+          #mpris,
+          #tray {
+            background-color: #24283b;
+            padding: 5px 10px;
+            margin: 0px 2px;
+            border-radius: 5px;
+          }
 
-        #load, #bluetooth, #temperature {
-          color: #7dcfff;
-        }
+          #bluetooth, #temperature {
+            color: #7dcfff;
+          }
 
-        #bluetooth.off, #bluetooth.disabled {
-          color: #a9b1d6;
-        }
+          #bluetooth.off, #bluetooth.disabled {
+            color: #a9b1d6;
+          }
 
-        #memory, #mpris {
-          color: #bb9af7;
-        }
+          #mpris {
+            color: #bb9af7;
+          }
 
-        #disk {
-          color: #9ece6a;
-        }
+          #disk {
+            color: #9ece6a;
+          }
 
-        #mode,
-        #idle_inhibitor.activated {
-          color: #24283b;
-          background-color: #7aa2f7;
-        }
+          #mode,
+          #idle_inhibitor.activated {
+            color: #24283b;
+            background-color: #7aa2f7;
+          }
 
-        #clock {
-          color: #bb9af7;
-          border-radius: 0px 5px 5px 0px;
-          margin-right: 0px;
-        }
+          #clock {
+            color: #bb9af7;
+            border-radius: 0px 5px 5px 0px;
+            margin-right: 0px;
+          }
 
-        #upower {
-          color: #9ece6a;
-        }
+          #upower {
+            color: #9ece6a;
+          }
 
-        #upower.charging {
-          color: #9ece6a;
-        }
+          #upower.charging {
+            color: #9ece6a;
+          }
 
-        #systemd-failed-units.ok, #mpris.spotify {
-          color: #9ece6a;
-        }
+          #systemd-failed-units.ok, #mpris.spotify {
+            color: #9ece6a;
+          }
 
-        #systemd-failed-units.degraded {
-          color: #f7768e;
-        }
+          #systemd-failed-units.degraded {
+            color: #f7768e;
+          }
 
-        #upower.discharging {
-          background-color: #f7768e;
-          color: #24283b;
-        }
+          #upower.discharging {
+            background-color: #f7768e;
+            color: #24283b;
+          }
 
-        #network, #network-wl,
-        #temperature.critical,
-        #bluetooth.discoverable {
-          color: #f7768e;
-        }
+          #network, #network-wl,
+          #temperature.critical,
+          #bluetooth.discoverable {
+            color: #f7768e;
+          }
 
-        #pulseaudio, #mpris.paused {
-          color: #e0af68;
-        }
-      '';
+          #pulseaudio, #mpris.paused {
+            color: #e0af68;
+          }
+        '';
     };
-
   };
 }

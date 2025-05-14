@@ -4,8 +4,6 @@
   ...
 }:
 {
-  colorschemes.catppuccin.settings.integrations.native_lsp.enabled = true;
-
   extraPlugins = with pkgs.vimPlugins; [
     nvim-surround
   ];

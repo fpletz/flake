@@ -1,7 +1,5 @@
 { ... }:
 {
-  colorschemes.catppuccin.settings.integrations.cmp = true;
-
   plugins = {
     cmp = {
       enable = true;

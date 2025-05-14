@@ -63,18 +63,6 @@
 
   colorscheme = lib.mkForce "tokyonight";
   colorschemes = {
-    catppuccin = {
-      enable = true;
-      settings = {
-        flavour = "mocha";
-        integrations = {
-          barbar = true;
-          indent_blankline.enabled = true;
-          noice = true;
-          navic.enabled = true;
-        };
-      };
-    };
     tokyonight = {
       enable = true;
       settings.style = "night";

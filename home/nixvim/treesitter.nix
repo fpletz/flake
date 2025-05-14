@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  colorschemes.catppuccin.settings.integrations.treesitter = true;
-
   plugins = {
     treesitter = {
       enable = true;

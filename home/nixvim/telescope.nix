@@ -1,7 +1,5 @@
 { pkgs, lib, ... }:
 {
-  colorschemes.catppuccin.settings.integrations.telescope.enabled = true;
-
   extraPlugins = with pkgs.vimPlugins; [
     telescope-symbols-nvim
     telescope-ui-select-nvim

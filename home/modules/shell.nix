@@ -11,6 +11,13 @@
   };
 
   config = lib.mkIf config.bpletza.workstation.shell {
+    programs.nushell = {
+      enable = true;
+      settings = {
+        show_banner = false;
+      };
+    };
+
     programs.zsh = {
       enable = true;
       history = {

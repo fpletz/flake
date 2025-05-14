@@ -58,9 +58,8 @@
 
     programs.ghostty = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
       settings = {
+        command = "nu";
         theme = "tokyonight";
         background = "black";
         window-padding-color = "background";

@@ -21,6 +21,15 @@
     ./yanky.nix
   ];
 
+  performance = {
+    byteCompileLua = {
+      enable = true;
+      luaLib = true;
+      nvimRuntime = true;
+      plugins = true;
+    };
+  };
+
   globals = {
     mapleader = ",";
     loaded_perl_provider = 0;

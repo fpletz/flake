@@ -186,9 +186,16 @@
   };
   systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce "infinity";
 
-  security.acme = {
-    defaults.email = "fpletz@fnordicwalking.de";
-    acceptTerms = true;
+  security = {
+    sudo.enable = false;
+    sudo-rs = {
+      enable = true;
+      execWheelOnly = lib.mkDefault true;
+    };
+    acme = {
+      defaults.email = "fpletz@fnordicwalking.de";
+      acceptTerms = true;
+    };
   };
 
   virtualisation = {

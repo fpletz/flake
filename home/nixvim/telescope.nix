@@ -1,11 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   colorschemes.catppuccin.settings.integrations.telescope.enabled = true;
 
   extraPlugins = with pkgs.vimPlugins; [
     telescope-symbols-nvim
     telescope-ui-select-nvim
-    actions-preview-nvim
   ];
 
   keymaps = [
@@ -108,26 +107,30 @@
         };
       };
     };
+    actions-preview = {
+      enable = true;
+      settings = {
+        highlight_command = [
+          (lib.nixvim.mkRaw "require('actions-preview.highlight').delta 'delta --side-by-side'")
+          (lib.nixvim.mkRaw "require('actions-preview.highlight').diff_so_fancy()")
+          (lib.nixvim.mkRaw "require('actions-preview.highlight').diff_highlight()")
+        ];
+        telescope = {
+          sorting_strategy = "ascending";
+          layout_strategy = "vertical";
+          layout_config = {
+            width = 0.8;
+            height = 0.9;
+            prompt_position = "top";
+            preview_cutoff = 17;
+            preview_height = lib.nixvim.mkRaw ''
+              function(_, _, max_lines)
+                return max_lines - 13
+              end
+            '';
+          };
+        };
+      };
+    };
   };
-
-  extraConfigLua = ''
-    require("actions-preview").setup {
-      diff = {
-        algorithm = "histogram",
-      },
-      telescope = {
-        sorting_strategy = "ascending",
-        layout_strategy = "vertical",
-        layout_config = {
-          width = 0.8,
-          height = 0.9,
-          prompt_position = "top",
-          preview_cutoff = 17,
-          preview_height = function(_, _, max_lines)
-            return max_lines - 13
-          end,
-        },
-      },
-    }
-  '';
 }

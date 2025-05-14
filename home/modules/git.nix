@@ -194,4 +194,11 @@
       };
     };
   };
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      inherit (config.programs.git.extraConfig) user;
+    };
+  };
 }

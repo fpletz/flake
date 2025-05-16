@@ -34,7 +34,6 @@ in
         nurl
         nix-tree
         playerctl
-        tmate
         nixd
         ruff
         uv

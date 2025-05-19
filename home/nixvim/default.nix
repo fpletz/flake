@@ -112,6 +112,7 @@
       enhancedDiffHl = true;
     };
     indent-blankline.enable = true;
+    hardtime.enable = true;
     lastplace.enable = true;
     lualine = {
       enable = true;

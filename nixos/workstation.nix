@@ -179,13 +179,13 @@ in
           domain = "@audio";
           item = "nofile";
           type = "soft";
-          value = "99999";
+          value = "524288";
         }
         {
           domain = "@audio";
           item = "nofile";
           type = "hard";
-          value = "99999";
+          value = "524288";
         }
       ];
     };

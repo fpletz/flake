@@ -278,7 +278,7 @@ in
 
     hardware.bluetooth = {
       enable = mkDefault true;
-      powerOnBoot = mkDefault false;
+      powerOnBoot = mkDefault true;
       settings = {
         General = {
           Experimental = true;

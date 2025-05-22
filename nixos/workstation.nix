@@ -346,8 +346,7 @@ in
         fira-code
         fira-mono
         fira-sans
-        nerd-fonts.fira-code
-        nerd-fonts.fira-mono
+        nerd-fonts.symbols-only
         inter
         commit-mono
         departure-mono

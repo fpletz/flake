@@ -52,7 +52,6 @@
       cpu.intel.updateMicrocode = true;
       graphics.extraPackages = [
         pkgs.intel-vaapi-driver
-        pkgs.intel-media-driver
       ];
     };
 

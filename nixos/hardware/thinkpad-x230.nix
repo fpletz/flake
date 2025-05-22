@@ -56,7 +56,10 @@
       ];
     };
 
-    environment.systemPackages = with pkgs; [ intel-gpu-tools ];
+    environment.systemPackages = with pkgs; [
+      intel-gpu-tools
+      coreboot-utils
+    ];
 
     services.power-profiles-daemon.enable = true;
 

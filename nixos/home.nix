@@ -64,7 +64,7 @@ in
           "systemd-journal"
         ];
         home = "/home/${cfg.user}";
-        shell = "/run/current-system/sw/bin/zsh";
+        shell = "/run/current-system/sw/bin/fish";
         linger = lib.mkDefault true;
         subGidRanges = [
           {

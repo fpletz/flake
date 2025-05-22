@@ -59,7 +59,6 @@
     programs.ghostty = {
       enable = true;
       settings = {
-        command = "fish";
         theme = "tokyonight";
         background = "black";
         window-padding-color = "background";

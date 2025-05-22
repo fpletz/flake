@@ -362,10 +362,15 @@ binds {
   Mod+Ctrl+R { reset-window-height; }
   Mod+F { maximize-column; }
   Mod+Shift+F { fullscreen-window; }
+  Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
 
   Mod+Ctrl+F { expand-column-to-available-width; }
 
   Mod+C { center-column; }
+
+  Mod+Ctrl+C { set-dynamic-cast-window; }
+  Mod+Alt+C { set-dynamic-cast-monitor; }
+  Mod+Shift+c { clear-dynamic-cast-target; }
 
   Mod+Minus { set-column-width "-5%"; }
   Mod+Equal { set-column-width "+5%"; }

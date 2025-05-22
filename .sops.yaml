@@ -16,7 +16,10 @@ creation_rules:
           - age108jh49zkvddns9xr4trcagpjdgxjlejyq0sjjhltgm5w56w8k33qxfntqy
   - path_regex: secrets\/trolovo\.yaml$
     key_groups:
-      - age:
+      - pgp:
+          - 8A39615DCE78AF082E23F303846FDED7792617B4
+        age:
+          - age1sj6kx043vqxcet6fv05mzjs9umpd0yu4xfln99yh8jpkt07w3e6sf9rzxh
           - age10m6nkz6fngkeygfnsf4xkwx43qjt0lkefrzl2fntsma0ul8e5czs4qk9u2
           # trolovo
           - age1yc7l65hju8jagmh2dk63tteaykcvpzq6ntjyacm8nwkvjzhp5ugqsz0ext

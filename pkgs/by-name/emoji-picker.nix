@@ -13,8 +13,8 @@ let
   emoji-data = runCommandLocal "emoji-data" { } ''
     cat ${
       fetchurl {
-        url = "https://raw.githubusercontent.com/muan/emojilib/v3.0.12/dist/emoji-en-US.json";
-        hash = "sha256-q6YcO8Fd1RuQe9rgY25Ga+cD7OULdDRC8Ck4or9h9oQ=";
+        url = "https://raw.githubusercontent.com/muan/emojilib/v4.0.2/dist/emoji-en-US.json";
+        hash = "sha256-PjrIs6OhLkFIV++80GwcdPtFeEjlZezeM3LP+Ca/wDI=";
       }
     } \
       | ${jq}/bin/jq --raw-output '. | to_entries | .[] | .key + " " + (.value | join(" ") | sub("_"; " "; "g"))' > $out

@@ -20,19 +20,15 @@
         ];
         kernelModules = [ "i915" ];
       };
-
       kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
-
       kernelModules = [ "kvm-intel" ];
       blacklistedKernelModules = [
         "mei_me"
         "mei"
       ];
-
       extraModprobeConfig = ''
         options thinkpad_acpi fan_control=1
       '';
-
     };
 
     networking.wireless = {
@@ -66,6 +62,7 @@
       battery = true;
       waybar.wiredInterface = "eno0";
       ytdlVideoCodec = "avc1";
+      displayScale = 1.0;
     };
   };
 }

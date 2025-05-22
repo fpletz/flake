@@ -109,12 +109,12 @@
       settings = [
         {
           output = {
-            criteria = "eDP-1";
+            criteria = "eDP-1,LVDS-1";
             status = "enable";
             alias = "internal";
             scale = lib.mkIf (
-              !isNull osConfig.bpletza.workstation.eDPScale
-            ) osConfig.bpletza.workstation.eDPScale;
+              !isNull osConfig.bpletza.workstation.displayScale
+            ) osConfig.bpletza.workstation.displayScale;
           };
         }
         {

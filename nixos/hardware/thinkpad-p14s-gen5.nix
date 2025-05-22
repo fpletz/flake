@@ -56,7 +56,7 @@
 
     bpletza.workstation = {
       battery = true;
-      eDPScale = 1.7;
+      displayScale = 1.7;
     };
   };
 }

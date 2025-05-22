@@ -36,6 +36,8 @@ input {
 }
 
 layout {
+  background-color "transparent"
+
   gaps 8
 
   center-focused-column "never"
@@ -162,6 +164,11 @@ window-rule {
   match app-id=r#"^org\.gnome\.World\.Secrets$"#
   match app-id=r#"thunderbird$"#
   block-out-from "screencast"
+}
+
+layer-rule {
+    match namespace="^swww-daemon$"
+    place-within-backdrop true
 }
 
 layer-rule {
@@ -340,7 +347,8 @@ binds {
   Mod+Shift+8 { move-column-to-workspace 8; }
   Mod+Shift+9 { move-column-to-workspace 9; }
 
-  Mod+Tab { focus-workspace-previous; }
+  Mod+Tab { toggle-overview; }
+  Mod+Multi_Key { focus-workspace-previous; }
 
   Mod+BracketLeft  { consume-or-expel-window-left; }
   Mod+BracketRight { consume-or-expel-window-right; }
@@ -380,4 +388,10 @@ binds {
   Ctrl+Alt+Delete { quit; }
 
   Mod+Shift+P { power-off-monitors; }
+}
+
+gestures {
+    hot-corners {
+        off
+    }
 }

@@ -390,6 +390,7 @@ binds {
 
   Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
+  Mod+E { spawn "loginctl lock-session"; }
   Mod+Shift+E { spawn "wlogout"; }
   Ctrl+Alt+Delete { quit; }
 

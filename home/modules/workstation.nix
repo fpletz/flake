@@ -44,18 +44,7 @@ in
         virt-viewer
         mumble
         gimp
-        (
-          (claws-mail.overrideAttrs (_: {
-            # FIXME: ugly hack for https://github.com/NixOS/nixpkgs/pull/389009
-            postConfigure = ''
-              substituteInPlace libtool \
-                --replace-fail 'for search_ext in .la $std_shrext .so .a' 'for search_ext in $std_shrext .so .a'
-            '';
-          })).override
-          (_: {
-            enablePluginClamd = false;
-          })
-        )
+        claws-mail
         keepassxc
         swww
       ]

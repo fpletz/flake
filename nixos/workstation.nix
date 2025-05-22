@@ -63,7 +63,6 @@ in
       kernelParams = [ "snd_hda_intel.power_save=1" ];
       extraModulePackages = with config.boot.kernelPackages; [
         v4l2loopback
-        ddcci-driver
       ];
       extraModprobeConfig = ''
         options v4l2loopback video_nr=23,42 card_label="23,42" exclusive_caps=1
@@ -358,7 +357,6 @@ in
 
     programs.adb.enable = pkgs.stdenv.hostPlatform.isx86_64;
     programs.dconf.enable = true;
-    programs.noisetorch.enable = true;
     programs.iotop.enable = true;
     programs.iftop.enable = true;
     programs.light.enable = true;

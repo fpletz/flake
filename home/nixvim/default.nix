@@ -21,6 +21,8 @@
     ./yanky.nix
   ];
 
+  withRuby = false;
+
   performance = {
     byteCompileLua = {
       enable = true;
@@ -32,8 +34,6 @@
 
   globals = {
     mapleader = ",";
-    loaded_perl_provider = 0;
-    loaded_ruby_provider = 0;
     timeoutlen = 500;
   };
 

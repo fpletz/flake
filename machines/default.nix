@@ -71,9 +71,9 @@
       fpine = nixos {
         system = "aarch64-linux";
         module = {
-          networking.hostName = "fpro";
+          networking.hostName = "fpine";
           fileSystems."/" = {
-            device = "/dev/disk/by-label/nixos";
+            device = "/dev/disk/by-label/fpine-nixos";
             fsType = "ext4";
           };
 

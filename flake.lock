@@ -410,11 +410,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1748031521,
-        "narHash": "sha256-rb5VLpLzyyD+UvpMD1sTtxEvsCCnO99G8KgFtNn6/jg=",
+        "lastModified": 1748074755,
+        "narHash": "sha256-b3SC3Q3cXr4tdCN3WVTFqMP8I9OwaXXcj1aVoSVaygw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "450101400b480d81f0ae5dd5cc917083131fedce",
+        "rev": "c3ee76c437067f1ae09d6e530df46a3f80977992",
         "type": "github"
       },
       "original": {
@@ -436,11 +436,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1748034126,
-        "narHash": "sha256-7nPv+Qi3PKxgeE4i9c4ErMCaBjVhnVYEzDmWA+8Kalw=",
+        "lastModified": 1748088865,
+        "narHash": "sha256-xfAT2ykSAWcYgxkyZN5n6xRHab93u56zbBjuhoDFKFg=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "2f610f97541a9cdebcdb485fe8f41e09bd46420d",
+        "rev": "2c0a9ff1e2bcc6aab15caa504a7c9670f6e0a929",
         "type": "github"
       },
       "original": {
@@ -483,11 +483,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1747988638,
-        "narHash": "sha256-Hmp3L1JiADxXia4tqzT0CiFiFT950Ueu/7uHec3yl2w=",
+        "lastModified": 1748074869,
+        "narHash": "sha256-zihBYnHYFCYNX25RsNKxz/2VPvRyJEMHnEIdEFwlwMs=",
         "owner": "Astro",
         "repo": "nix-openwrt-imagebuilder",
-        "rev": "ed219b3aa565104890142ad8f7da707e7abe9141",
+        "rev": "ab88404c5001fcc803da53697c7efaf4eab23826",
         "type": "github"
       },
       "original": {

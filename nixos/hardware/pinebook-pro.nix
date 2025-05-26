@@ -88,6 +88,8 @@ in
     bpletza.workstation = {
       battery = true;
       ytdlVideoCodec = "avc1";
+      internalDisplay = "eDP-1";
+      displayScale = 1.0;
     };
   };
 }

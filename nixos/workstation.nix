@@ -39,6 +39,14 @@ in
     };
     gaming = mkEnableOption "gaming support";
     ai = mkEnableOption "AI";
+
+    internalDisplay = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      description = ''
+        Name of the internal display (e.g. eDP-1, LVDS-1).
+      '';
+    };
     displayScale = lib.mkOption {
       type = lib.types.nullOr lib.types.float;
       default = null;

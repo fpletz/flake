@@ -5,6 +5,9 @@
   pkgs,
   ...
 }:
+let
+  oscfg = osConfig.bpletza.workstation;
+in
 {
   options.bpletza.workstation.wayland = lib.mkOption {
     type = lib.types.bool;
@@ -106,128 +109,120 @@
 
     services.kanshi = {
       enable = true;
-      settings = [
-        {
-          output = {
-            criteria = "eDP-1,LVDS-1";
-            status = "enable";
-            alias = "internal";
-            scale = lib.mkIf (
-              !isNull osConfig.bpletza.workstation.displayScale
-            ) osConfig.bpletza.workstation.displayScale;
-          };
-        }
-        {
-          output = {
-            criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
-            status = "enable";
-            position = "0,0";
-            alias = "home-left";
-          };
-        }
-        {
-          output = {
-            criteria = "Dell Inc. DELL U2520D 79PLGZ2";
-            status = "enable";
-            position = "2560,0";
-            alias = "home-right";
-          };
-        }
-        {
-          output = {
-            criteria = "AOC U2790B 0x0000579E";
-            status = "enable";
-            scale = 1.7;
-            alias = "muccc1";
-          };
-        }
-        {
-          output = {
-            criteria = "Dell Inc. DELL U2713HM GK0KD2AC662L";
-            status = "enable";
-            alias = "muccc2";
-          };
-        }
-        {
-          profile = {
-            name = "undocked";
-            outputs = [
-              {
-                criteria = "$internal";
-                position = "0,0";
-              }
-            ];
-          };
-        }
-        {
-          profile = {
-            name = "home-docked";
-            outputs = [
-              { criteria = "$home-left"; }
-              { criteria = "$home-right"; }
-              {
-                criteria = "$internal";
-                status = "disable";
-                position = "0,1440";
-              }
-            ];
-          };
-        }
-        {
-          profile = {
-            name = "home";
-            outputs = [
-              { criteria = "$home-left"; }
-              { criteria = "$home-right"; }
-            ];
-          };
-        }
-        {
-          profile = {
-            name = "muccc1-docked";
-            outputs = [
-              {
-                criteria = "$muccc1";
-                position = "0,0";
-              }
-              {
-                criteria = "$internal";
-                position = "0,1270";
-              }
-            ];
-          };
-        }
-        {
-          profile = {
-            name = "muccc2-docked";
-            outputs = [
-              {
-                criteria = "$muccc2";
-                position = "0,0";
-              }
-              {
-                criteria = "$internal";
-                position = "0,1200";
-              }
-            ];
-          };
-        }
-        {
-          profile = {
-            name = "projector";
-            outputs = [
-              {
-                criteria = "HDMI-A-1";
-                position = "0,0";
-              }
-              {
-                criteria = "$internal";
-                position = "0,1080";
-              }
-            ];
-          };
-        }
-      ];
+      settings =
+        [
+          {
+            output = {
+              criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
+              status = "enable";
+              position = "0,0";
+              alias = "home-left";
+            };
+          }
+          {
+            output = {
+              criteria = "Dell Inc. DELL U2520D 79PLGZ2";
+              status = "enable";
+              position = "2560,0";
+              alias = "home-right";
+            };
+          }
+          {
+            output = {
+              criteria = "AOC U2790B 0x0000579E";
+              status = "enable";
+              scale = 1.7;
+              alias = "muccc1";
+            };
+          }
+          {
+            output = {
+              criteria = "Dell Inc. DELL U2713HM GK0KD2AC662L";
+              status = "enable";
+              alias = "muccc2";
+            };
+          }
+        ]
+        ++ (lib.optionals (oscfg.internalDisplay != null) [
+          {
+            output = {
+              criteria = oscfg.internalDisplay;
+              status = "enable";
+              alias = "internal";
+              scale = lib.mkIf (!isNull oscfg.displayScale) oscfg.displayScale;
+            };
+          }
+          {
+            profile = {
+              name = "undocked";
+              outputs = [
+                {
+                  criteria = "$internal";
+                  position = "0,0";
+                }
+              ];
+            };
+          }
+          {
+            profile = {
+              name = "home-docked";
+              outputs = [
+                { criteria = "$home-left"; }
+                { criteria = "$home-right"; }
+                {
+                  criteria = "$internal";
+                  status = "disable";
+                  position = "0,1440";
+                }
+              ];
+            };
+          }
+          {
+            profile = {
+              name = "muccc1-docked";
+              outputs = [
+                {
+                  criteria = "$muccc1";
+                  position = "0,0";
+                }
+                {
+                  criteria = "$internal";
+                  position = "0,1270";
+                }
+              ];
+            };
+          }
+          {
+            profile = {
+              name = "muccc2-docked";
+              outputs = [
+                {
+                  criteria = "$muccc2";
+                  position = "0,0";
+                }
+                {
+                  criteria = "$internal";
+                  position = "0,1200";
+                }
+              ];
+            };
+          }
+          {
+            profile = {
+              name = "projector";
+              outputs = [
+                {
+                  criteria = "HDMI-A-1";
+                  position = "0,0";
+                }
+                {
+                  criteria = "$internal";
+                  position = "0,1080";
+                }
+              ];
+            };
+          }
+        ]);
     };
 
     programs.wlogout = {

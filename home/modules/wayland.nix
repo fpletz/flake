@@ -129,10 +129,10 @@ in
           }
           {
             output = {
-              criteria = "AOC U2790B 0x0000579E";
+              criteria = "PNP(AOC) U2790B 0x0000579E";
               status = "enable";
-              scale = 1.7;
               alias = "muccc1";
+              scale = 1.5;
             };
           }
           {
@@ -187,7 +187,7 @@ in
                 }
                 {
                   criteria = "$internal";
-                  position = "0,1270";
+                  position = "0,1440";
                 }
               ];
             };

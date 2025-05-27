@@ -147,7 +147,6 @@ window-rule {
   match app-id=r#"thunderbird$"#
   match app-id=r#"chromium$"#
   draw-border-with-background false
-  default-column-width {}
 }
 
 window-rule {

@@ -13,8 +13,15 @@
   config = lib.mkIf config.bpletza.workstation.shell {
     programs.nushell = {
       enable = true;
+      environmentVariables = {
+        CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense";
+      };
       settings = {
         show_banner = false;
+        completions = {
+          case_sensitive = false;
+          algorithm = "fuzzy";
+        };
       };
     };
 
@@ -195,6 +202,10 @@
         sync.records = true;
         cwd_filter = [ "^/home/fpletz/.password-store" ];
       };
+    };
+
+    programs.carapace = {
+      enable = true;
     };
   };
 }

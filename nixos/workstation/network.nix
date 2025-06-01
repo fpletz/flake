@@ -67,39 +67,43 @@ in
 
     systemd.network.networks =
       let
-        trustedNetworkConfig = {
-          networkConfig = {
-            DHCP = true;
-            IPv6AcceptRA = true;
-            MulticastDNS = true;
-            LLDP = true;
-            EmitLLDP = true;
-            LinkLocalAddressing = "ipv6";
-            DNSOverTLS = false;
+        trustedNetworkConfig =
+          {
+            RouteMetric ? 5,
+          }:
+          {
+            networkConfig = {
+              DHCP = true;
+              IPv6AcceptRA = true;
+              MulticastDNS = true;
+              LLDP = true;
+              EmitLLDP = true;
+              LinkLocalAddressing = "ipv6";
+              DNSOverTLS = false;
+            };
+            dhcpV4Config = {
+              UseHostname = true;
+              UseDNS = true;
+              UseNTP = true;
+              inherit RouteMetric;
+            };
+            dhcpV6Config = {
+              UseHostname = true;
+              UseDNS = true;
+              UseNTP = true;
+              inherit RouteMetric;
+            };
+            ipv6AcceptRAConfig = {
+              inherit RouteMetric;
+            };
           };
-          dhcpV4Config = {
-            UseHostname = true;
-            UseDNS = true;
-            UseNTP = true;
-            RouteMetric = 5;
-          };
-          dhcpV6Config = {
-            UseHostname = true;
-            UseDNS = true;
-            UseNTP = true;
-            RouteMetric = 5;
-          };
-          ipv6AcceptRAConfig = {
-            RouteMetric = 5;
-          };
-        };
       in
       {
         "40-trusted-dhcp" = lib.mkIf (cfg.trustedDHCPInterfaces != [ ]) (
           {
             matchConfig.Name = cfg.trustedDHCPInterfaces;
           }
-          // trustedNetworkConfig
+          // trustedNetworkConfig { }
         );
         "41-trusted-wifi-uplinks" = lib.mkIf (cfg.publicUplinks != [ ] && cfg.trustedWifis != [ ]) (
           {
@@ -108,7 +112,7 @@ in
               SSID = cfg.trustedWifis;
             };
           }
-          // trustedNetworkConfig
+          // trustedNetworkConfig { RouteMetric = 10; }
         );
         "50-public-uplink" = lib.mkIf (cfg.publicUplinks != [ ]) {
           matchConfig.Name = cfg.publicUplinks;

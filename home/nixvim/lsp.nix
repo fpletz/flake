@@ -4,14 +4,6 @@
   ...
 }:
 {
-  extraPlugins = with pkgs.vimPlugins; [
-    nvim-surround
-  ];
-
-  extraConfigLua = ''
-    require("nvim-surround").setup()
-  '';
-
   keymaps = [
     {
       mode = "n";
@@ -55,7 +47,7 @@
       htmx.enable = true;
       jsonls.enable = true;
       lemminx.enable = true;
-      lua_ls.enable = true;
+      lua_ls.enable = false;
       nixd = {
         enable = true;
         settings =
@@ -72,10 +64,9 @@
           };
       };
       marksman.enable = true;
-      pyright.enable = true;
       ruff.enable = true;
       taplo.enable = true;
-      texlab.enable = true;
+      texlab.enable = false;
       yamlls.enable = true;
       zls.enable = true;
     };
@@ -83,10 +74,6 @@
       {
         key = "gd";
         lspBufAction = "definition";
-      }
-      {
-        key = "gD";
-        lspBufAction = "references";
       }
       {
         key = "gt";
@@ -119,10 +106,6 @@
       {
         key = "<leader>lr";
         action = "<CMD>LspRestart<Enter>";
-      }
-      {
-        key = "gd";
-        action = lib.nixvim.mkRaw "require('telescope.builtin').lsp_definitions";
       }
       {
         key = "rn";

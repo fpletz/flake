@@ -47,6 +47,7 @@ in
         claws-mail
         keepassxc
         swww
+        tectonic
       ]
       ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
 

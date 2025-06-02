@@ -43,7 +43,8 @@
     settings = {
       graph_style.__raw = ''"kitty"'';
       integrations = {
-        telescope = true;
+        snacks = true;
+        diffview = true;
       };
       signs = {
         item = [

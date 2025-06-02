@@ -1,17 +1,21 @@
 {
   keymaps = [
     {
-      mode = "n";
+      mode = [
+        "n"
+        "x"
+      ];
       key = "<leader>fy";
-      action = "<cmd>Telescope yank_history<cr>";
-      options.silent = true;
+      action = "<cmd>YankyRingHistory<cr>";
+      options = {
+        desc = "Open Yank History";
+      };
     }
   ];
 
   plugins = {
     yanky = {
       enable = true;
-      enableTelescope = true;
     };
   };
 }

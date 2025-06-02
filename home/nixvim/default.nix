@@ -2,7 +2,6 @@
 {
   imports = [
     ./barbar.nix
-    ./cmp.nix
     ./comment.nix
     ./dial.nix
     ./dropbar.nix
@@ -11,10 +10,8 @@
     ./inc-rename.nix
     ./lsp.nix
     ./neogit.nix
-    ./noice.nix
-    ./notify.nix
     ./numb.nix
-    ./telescope.nix
+    ./snacks.nix
     ./treesitter.nix
     ./treesj.nix
     ./trouble.nix
@@ -33,7 +30,7 @@
   };
 
   globals = {
-    mapleader = ",";
+    mapleader = " ";
     timeoutlen = 500;
   };
 
@@ -65,14 +62,17 @@
   colorschemes = {
     tokyonight = {
       enable = true;
-      settings.style = "night";
+      settings = {
+        style = "night";
+        transparent = true;
+      };
     };
   };
 
   keymaps = [
     {
       mode = "n";
-      key = "<leader>n";
+      key = "<leader>vn";
       action = ":set number! number? relativenumber! relativenumber?<CR>";
       options = {
         silent = true;
@@ -88,12 +88,6 @@
       mode = "x";
       key = ">";
       action = ">gv|";
-    }
-    {
-      mode = "n";
-      key = "<Space><Space>";
-      action = "<cmd>Neotree toggle<cr>";
-      options.silent = true;
     }
   ];
 
@@ -111,7 +105,6 @@
       enable = true;
       enhancedDiffHl = true;
     };
-    indent-blankline.enable = true;
     hardtime.enable = true;
     lastplace.enable = true;
     lualine = {
@@ -123,9 +116,6 @@
     };
     nix.enable = true;
     nix-develop.enable = true;
-    neo-tree = {
-      enable = true;
-    };
     markview.enable = true;
     nvim-autopairs = {
       enable = true;
@@ -133,16 +123,8 @@
         check_ts = true;
       };
     };
-    project-nvim = {
+    nvim-surround = {
       enable = true;
-      enableTelescope = true;
-    };
-    toggleterm = {
-      enable = true;
-      settings = {
-        direction = "float";
-        open_mapping = "[[<c-\\>]]";
-      };
     };
     web-devicons.enable = true;
     which-key = {

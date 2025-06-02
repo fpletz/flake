@@ -1,13 +1,5 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  extraPlugins = with pkgs.vimPlugins; [ treesj ];
-
-  extraConfigLua = ''
-    require("treesj").setup({
-      use_default_keymap = false,
-    })
-  '';
-
   keymaps = [
     {
       mode = "n";
@@ -38,4 +30,13 @@
       options.desc = "Recursive Block Split/Join";
     }
   ];
+
+  plugins = {
+    treesj = {
+      enable = true;
+      settings = {
+        use_default_keymaps = false;
+      };
+    };
+  };
 }

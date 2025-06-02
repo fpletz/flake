@@ -21,6 +21,8 @@
         completions = {
           case_sensitive = false;
           algorithm = "fuzzy";
+          quick = true;
+          partial = true;
         };
       };
     };

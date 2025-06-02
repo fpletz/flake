@@ -51,6 +51,13 @@ in
       ]
       ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
 
+    programs.gh = {
+      enable = true;
+      settings = {
+        git_protocol = "ssh";
+      };
+    };
+
     systemd.user.services.swww = {
       Unit = {
         Description = "swww";

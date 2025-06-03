@@ -167,8 +167,8 @@ window-rule {
 }
 
 layer-rule {
-    match namespace="^swww-daemon$"
-    place-within-backdrop true
+  match namespace="^swww-daemon$"
+  place-within-backdrop true
 }
 
 layer-rule {
@@ -397,7 +397,7 @@ binds {
 }
 
 gestures {
-    hot-corners {
-        off
-    }
+  hot-corners {
+    off
+  }
 }

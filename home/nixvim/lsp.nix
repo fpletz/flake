@@ -64,6 +64,7 @@
           };
       };
       marksman.enable = true;
+      markdown_oxide.enable = true;
       ruff.enable = true;
       taplo.enable = true;
       texlab.enable = false;

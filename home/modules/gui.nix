@@ -155,7 +155,7 @@ in
     programs.mpv = {
       enable = true;
       config = {
-        vo = "gpu";
+        vo = "gpu-next";
         gpu-context = "auto";
         hwdec = "auto-safe";
         ytdl-format = lib.concatStringsSep "+" [

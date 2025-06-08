@@ -14,6 +14,11 @@
     };
 
     boot = {
+      kernelParams = [
+        "mitigations=off"
+        "tsc=unstable"
+        "psmouse.synaptics_intertouch=1"
+      ];
       initrd.availableKernelModules = [
         "nvme"
         "ehci_pci"

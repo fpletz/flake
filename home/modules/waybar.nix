@@ -38,7 +38,7 @@ in
           "backlight"
         ];
         modules-center = [
-          "mpris"
+          # "mpris"
         ];
         modules-right = [
           "network"

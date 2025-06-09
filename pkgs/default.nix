@@ -30,9 +30,25 @@ in
     };
 
   flake.overlays.default =
-    final: _prev:
+    final: prev:
     {
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
+      swww = prev.swww.overrideAttrs (
+        {
+          patches ? [ ],
+          ...
+        }:
+        {
+          patches =
+            patches
+            ++ lib.singleton (
+              final.fetchpatch {
+                url = "https://github.com/LGFae/swww/commit/b5116969245f1994d80bb319c54ab85d4cd6aaf4.patch";
+                hash = "sha256-R+4G7prEu1f1zlHQJbMGUv48TQeVuseK/H23aQKWv7I=";
+              }
+            );
+        }
+      );
     }
     // byNamePackages final;
 }

@@ -17,6 +17,7 @@
 
     home.sessionVariables = {
       EDITOR = "nvim";
+      MANPAGER = "nvim +Man!";
     };
 
     home.shellAliases = {

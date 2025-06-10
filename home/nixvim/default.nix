@@ -2,6 +2,7 @@
 {
   imports = [
     ./barbar.nix
+    ./blink-cmp.nix
     ./comment.nix
     ./dial.nix
     ./dropbar.nix
@@ -114,6 +115,7 @@
         theme = "tokyonight";
       };
     };
+    luasnip.enable = true;
     nix.enable = true;
     nix-develop.enable = true;
     markview.enable = true;

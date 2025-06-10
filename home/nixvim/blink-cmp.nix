@@ -23,7 +23,7 @@
             "git"
             "path"
             "snippets"
-            "markview"
+            # "markview"
             "emoji"
             "buffer"
             "ripgrep"

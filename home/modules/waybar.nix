@@ -19,10 +19,6 @@ in
   config = {
     programs.waybar = {
       enable = cfg.enable;
-      package = pkgs.waybar.override {
-        hyprlandSupport = false;
-        swaySupport = false;
-      };
       systemd.enable = true;
       settings.mainBar = {
         layer = "top";

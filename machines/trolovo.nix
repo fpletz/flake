@@ -34,7 +34,7 @@
   bpletza.secureboot = true;
   bpletza.workstation = {
     enable = true;
-    gaming = true;
+    gaming = false;
   };
 
   sops = {

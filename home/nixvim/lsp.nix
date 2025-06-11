@@ -65,6 +65,7 @@
       };
       marksman.enable = true;
       markdown_oxide.enable = true;
+      pyright.enable = true;
       ruff.enable = true;
       taplo.enable = true;
       texlab.enable = false;

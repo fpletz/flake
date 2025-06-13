@@ -35,34 +35,12 @@ in
   config = lib.mkIf config.bpletza.workstation.browser {
     programs.browserpass.enable = true;
 
-    home.file =
-      (
-        let
-          # FIXME: why is nativeMessagingHosts broken in the hm modules :(
-          nativeMessagingHosts = {
-            keepassxc = {
-              package = pkgs.keepassxc;
-              file = "org.keepassxc.keepassxc_browser.json";
-            };
-            tridactyl = {
-              package = pkgs.tridactyl-native;
-              file = "tridactyl.json";
-            };
-          };
-        in
-        lib.mapAttrs' (
-          _k: v:
-          lib.nameValuePair ".librewolf/native-messaging-hosts/${v.file}" {
-            source = "${v.package}/lib/mozilla/native-messaging-hosts/${v.file}";
-          }
-        ) nativeMessagingHosts
-      )
-      // {
-        ".librewolf/default/chrome" = {
-          source = "${inputs.potatofox}/chrome";
-          recursive = true;
-        };
+    home.file = {
+      ".librewolf/default/chrome" = {
+        source = "${inputs.potatofox}/chrome";
+        recursive = true;
       };
+    };
 
     home.sessionVariables = {
       BROWSER = "librewolf";
@@ -98,6 +76,10 @@ in
           ''
           + extraPrefs;
       });
+      nativeMessagingHosts = [
+        pkgs.keepassxc
+        pkgs.tridactyl-native
+      ];
     };
 
     programs.firefox = {

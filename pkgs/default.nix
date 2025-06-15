@@ -25,8 +25,6 @@ in
           module = import ../home/nixvim;
         };
       } // byNamePackages pkgs;
-
-      legacyPackages = pkgs;
     };
 
   flake.overlays.default =

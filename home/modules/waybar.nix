@@ -26,6 +26,7 @@ in
         reload_style_on_change = true;
         modules-left = [
           "niri/workspaces"
+          "sway/workspaces"
           "idle_inhibitor"
           "privacy"
           "systemd-failed-units"

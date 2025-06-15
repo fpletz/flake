@@ -136,7 +136,7 @@ in
           interval = 2;
         };
         "network#wl" = {
-          interface = "wlp*";
+          interface = "wl*";
           format-wifi = "{bandwidthDownBits} {bandwidthUpBits} {essid} {icon}";
           tooltip-format-wifi = "{ifname}";
           format-linked = "{ifname} (No IP) {icon}";

@@ -27,17 +27,22 @@
         input = {
           "type:touchpad" = {
             accel_profile = "adaptive";
-            pointer_accel = "0.9";
+            pointer_accel = "0.5";
             dwt = "enabled";
+            dwtp = "enabled";
             tap = "enabled";
             natural_scroll = "enabled";
           };
           "type:keyboard" = {
             xkb_layout = "eu";
             xkb_options = "compose:caps";
+            repeat_delay = "400";
+            repeat_rate = "40";
           };
           "2:10:TPPS/2_IBM_TrackPoint" = {
             middle_emulation = "enabled";
+            accel_profile = "flat";
+            pointer_accel = "0.8";
           };
         };
         modifier = "Mod4";

@@ -57,19 +57,5 @@ in
         git_protocol = "ssh";
       };
     };
-
-    systemd.user.services.swww = {
-      Unit = {
-        Description = "swww";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-        ConditionEnvironment = "WAYLAND_DISPLAY";
-      };
-      Service = {
-        ExecStart = lib.getExe' pkgs.swww "swww-daemon";
-        Restart = "on-failure";
-      };
-      Install.WantedBy = [ "graphical-session.target" ];
-    };
   };
 }

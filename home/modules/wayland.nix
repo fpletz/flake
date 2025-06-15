@@ -225,6 +225,21 @@ in
         ]);
     };
 
+    systemd.user.services.swww = {
+      Unit = {
+        Description = "swww";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+      Service = {
+        ExecStart = lib.getExe' pkgs.swww "swww-daemon";
+        Restart = "on-failure";
+        Environment = "PATH=${lib.getBin pkgs.swww}/bin";
+      };
+      Install.WantedBy = [ "graphical-session.target" ];
+    };
+
     programs.wlogout = {
       enable = true;
       layout = [

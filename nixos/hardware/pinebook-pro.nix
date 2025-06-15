@@ -73,7 +73,7 @@ in
     };
 
     powerManagement = {
-      cpuFreqGovernor = "schedutil";
+      cpuFreqGovernor = lib.mkForce "performance";
       scsiLinkPolicy = "min_power";
     };
 

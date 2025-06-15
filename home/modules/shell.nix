@@ -14,7 +14,7 @@
     programs.nushell = {
       enable = true;
       environmentVariables = {
-        CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense";
+        CARAPACE_BRIDGES = "zsh,bash,inshellisense";
       };
       settings = {
         show_banner = false;
@@ -25,14 +25,6 @@
           partial = true;
         };
       };
-    };
-
-    programs.fish = {
-      enable = true;
-      interactiveShellInit = ''
-        set -U fish_greeting
-        fish_vi_key_bindings
-      '';
     };
 
     programs.zsh = {

@@ -5,7 +5,6 @@
       enable = true;
       enableGlobalCompInit = false;
     };
-    fish.enable = true;
     vim = {
       enable = true;
       defaultEditor = true;

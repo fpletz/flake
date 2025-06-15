@@ -42,6 +42,18 @@
         size = 10000000;
         save = 10000000;
       };
+      initContent = lib.mkMerge [
+        (lib.mkOrder 90 ''
+          if [ -n "''${ZSH_DEBUGRC+1}" ]; then
+            zmodload zsh/zprof
+          fi
+        '')
+        (lib.mkOrder 9000 ''
+          if [ -n "''${ZSH_DEBUGRC+1}" ]; then
+            zprof
+          fi
+        '')
+      ];
       plugins = [
         {
           name = "nix-zsh-completions";

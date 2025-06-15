@@ -85,6 +85,11 @@ in
       networkmanager.wifi.powersave = false;
     };
 
+    environment.sessionVariables = {
+      # enable OpenGL 3.3
+      PAN_MESA_DEBUG = "gl3";
+    };
+
     bpletza.workstation = {
       battery = true;
       ytdlVideoCodec = "avc1";

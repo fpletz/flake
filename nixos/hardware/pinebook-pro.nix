@@ -91,5 +91,12 @@ in
       internalDisplay = "eDP-1";
       displayScale = 1.0;
     };
+
+    home-manager.sharedModules = [
+      {
+        services.easyeffects.enable = lib.mkForce false;
+        services.mopidy.enable = lib.mkForce false;
+      }
+    ];
   };
 }

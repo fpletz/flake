@@ -29,7 +29,10 @@
             "ripgrep"
           ];
           providers = {
-            lsp.fallbacks = [ ];
+            lsp = {
+              fallbacks = [ ];
+              score_offset = 10;
+            };
             git = {
               module = "blink-cmp-git";
               name = "Git";
@@ -38,6 +41,7 @@
                   return vim.tbl_contains({ 'octo', 'gitcommit', 'markdown' }, vim.bo.filetype)
                 end
               '';
+              score_offset = 5;
             };
             conventional_commits = {
               module = "blink-cmp-conventional-commits";
@@ -47,6 +51,7 @@
                   return vim.bo.filetype == 'gitcommit'
                 end
               '';
+              score_offset = 5;
             };
             emoji = {
               module = "blink-emoji";
@@ -60,7 +65,7 @@
               async = true;
               module = "blink-ripgrep";
               name = "Ripgrep";
-              score_offset = 100;
+              score_offset = -5;
               opts = {
                 prefix_min_len = 3;
                 context_size = 5;

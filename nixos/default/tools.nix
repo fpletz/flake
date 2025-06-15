@@ -1,7 +1,10 @@
 { lib, pkgs, ... }:
 {
   programs = {
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+      enableGlobalCompInit = false;
+    };
     fish.enable = true;
     vim = {
       enable = true;

@@ -33,6 +33,7 @@ in
       };
     };
 
+    programs.sway.enable = true;
     programs.niri.enable = true;
     services.gnome.gnome-keyring.enable = false; # set by niri NixOS module
 

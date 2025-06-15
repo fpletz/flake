@@ -2,7 +2,7 @@
 {
   options.bpletza.workstation.wofi = lib.mkOption {
     type = lib.types.bool;
-    default = config.bpletza.workstation.sway;
+    default = config.bpletza.workstation.wayland;
   };
 
   config = lib.mkIf config.bpletza.workstation.wofi {

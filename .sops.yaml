@@ -13,7 +13,8 @@ creation_rules:
           - age1c3q8neuw3zrty97wkr5txqx4amydwn3d4h2uwc2zcpwcp3dcs3aq252etp
           # ananas
           - age108jh49zkvddns9xr4trcagpjdgxjlejyq0sjjhltgm5w56w8k33qxfntqy
-          - age108jh49zkvddns9xr4trcagpjdgxjlejyq0sjjhltgm5w56w8k33qxfntqy
+          # fpine
+          - age188sr0u38tlckq5qfpmyvdgfae8lnwvm4egyngf453pmz4h8m9fpsa8pzql
   - path_regex: secrets\/trolovo\.yaml$
     key_groups:
       - pgp:

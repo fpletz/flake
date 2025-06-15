@@ -27,6 +27,8 @@ in
       };
     };
 
+    boot.kernelParams = [ "console=tty0" ];
+
     # based on https://github.com/NixOS/nixos-hardware
     boot.initrd.kernelModules = [
       # Rockchip modules
@@ -36,6 +38,7 @@ in
       "rockchipdrm"
 
       # GPU/Display modules
+      "governor_performance"
       "analogix_dp"
       "cec"
       "drm"

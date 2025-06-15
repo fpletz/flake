@@ -70,19 +70,7 @@
 
       fpine = nixos {
         system = "aarch64-linux";
-        module = {
-          networking.hostName = "fpine";
-          fileSystems."/" = {
-            device = "/dev/disk/by-label/fpine-nixos";
-            fsType = "ext4";
-          };
-
-          bpletza.hardware.pinebook-pro = {
-            enable = true;
-            efi = true;
-          };
-          bpletza.workstation.enable = true;
-        };
+        module = import ./fpine.nix;
       };
 
       trolovo = nixos {

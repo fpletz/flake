@@ -96,6 +96,8 @@ in
       {
         services.easyeffects.enable = lib.mkForce false;
         services.mopidy.enable = lib.mkForce false;
+        systemd.user.services.ghostty.Install.WantedBy = lib.mkForce [ ];
+        bpletza.workstation.terminal.default = lib.getExe pkgs.alacritty;
       }
     ];
   };

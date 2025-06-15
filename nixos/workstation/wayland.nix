@@ -33,7 +33,10 @@ in
       };
     };
 
-    programs.sway.enable = true;
+    programs.sway = {
+      enable = true;
+      extraPackages = [ ];
+    };
     programs.niri.enable = true;
     services.gnome.gnome-keyring.enable = false; # set by niri NixOS module
 

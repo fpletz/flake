@@ -11,7 +11,7 @@ in
   config = lib.mkIf cfg.enable {
     services.greetd = {
       enable = true;
-      settings.default_session.command = lib.getExe pkgs.greetd.tuigreet;
+      settings.default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --remember-session";
     };
 
     xdg.portal.config = {

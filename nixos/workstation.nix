@@ -134,9 +134,11 @@ in
         # Autosuspend for Generic EMV Smartcard Reader
         ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="2ce3", ATTR{idProduct}=="9563", TEST=="power/control", ATTR{power/control}="auto"
 
-        # Set power profile based on AC power state
-        SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${lib.getExe pkgs.power-profiles-daemon} set power-saver"
-        SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${lib.getExe pkgs.power-profiles-daemon} set balanced"
+        ${lib.optionalString config.services.power-profiles-daemon.enable ''
+          # Set power profile based on AC power state
+          SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${lib.getExe pkgs.power-profiles-daemon} set power-saver"
+          SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${lib.getExe pkgs.power-profiles-daemon} set balanced"
+        ''}
 
         # Rule for when switching to battery
         ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-full 'Using battery power'"

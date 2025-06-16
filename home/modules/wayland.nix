@@ -35,8 +35,16 @@ in
 
     home.file.".config/niri/config.kdl".source = ../../static/niri.kdl;
 
-    services.swayosd = {
+    services.wob = {
       enable = true;
+      settings = with config.colorScheme.palette; {
+        "" = {
+          timeout = 750;
+          background_color = "${base00}88";
+          bar_color = base05;
+          border_color = base05;
+        };
+      };
     };
 
     services.fnott = {

@@ -101,8 +101,8 @@ in
             ""
             ""
           ];
-          on-scroll-up = "${lib.getExe' pkgs.swayosd "swayosd-client"} --brightness=raise";
-          on-scroll-down = "${lib.getExe' pkgs.swayosd "swayosd-client"} --brightness=lower";
+          on-scroll-up = "${lib.getExe pkgs.light} -A 5";
+          on-scroll-down = "${lib.getExe pkgs.light} -U 5";
         };
         power-profiles-daemon = {
           format-icons = {

@@ -57,5 +57,22 @@ in
         git_protocol = "ssh";
       };
     };
+
+    systemd.user.services.keepassxc = {
+      Unit = {
+        Description = "KeepassXC";
+        PartOf = [ "graphical-session.target" ];
+        After = [
+          "graphical-session.target"
+          "waybar.service"
+        ];
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+      Service = {
+        ExecStart = lib.getExe pkgs.keepassxc;
+        Restart = "on-failure";
+      };
+      Install.WantedBy = [ "graphical-session.target" ];
+    };
   };
 }

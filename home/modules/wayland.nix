@@ -54,7 +54,7 @@ in
         with config.colorScheme.palette;
         {
           main = {
-            background = "${base00}ff";
+            background = "${base00}cc";
             border-color = "${base0D}ff";
             title-color = "${base05}ff";
             summary-color = "${base05}ff";
@@ -104,7 +104,7 @@ in
         };
         colors = {
           # https://github.com/folke/tokyonight.nvim/blob/main/extras/fuzzel/tokyonight_night.ini
-          background = "16161eff";
+          background = "16161ecc";
           text = "c0caf5ff";
           match = "2ac3deff";
           selection = "343a55ff";

@@ -56,6 +56,7 @@ in
     services.swayidle =
       let
         niri = lib.getExe pkgs.niri;
+        swaymsg = lib.getExe' pkgs.sway "swaymsg";
       in
       {
         enable = true;
@@ -65,9 +66,9 @@ in
             command = "${lib.getExe' systemdPackage "loginctl"} lock-session";
           }
           {
-            timeout = 200;
-            command = "${niri} msg action power-off-monitors";
-            resumeCommand = "${niri} power-on-monitors";
+            timeout = 180;
+            command = ''[ -n "$SWAYSOCK" ] && ${swaymsg} "output * dpms off" || ${niri} msg action power-off-monitors'';
+            resumeCommand = ''[ -n "$SWAYSOCK" ] && ${swaymsg} "output * dpms on" || ${niri} power-on-monitors'';
           }
         ];
       };

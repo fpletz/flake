@@ -95,6 +95,7 @@ in
             };
             ipv6AcceptRAConfig = {
               inherit RouteMetric;
+              UsePREF64 = true;
             };
           };
       in
@@ -137,6 +138,7 @@ in
           };
           ipv6AcceptRAConfig = {
             RouteMetric = 23;
+            UsePREF64 = true;
           };
         };
       };

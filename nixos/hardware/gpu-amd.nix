@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.bpletza.hardware.gpu.amd {
     hardware.amdgpu = {
-      opencl.enable = true;
+      opencl.enable = false;
       amdvlk.enable = true;
       initrd.enable = true;
     };

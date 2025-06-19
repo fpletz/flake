@@ -52,7 +52,6 @@
     list = true;
     updatetime = 2000;
     termguicolors = true;
-    sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions";
   };
 
   clipboard = {
@@ -93,12 +92,6 @@
   ];
 
   plugins = {
-    auto-session = {
-      enable = true;
-      settings = {
-        session_lens.load_on_setup = true;
-      };
-    };
     better-escape = {
       enable = true;
     };

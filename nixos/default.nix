@@ -137,11 +137,6 @@
       versionSuffix = lib.mkForce ".${inputs.nixpkgs.shortRev}-${config.system.configurationRevision}";
     };
 
-    switch = lib.mkDefault {
-      enable = false;
-      enableNg = true;
-    };
-
     rebuild.enableNg = true;
 
     tools.nixos-option.enable = false;

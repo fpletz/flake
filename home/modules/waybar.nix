@@ -27,6 +27,7 @@ in
         modules-left = [
           "niri/workspaces"
           "sway/workspaces"
+          "sway/mode"
           "idle_inhibitor"
           "privacy"
           "systemd-failed-units"

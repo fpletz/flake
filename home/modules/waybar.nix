@@ -36,7 +36,7 @@ in
           "backlight"
         ];
         modules-center = [
-          # "mpris"
+          "mpris"
         ];
         modules-right = [
           "network"
@@ -195,6 +195,11 @@ in
           dynamic-order = [
             "title"
             "artist"
+          ];
+          ignored-players = [
+            "firefox"
+            "librewolf"
+            "chromium"
           ];
           player-icons = {
             default = "▶";

@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -195,10 +194,6 @@ in
 
     services.tailscale = {
       enable = true;
-      package = pkgs.tailscale.overrideAttrs (_: {
-        # fix build :/
-        doCheck = false;
-      });
       openFirewall = true;
     };
 

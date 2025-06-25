@@ -28,8 +28,18 @@ in
     };
 
   flake.overlays.default =
-    final: _prev:
+    final: prev:
     {
+      tailscale = prev.tailscale.overrideAttrs (
+        {
+          patches ? [ ],
+          ...
+        }:
+        {
+          patches = patches ++ [ ../static/tailscale-magicdns-aaaa.patch ];
+          doCheck = false;
+        }
+      );
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
     }
     // byNamePackages final;

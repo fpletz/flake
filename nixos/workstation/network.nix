@@ -28,6 +28,7 @@ in
       default = [
         "٩(̾●̮̮̃̾•̃̾)۶"
         "muccc"
+        "muccc.v6"
       ];
       description = ''
         Trusted Wifi SSIDs on public uplinks
@@ -72,6 +73,9 @@ in
             RouteMetric ? 5,
           }:
           {
+            linkConfig = {
+              RequiredFamilyForOnline = "any";
+            };
             networkConfig = {
               DHCP = true;
               IPv6AcceptRA = true;
@@ -117,6 +121,9 @@ in
         );
         "50-public-uplink" = lib.mkIf (cfg.publicUplinks != [ ]) {
           matchConfig.Name = cfg.publicUplinks;
+          linkConfig = {
+            RequiredFamilyForOnline = "any";
+          };
           networkConfig = {
             DHCP = true;
             IPv6AcceptRA = true;
@@ -162,6 +169,10 @@ in
         muccc = {
           pskRaw = "ext:psk_muccc";
           priority = 23;
+        };
+        "muccc.v6" = {
+          pskRaw = "ext:psk_muccc";
+          priority = 21;
         };
         echelon = {
           pskRaw = "ext:psk_echelon";

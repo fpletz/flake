@@ -130,6 +130,7 @@ in
         };
         network = {
           interface = osConfig.bpletza.workstation.waybar.wiredInterface;
+          family = "ipv4_6";
           format-ethernet = "{bandwidthDownBits} {bandwidthUpBits} ";
           tooltip-format-ethernet = "{ifname}";
           format-linked = "{ifname} (No IP) ";
@@ -139,6 +140,7 @@ in
         };
         "network#wl" = {
           interface = "wl*";
+          family = "ipv4_6";
           format-wifi = "{bandwidthDownBits} {bandwidthUpBits} {essid} {icon}";
           tooltip-format-wifi = "{ifname}";
           format-linked = "{ifname} (No IP) {icon}";

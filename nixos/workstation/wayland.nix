@@ -27,7 +27,6 @@ in
     };
 
     security = {
-      soteria.enable = true;
       pam.services = {
         swaylock = { };
       };

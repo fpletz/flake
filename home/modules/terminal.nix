@@ -13,7 +13,7 @@
 
     default = lib.mkOption {
       type = lib.types.str;
-      default = lib.getExe pkgs.ghostty;
+      default = lib.getExe pkgs.alacritty;
     };
   };
 

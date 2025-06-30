@@ -407,7 +407,7 @@ in
       daemonCPUSchedPolicy = "idle";
       daemonIOSchedClass = "idle";
       settings = {
-        keep-outputs = true;
+        keep-outputs = lib.mkDefault true;
         keep-derivations = true;
         substituters = lib.mkBefore [
           "https://nixos.snix.store"

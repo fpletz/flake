@@ -95,6 +95,10 @@ in
 
     environment.systemPackages = [ pkgs.mmc-utils ];
 
+    nix.settings = {
+      keep-outputs = false;
+    };
+
     bpletza.workstation = {
       battery = true;
       ytdlVideoCodec = "avc1";

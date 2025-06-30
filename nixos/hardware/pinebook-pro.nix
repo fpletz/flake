@@ -93,6 +93,8 @@ in
       PAN_MESA_DEBUG = "gl3";
     };
 
+    environment.systemPackages = [ pkgs.mmc-utils ];
+
     bpletza.workstation = {
       battery = true;
       ytdlVideoCodec = "avc1";

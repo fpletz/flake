@@ -20,7 +20,6 @@
           default = [
             "lsp"
             "conventional_commits"
-            "git"
             "path"
             "snippets"
             # "markview"
@@ -32,16 +31,6 @@
             lsp = {
               fallbacks = [ ];
               score_offset = 10;
-            };
-            git = {
-              module = "blink-cmp-git";
-              name = "Git";
-              enabled.__raw = ''
-                function()
-                  return vim.tbl_contains({ 'octo', 'gitcommit', 'markdown' }, vim.bo.filetype)
-                end
-              '';
-              score_offset = 5;
             };
             conventional_commits = {
               module = "blink-cmp-conventional-commits";
@@ -84,9 +73,6 @@
           enabled = true;
         };
       };
-    };
-    blink-cmp-git = {
-      enable = true;
     };
     blink-emoji = {
       enable = true;

@@ -8,15 +8,15 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1717621519,
-        "narHash": "sha256-70sYTCWFEOMA4sNoAtY3Dp7fc8ipwIfZX6prq3Z8vhA=",
-        "owner": "mguentner",
+        "lastModified": 1750108970,
+        "narHash": "sha256-X0ZZ6mXBI5JMy3uzwApTusY800PBUmvkpxvvNpN5Y00=",
+        "owner": "fpletz",
         "repo": "bad_gateway",
-        "rev": "bc445ecfd50a86672e05fbf7fcd04d36656dcf2a",
+        "rev": "591057baacc3ba0d7623a7316dc5361fa9cbc598",
         "type": "github"
       },
       "original": {
-        "owner": "mguentner",
+        "owner": "fpletz",
         "repo": "bad_gateway",
         "type": "github"
       }

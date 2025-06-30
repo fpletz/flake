@@ -78,7 +78,7 @@
     };
 
     bad_gateway = {
-      url = "github:mguentner/bad_gateway";
+      url = "github:fpletz/bad_gateway";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

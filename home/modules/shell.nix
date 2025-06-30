@@ -214,7 +214,7 @@
       enable = true;
     };
     home.sessionVariables = {
-      CARAPACE_EXCLUDES = "nix-build,nix-channel,nix-instantiate,nix-shell,nix,nixos-rebuild";
+      CARAPACE_EXCLUDES = "nix-build,nix-channel,nix-instantiate,nix-shell,nix,nixos-rebuild,man";
     };
   };
 }

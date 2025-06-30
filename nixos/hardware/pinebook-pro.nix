@@ -110,7 +110,7 @@ in
       {
         services.easyeffects.enable = lib.mkForce false;
         services.mopidy.enable = lib.mkForce false;
-        bpletza.workstation.terminal.default = lib.getExe pkgs.alacritty;
+        bpletza.workstation.terminal.default = pkgs.alacritty;
       }
     ];
   };

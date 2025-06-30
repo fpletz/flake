@@ -95,7 +95,7 @@ in
       enable = true;
       settings = {
         main = {
-          terminal = config.bpletza.workstation.terminal.default;
+          terminal = "${lib.getExe config.bpletza.workstation.terminal.default} -e";
           dpi-aware = false;
           font = "Recursive Sans Casual Static:size=11";
           icon-theme = config.gtk.iconTheme.name;

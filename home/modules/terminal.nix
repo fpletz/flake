@@ -12,12 +12,16 @@
     };
 
     default = lib.mkOption {
-      type = lib.types.str;
-      default = lib.getExe pkgs.alacritty;
+      type = lib.types.package;
+      default = pkgs.alacritty;
     };
   };
 
   config = lib.mkIf config.bpletza.workstation.terminal.enable {
+    home.sessionVariables = {
+      TERMINAL = config.bpletza.workstation.terminal.default.meta.mainProgram;
+    };
+
     programs.alacritty = {
       enable = true;
       settings = {

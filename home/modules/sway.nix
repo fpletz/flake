@@ -59,7 +59,7 @@
           };
         };
         modifier = "Mod4";
-        terminal = config.bpletza.workstation.terminal.default;
+        terminal = lib.getExe config.bpletza.workstation.terminal.default;
         window = {
           titlebar = false;
           hideEdgeBorders = "smart";

@@ -51,6 +51,19 @@ in
       ]
       ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
 
+    programs.neovide = {
+      enable = true;
+      settings = {
+        fork = true;
+        font = {
+          normal = [ "Recursive Mono Casual Static" ];
+          size = 14;
+          hinting = "full";
+          edging = "antialias";
+        };
+      };
+    };
+
     programs.gh = {
       enable = true;
       settings = {

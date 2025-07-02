@@ -273,6 +273,11 @@
       action.__raw = "function() Snacks.picker.lsp_workspace_symbols() end";
       options.desc = "LSP Workspace Symbols";
     }
+    {
+      key = "<leader>\\";
+      action.__raw = "function() Snacks.terminal.toggle() end";
+      options.desc = "Terminal toggle";
+    }
   ];
 
   plugins = {

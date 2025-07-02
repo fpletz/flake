@@ -48,6 +48,7 @@ in
         keepassxc
         swww
         tectonic
+        just
       ]
       ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
 
@@ -57,7 +58,7 @@ in
         fork = true;
         font = {
           normal = [ "Recursive Mono Casual Static" ];
-          size = 14;
+          size = 10;
           hinting = "full";
           edging = "antialias";
         };

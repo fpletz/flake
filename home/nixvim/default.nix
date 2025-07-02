@@ -48,7 +48,7 @@
     smartcase = true;
     hlsearch = true;
     undofile = true;
-    spell = true;
+    spell = false;
     list = true;
     updatetime = 2000;
     termguicolors = true;
@@ -75,7 +75,6 @@
       key = "<leader>vn";
       action = ":set number! number? relativenumber! relativenumber?<CR>";
       options = {
-        silent = true;
         desc = "Toggle line numbers";
       };
     }

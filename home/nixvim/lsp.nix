@@ -36,6 +36,7 @@
   lsp = {
     servers = {
       bashls.enable = true;
+      basedpyright.enable = true;
       clangd.enable = true;
       cmake.enable = true;
       cssls.enable = true;
@@ -43,9 +44,11 @@
       dockerls.enable = true;
       gitlab_ci_ls.enable = true;
       gopls.enable = true;
+      harper_ls.enable = true;
       html.enable = true;
       htmx.enable = true;
       jsonls.enable = true;
+      just.enable = true;
       lemminx.enable = true;
       lua_ls.enable = false;
       nixd = {
@@ -65,7 +68,7 @@
       };
       marksman.enable = true;
       markdown_oxide.enable = true;
-      pyright.enable = true;
+      pylsp.enable = true;
       ruff.enable = true;
       taplo.enable = true;
       texlab.enable = false;

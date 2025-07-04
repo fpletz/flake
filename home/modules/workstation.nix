@@ -34,8 +34,7 @@ in
         nurl
         nix-tree
         playerctl
-        nixd
-        ruff
+        python3
         uv
         yt-dlp
         pass
@@ -49,6 +48,25 @@ in
         swww
         tectonic
         just
+
+        # LSP servers
+        nil
+        nixd
+        ruff
+        yaml-language-server
+        rust-analyzer
+        lua-language-server
+        marksman
+        texlab
+        jq-lsp
+        gopls
+        docker-language-server
+        docker-compose-language-service
+        bash-language-server
+        mesonlsp
+        cmake-language-server
+        taplo
+        llvmPackages.clang
       ]
       ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
 

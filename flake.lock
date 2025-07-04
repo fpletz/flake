@@ -59,11 +59,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750903843,
-        "narHash": "sha256-Ng9+f0H5/dW+mq/XOKvB9uwvGbsuiiO6HrPdAcVglCs=",
+        "lastModified": 1751607816,
+        "narHash": "sha256-5PtrwjqCIJ4DKQhzYdm8RFePBuwb+yTzjV52wWoGSt4=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "83c4da299c1d7d300f8c6fd3a72ac46cb0d59aae",
+        "rev": "da6109c917b48abc1f76dd5c9bf3901c8c80f662",
         "type": "github"
       },
       "original": {
@@ -208,11 +208,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751546660,
-        "narHash": "sha256-4lHbFzK5wylUJzVHte2JtEhcuDnIlcvbBnT/wIbVII4=",
+        "lastModified": 1751589297,
+        "narHash": "sha256-3q35cq6BPuwIRL3IoVKYPc72r3OleeuRyf4YAPjEqzA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b182e64c01aa4e61a007691525a3ea498a9aee63",
+        "rev": "83f978812c37511ef2ffaf75ffa72160483f738a",
         "type": "github"
       },
       "original": {
@@ -505,11 +505,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1751531090,
-        "narHash": "sha256-erT+fyBrdLMeT1sNq2x4AWz6OXF3L2WiuNHEJCwwqSY=",
+        "lastModified": 1751617528,
+        "narHash": "sha256-qRDxfAjkxungxfWh1FJkM1toI5h6/rODYTx09MQVizk=",
         "owner": "Astro",
         "repo": "nix-openwrt-imagebuilder",
-        "rev": "11abd9068afb08bcf2491460a33e170aa03b5b1d",
+        "rev": "acc8d96817b38c5faf4d5c50351e2bd51b93f4b4",
         "type": "github"
       },
       "original": {
@@ -521,11 +521,11 @@
     "potatofox": {
       "flake": false,
       "locked": {
-        "lastModified": 1750958833,
-        "narHash": "sha256-x+1w9tar3p+tCmP/tszp8bWdsPhN0GsVSa6gEb5KFfk=",
+        "lastModified": 1751611224,
+        "narHash": "sha256-NsjxPv18XRgKycDvwgKLlJuF+JXzFOUKTDuUDal21tk=",
         "ref": "refs/heads/main",
-        "rev": "89dc626486d0cd7608da2c31feaa5b1f30191358",
-        "revCount": 384,
+        "rev": "59fc41db86be42279e0329e9451d3165059f6c78",
+        "revCount": 387,
         "type": "git",
         "url": "https://codeberg.org/awwpotato/potatofox"
       },
@@ -585,11 +585,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750119275,
-        "narHash": "sha256-Rr7Pooz9zQbhdVxux16h7URa6mA80Pb/G07T4lHvh0M=",
+        "lastModified": 1751606940,
+        "narHash": "sha256-KrDPXobG7DFKTOteqdSVeL1bMVitDcy7otpVZWDE6MA=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "77c423a03b9b2b79709ea2cb63336312e78b72e2",
+        "rev": "3633fc4acf03f43b260244d94c71e9e14a2f6e0d",
         "type": "github"
       },
       "original": {

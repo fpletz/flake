@@ -149,10 +149,10 @@ in
           geolocation = false;
         };
         fonts = {
-          default_family = "Recursive Mono Casual Static";
+          default_family = "Victor Mono";
           web.family = {
             standard = "Recursive Sans Casual Static";
-            fixed = "Recursive Mono Casual Static";
+            fixed = "Victor Mono";
             sans_serif = "Recursive Sans Casual Static";
           };
         };

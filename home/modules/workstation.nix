@@ -57,7 +57,7 @@ in
       settings = {
         fork = true;
         font = {
-          normal = [ "Recursive Mono Casual Static" ];
+          normal = [ "Victor Mono" ];
           size = 10;
           hinting = "full";
           edging = "antialias";

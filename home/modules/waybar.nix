@@ -39,7 +39,8 @@ in
           "mpris"
         ];
         modules-right = [
-          "network"
+          "network#en"
+          "network#enu"
           "network#wl"
           "bluetooth"
           "pulseaudio"
@@ -128,13 +129,23 @@ in
           icon-size = 16;
           format = "{percentage} {time}";
         };
-        network = {
+        "network#en" = {
           interface = osConfig.bpletza.workstation.waybar.wiredInterface;
           family = "ipv4_6";
           format-ethernet = "{bandwidthDownBits} {bandwidthUpBits} ";
           tooltip-format-ethernet = "{ifname}";
           format-linked = "{ifname} (No IP) ";
-          format-disconnected = "󰈂";
+          format-disconnected = "";
+          format-alt = "{ifname} {ipaddr}/{cidr}";
+          interval = 2;
+        };
+        "network#enu" = {
+          interface = "en*u*";
+          family = "ipv4_6";
+          format-ethernet = "{bandwidthDownBits} {bandwidthUpBits} 󰕓";
+          tooltip-format-ethernet = "{ifname}";
+          format-linked = "{ifname} (No IP) 󰕓";
+          format-disconnected = "";
           format-alt = "{ifname} {ipaddr}/{cidr}";
           interval = 2;
         };

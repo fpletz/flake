@@ -137,7 +137,7 @@ in
           }
           {
             output = {
-              criteria = "PNP(AOC) U2790B 0x0000579E";
+              criteria = "AOC U2790B 0x0000579E";
               status = "enable";
               alias = "muccc1";
               scale = 1.5;
@@ -222,6 +222,7 @@ in
                 {
                   criteria = "HDMI-A-1";
                   position = "0,0";
+                  mode = "1920x1080";
                 }
                 {
                   criteria = "$internal";

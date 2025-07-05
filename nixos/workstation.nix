@@ -225,6 +225,8 @@ in
       ];
     };
 
+    systemd.services."cups-browsed".wantedBy = lib.mkForce [ ];
+
     powerManagement.cpuFreqGovernor = if cfg.battery then "schedutil" else "performance";
 
     hardware.graphics = {

@@ -31,6 +31,8 @@ in
       pkgs.wtype
       pkgs.tessen
       pkgs.emoji-picker
+      pkgs.iwmenu
+      pkgs.bzmenu
     ];
 
     home.file.".config/niri/config.kdl".source = ../../static/niri.kdl;

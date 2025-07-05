@@ -154,6 +154,15 @@ in
     };
 
     networking.wireless = {
+      extraConfig = ''
+        preassoc_mac_addr=1
+        mac_addr=1
+        p2p_disabled=1
+        passive_scan=1
+        fast_reauth=1
+      '';
+      fallbackToWPA2 = false;
+      userControlled.enable = true;
       allowAuxiliaryImperativeNetworks = true;
       secretsFile = config.sops.secrets.wifi.path;
       networks = {
@@ -210,18 +219,6 @@ in
         "virbr+"
         "tailscale+"
       ];
-    };
-
-    networking.wireless = {
-      extraConfig = ''
-        preassoc_mac_addr=1
-        mac_addr=1
-        p2p_disabled=1
-        passive_scan=1
-        fast_reauth=1
-      '';
-      fallbackToWPA2 = false;
-      userControlled.enable = true;
     };
   };
 }

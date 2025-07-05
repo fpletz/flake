@@ -168,13 +168,6 @@
             l = "resize grow width 5 px";
           };
         };
-        startup = [
-          # we only manage displays in kanshi thus we need to reload on sway reload
-          {
-            command = "${pkgs.kanshi}/bin/kanshictl reload";
-            always = true;
-          }
-        ];
       };
       wrapperFeatures.gtk = true;
     };

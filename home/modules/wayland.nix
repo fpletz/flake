@@ -17,7 +17,6 @@ in
   config = lib.mkIf config.bpletza.workstation.wayland {
     home.packages = [
       pkgs.libnotify
-      pkgs.kanshi
       pkgs.wdisplays
       pkgs.swaybg
       pkgs.grim
@@ -33,6 +32,7 @@ in
       pkgs.emoji-picker
       pkgs.iwmenu
       pkgs.bzmenu
+      pkgs.shikane
     ];
 
     home.file.".config/niri/config.kdl".source = ../../static/niri.kdl;
@@ -117,123 +117,142 @@ in
       };
     };
 
-    services.kanshi = {
+    systemd.user.services.shikane = {
+      Unit = {
+        X-Restart-Triggers = config.xdg.configFile."shikane/config.toml".source;
+      };
+    };
+
+    services.shikane = {
       enable = true;
       settings =
-        [
-          {
-            output = {
-              criteria = "Dell Inc. DELL U2520D 8KQLGZ2";
-              status = "enable";
-              position = "0,0";
-              alias = "home-left";
-            };
-          }
-          {
-            output = {
-              criteria = "Dell Inc. DELL U2520D 79PLGZ2";
-              status = "enable";
-              position = "2560,0";
-              alias = "home-right";
-            };
-          }
-          {
-            output = {
-              criteria = "AOC U2790B 0x0000579E";
-              status = "enable";
-              alias = "muccc1";
-              scale = 1.5;
-            };
-          }
-          {
-            output = {
-              criteria = "Dell Inc. DELL U2713HM GK0KD2AC662L";
-              status = "enable";
-              alias = "muccc2";
-            };
-          }
-        ]
-        ++ (lib.optionals (oscfg.internalDisplay != null) [
-          {
-            output = {
-              criteria = oscfg.internalDisplay;
-              status = "enable";
-              alias = "internal";
-              scale = lib.mkIf (!isNull oscfg.displayScale) oscfg.displayScale;
-            };
-          }
-          {
-            profile = {
-              name = "undocked";
-              outputs = [
-                {
-                  criteria = "$internal";
-                  position = "0,0";
-                }
-              ];
-            };
-          }
-          {
-            profile = {
+        let
+          internalDisplay = [ "n=${oscfg.internalDisplay}" ];
+          allOutputs = [ "n/HDMI-[A-Z]-[1-9]+" ];
+          homeLeft = [ "Dell Inc. DELL U2520D 8KQLGZ2" ];
+          homeRight = [ "Dell Inc. DELL U2520D 79PLGZ2" ];
+          muccc1 = [
+            "v=AOC"
+            "m=U2790B"
+            "s=0x0000579E"
+          ];
+          muccc2 = [ "Dell Inc. DELL U2713HM GK0KD2AC662L" ];
+        in
+        {
+          profile = [
+            {
               name = "home-docked";
-              outputs = [
-                { criteria = "$home-left"; }
-                { criteria = "$home-right"; }
+              output = [
                 {
-                  criteria = "$internal";
-                  status = "disable";
-                  position = "0,1440";
+                  search = internalDisplay;
+                  enable = false;
+                }
+                {
+                  search = homeLeft;
+                  enable = true;
+                  position.x = 0;
+                  position.y = 0;
+                }
+                {
+                  search = homeRight;
+                  enable = true;
+                  position.x = 2560;
+                  position.y = 0;
                 }
               ];
-            };
-          }
-          {
-            profile = {
-              name = "muccc1-docked";
-              outputs = [
+            }
+            {
+              name = "home";
+              output = [
                 {
-                  criteria = "$muccc1";
-                  position = "0,0";
+                  search = homeLeft;
+                  enable = true;
+                  position.x = 0;
+                  position.y = 0;
                 }
                 {
-                  criteria = "$internal";
-                  position = "0,1440";
-                }
-              ];
-            };
-          }
-          {
-            profile = {
-              name = "muccc2-docked";
-              outputs = [
-                {
-                  criteria = "$muccc2";
-                  position = "0,0";
-                }
-                {
-                  criteria = "$internal";
-                  position = "0,1200";
+                  search = homeRight;
+                  enable = true;
+                  position.x = 2560;
+                  position.y = 0;
                 }
               ];
-            };
-          }
-          {
-            profile = {
-              name = "projector";
-              outputs = [
+            }
+            {
+              name = "builtin-and-external-default";
+              output = [
                 {
-                  criteria = "HDMI-A-1";
-                  position = "0,0";
-                  mode = "1920x1080";
+                  search = allOutputs;
+                  enable = true;
+                  mode.width = 1920;
+                  mode.height = 1080;
+                  position.x = 0;
+                  position.y = 0;
                 }
                 {
-                  criteria = "$internal";
-                  position = "0,1080";
+                  search = internalDisplay;
+                  enable = true;
+                  scale = lib.mkIf (!isNull oscfg.displayScale) oscfg.displayScale;
+                  position.x = 1920;
+                  position.y = 0;
                 }
               ];
-            };
-          }
-        ]);
+            }
+            {
+              name = "builtin-only";
+              output = [
+                {
+                  search = internalDisplay;
+                  enable = true;
+                  scale = lib.mkIf (!isNull oscfg.displayScale) oscfg.displayScale;
+                  position.x = 0;
+                  position.y = 0;
+                }
+              ];
+            }
+            {
+              name = "muccc-hauptraum1";
+              output = [
+                {
+                  search = muccc1;
+                  enable = true;
+                  position.x = 0;
+                  position.y = 0;
+                  mode.width = 3840;
+                  mode.height = 2160;
+                  scale = 1.5;
+                }
+                {
+                  search = internalDisplay;
+                  enable = true;
+                  position.x = 0;
+                  position.y = 1440;
+                  scale = lib.mkIf (!isNull oscfg.displayScale) oscfg.displayScale;
+                }
+              ];
+            }
+            {
+              name = "muccc-hauptraum2";
+              output = [
+                {
+                  search = muccc2;
+                  enable = true;
+                  position.x = 0;
+                  position.y = 0;
+                  mode.width = 1920;
+                  mode.height = 1200;
+                }
+                {
+                  search = internalDisplay;
+                  enable = true;
+                  position.x = 0;
+                  position.y = 1200;
+                  scale = lib.mkIf (!isNull oscfg.displayScale) oscfg.displayScale;
+                }
+              ];
+            }
+          ];
+        };
     };
 
     systemd.user.services.swww = {

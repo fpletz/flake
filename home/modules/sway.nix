@@ -72,6 +72,10 @@
             { "title" = "LibreWolf - Choose User Profile"; }
             { "title" = "Firefox - Sharing Indicator"; }
             { "title" = "Firefox - Choose User Profile"; }
+            {
+              "app_id" = "librewolf";
+              "title" = "Extension:.*";
+            }
             { "class" = "qemu"; }
             { "app_id" = "xdg-desktop-portal-gtk"; }
             { "app_id" = "org.keepassxc.KeePassXC"; }

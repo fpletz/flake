@@ -70,6 +70,97 @@ in
       ]
       ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
 
+    programs.helix = {
+      enable = true;
+      settings = {
+        theme = "tokyonight";
+        editor = {
+          statusline = {
+            left = [
+              "mode"
+              "spinner"
+              "file-name"
+              "read-only-indicator"
+              "file-modification-indicator"
+            ];
+            center = [ "version-control" ];
+            right = [
+              "diagnostics"
+              "selections"
+              "register"
+              "position"
+              "position-percentage"
+              "file-encoding"
+              "file-line-ending"
+              "file-type"
+            ];
+            separator = "│";
+            mode = {
+              normal = "";
+              insert = "󰌌";
+              select = "󰒅";
+            };
+          };
+          lsp = {
+            display-progress-messages = true;
+            display-inlay-hints = true;
+          };
+          end-of-line-diagnostics = "hint";
+          inline-diagnostics.cursor-line = "warning";
+          indent-guides = {
+            render = true;
+            character = "╎";
+            skip-levels = 1;
+          };
+          gutters = {
+            layout = [
+              "diagnostics"
+              "spacer"
+              "line-numbers"
+              "spacer"
+              "diff"
+            ];
+          };
+          whitespace = {
+            render = {
+              space = "all";
+              tab = "all";
+              nbsp = "all";
+              nnbsp = "all";
+              newline = "none";
+            };
+            characters = {
+              space = "·";
+              nbsp = "⍽";
+              nnbsp = "␣";
+              tab = "→";
+              newline = "⏎";
+              tabpad = "·";
+            };
+          };
+        };
+      };
+      languages = {
+        language-server = {
+          nixd = {
+            command = "nixd";
+            config =
+              let
+                localFlake = ''(builtins.getFlake "/home/fpletz/src/flake")'';
+              in
+              {
+                nixpkgs.expr = "import <nixpkgs> {}";
+                formatting.command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
+                options = {
+                  nixos.expr = "${localFlake}.nixosConfigurations.server.options";
+                  home-manager.expr = "${localFlake}.homeConfigurations.fpletz.options";
+                };
+              };
+          };
+        };
+      };
+    };
+
     programs.neovide = {
       enable = true;
       settings = {

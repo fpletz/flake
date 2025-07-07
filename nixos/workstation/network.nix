@@ -82,7 +82,7 @@ in
               LLDP = true;
               EmitLLDP = true;
               LinkLocalAddressing = "ipv6";
-              DNSOverTLS = false;
+              DNSOverTLS = "opportunistic";
             };
             dhcpV4Config = {
               UseHostname = true;
@@ -129,8 +129,7 @@ in
             LinkLocalAddressing = "ipv6";
             IPv6PrivacyExtensions = true;
             IPv6LinkLocalAddressGenerationMode = "random";
-            DNSDefaultRoute = false;
-            DNSOverTLS = false;
+            DNSOverTLS = "opportunistic";
           };
           dhcpV4Config = {
             UseHostname = false;

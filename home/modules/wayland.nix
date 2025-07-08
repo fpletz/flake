@@ -129,14 +129,26 @@ in
         let
           internalDisplay = [ "n=${oscfg.internalDisplay}" ];
           allOutputs = [ "n/HDMI-[A-Z]-[1-9]+" ];
-          homeLeft = [ "Dell Inc. DELL U2520D 8KQLGZ2" ];
-          homeRight = [ "Dell Inc. DELL U2520D 79PLGZ2" ];
+          homeLeft = [
+            "v=Dell Inc."
+            "m=DELL U2520D"
+            "s=8KQLGZ2"
+          ];
+          homeRight = [
+            "v=Dell Inc."
+            "m=DELL U2520D"
+            "s=79PLGZ2"
+          ];
           muccc1 = [
             "v=AOC"
             "m=U2790B"
             "s=0x0000579E"
           ];
-          muccc2 = [ "Dell Inc. DELL U2713HM GK0KD2AC662L" ];
+          muccc2 = [
+            "v=Dell Inc."
+            "m=DELL U2713HM"
+            "s=GK0KD2AC662L"
+          ];
         in
         {
           profile = [
@@ -239,14 +251,14 @@ in
                   enable = true;
                   position.x = 0;
                   position.y = 0;
-                  mode.width = 1920;
-                  mode.height = 1200;
+                  mode.width = 2560;
+                  mode.height = 1440;
                 }
                 {
                   search = internalDisplay;
                   enable = true;
                   position.x = 0;
-                  position.y = 1200;
+                  position.y = 1440;
                   scale = lib.mkIf (!isNull oscfg.displayScale) oscfg.displayScale;
                 }
               ];

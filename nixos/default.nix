@@ -156,11 +156,6 @@
       randomizedDelaySec = "42min";
     };
 
-    optimise = {
-      automatic = true;
-      dates = [ "05:30" ];
-    };
-
     settings = {
       trusted-users = [
         "nix-build"

@@ -35,4 +35,33 @@
       Cache=no-negative
     '';
   };
+
+  networking.getaddrinfo = {
+    enable = true;
+    # RFC 6724 with increased preference for ULA instead of IPv4
+    label = {
+      "::1/128" = 0;
+      "::/0" = 1;
+      "::ffff:0:0/96" = 4;
+      "2002::/16" = 2;
+      "2001::/32" = 5;
+      "fc00::/7" = 13;
+      "::/96" = 3;
+      "fec0::/10" = 11;
+      "3ffe::/16" = 12;
+    };
+    precedence = {
+      "::1/128" = 50;
+      "::/0" = 40;
+      # ULA preference increased below based on
+      # https://datatracker.ietf.org/doc/draft-ietf-6man-rfc6724-update/23/
+      "fc00::/7" = 30;
+      "::ffff:0:0/96" = 20;
+      "2002::/16" = 5;
+      "2001::/32" = 5;
+      "::/96" = 1;
+      "fec0::/10" = 1;
+      "3ffe::/16" = 1;
+    };
+  };
 }

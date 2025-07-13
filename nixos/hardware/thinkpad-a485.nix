@@ -29,7 +29,7 @@
         "rtsx_pci_sdmmc"
       ];
       extraModprobeConfig = ''
-        options thinkpad_acpi fan_control=1
+        options thinkpad_acpi experimental=1 fan_control=1
       '';
     };
 

@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    inputs.nix-index-database.hmModules.nix-index
+    inputs.nix-index-database.homeModules.nix-index
     inputs.nix-colors.homeManagerModule
     inputs.spicetify-nix.homeManagerModules.default
     ./modules/browser.nix

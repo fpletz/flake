@@ -42,7 +42,7 @@ in
         virt-manager
         virt-viewer
         mumble
-        gimp
+        gimp3
         claws-mail
         keepassxc
         swww

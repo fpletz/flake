@@ -33,6 +33,7 @@ in
       pkgs.iwmenu
       pkgs.bzmenu
       pkgs.shikane
+      pkgs.swww
     ];
 
     home.file.".config/niri/config.kdl".source = ../../static/niri.kdl;

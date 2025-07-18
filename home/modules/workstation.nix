@@ -39,15 +39,17 @@ in
         yt-dlp
         pass
         gopass
+        tectonic
+        just
+
+        # GUI
         virt-manager
         virt-viewer
+        transmission-remote-gtk
         mumble
         gimp3
         claws-mail
         keepassxc
-        swww
-        tectonic
-        just
 
         # LSP servers
         nil

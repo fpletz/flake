@@ -395,6 +395,8 @@ in
 
     programs.ssh.knownHosts =
       {
+        "omicron.lodere.es".publicKey =
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC/BMtaa1dhpbdHN409OzxaGyZG0Hk9GzU3k5ycP2y9D";
         "build-box.nix-community.org".publicKey =
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H";
         "aarch64-build-box.nix-community.org".publicKey =
@@ -438,6 +440,23 @@ in
           }
         ]
         ++ [
+          {
+            hostName = "omicron.lodere.es";
+            protocol = "ssh-ng";
+            sshUser = "root";
+            sshKey = "/home/fpletz/.ssh/id_build";
+            systems = [
+              "i686-linux"
+              "x86_64-linux"
+            ];
+            supportedFeatures = [
+              "kvm"
+              "big-parallel"
+              "nixos-test"
+            ];
+            maxJobs = 10;
+            speedFactor = 2;
+          }
           {
             hostName = "aarch64-build-box.nix-community.org";
             protocol = "ssh-ng";

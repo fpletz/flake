@@ -124,7 +124,6 @@
 
   plugins = {
     lsp.enable = true;
-    lsp-lines.enable = true;
     lsp-format.enable = true;
     rustaceanvim = {
       enable = true;

@@ -99,7 +99,6 @@
       enhancedDiffHl = true;
     };
     fidget.enable = true;
-    hardtime.enable = true;
     lastplace.enable = true;
     lualine = {
       enable = true;

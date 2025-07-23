@@ -109,49 +109,48 @@ in
       platformio
       android-udev-rules
     ];
-    services.udev.extraRules =
-      ''
-        # SDRs
-        ATTR{idVendor}=="1d50", ATTR{idProduct}=="604b", SYMLINK+="hackrf-jawbreaker-%k", TAG+="uaccess"
-        ATTR{idVendor}=="1d50", ATTR{idProduct}=="6089", SYMLINK+="hackrf-one-%k", TAG+="uaccess"
-        ATTR{idVendor}=="1d50", ATTR{idProduct}=="cc15", SYMLINK+="rad1o-%k", TAG+="uaccess"
-        ATTR{idVendor}=="1fc9", ATTR{idProduct}=="000c", SYMLINK+="nxp-dfu-%k", TAG+="uaccess"
+    services.udev.extraRules = ''
+      # SDRs
+      ATTR{idVendor}=="1d50", ATTR{idProduct}=="604b", SYMLINK+="hackrf-jawbreaker-%k", TAG+="uaccess"
+      ATTR{idVendor}=="1d50", ATTR{idProduct}=="6089", SYMLINK+="hackrf-one-%k", TAG+="uaccess"
+      ATTR{idVendor}=="1d50", ATTR{idProduct}=="cc15", SYMLINK+="rad1o-%k", TAG+="uaccess"
+      ATTR{idVendor}=="1fc9", ATTR{idProduct}=="000c", SYMLINK+="nxp-dfu-%k", TAG+="uaccess"
 
-        # qmk macropad
-        ATTR{idVendor}=="f1f1", ATTR{idProduct}=="0315", SYMLINK+="winry315-%k", TAG+="uaccess"
+      # qmk macropad
+      ATTR{idVendor}=="f1f1", ATTR{idProduct}=="0315", SYMLINK+="winry315-%k", TAG+="uaccess"
 
-        # console/modem
-        KERNEL=="ttyACM[0-9]*", TAG+="udev-acl", TAG+="uaccess"
+      # console/modem
+      KERNEL=="ttyACM[0-9]*", TAG+="udev-acl", TAG+="uaccess"
 
-        # pci runtime power management
-        ACTION=="add", SUBSYSTEM=="pci", ATTR{power/control}="auto"
-      ''
-      + (lib.optionalString cfg.battery ''
-        ACTION=="add|move", SUBSYSTEM=="net", ENV{INTERFACE}=="enp*", RUN+="${lib.getExe pkgs.ethtool} -s %k wol d"
-        ACTION=="add|move", SUBSYSTEM=="net", ENV{INTERFACE}=="wlp*", RUN+="${lib.getExe pkgs.iw} dev %k set power_save on"
-        ACTION=="add", SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="med_power_with_dipm"
+      # pci runtime power management
+      ACTION=="add", SUBSYSTEM=="pci", ATTR{power/control}="auto"
+    ''
+    + (lib.optionalString cfg.battery ''
+      ACTION=="add|move", SUBSYSTEM=="net", ENV{INTERFACE}=="enp*", RUN+="${lib.getExe pkgs.ethtool} -s %k wol d"
+      ACTION=="add|move", SUBSYSTEM=="net", ENV{INTERFACE}=="wlp*", RUN+="${lib.getExe pkgs.iw} dev %k set power_save on"
+      ACTION=="add", SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="med_power_with_dipm"
 
-        # Autosuspend for Generic EMV Smartcard Reader
-        ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="2ce3", ATTR{idProduct}=="9563", TEST=="power/control", ATTR{power/control}="auto"
+      # Autosuspend for Generic EMV Smartcard Reader
+      ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="2ce3", ATTR{idProduct}=="9563", TEST=="power/control", ATTR{power/control}="auto"
 
-        ${lib.optionalString config.services.power-profiles-daemon.enable ''
-          # Set power profile based on AC power state
-          SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${lib.getExe pkgs.power-profiles-daemon} set power-saver"
-          SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${lib.getExe pkgs.power-profiles-daemon} set balanced"
-        ''}
+      ${lib.optionalString config.services.power-profiles-daemon.enable ''
+        # Set power profile based on AC power state
+        SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${lib.getExe pkgs.power-profiles-daemon} set power-saver"
+        SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${lib.getExe pkgs.power-profiles-daemon} set balanced"
+      ''}
 
-        # Rule for when switching to battery
-        ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-full 'Using battery power'"
-        # Rule for when switching to AC
-        ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-full-charging 'Using AC power'"
+      # Rule for when switching to battery
+      ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-full 'Using battery power'"
+      # Rule for when switching to AC
+      ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-full-charging 'Using AC power'"
 
-        # Battery warnings
-        SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="15", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-low 'Battery Power Low' 'Less than 15%% battery remaining'"
-        SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="5", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-empty 'Battery Power Critical' 'Less than 5%% battery remaining'"
+      # Battery warnings
+      SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="15", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-low 'Battery Power Low' 'Less than 15%% battery remaining'"
+      SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="5", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-empty 'Battery Power Critical' 'Less than 5%% battery remaining'"
 
-        # Suspend when battery is at 2%
-        SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-2]", RUN+="${pkgs.systemd}/bin/systemctl suspend"
-      '');
+      # Suspend when battery is at 2%
+      SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-2]", RUN+="${pkgs.systemd}/bin/systemctl suspend"
+    '');
 
     xdg = {
       icons.enable = true;
@@ -317,7 +316,8 @@ in
       pkgs.pamixer
       pkgs.ncpamixer
       pkgs.efibootmgr
-    ] ++ lib.optional config.hardware.bluetooth.enable pkgs.bluetuith;
+    ]
+    ++ lib.optional config.hardware.bluetooth.enable pkgs.bluetuith;
 
     systemd.user.services.mpris-proxy.wantedBy = lib.mkIf config.hardware.bluetooth.enable [
       "graphical-session.target"
@@ -402,20 +402,19 @@ in
 
     programs.nh.enable = true;
 
-    programs.ssh.knownHosts =
-      {
-        "omicron.lodere.es".publicKey =
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC/BMtaa1dhpbdHN409OzxaGyZG0Hk9GzU3k5ycP2y9D";
-        "build-box.nix-community.org".publicKey =
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H";
-        "aarch64-build-box.nix-community.org".publicKey =
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9uyfhyli+BRtk64y+niqtb+sKquRGGZ87f4YRc8EE1";
-        "darwin-build-box.nix-community.org".publicKey =
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKMHhlcn7fUpUuiOFeIhDqBzBNFsbNqq+NpzuGX3e6zv";
-      }
-      // lib.genAttrs [ "zocknix" "zocknix.evs" ] (_: {
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZwZu77INAei0k/SmiQU3F6a2iO6Pz17oxm7bHmoxTe";
-      });
+    programs.ssh.knownHosts = {
+      "omicron.lodere.es".publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC/BMtaa1dhpbdHN409OzxaGyZG0Hk9GzU3k5ycP2y9D";
+      "build-box.nix-community.org".publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H";
+      "aarch64-build-box.nix-community.org".publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9uyfhyli+BRtk64y+niqtb+sKquRGGZ87f4YRc8EE1";
+      "darwin-build-box.nix-community.org".publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKMHhlcn7fUpUuiOFeIhDqBzBNFsbNqq+NpzuGX3e6zv";
+    }
+    // lib.genAttrs [ "zocknix" "zocknix.evs" ] (_: {
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZwZu77INAei0k/SmiQU3F6a2iO6Pz17oxm7bHmoxTe";
+    });
 
     nix = {
       daemonCPUSchedPolicy = "idle";

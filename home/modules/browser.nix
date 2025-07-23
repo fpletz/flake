@@ -68,13 +68,12 @@ in
     programs.librewolf = {
       enable = true;
       package = pkgs.librewolf.override (_attrs: {
-        extraPrefs =
-          ''
-            pref("webgl.disabled", false);
-            pref("privacy.resistFingerprinting", false);
-            pref("identity.fxaccounts.enabled", true);
-          ''
-          + extraPrefs;
+        extraPrefs = ''
+          pref("webgl.disabled", false);
+          pref("privacy.resistFingerprinting", false);
+          pref("identity.fxaccounts.enabled", true);
+        ''
+        + extraPrefs;
       });
       nativeMessagingHosts = [
         pkgs.keepassxc

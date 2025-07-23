@@ -24,7 +24,8 @@ in
           inherit pkgs;
           module = import ../home/nixvim;
         };
-      } // byNamePackages pkgs;
+      }
+      // byNamePackages pkgs;
     };
 
   flake.overlays.default =

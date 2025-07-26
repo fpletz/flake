@@ -219,6 +219,9 @@ in
         "podman+"
         "virbr+"
         "tailscale+"
+        "ve-+"
+        "vb-+"
+        "vz-+"
       ];
     };
   };

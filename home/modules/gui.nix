@@ -177,8 +177,8 @@ in
         pkgs.mopidy-somafm
         pkgs.mopidy-youtube
         pkgs.mopidy-soundcloud
-        pkgs.mopidy-ytmusic
         pkgs.mopidy-iris
+        pkgs.mopidy-subidy
       ];
       settings = {
         file = {
@@ -194,7 +194,7 @@ in
           restore_state = true;
         };
         audio = {
-          output = "pulsesink";
+          output = "pipewiresink";
         };
         logging = {
           format = "%(levelname)-8s [%(process)d:%(threadName)s] %(name)s  %(message)s";

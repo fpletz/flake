@@ -101,7 +101,7 @@ in
     };
 
     services.udev.packages = with pkgs; [
-      platformio
+      # platformio
       android-udev-rules
     ];
     services.udev.extraRules = ''

@@ -70,12 +70,7 @@ in
       };
       kernelParams = [ "snd_hda_intel.power_save=1" ];
       extraModulePackages = with config.boot.kernelPackages; [
-        (v4l2loopback.overrideAttrs (oA: {
-          src = oA.src.override (_: {
-            rev = "8d806ad688961d8840081a609c39d1a82d296b24";
-            hash = "sha256-STJTQzk8OFQH0ceQk/5qKEGXE2eLyIEeyxqFHBqPQW4=";
-          });
-        }))
+        v4l2loopback
       ];
       extraModprobeConfig = ''
         options v4l2loopback video_nr=23,42 card_label="23,42" exclusive_caps=1

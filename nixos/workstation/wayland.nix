@@ -32,7 +32,7 @@ in
           screencast = {
             max_fps = 30;
             chooser_type = "dmenu";
-            chooser_cmd = "fuzzel -d";
+            chooser_cmd = "${lib.getExe pkgs.fuzzel} -d";
           };
         };
       };

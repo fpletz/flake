@@ -65,7 +65,6 @@ in
         ];
         home = "/home/${cfg.user}";
         shell = "/run/current-system/sw/bin/zsh";
-        linger = lib.mkDefault true;
         subGidRanges = [
           {
             count = 65536;

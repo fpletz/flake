@@ -49,6 +49,8 @@ in
         gopass
         tectonic
         just
+        git-annex
+        git-remote-gcrypt
 
         # GUI
         virt-manager

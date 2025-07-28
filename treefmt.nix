@@ -11,12 +11,12 @@
       programs = {
         deadnix.enable = true;
         nixfmt.enable = true;
+        nixf-diagnose.enable = true;
       };
     };
 
     pre-commit.settings.hooks = {
       treefmt.enable = true;
-      nil.enable = true;
     };
   };
 }

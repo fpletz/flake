@@ -1,5 +1,6 @@
 { inputs, ... }:
 {
+  imports = [ inputs.home-manager.flakeModules.home-manager ];
   flake.homeConfigurations =
     let
       inherit (inputs.home-manager.lib) homeManagerConfiguration;

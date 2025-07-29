@@ -51,6 +51,7 @@ in
         just
         git-annex
         git-remote-gcrypt
+        rclone
 
         # GUI
         virt-manager

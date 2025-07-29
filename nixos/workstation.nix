@@ -95,9 +95,7 @@ in
 
     systemd = {
       enableEmergencyMode = true;
-      extraConfig = ''
-        DefaultTimeoutStopSec=20s
-      '';
+      settings.Manager.DefaultTimeoutStopSec = "20s";
     };
 
     services.udev.packages = with pkgs; [

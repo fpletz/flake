@@ -16,6 +16,18 @@
     }
   ];
 
+  services.beesd.filesystems = {
+    root = {
+      spec = "ID=dm-name-lolnovo";
+      hashTableSizeMB = 2048;
+      verbosity = "info";
+      extraOptions = [
+        "--loadavg-target"
+        "3.0"
+      ];
+    };
+  };
+
   disko.devices = {
     disk.disk1 = {
       device = lib.mkDefault "/dev/disk/by-path/pci-0000:00:1f.2-ata-1";

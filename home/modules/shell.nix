@@ -204,6 +204,15 @@
       settings = {
         update_check = false;
         style = "compact";
+        show_tabs = false;
+        inline_height_shell_up_key_binding = 5;
+        serch_mode = "skim";
+        filter_mode_shell_up_key_binding = "session";
+        stats.common_prefix = [
+          "sudo"
+          "run0"
+          ","
+        ];
         auto_sync = false;
         sync.records = true;
         cwd_filter = [ "^/home/fpletz/.password-store" ];

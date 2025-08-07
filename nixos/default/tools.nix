@@ -21,6 +21,9 @@
     less = {
       enable = true;
       lessopen = null;
+      envVariables = {
+        LESS = "-FRX";
+      };
     };
     bandwhich.enable = true;
   };

@@ -128,24 +128,9 @@
         ./openwrt
         ./machines
         ./home
+        ./nixos
         ./treefmt.nix
       ];
-
-      flake.nixosModules =
-        let
-          modules = {
-            default = ./nixos/default.nix;
-            hardware = ./nixos/hardware.nix;
-            home = ./nixos/home.nix;
-            nixpkgs = ./nixos/nixpkgs.nix;
-            secureboot = ./nixos/secureboot.nix;
-            workstation = ./nixos/workstation.nix;
-          };
-          all = {
-            imports = builtins.attrValues modules;
-          };
-        in
-        modules // { inherit all; };
 
       perSystem =
         {

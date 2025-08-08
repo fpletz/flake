@@ -154,27 +154,6 @@ in
         {
           profile = [
             {
-              name = "home-docked";
-              output = [
-                {
-                  search = internalDisplay;
-                  enable = false;
-                }
-                {
-                  search = homeLeft;
-                  enable = true;
-                  position.x = 0;
-                  position.y = 0;
-                }
-                {
-                  search = homeRight;
-                  enable = true;
-                  position.x = 2560;
-                  position.y = 0;
-                }
-              ];
-            }
-            {
               name = "home";
               output = [
                 {
@@ -191,6 +170,8 @@ in
                 }
               ];
             }
+          ]
+          ++ lib.optionals (oscfg.internalDisplay != null) [
             {
               name = "builtin-and-external-default";
               output = [

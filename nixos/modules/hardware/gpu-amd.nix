@@ -13,6 +13,10 @@
       opencl.enable = false;
       amdvlk.enable = true;
       initrd.enable = true;
+      overdrive = {
+        enable = true;
+        ppfeaturemask = "0xffffffff";
+      };
     };
 
     nixpkgs.config.rocmSupport = true;

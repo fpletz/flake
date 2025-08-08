@@ -9,8 +9,8 @@
 let
   suffix = "xanmod1";
   modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-  version = "6.14.8";
-  hash = "sha256-ap3NaM/pk+TWg3RBRxFJPwnfv2n042r47bo66jhj3ck=";
+  version = "6.16.0";
+  hash = "sha256-g7TxFdYqNGYhrME+qwpgzZ7j9knWYCfTYydFitrR9qs=";
 in
 buildLinux {
   inherit version modDirVersion;
@@ -105,7 +105,8 @@ buildLinux {
       COMEDI = no;
       USB_GSPCA = no;
       IIO = no;
-      HAMRADIO = no;
+      HAMRADIO = lib.modules.mkForce no;
+      AX25 = lib.modules.mkForce unset;
       WWAN = no;
       ISDN = no;
       NET_DSA = no;

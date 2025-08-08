@@ -199,6 +199,33 @@
     enable = true;
     settings = {
       inherit (config.programs.git.extraConfig) user;
+      signing = {
+        behaviour = "own";
+        backend = "gpg";
+        key = config.programs.git.extraConfig.user.signingkey;
+      };
+      ui = {
+        defaultCommand = "log";
+        diff-formatter = "delta";
+        show-cryptographic-signatures = true;
+      };
+      aliases = {
+        l = [
+          "log"
+          "-r"
+          "(main..@):: | (main..@)-"
+        ];
+      };
+      templates = {
+        duplicate_description = ''
+          concat(
+            description,
+            "\n(cherry picked from commit ",
+            commit_id,
+            ")"
+          )
+        '';
+      };
     };
   };
 }

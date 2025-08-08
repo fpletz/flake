@@ -57,9 +57,11 @@
               score_offset = -5;
               opts = {
                 prefix_min_len = 3;
-                context_size = 5;
-                max_filesize = "2M";
-                search_casing = "--smart-case";
+                backend = {
+                  context_size = 5;
+                  max_filesize = "2M";
+                  search_casing = "--smart-case";
+                };
               };
             };
           };

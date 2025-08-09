@@ -27,6 +27,7 @@ in
       };
     };
 
+    boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
     boot.kernelParams = [ "console=tty0" ];
 
     # based on https://github.com/NixOS/nixos-hardware
@@ -68,8 +69,11 @@ in
     ];
 
     hardware = {
-      firmware = [ pkgs.raspberrypiWirelessFirmware ];
-      enableRedistributableFirmware = true;
+      firmware = [
+        pkgs.firmwareLinuxNonfree
+        pkgs.raspberrypiWirelessFirmware
+      ];
+      enableRedistributableFirmware = false;
     };
 
     powerManagement = {

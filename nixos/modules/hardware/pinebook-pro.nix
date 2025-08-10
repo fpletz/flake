@@ -92,11 +92,6 @@ in
       networkmanager.wifi.powersave = false;
     };
 
-    environment.sessionVariables = {
-      # enable OpenGL 3.3
-      PAN_MESA_DEBUG = "gl3";
-    };
-
     environment.systemPackages = [ pkgs.mmc-utils ];
 
     nix.settings = {

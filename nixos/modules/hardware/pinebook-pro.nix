@@ -85,7 +85,7 @@ in
       useDHCP = false;
       interfaces.wlan0.useDHCP = true;
       wireless = {
-        iwd.enable = true;
+        enable = true;
         interfaces = [ "wlan0" ];
       };
       # The default powersave makes the wireless connection unusable.

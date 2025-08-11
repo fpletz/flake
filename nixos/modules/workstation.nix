@@ -298,6 +298,8 @@ in
       powerOnBoot = mkDefault true;
       settings = {
         General = {
+          AutoConnect = true;
+          MultiProfile = "multiple";
           Experimental = true;
           KernelExperimental = true;
         };

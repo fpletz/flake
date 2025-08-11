@@ -24,6 +24,7 @@ let
     pref("browser.uidensity", 1);
     pref("network.proxy.type", 0);
     pref("privacy.donottrackheader.enabled", true);
+    pref("security.OCSP.require", false);
   '';
 in
 {

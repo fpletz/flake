@@ -205,7 +205,7 @@
         key = config.programs.git.extraConfig.user.signingkey;
       };
       ui = {
-        defaultCommand = "log";
+        default-command = "log";
         diff-formatter = "delta";
         show-cryptographic-signatures = true;
       };

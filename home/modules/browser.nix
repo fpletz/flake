@@ -25,6 +25,7 @@ let
     pref("network.proxy.type", 0);
     pref("privacy.donottrackheader.enabled", true);
     pref("security.OCSP.require", false);
+    pref("intl.regional_prefs.use_os_locales", true);
   '';
 in
 {

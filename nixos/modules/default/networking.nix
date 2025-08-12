@@ -2,7 +2,12 @@
 {
   networking.useNetworkd = true;
 
-  systemd.network.wait-online.anyInterface = true;
+  systemd.network = {
+    wait-online.anyInterface = true;
+    config.networkConfig = {
+      IPv6PrivacyExtensions = false;
+    };
+  };
 
   boot.kernel.sysctl = {
     # Increase TCP buffer sizes for increased throughput

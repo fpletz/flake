@@ -116,7 +116,19 @@
     };
   };
 
-  programs.bottom.enable = true;
+  programs.bottom = {
+    enable = true;
+    settings = {
+      flags = {
+        memory_legend = "top-left";
+        network_legend = "top-left";
+        hide_table_gap = true;
+        hide_time = true;
+        enable_cache_memory = true;
+        network_use_log = true;
+      };
+    };
+  };
 
   programs.htop.enable = true;
 

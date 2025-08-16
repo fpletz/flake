@@ -198,7 +198,7 @@
   programs.jujutsu = {
     enable = true;
     settings = {
-      inherit (config.programs.git.extraConfig) user;
+      user = { inherit (config.programs.git.extraConfig.user) name email; };
       signing = {
         behaviour = "own";
         backend = "gpg";

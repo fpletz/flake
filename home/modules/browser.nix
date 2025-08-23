@@ -150,10 +150,10 @@ in
           geolocation = false;
         };
         fonts = {
-          default_family = "Victor Mono";
+          default_family = "0xProto";
           web.family = {
             standard = "Recursive Sans Casual Static";
-            fixed = "Victor Mono";
+            fixed = "0xProto";
             sans_serif = "Recursive Sans Casual Static";
           };
         };

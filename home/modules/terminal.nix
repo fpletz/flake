@@ -30,7 +30,7 @@
           blur = true;
         };
         font = {
-          normal.family = "Victor Mono";
+          normal.family = "0xProto";
           size = 10.0;
         };
         scrolling = {
@@ -66,7 +66,7 @@
         theme = "tokyonight";
         background = "black";
         window-padding-color = "background";
-        font-family = "Victor Mono";
+        font-family = "0xProto";
         font-size = 10;
         background-opacity = 0.8;
         mouse-hide-while-typing = true;

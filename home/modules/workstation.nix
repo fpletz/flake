@@ -179,7 +179,7 @@ in
       settings = {
         fork = true;
         font = {
-          normal = [ "Victor Mono" ];
+          normal = [ "0xProto" ];
           size = 10;
           hinting = "full";
           edging = "antialias";

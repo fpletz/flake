@@ -335,7 +335,7 @@ in
         defaultFonts = {
           emoji = [ "Noto Color Emoji" ];
           monospace = [
-            "Victor Mono"
+            "0xProto"
             "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
@@ -373,6 +373,7 @@ in
         departure-mono
         recursive
         victor-mono
+        _0xproto
       ];
     };
 

@@ -95,7 +95,7 @@
     gc = {
       automatic = true;
       options = "-d";
-      frequency = "weekly";
+      dates = "weekly";
       persistent = true;
     };
   };

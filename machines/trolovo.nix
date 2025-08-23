@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, config, ... }:
 {
   system.stateVersion = "24.11";
 
@@ -48,6 +48,8 @@
     enable = true;
     gaming = false;
   };
+
+  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
   sops = {
     secrets = {

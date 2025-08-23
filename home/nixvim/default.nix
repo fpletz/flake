@@ -4,6 +4,7 @@
     ./barbar.nix
     ./blink-cmp.nix
     ./comment.nix
+    ./conform.nix
     ./dial.nix
     ./dropbar.nix
     ./flash.nix

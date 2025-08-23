@@ -25,12 +25,6 @@
       '';
       options.desc = "Toggle lsp inlay hints";
     }
-    {
-      mode = "n";
-      key = "<leader>=";
-      action = ":FormatToggle<cr>";
-      options.desc = "Toggle lsp format";
-    }
   ];
 
   lsp = {
@@ -124,7 +118,6 @@
 
   plugins = {
     lsp.enable = true;
-    lsp-format.enable = true;
     rustaceanvim = {
       enable = true;
       settings.server = {

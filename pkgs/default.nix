@@ -41,6 +41,10 @@ in
           doCheck = false;
         }
       );
+      keepassxc = prev.keepassxc.override {
+        withKeePassX11 = false;
+        withKeePassYubiKey = false;
+      };
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
     }
     // byNamePackages final;

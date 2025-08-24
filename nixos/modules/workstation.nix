@@ -70,12 +70,6 @@ in
       };
       kernelParams = [ "snd_hda_intel.power_save=1" ];
       kernelPackages = pkgs.linuxPackages-xanmod;
-      extraModulePackages = with config.boot.kernelPackages; [
-        v4l2loopback
-      ];
-      extraModprobeConfig = ''
-        options v4l2loopback video_nr=23,42 card_label="23,42" exclusive_caps=1
-      '';
       loader.grub = {
         ipxe = {
           netbootxyz = ''

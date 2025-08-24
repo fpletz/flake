@@ -194,7 +194,7 @@ in
               ""
             ];
           };
-          on-click = "${lib.getExe config.bpletza.workstation.terminal.default} -e ${lib.getExe pkgs.pulsemixer}";
+          on-click = "${lib.getExe config.bpletza.workstation.terminal.default} -e ${lib.getExe pkgs.wiremix}";
         };
         bluetooth = {
           format = "{status} ";

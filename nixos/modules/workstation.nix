@@ -310,7 +310,7 @@ in
       pkgs.alsa-utils
       pkgs.pulsemixer
       pkgs.pamixer
-      pkgs.ncpamixer
+      pkgs.wiremix
       pkgs.efibootmgr
     ]
     ++ lib.optional config.hardware.bluetooth.enable pkgs.bluetuith;

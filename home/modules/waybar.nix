@@ -325,7 +325,6 @@ in
 
           #clock {
             color: #bb9af7;
-            border-radius: 0px 5px 5px 0px;
             margin-right: 0px;
           }
 

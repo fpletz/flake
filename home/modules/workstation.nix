@@ -47,7 +47,6 @@ in
         yt-dlp
         pass
         gopass
-        tectonic
         just
         git-annex
         git-remote-gcrypt

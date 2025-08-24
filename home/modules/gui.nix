@@ -168,38 +168,5 @@ in
         ];
       };
     };
-
-    services.mopidy = {
-      enable = true;
-      extensionPackages = [
-        pkgs.mopidy-mpd
-        pkgs.mopidy-mpris
-        pkgs.mopidy-somafm
-        pkgs.mopidy-youtube
-        pkgs.mopidy-soundcloud
-        pkgs.mopidy-iris
-        pkgs.mopidy-subidy
-      ];
-      settings = {
-        file = {
-          media_dirs = [ "Music" ];
-          follow_symlinks = true;
-        };
-        youtube = {
-          enabled = true;
-          musicapi_enabled = true;
-          youtube_dl_package = "yt_dlp";
-        };
-        core = {
-          restore_state = true;
-        };
-        audio = {
-          output = "pipewiresink";
-        };
-        logging = {
-          format = "%(levelname)-8s [%(process)d:%(threadName)s] %(name)s  %(message)s";
-        };
-      };
-    };
   };
 }

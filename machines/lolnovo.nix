@@ -12,7 +12,6 @@
   home-manager.sharedModules = [
     {
       services.easyeffects.enable = lib.mkForce false;
-      services.mopidy.enable = lib.mkForce false;
     }
   ];
 

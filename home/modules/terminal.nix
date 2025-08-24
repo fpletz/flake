@@ -26,7 +26,7 @@
       enable = true;
       settings = {
         window = {
-          opacity = 0.85;
+          opacity = 0.8;
           blur = true;
         };
         font = {
@@ -57,6 +57,7 @@
           import = [ "${pkgs.vimPlugins.tokyonight-nvim}/extras/alacritty/tokyonight_night.toml" ];
           live_config_reload = true;
         };
+        colors.primary.background = "#000000";
       };
     };
 

@@ -32,7 +32,6 @@
       bashls.enable = true;
       basedpyright.enable = true;
       clangd.enable = true;
-      cmake.enable = true;
       cssls.enable = true;
       docker_compose_language_service.enable = true;
       dockerls.enable = true;

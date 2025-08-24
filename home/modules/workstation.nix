@@ -77,7 +77,6 @@ in
         docker-compose-language-service
         bash-language-server
         mesonlsp
-        cmake-language-server
         taplo
         llvmPackages.clang
       ]

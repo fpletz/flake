@@ -45,6 +45,13 @@ in
         withKeePassX11 = false;
         withKeePassYubiKey = false;
       };
+      # https://github.com/NixOS/nixpkgs/pull/436516
+      qemu-user = prev.qemu-user.overrideAttrs (attrs: {
+        nativeBuildInputs = attrs.nativeBuildInputs ++ [
+          final.python3Packages.python
+          final.python3Packages.distlib
+        ];
+      });
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
     }
     // byNamePackages final;

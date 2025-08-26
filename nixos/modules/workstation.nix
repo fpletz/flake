@@ -207,10 +207,14 @@ in
     services.udisks2.enable = true;
 
     services.logind = {
-      powerKey = "lock";
-      lidSwitch = "lock";
-      lidSwitchDocked = "lock";
-      lidSwitchExternalPower = "lock";
+      settings = {
+        Login = {
+          HandleLidSwitchDocked = "lock";
+          HandleLidSwitchExternalPower = "lock";
+          HandleLidSwitch = "lock";
+          HandlePowerKey = "lock";
+        };
+      };
     };
 
     services.printing = {

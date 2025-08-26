@@ -98,6 +98,7 @@ in
       enable = true;
       settings = {
         main = {
+          launch-prefix = "systemd-run --user --scope --slice=app";
           terminal = "${lib.getExe config.bpletza.workstation.terminal.default} -e";
           dpi-aware = false;
           font = "Recursive Sans Casual Static:size=11";

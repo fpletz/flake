@@ -213,9 +213,8 @@ in
                   enable = true;
                   position.x = 0;
                   position.y = 0;
-                  mode.width = 3840;
-                  mode.height = 2160;
-                  scale = 1.5;
+                  mode.width = 2560;
+                  mode.height = 1440;
                 }
                 {
                   search = internalDisplay;

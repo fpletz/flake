@@ -52,18 +52,12 @@ in
     programs.niri.enable = true;
     services.gnome.gnome-keyring.enable = false; # set by niri NixOS module
 
-    systemd.user.services.xwayland-satellite = {
-      wantedBy = [ "niri.service" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        ExecStart = lib.getExe pkgs.xwayland-satellite;
-      };
-    };
-
     qt = {
       enable = true;
       platformTheme = "gtk2";
       style = "gtk2";
     };
+
+    environment.systemPackages = [ pkgs.xwayland-satellite ];
   };
 }

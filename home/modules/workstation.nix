@@ -205,7 +205,6 @@ in
       Service = {
         ExecStart = lib.getExe pkgs.keepassxc;
         Restart = "on-failure";
-        Environment = [ "DISPLAY=:0" ];
       };
       Install.WantedBy = [ "graphical-session.target" ];
     };

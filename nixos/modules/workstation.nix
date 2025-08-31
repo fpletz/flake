@@ -423,7 +423,11 @@ in
         keep-outputs = lib.mkDefault true;
         keep-derivations = true;
         substituters = lib.mkBefore [
+          "https://cache.muc.ccc.de/muccc"
           "https://nixos.snix.store"
+        ];
+        trusted-public-keys = [
+          "muccc:prppkBGhfZZniZyY/x9KZS0AnjgBQ7Ds22KmCgu1GZI="
         ];
       };
       distributedBuilds = true;

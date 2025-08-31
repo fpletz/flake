@@ -26,18 +26,6 @@
     allowDiscards = true;
   };
 
-  services.beesd.filesystems = {
-    root = {
-      spec = "LABEL=root";
-      hashTableSizeMB = 2048;
-      verbosity = "info";
-      extraOptions = [
-        "--loadavg-target"
-        "4.0"
-      ];
-    };
-  };
-
   boot.loader.systemd-boot = {
     enable = true;
   };

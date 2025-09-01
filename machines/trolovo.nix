@@ -34,7 +34,7 @@
   bpletza.secureboot = true;
   bpletza.workstation = {
     enable = true;
-    gaming = false;
+    gaming = true;
   };
 
   powerManagement.cpuFreqGovernor = lib.mkForce "performance";

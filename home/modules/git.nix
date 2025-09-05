@@ -169,6 +169,14 @@
         diff-formatter = "delta";
         show-cryptographic-signatures = true;
       };
+      merge-tools = {
+        delta = {
+          diff-expected-exit-codes = [
+            0
+            1
+          ];
+        };
+      };
       aliases = {
         l = [
           "log"

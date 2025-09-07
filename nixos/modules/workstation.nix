@@ -403,8 +403,8 @@ in
     programs.nh.enable = true;
 
     programs.ssh.knownHosts = {
-      "omicron.lodere.es".publicKey =
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC/BMtaa1dhpbdHN409OzxaGyZG0Hk9GzU3k5ycP2y9D";
+      "bauwagen.env.club.muc.ccc.de".publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXa8mFvlyGE+zJv6u2SybG9+W/wA0FIkl7th45K6g80";
       "build-box.nix-community.org".publicKey =
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H";
       "aarch64-build-box.nix-community.org".publicKey =
@@ -431,70 +431,71 @@ in
         ];
       };
       distributedBuilds = true;
-      buildMachines =
-        lib.optionals (config.networking.hostName != "zocknix") [
-          {
-            hostName = "zocknix.evs";
-            protocol = "ssh-ng";
-            sshUser = "nix-build";
-            sshKey = "/home/fpletz/.ssh/id_build";
-            systems = [
-              "i686-linux"
-              "x86_64-linux"
-            ];
-            supportedFeatures = [
-              "kvm"
-              "big-parallel"
-              "nixos-test"
-            ];
-            maxJobs = 10;
-            speedFactor = 2;
-          }
-        ]
-        ++ [
-          {
-            hostName = "omicron.lodere.es";
-            protocol = "ssh-ng";
-            sshUser = "root";
-            sshKey = "/home/fpletz/.ssh/id_build";
-            systems = [
-              "i686-linux"
-              "x86_64-linux"
-            ];
-            supportedFeatures = [
-              "kvm"
-              "big-parallel"
-              "nixos-test"
-            ];
-            maxJobs = 10;
-            speedFactor = 2;
-          }
-          {
-            hostName = "aarch64-build-box.nix-community.org";
-            protocol = "ssh-ng";
-            maxJobs = 8;
-            sshKey = "/home/fpletz/.ssh/id_build";
-            sshUser = "fpletz";
-            system = "aarch64-linux";
-            supportedFeatures = [
-              "kvm"
-              "big-parallel"
-              "nixos-test"
-            ];
-          }
-          {
-            hostName = "darwin-build-box.nix-community.org";
-            protocol = "ssh-ng";
-            maxJobs = 4;
-            sshKey = "/home/fpletz/.ssh/id_build";
-            sshUser = "fpletz";
-            system = "aarch64-darwin";
-            supportedFeatures = [
-              "kvm"
-              "big-parallel"
-            ];
-          }
-        ];
+      buildMachines = [
+        {
+          hostName = "bauwagen.env.club.muc.ccc.de";
+          protocol = "ssh-ng";
+          sshUser = "nix-build";
+          sshKey = "/home/fpletz/.ssh/id_build";
+          systems = [
+            "i686-linux"
+            "x86_64-linux"
+          ];
+          supportedFeatures = [
+            "kvm"
+            "big-parallel"
+            "nixos-test"
+          ];
+          maxJobs = 24;
+          speedFactor = 6;
+        }
+      ]
+      ++ lib.optionals (config.networking.hostName != "zocknix") [
+        {
+          hostName = "zocknix.evs";
+          protocol = "ssh-ng";
+          sshUser = "nix-build";
+          sshKey = "/home/fpletz/.ssh/id_build";
+          systems = [
+            "i686-linux"
+            "x86_64-linux"
+          ];
+          supportedFeatures = [
+            "kvm"
+            "big-parallel"
+            "nixos-test"
+          ];
+          maxJobs = 10;
+          speedFactor = 2;
+        }
+      ]
+      ++ [
+        {
+          hostName = "aarch64-build-box.nix-community.org";
+          protocol = "ssh-ng";
+          maxJobs = 8;
+          sshKey = "/home/fpletz/.ssh/id_build";
+          sshUser = "fpletz";
+          system = "aarch64-linux";
+          supportedFeatures = [
+            "kvm"
+            "big-parallel"
+            "nixos-test"
+          ];
+        }
+        {
+          hostName = "darwin-build-box.nix-community.org";
+          protocol = "ssh-ng";
+          maxJobs = 4;
+          sshKey = "/home/fpletz/.ssh/id_build";
+          sshUser = "fpletz";
+          system = "aarch64-darwin";
+          supportedFeatures = [
+            "kvm"
+            "big-parallel"
+          ];
+        }
+      ];
     };
 
     virtualisation.libvirtd = {

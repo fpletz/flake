@@ -27,8 +27,6 @@ in
   };
 
   config = lib.mkIf config.bpletza.workstation.gui {
-    xresources.extraConfig = builtins.readFile "${pkgs.vimPlugins.tokyonight-nvim}/extras/xresources/tokyonight_night.Xresources";
-
     home.pointerCursor = {
       package = pkgs.phinger-cursors;
       name = "phinger-cursors-dark";
@@ -45,13 +43,9 @@ in
       };
     };
 
+    stylix.targets.gtk.enable = false;
     gtk = {
       enable = true;
-      font = {
-        name = "Recursive Sans Casual Static";
-        package = pkgs.recursive;
-        size = 8;
-      };
       theme = {
         name = "Tokyonight-Dark";
         package = pkgs.tokyonight-gtk-theme.override { iconVariants = [ "Dark" ]; };
@@ -99,6 +93,7 @@ in
       };
     };
 
+    stylix.targets.qt.enable = false;
     qt = {
       enable = true;
       platformTheme.name = "gtk2";
@@ -111,9 +106,9 @@ in
 
     home.packages = [
       (
-        with config.colorScheme.palette;
+        with config.lib.stylix.colors.withHashtag;
         pkgs.writers.writeBashBin "sm" ''
-          ${lib.getExe pkgs.screen-message} --background=#${base00} --foreground=#${base08}
+          ${lib.getExe pkgs.screen-message} --background=${base00} --foreground=${base08}
         ''
       )
       pkgs.libva-utils

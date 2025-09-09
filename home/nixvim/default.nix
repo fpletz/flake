@@ -59,7 +59,7 @@
     register = "unnamedplus";
   };
 
-  colorscheme = lib.mkForce "tokyonight";
+  colorscheme = "tokyonight";
   colorschemes = {
     tokyonight = {
       enable = true;

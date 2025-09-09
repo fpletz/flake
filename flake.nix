@@ -72,9 +72,9 @@
       };
     };
 
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
-      inputs.nixpkgs-lib.follows = "flake-parts/nixpkgs-lib";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     bad_gateway = {
@@ -152,14 +152,6 @@
               config.treefmt.build.devShell
               config.pre-commit.devShell
             ];
-          };
-
-          apps = {
-            generate-dircolors.program = pkgs.writers.writeBashBin "generate-dircolors" ''
-              ${pkgs.vivid}/bin/vivid generate tokyonight-night | \
-                ${pkgs.python3}/bin/python3 -c 'import sys, json; print(json.dumps(dict([s.split("=") for s in sys.stdin.read().strip().split(":")])))' \
-                > static/dircolors.json
-            '';
           };
         };
     };

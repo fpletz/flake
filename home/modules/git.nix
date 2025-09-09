@@ -115,9 +115,6 @@
         hyperlinks = true;
       };
     };
-    includes = [
-      { path = "${pkgs.vimPlugins.tokyonight-nvim}/extras/delta/tokyonight_night.gitconfig"; }
-    ];
   };
 
   programs.lazygit = {

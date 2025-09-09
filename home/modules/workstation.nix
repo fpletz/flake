@@ -84,7 +84,6 @@ in
     programs.helix = {
       enable = true;
       settings = {
-        theme = "tokyonight";
         editor = {
           statusline = {
             left = [

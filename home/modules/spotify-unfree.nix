@@ -38,8 +38,6 @@ in
           betterGenres
           history
         ];
-        theme = spicePkgs.themes.comfy;
-        colorScheme = "catppuccin-mocha";
       };
   };
 }

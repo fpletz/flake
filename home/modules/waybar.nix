@@ -246,38 +246,12 @@ in
       style = # css
         ''
           * {
-            border: none;
+            margin: 0;
             border-radius: 0;
-            font-family: "Recursive Sans Casual Static";
-            font-size: 10pt;
-            min-height: 0;
-          }
-
-          window#waybar {
-            background-color: rgba(0,0,0,0);
-            color: #A9B1D6;
-          }
-
-          #workspaces {
-            background-color: rgba(0,0,0,0.8);
-            border-radius: 5px;
           }
 
           #workspaces button {
-            padding: 5px 5px;
-            color: #c0caf5;
-          }
-
-          #workspaces button.focused {
-            color: #24283b;
-            background-color: #7aa2f7;
-            border-radius: 5px;
-          }
-
-          #workspaces button:hover {
-            background-color: #7dcfff;
-            color: #24283b;
-            border-radius: 5px;
+            padding: 0 5px;
           }
 
           #mode,
@@ -295,68 +269,62 @@ in
           #temperature,
           #mpris,
           #tray {
-            background-color: #24283b;
-            padding: 5px 10px;
-            margin: 0px 2px;
-            border-radius: 5px;
+            padding: 0 5px;
           }
 
           #bluetooth, #temperature {
-            color: #7dcfff;
+            color: @base0C;
           }
 
           #bluetooth.off, #bluetooth.disabled {
-            color: #a9b1d6;
+            color: @base05;
           }
 
           #mpris {
-            color: #bb9af7;
+            color: @base0E;
           }
 
           #disk {
-            color: #9ece6a;
+            color: @base0B;
           }
 
           #mode,
           #idle_inhibitor.activated {
-            color: #24283b;
-            background-color: #7aa2f7;
+            color: @base08;
           }
 
           #clock {
-            color: #bb9af7;
-            margin-right: 0px;
+            color: @base0E;
           }
 
           #upower {
-            color: #9ece6a;
+            color: @base0B;
           }
 
           #upower.charging {
-            color: #9ece6a;
+            color: @base0B;
           }
 
           #systemd-failed-units.ok, #mpris.spotify {
-            color: #9ece6a;
+            color: @base0B;
           }
 
           #systemd-failed-units.degraded {
-            color: #f7768e;
+            color: @base08;
           }
 
           #upower.discharging {
-            background-color: #f7768e;
-            color: #24283b;
+            color: @base07;
           }
 
           #network, #network-wl,
           #temperature.critical,
           #bluetooth.discoverable {
-            color: #f7768e;
+            color: @base08;
           }
 
           #pulseaudio, #mpris.paused {
-            color: #e0af68;
+            color: @base0A;
           }
         '';
     };

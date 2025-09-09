@@ -8,7 +8,7 @@
 {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
-    inputs.nix-colors.homeManagerModule
+    inputs.stylix.homeModules.stylix
     inputs.spicetify-nix.homeManagerModules.default
     ./modules/browser.nix
     ./modules/git.nix
@@ -30,37 +30,56 @@
     ./modules/xorg.nix
   ];
 
-  colorScheme = {
-    # FIXME: inputs.nix-colors.colorSchemes."tokyo-night-dark";
-    # Fixed version of tokyo-night-dark which should be tokyo-night-night
-    # but seems mostly the same as tokyo-night-storm which is missing warm colors
-    slug = "tokyo-night-night";
-    name = "Tokyo Night Night";
-    author = "fpletz";
-    palette = {
-      base00 = "#16161E";
-      base01 = "#1A1B26";
-      base02 = "#2F3549";
-      base03 = "#444B6A";
-      base04 = "#787C99";
-      base05 = "#A9B1D6";
-      base06 = "#CBCCD1";
-      base07 = "#D5D6DB";
-      base08 = "#F7768E";
-      base09 = "#FF9E64";
-      base0A = "#E0AF68";
-      base0B = "#9ECE6A";
-      base0C = "#7DCFFF";
-      base0D = "#7AA2f7";
-      base0E = "#9D7CD8";
-      base0F = "#DB4B4B";
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    polarity = "dark";
+    fonts = {
+      monospace = {
+        name = "0xProto";
+        package = pkgs._0xproto;
+      };
+      sansSerif = {
+        name = "Recursive Sans Casual Static";
+        package = pkgs.recursive;
+      };
+      serif = {
+        name = "Recursive Sans Casual Static";
+        package = pkgs.recursive;
+      };
+      sizes = {
+        applications = 10;
+        desktop = 10;
+        terminal = 10;
+      };
+    };
+    opacity = {
+      terminal = 0.8;
+    };
+    override = {
+      base00 = "16161E";
+      base01 = "1A1B26";
+      base02 = "2F3549";
+      base03 = "444B6A";
+      base04 = "787C99";
+      base05 = "A9B1D6";
+      base06 = "CBCCD1";
+      base07 = "D5D6DB";
+      base08 = "F7768E";
+      base09 = "FF9E64";
+      base0A = "E0AF68";
+      base0B = "9ECE6A";
+      base0C = "7DCFFF";
+      base0D = "7AA2f7";
+      base0E = "9D7CD8";
+      base0F = "DB4B4B";
     };
   };
 
   home = {
     username = "fpletz";
     homeDirectory = "/home/fpletz";
-    stateVersion = "24.11";
+    stateVersion = "25.05";
 
     sessionVariables = {
       EMAIL = "fpletz@fnordicwalking.de";
@@ -110,7 +129,6 @@
   programs.btop = {
     enable = true;
     settings = {
-      color_theme = "tokyo-night";
       update_ms = 1000;
       show_coretemp = false;
     };
@@ -139,9 +157,6 @@
     extraOptions = [ "--group-directories-first" ];
   };
 
-  home.file.".config/eza/theme.yml".source =
-    "${pkgs.vimPlugins.tokyonight-nvim}/extras/eza/tokyonight.yml";
-
   programs.jq.enable = true;
 
   programs.tmux = {
@@ -153,7 +168,6 @@
     extraConfig = ''
       set -g set-titles on
       set -g set-titles-string "#H: #W"
-      source-file ${pkgs.vimPlugins.tokyonight-nvim}/extras/tmux/tokyonight_night.tmux
     '';
     plugins = [
       pkgs.tmuxPlugins.pain-control
@@ -164,25 +178,6 @@
     enable = true;
     config = {
       pager = "less -FR";
-      theme = "tokyonight_dark";
     };
-    themes =
-      let
-        src = "${pkgs.vimPlugins.tokyonight-nvim}/extras/sublime";
-      in
-      {
-        tokyonight = {
-          inherit src;
-          file = "tokyonight_night.tmTheme";
-        };
-        tokyonight_dark = {
-          inherit src;
-          file = "tokyonight_night.tmTheme";
-        };
-        tokyonight_day = {
-          inherit src;
-          file = "tokyonight_day.tmTheme";
-        };
-      };
   };
 }

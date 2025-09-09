@@ -25,14 +25,6 @@
     programs.alacritty = {
       enable = true;
       settings = {
-        window = {
-          opacity = 0.8;
-          blur = true;
-        };
-        font = {
-          normal.family = "0xProto";
-          size = 10.0;
-        };
         scrolling = {
           history = 20000;
         };
@@ -54,22 +46,19 @@
           ];
         };
         general = {
-          import = [ "${pkgs.vimPlugins.tokyonight-nvim}/extras/alacritty/tokyonight_night.toml" ];
           live_config_reload = true;
         };
-        colors.primary.background = "#000000";
+        colors.primary.background = lib.mkForce "#000000";
       };
     };
 
     programs.ghostty = {
       enable = true;
       settings = {
-        theme = "tokyonight";
         background = "black";
         window-padding-color = "background";
         font-family = "0xProto";
         font-size = 10;
-        background-opacity = 0.8;
         mouse-hide-while-typing = true;
         auto-update = "off";
         gtk-titlebar = false;

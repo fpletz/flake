@@ -40,12 +40,9 @@ in
 
     services.wob = {
       enable = true;
-      settings = with config.colorScheme.palette; {
+      settings = {
         "" = {
           timeout = 750;
-          background_color = "${base00}88";
-          bar_color = base05;
-          border_color = base05;
         };
       };
     };
@@ -53,45 +50,20 @@ in
     services.fnott = {
       enable = true;
       extraFlags = [ "-s" ];
-      settings = (
-        with config.colorScheme.palette;
-        {
-          main = {
-            background = "${base00}cc";
-            border-color = "${base0D}ff";
-            title-color = "${base05}ff";
-            summary-color = "${base05}ff";
-            body-color = "${base05}ff";
-            progress-bar-color = "${base0D}ff";
-            icon-theme = config.gtk.iconTheme.name;
-            max-icon-size = 64;
-            # default-timeout = 10;
-            # max-timeout = 30;
-            min-width = 300;
-            max-width = 1000;
-            title-font = "Recursive Sans Casual Static:size=11";
-            summary-font = "Recursive Sans Casual Static:size=11";
-            body-font = "Recursive Sans Casual Static:size=11";
-            selection-helper = "${lib.getExe pkgs.fuzzel} -d";
-            summary-format = "<b>%s</b>";
-            padding-vertical = 15;
-            padding-horizontal = 15;
-
-          };
-          low = {
-            background = "${base00}ff";
-            title-color = "${base0A}ff";
-            summary-color = "${base0A}ff";
-            body-color = "${base0A}ff";
-          };
-          critical = {
-            background = "${base00}ff";
-            title-color = "${base08}ff";
-            summary-color = "${base08}ff";
-            body-color = "${base08}ff";
-          };
-        }
-      );
+      settings = {
+        main = {
+          icon-theme = config.gtk.iconTheme.name;
+          max-icon-size = 64;
+          # default-timeout = 10;
+          # max-timeout = 30;
+          min-width = 300;
+          max-width = 1000;
+          selection-helper = "${lib.getExe pkgs.fuzzel} -d";
+          summary-format = "<b>%s</b>";
+          padding-vertical = 15;
+          padding-horizontal = 15;
+        };
+      };
     };
 
     programs.fuzzel = {
@@ -101,20 +73,9 @@ in
           launch-prefix = "systemd-run --user --scope --slice=app";
           terminal = "${lib.getExe config.bpletza.workstation.terminal.default} -e";
           dpi-aware = false;
-          font = "Recursive Sans Casual Static:size=11";
           icon-theme = config.gtk.iconTheme.name;
           show-actions = true;
           use-bold = true;
-        };
-        colors = {
-          # https://github.com/folke/tokyonight.nvim/blob/main/extras/fuzzel/tokyonight_night.ini
-          background = "16161ecc";
-          text = "c0caf5ff";
-          match = "2ac3deff";
-          selection = "343a55ff";
-          selection-match = "2ac3deff";
-          selection-text = "c0caf5ff";
-          border = "27a1b9ff";
         };
       };
     };

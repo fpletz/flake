@@ -43,7 +43,6 @@ in
       };
     };
 
-    stylix.targets.gtk.enable = false;
     gtk = {
       enable = true;
       theme = {
@@ -93,7 +92,6 @@ in
       };
     };
 
-    stylix.targets.qt.enable = false;
     qt = {
       enable = true;
       platformTheme.name = "gtk2";

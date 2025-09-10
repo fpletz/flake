@@ -74,6 +74,10 @@
       base0E = "9D7CD8";
       base0F = "DB4B4B";
     };
+    targets = {
+      gtk.enable = false;
+      qt.enable = false;
+    };
   };
 
   home = {

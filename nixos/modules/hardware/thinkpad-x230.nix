@@ -32,7 +32,7 @@
     };
 
     networking.wireless = {
-      iwd.enable = true;
+      enable = true;
       interfaces = [ "wlp2s0" ];
     };
 

@@ -152,8 +152,6 @@ in
       wifi = { };
     };
 
-    systemd.network.links."80-iwd" = lib.mkIf config.networking.wireless.iwd.enable (lib.mkForce { });
-
     networking.wireless = {
       extraConfig = ''
         preassoc_mac_addr=1

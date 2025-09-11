@@ -374,9 +374,6 @@ in
         inter
         commit-mono
         departure-mono
-        recursive
-        victor-mono
-        _0xproto
       ];
     };
 

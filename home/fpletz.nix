@@ -35,28 +35,6 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
     polarity = "dark";
-    fonts = {
-      monospace = {
-        name = "0xProto";
-        package = pkgs._0xproto;
-      };
-      sansSerif = {
-        name = "Recursive Sans Casual Static";
-        package = pkgs.recursive;
-      };
-      serif = {
-        name = "Recursive Sans Casual Static";
-        package = pkgs.recursive;
-      };
-      sizes = {
-        applications = 10;
-        desktop = 10;
-        terminal = 10;
-      };
-    };
-    opacity = {
-      terminal = 0.8;
-    };
     override = {
       base00 = "16161E";
       base01 = "1A1B26";
@@ -74,6 +52,28 @@
       base0D = "7AA2f7";
       base0E = "9D7CD8";
       base0F = "DB4B4B";
+    };
+    fonts = {
+      monospace = {
+        name = "CommitMono";
+        package = pkgs.commit-mono;
+      };
+      sansSerif = {
+        name = "Inter";
+        package = pkgs.inter;
+      };
+      serif = {
+        name = "Noto Serif";
+        package = pkgs.noto-fonts;
+      };
+      sizes = {
+        applications = 9;
+        desktop = 9;
+        terminal = 10;
+      };
+    };
+    opacity = {
+      terminal = 0.8;
     };
     targets = {
       # stylix pulls in lots of dependencies we don't need on servers

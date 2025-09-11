@@ -171,19 +171,6 @@ in
       };
     };
 
-    programs.neovide = {
-      enable = true;
-      settings = {
-        fork = true;
-        font = {
-          normal = [ "0xProto" ];
-          size = 10;
-          hinting = "full";
-          edging = "antialias";
-        };
-      };
-    };
-
     programs.gh = {
       enable = true;
       settings = {

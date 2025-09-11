@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   pkgs,
   inputs,
@@ -75,8 +76,16 @@
       base0F = "DB4B4B";
     };
     targets = {
+      # stylix pulls in lots of dependencies we don't need on servers
       gtk.enable = false;
       qt.enable = false;
+      gnome.enable = lib.mkDefault false;
+      kde.enable = lib.mkDefault false;
+      xresources.enable = lib.mkDefault false;
+      font-packages.enable = lib.mkDefault false;
+      fontconfig.enable = lib.mkDefault false;
+      sxiv.enable = false;
+      gnome-text-editor.enable = false;
     };
   };
 

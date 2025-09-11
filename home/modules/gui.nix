@@ -27,6 +27,13 @@ in
   };
 
   config = lib.mkIf config.bpletza.workstation.gui {
+    stylix.targets = {
+      gnome.enable = true;
+      kde.enable = true;
+      font-packages.enable = true;
+      fontconfig.enable = true;
+    };
+
     home.pointerCursor = {
       package = pkgs.phinger-cursors;
       name = "phinger-cursors-dark";

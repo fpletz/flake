@@ -119,16 +119,6 @@
     # living on the edge
     stateVersion = lib.mkOverride 1001 "25.05";
 
-    # shows a diff of the system closure
-    activationScripts.preActivation = ''
-      if [[ -e /run/current-system ]]; then
-        echo "--- diff to current-system"
-        ${pkgs.nvd}/bin/nvd --nix-bin-dir=${config.nix.package}/bin diff \
-          "$(readlink -f /run/current-system)" "$systemConfig"
-        echo "---"
-      fi
-    '';
-
     # include git rev of this repo/flake into the nixos-version
     configurationRevision = if inputs.self ? rev then lib.substring 0 8 inputs.self.rev else "dirty";
 

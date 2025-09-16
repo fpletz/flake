@@ -56,7 +56,7 @@
       coreboot-utils
     ];
 
-    services.power-profiles-daemon.enable = true;
+    services.tuned.enable = true;
 
     bpletza.workstation = {
       battery = true;

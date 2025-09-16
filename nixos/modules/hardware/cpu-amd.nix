@@ -13,6 +13,8 @@
       updateMicrocode = true;
     };
 
-    services.power-profiles-daemon.enable = true;
+    services.tuned = {
+      enable = true;
+    };
   };
 }

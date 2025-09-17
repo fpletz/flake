@@ -21,6 +21,7 @@
     attributes = [
       "*.pdf diff=pdf"
     ];
+    ignores = [ ".direnv" ];
     extraConfig = {
       user = {
         name = "Franz Pletz";
@@ -41,7 +42,10 @@
         conflictstyle = "zdiff3";
       };
       blame.date = "short";
-      rerere.enabled = true;
+      rerere = {
+        enabled = true;
+        autoUpdate = true;
+      };
       pull.rebase = true;
       fetch = {
         parallel = 0;
@@ -161,6 +165,9 @@
         backend = "gpg";
         key = config.programs.git.extraConfig.user.signingkey;
       };
+      git = {
+        sign-on-push = true;
+      };
       ui = {
         default-command = "log";
         diff-formatter = "delta";
@@ -174,11 +181,23 @@
           ];
         };
       };
+      revset-aliases = {
+        "immutable_heads()" = "builtin_immutable_heads() | (trunk().. & ~mine())";
+        "closest_bookmark(to)" = "heads(::to & bookmarks())";
+      };
       aliases = {
         l = [
           "log"
           "-r"
           "(main..@):: | (main..@)-"
+        ];
+        tug = [
+          "bookmark"
+          "move"
+          "--from"
+          "closest_bookmark(@-)"
+          "--to"
+          "@-"
         ];
       };
       templates = {
@@ -188,6 +207,17 @@
             "\n(cherry picked from commit ",
             commit_id,
             ")"
+          )
+        '';
+        draft_commit_description = ''
+          concat(
+            coalesce(description, default_commit_description, "\n"),
+            surround(
+              "\nJJ: This commit contains the following changes:\n", "",
+              indent("JJ:     ", diff.stat(72)),
+            ),
+            "\nJJ: ignore-rest\n",
+            diff.git(),
           )
         '';
       };

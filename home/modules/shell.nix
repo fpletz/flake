@@ -76,6 +76,7 @@
     programs.direnv = {
       enable = config.bpletza.workstation.enable;
       nix-direnv.enable = true;
+      config.warn_timeout = "1m";
     };
 
     programs.fzf = {

@@ -30,7 +30,6 @@ in
       pkgs.wtype
       pkgs.tessen
       pkgs.emoji-picker
-      pkgs.iwmenu
       pkgs.bzmenu
       pkgs.shikane
       pkgs.swww

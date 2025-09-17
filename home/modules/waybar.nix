@@ -171,7 +171,6 @@ in
             "󰤨"
           ];
           interval = 2;
-          on-click = fuzzelMenuWrapped pkgs.iwmenu;
         };
         pulseaudio = {
           scroll-step = 1;

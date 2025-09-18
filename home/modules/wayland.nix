@@ -81,7 +81,7 @@ in
 
     systemd.user.services.shikane = {
       Unit = {
-        X-Restart-Triggers = config.xdg.configFile."shikane/config.toml".source;
+        X-Restart-Triggers = [ config.xdg.configFile."shikane/config.toml".source ];
       };
     };
 

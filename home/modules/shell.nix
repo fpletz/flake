@@ -97,7 +97,8 @@
     programs.starship = {
       enable = true;
       settings =
-        lib.attrsets.recursiveUpdate (builtins.fromTOML (builtins.readFile ./shell/starship-presets.toml))
+        lib.attrsets.recursiveUpdate
+          (builtins.fromTOML (builtins.readFile ../../static/starship-presets.toml))
           {
             command_timeout = 2000;
             status.disabled = false;

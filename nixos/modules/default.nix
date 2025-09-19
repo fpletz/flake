@@ -7,15 +7,10 @@
 }:
 {
   imports = [
-    ./default/networking.nix
-    ./default/nginx.nix
-    ./default/openssh.nix
-    ./default/postgresql.nix
-    ./default/tools.nix
-    ./default/zram.nix
     inputs.disko.nixosModules.default
     inputs.sops-nix.nixosModules.sops
-  ];
+  ]
+  ++ lib.filesystem.listFilesRecursive ./default;
 
   nixpkgs.overlays = [
     inputs.self.overlays.default

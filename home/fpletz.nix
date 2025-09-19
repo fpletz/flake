@@ -11,25 +11,8 @@
     inputs.nix-index-database.homeModules.nix-index
     inputs.stylix.homeModules.stylix
     inputs.spicetify-nix.homeManagerModules.default
-    ./modules/browser.nix
-    ./modules/git.nix
-    ./modules/gnupg.nix
-    ./modules/gui.nix
-    ./modules/nixvim.nix
-    ./modules/nvidia.nix
-    ./modules/shell.nix
-    ./modules/spotify-unfree.nix
-    ./modules/sway.nix
-    ./modules/swaylock.nix
-    ./modules/systemd-lock-handler.nix
-    ./modules/terminal.nix
-    ./modules/obs.nix
-    ./modules/waybar.nix
-    ./modules/wayland.nix
-    ./modules/wofi.nix
-    ./modules/workstation.nix
-    ./modules/xorg.nix
-  ];
+  ]
+  ++ lib.filesystem.listFilesRecursive ./modules;
 
   stylix = {
     enable = true;

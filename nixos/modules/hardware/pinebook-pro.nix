@@ -68,6 +68,8 @@ in
       "rtc_rk808"
     ];
 
+    bpletza.hardware.wireless.powerSave.enable = false;
+
     hardware = {
       firmware = [
         pkgs.firmwareLinuxNonfree

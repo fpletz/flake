@@ -311,6 +311,10 @@ in
       "graphical-session.target"
     ];
 
+    services.uxplay = {
+      enable = true;
+    };
+
     virtualisation.podman = {
       enable = true;
       dockerCompat = true;

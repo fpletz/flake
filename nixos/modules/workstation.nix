@@ -91,11 +91,6 @@ in
     systemd = {
       enableEmergencyMode = true;
       settings.Manager.DefaultTimeoutStopSec = "20s";
-      additionalUpstreamSystemUnits = [
-        "capsule@.service"
-        "capsule.slice"
-      ];
-      additionalUpstreamUserUnits = [ "capsule@.target" ];
     };
 
     services.udev.packages = with pkgs; [

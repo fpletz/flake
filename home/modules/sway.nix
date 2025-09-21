@@ -24,17 +24,8 @@
       '';
       systemd = {
         enable = true;
-        variables = [
-          "DISPLAY"
-          "WAYLAND_DISPLAY"
-          "SWAYSOCK"
-          "XDG_CURRENT_DESKTOP"
-          "XDG_SESSION_TYPE"
-          "XDG_SESSION_ID"
-          "NIXOS_OZONE_WL"
-          "XCURSOR_THEME"
-          "XCURSOR_SIZE"
-        ];
+        dbusImplementation = "broker";
+        extraCommands = [ ];
       };
       config = {
         input = {

@@ -14,6 +14,17 @@ in
       settings.default_session.command = "${lib.getExe pkgs.tuigreet} --remember-session";
     };
 
+    programs.uwsm = {
+      enable = true;
+      waylandCompositors = {
+        sway = {
+          prettyName = "Sway";
+          comment = "Sway (UWSM)";
+          binPath = "/run/current-system/sw/bin/sway";
+        };
+      };
+    };
+
     xdg.portal = {
       config = {
         preferred = {

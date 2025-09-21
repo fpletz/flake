@@ -59,7 +59,7 @@
           };
         };
         modifier = "Mod4";
-        terminal = lib.getExe config.bpletza.workstation.terminal.default;
+        terminal = "systemd-run --user --scope --slice=app ${lib.getExe config.bpletza.workstation.terminal.default}";
         window = {
           titlebar = false;
           hideEdgeBorders = "smart";

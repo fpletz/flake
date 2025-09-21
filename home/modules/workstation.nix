@@ -48,7 +48,6 @@ in
         pass
         gopass
         just
-        git-annex
         git-remote-gcrypt
         rclone
 

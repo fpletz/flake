@@ -12,6 +12,7 @@ in
     services.greetd = {
       enable = true;
       settings.default_session.command = "${lib.getExe pkgs.tuigreet} --remember-session";
+      useTextGreeter = true;
     };
 
     programs.uwsm = {

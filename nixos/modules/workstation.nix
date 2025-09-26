@@ -197,7 +197,7 @@ in
       latitude = 48.0;
       longitude = 11.0;
     };
-    services.geoclue2.enable = false;
+    services.geoclue2.enable = lib.mkForce false;
     services.udisks2.enable = true;
 
     services.logind = {

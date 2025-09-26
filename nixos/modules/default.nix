@@ -87,7 +87,7 @@
     icons.enable = lib.mkDefault false;
     menus.enable = lib.mkDefault false;
     mime.enable = lib.mkDefault false;
-    sounds.enable = false;
+    sounds.enable = lib.mkDefault false;
   };
 
   users = {
@@ -190,7 +190,7 @@
   };
 
   services = {
-    speechd.enable = false;
+    speechd.enable = lib.mkDefault false;
 
     # I know how to find the nixos manual
     getty.helpLine = lib.mkForce "";

@@ -71,5 +71,8 @@ in
     };
 
     environment.systemPackages = [ pkgs.xwayland-satellite ];
+
+    services.desktopManager.cosmic.enable = true;
+    networking.networkmanager.enable = false; # set by cosmic
   };
 }

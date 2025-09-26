@@ -35,6 +35,7 @@
   bpletza.workstation = {
     enable = true;
     gaming = true;
+    libvirt = true;
   };
 
   powerManagement.cpuFreqGovernor = lib.mkForce "performance";

@@ -24,9 +24,17 @@ in
   };
 
   config = {
+    systemd.user.services.waybar.Install.WantedBy = [
+      "niri.service"
+      "sway-session.target"
+    ];
+
     programs.waybar = {
       enable = cfg.enable;
-      systemd.enable = true;
+      systemd = {
+        enable = true;
+        target = "wayland-session@sway.target";
+      };
       settings.mainBar = {
         layer = "top";
         position = "top";

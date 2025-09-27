@@ -224,46 +224,47 @@ in
       Install.WantedBy = [ "graphical-session.target" ];
     };
 
-    programs.wlogout = {
+    programs.wleave = {
       enable = true;
-      layout = [
-        {
-          label = "lock";
-          action = "loginctl lock-session";
-          text = "Lock";
-          keybind = "l";
-        }
-        {
-          label = "logout";
-          action = "loginctl terminate-user $USER";
-          text = "Logout";
-          keybind = "e";
-        }
-        {
-          label = "reboot";
-          action = "systemctl reboot";
-          text = "Reboot";
-          keybind = "r";
-        }
-        {
-          label = "hibernate";
-          action = "systemctl hibernate";
-          text = "Hibernate";
-          keybind = "h";
-        }
-        {
-          label = "suspend";
-          action = "systemctl suspend";
-          text = "Suspend";
-          keybind = "u";
-        }
-        {
-          label = "shutdown";
-          action = "systemctl poweroff";
-          text = "Shutdown";
-          keybind = "s";
-        }
-      ];
+      settings = {
+        margin = 200;
+        buttons-per-row = "1/2";
+        delay-command-ms = 100;
+        close-on-lost-focus = true;
+        show-keybinds = true;
+        no-version-info = true;
+        buttons = [
+          {
+            label = "lock";
+            action = "loginctl lock-session";
+            text = "Lock";
+            keybind = "l";
+            icon = "${pkgs.wleave}/share/wleave/icons/lock.svg";
+          }
+          {
+            label = "logout";
+            action = "loginctl terminate-user $USER";
+            text = "Logout";
+            keybind = "e";
+            icon = "${pkgs.wleave}/share/wleave/icons/logout.svg";
+          }
+          {
+            label = "suspend";
+            action = "systemctl suspend";
+            text = "Suspend";
+            keybind = "u";
+            icon = "${pkgs.wleave}/share/wleave/icons/suspend.svg";
+          }
+
+          {
+            label = "shutdown";
+            action = "systemctl poweroff";
+            text = "Shutdown";
+            keybind = "s";
+            icon = "${pkgs.wleave}/share/wleave/icons/shutdown.svg";
+          }
+        ];
+      };
     };
   };
 }

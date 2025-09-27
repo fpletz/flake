@@ -19,6 +19,11 @@ in
 
     programs.swaylock.enable = true;
 
+    systemd.user.services.swayidle.Install.WantedBy = [
+      "niri.service"
+      "sway-session.target"
+    ];
+
     services.swayidle =
       let
         niri = lib.getExe pkgs.niri;
@@ -26,6 +31,7 @@ in
       in
       {
         enable = true;
+        systemdTarget = "wayland-session@sway.target";
         timeouts = [
           {
             timeout = 120;

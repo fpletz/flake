@@ -27,6 +27,12 @@ in
   };
 
   config = lib.mkIf config.bpletza.workstation.gui {
+    stylix.cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
+
     stylix.targets = {
       qt.enable = true;
       gtk.enable = true;
@@ -37,8 +43,7 @@ in
     };
 
     home.pointerCursor = {
-      package = pkgs.phinger-cursors;
-      name = "phinger-cursors-dark";
+      dotIcons.enable = true;
       gtk.enable = true;
       x11.enable = true;
     };

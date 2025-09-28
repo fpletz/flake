@@ -96,8 +96,8 @@ environment {
 }
 
 cursor {
-  xcursor-theme "phinger-cursors-dark"
-  xcursor-size 24
+  xcursor-theme "Bibata-Modern-Ice"
+  xcursor-size 32
 }
 
 prefer-no-csd

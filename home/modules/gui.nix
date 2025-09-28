@@ -33,6 +33,13 @@ in
       size = 24;
     };
 
+    stylix.icons = {
+      enable = true;
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
+      package = pkgs.papirus-icon-theme;
+    };
+
     stylix.targets = {
       qt.enable = true;
       gtk.enable = true;
@@ -59,10 +66,6 @@ in
 
     gtk = {
       enable = true;
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
-      };
       gtk2.extraConfig = ''
         gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
         gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR

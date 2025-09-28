@@ -300,7 +300,7 @@ in
             color: @base08;
           }
 
-          #clock {
+          #clock, #backlight {
             color: @base0E;
           }
 
@@ -330,7 +330,7 @@ in
             color: @base08;
           }
 
-          #pulseaudio, #mpris.paused {
+          #pulseaudio, #mpris.paused, #power-profiles-daemon {
             color: @base0A;
           }
         '';

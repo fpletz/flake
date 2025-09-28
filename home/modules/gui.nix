@@ -28,6 +28,8 @@ in
 
   config = lib.mkIf config.bpletza.workstation.gui {
     stylix.targets = {
+      qt.enable = true;
+      gtk.enable = true;
       gnome.enable = true;
       kde.enable = true;
       font-packages.enable = true;
@@ -52,13 +54,9 @@ in
 
     gtk = {
       enable = true;
-      theme = {
-        name = "Tokyonight-Dark";
-        package = pkgs.tokyonight-gtk-theme.override { iconVariants = [ "Dark" ]; };
-      };
       iconTheme = {
-        name = "Tokyonight-Dark";
-        package = config.gtk.theme.package;
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
       };
       gtk2.extraConfig = ''
         gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
@@ -101,8 +99,6 @@ in
 
     qt = {
       enable = true;
-      platformTheme.name = "gtk2";
-      style.name = "gtk2";
     };
 
     home.sessionVariables = {

@@ -16,26 +16,8 @@
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes.src}/base24/chalk.yaml";
     polarity = "dark";
-    override = {
-      base00 = "16161E";
-      base01 = "1A1B26";
-      base02 = "2F3549";
-      base03 = "444B6A";
-      base04 = "787C99";
-      base05 = "A9B1D6";
-      base06 = "CBCCD1";
-      base07 = "D5D6DB";
-      base08 = "F7768E";
-      base09 = "FF9E64";
-      base0A = "E0AF68";
-      base0B = "9ECE6A";
-      base0C = "7DCFFF";
-      base0D = "7AA2f7";
-      base0E = "9D7CD8";
-      base0F = "DB4B4B";
-    };
     fonts = {
       monospace = {
         name = "CommitMono";
@@ -60,8 +42,8 @@
     };
     targets = {
       # stylix pulls in lots of dependencies we don't need on servers
-      gtk.enable = false;
-      qt.enable = false;
+      gtk.enable = lib.mkDefault false;
+      qt.enable = lib.mkDefault false;
       gnome.enable = lib.mkDefault false;
       kde.enable = lib.mkDefault false;
       xresources.enable = lib.mkDefault false;

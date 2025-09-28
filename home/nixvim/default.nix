@@ -59,14 +59,11 @@
     register = "unnamedplus";
   };
 
-  colorscheme = "tokyonight";
+  colorscheme = "base16-chalk";
   colorschemes = {
-    tokyonight = {
+    base16 = {
       enable = true;
-      settings = {
-        style = "night";
-        transparent = true;
-      };
+      colorscheme = "chalk";
     };
   };
 
@@ -105,7 +102,7 @@
       enable = true;
       settings = {
         globalstatus = true;
-        theme = "tokyonight";
+        theme = "base16-chalk";
       };
     };
     luasnip.enable = true;

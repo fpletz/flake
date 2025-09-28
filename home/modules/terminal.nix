@@ -48,7 +48,6 @@
         general = {
           live_config_reload = true;
         };
-        colors.primary.background = lib.mkForce "#000000";
       };
     };
 

@@ -217,7 +217,7 @@ in
         ConditionEnvironment = "WAYLAND_DISPLAY";
       };
       Service = {
-        ExecStart = "${lib.getExe' pkgs.swww "swww-daemon"} --format xbgr";
+        ExecStart = lib.getExe' pkgs.swww "swww-daemon";
         Restart = "on-failure";
         Environment = "PATH=${lib.getBin pkgs.swww}/bin";
       };

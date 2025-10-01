@@ -51,10 +51,6 @@
           name = "nix-zsh-completions";
           src = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
         }
-        {
-          name = "fast-syntax-highlighting";
-          inherit (pkgs.zsh-fast-syntax-highlighting) src;
-        }
       ];
       shellAliases = {
         p = "$PAGER";

@@ -11,6 +11,11 @@
   };
 
   config = lib.mkIf config.bpletza.workstation.shell {
+    home.shellAliases = {
+      p = "$PAGER";
+      vi = "vim";
+    };
+
     programs.nushell = {
       enable = true;
       environmentVariables = {
@@ -52,19 +57,12 @@
           src = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
         }
       ];
-      shellAliases = {
-        p = "$PAGER";
-        vi = "vim";
-      };
     };
 
     programs.bash = {
       enable = true;
       historyFileSize = 1000000;
       historyIgnore = [ "exit" ];
-      shellAliases = {
-        vi = "vim";
-      };
     };
 
     programs.zoxide.enable = config.bpletza.workstation.enable;

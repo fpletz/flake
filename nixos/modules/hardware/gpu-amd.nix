@@ -11,7 +11,6 @@
   config = lib.mkIf config.bpletza.hardware.gpu.amd {
     hardware.amdgpu = {
       opencl.enable = false;
-      amdvlk.enable = true;
       initrd.enable = true;
       overdrive = {
         enable = true;

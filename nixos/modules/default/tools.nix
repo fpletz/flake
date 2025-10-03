@@ -28,11 +28,6 @@
     bandwhich.enable = true;
   };
 
-  environment.sessionVariables = {
-    # iproute should assume a dark background for color choice
-    COLORFGBG = ";0";
-  };
-
   environment.defaultPackages = [ ];
 
   environment.systemPackages = with pkgs; [

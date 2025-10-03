@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -12,24 +11,6 @@
     recommendedGzipSettings = lib.mkDefault true;
     recommendedBrotliSettings = lib.mkDefault true;
     recommendedProxySettings = lib.mkDefault true;
-    # set sensible resolvers for ocsp stapling
-    resolver.addresses =
-      let
-        isIPv6 = addr: builtins.match "^[^\\[]*:.*:.*$" addr != null;
-        escapeIPv6 = addr: if isIPv6 addr then "[${addr}]" else addr;
-        cloudflare = [
-          "1.1.1.1"
-          "[2606:4700:4700::1111]"
-        ];
-        resolvers =
-          if config.networking.nameservers != [ ] then
-            config.networking.nameservers
-          else if config.services.resolved.enable then
-            [ "127.0.0.53" ]
-          else
-            cloudflare;
-      in
-      map escapeIPv6 resolvers;
     logError = "stderr info";
     appendHttpConfig = ''
       log_format json escape=json '{ "time": "$time_iso8601", '

@@ -16,7 +16,7 @@ let
 in
 {
   options.bpletza.workstation = {
-    enable = mkEnableOption "fpletz workstation";
+    enable = mkEnableOption "${config.bpletza.home.user} workstation";
     battery = mkEnableOption "machine has battery";
     libvirt = mkOption {
       type = types.bool;
@@ -122,13 +122,13 @@ in
       ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="2ce3", ATTR{idProduct}=="9563", TEST=="power/control", ATTR{power/control}="auto"
 
       # Rule for when switching to battery
-      ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-full 'Using battery power'"
+      ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="0", RUN+="${pkgs.systemd}/bin/systemd-run --machine=${config.bpletza.home.user}@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-full 'Using battery power'"
       # Rule for when switching to AC
-      ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-full-charging 'Using AC power'"
+      ACTION=="change", SUBSYSTEM=="power_supply", ATTRS{type}=="Mains", ATTRS{online}=="1", RUN+="${pkgs.systemd}/bin/systemd-run --machine=${config.bpletza.home.user}@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-full-charging 'Using AC power'"
 
       # Battery warnings
-      SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="15", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-low 'Battery Power Low' 'Less than 15%% battery remaining'"
-      SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="5", RUN+="${pkgs.systemd}/bin/systemd-run --machine=fpletz@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-empty 'Battery Power Critical' 'Less than 5%% battery remaining'"
+      SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="15", RUN+="${pkgs.systemd}/bin/systemd-run --machine=${config.bpletza.home.user}@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-low 'Battery Power Low' 'Less than 15%% battery remaining'"
+      SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="5", RUN+="${pkgs.systemd}/bin/systemd-run --machine=${config.bpletza.home.user}@.host --user ${lib.getExe pkgs.libnotify} -a Power -i battery-empty 'Battery Power Critical' 'Less than 5%% battery remaining'"
 
       # Suspend when battery is at 2%
       SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-2]", RUN+="${pkgs.systemd}/bin/systemctl suspend"
@@ -426,7 +426,7 @@ in
           hostName = "bauwagen.env.club.muc.ccc.de";
           protocol = "ssh-ng";
           sshUser = "nix-build";
-          sshKey = "/home/fpletz/.ssh/id_build";
+          sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
           systems = [
             "i686-linux"
             "x86_64-linux"
@@ -445,7 +445,7 @@ in
           hostName = "zocknix.evs";
           protocol = "ssh-ng";
           sshUser = "nix-build";
-          sshKey = "/home/fpletz/.ssh/id_build";
+          sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
           systems = [
             "i686-linux"
             "x86_64-linux"
@@ -464,8 +464,8 @@ in
           hostName = "aarch64-build-box.nix-community.org";
           protocol = "ssh-ng";
           maxJobs = 8;
-          sshKey = "/home/fpletz/.ssh/id_build";
-          sshUser = "fpletz";
+          sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
+          sshUser = "${config.bpletza.home.user}";
           system = "aarch64-linux";
           supportedFeatures = [
             "kvm"
@@ -477,8 +477,8 @@ in
           hostName = "darwin-build-box.nix-community.org";
           protocol = "ssh-ng";
           maxJobs = 4;
-          sshKey = "/home/fpletz/.ssh/id_build";
-          sshUser = "fpletz";
+          sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
+          sshUser = "${config.bpletza.home.user}";
           system = "aarch64-darwin";
           supportedFeatures = [
             "kvm"
@@ -501,8 +501,8 @@ in
 
     services.syncthing = {
       enable = true;
-      user = "fpletz";
-      dataDir = "/home/fpletz";
+      user = config.bpletza.home.user;
+      dataDir = "/home/${config.bpletza.home.user}";
       openDefaultPorts = true;
     };
 

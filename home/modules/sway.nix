@@ -76,7 +76,6 @@
         keybindings = lib.mkOptionDefault {
           "Mod4+Shift+e" = "exec wleave";
           "Mod4+d" = "exec fuzzel";
-          "Mod4+Ctrl+d" = "exec ${pkgs.wofi}/bin/wofi --show run";
           "Mod4+Shift+d" = "exec ${lib.getExe pkgs.emoji-picker}";
           "Mod4+p" = "exec ${lib.getExe pkgs.tessen}";
           "Mod4+Shift+a" = "exec ${pkgs.fnott}/bin/fnottctl actions";

@@ -181,7 +181,6 @@
     libvirtd = {
       qemu = {
         swtpm.enable = true;
-        ovmf.packages = lib.mkForce [ pkgs.OVMFFull.fd ];
       };
       onShutdown = lib.mkDefault "shutdown";
       onBoot = lib.mkDefault "ignore";

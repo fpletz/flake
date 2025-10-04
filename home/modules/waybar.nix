@@ -19,13 +19,12 @@ in
   options.bpletza.workstation.waybar = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.bpletza.workstation.wayland;
+      default = config.bpletza.workstation.sway;
     };
   };
 
   config = {
     systemd.user.services.waybar.Install.WantedBy = [
-      "niri.service"
       "sway-session.target"
     ];
 
@@ -40,7 +39,6 @@ in
         position = "top";
         reload_style_on_change = true;
         modules-left = [
-          "niri/workspaces"
           "sway/workspaces"
           "sway/mode"
           "idle_inhibitor"

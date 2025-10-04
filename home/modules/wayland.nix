@@ -35,8 +35,6 @@ in
       pkgs.swww
     ];
 
-    home.file.".config/niri/config.kdl".source = ../../static/niri.kdl;
-
     services.wob = {
       enable = true;
       settings = {

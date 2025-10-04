@@ -199,6 +199,7 @@ in
     };
     services.geoclue2.enable = lib.mkForce false;
     services.udisks2.enable = true;
+    services.gnome.gnome-keyring.enable = false;
 
     services.logind = {
       settings = {

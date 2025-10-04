@@ -11,7 +11,7 @@ in
 {
   options.bpletza.workstation.swaylock = lib.mkOption {
     type = lib.types.bool;
-    default = config.bpletza.workstation.wayland;
+    default = config.bpletza.workstation.sway;
   };
 
   config = lib.mkIf config.bpletza.workstation.swaylock {
@@ -20,13 +20,11 @@ in
     programs.swaylock.enable = true;
 
     systemd.user.services.swayidle.Install.WantedBy = [
-      "niri.service"
       "sway-session.target"
     ];
 
     services.swayidle =
       let
-        niri = lib.getExe pkgs.niri;
         swaymsg = lib.getExe' pkgs.sway "swaymsg";
       in
       {
@@ -39,8 +37,8 @@ in
           }
           {
             timeout = 180;
-            command = ''[ -n "$SWAYSOCK" ] && ${swaymsg} "output * dpms off" || ${niri} msg action power-off-monitors'';
-            resumeCommand = ''[ -n "$SWAYSOCK" ] && ${swaymsg} "output * dpms on" || ${niri} power-on-monitors'';
+            command = ''${swaymsg} "output * dpms off"'';
+            resumeCommand = ''${swaymsg} "output * dpms on"'';
           }
         ];
       };

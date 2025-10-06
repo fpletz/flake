@@ -35,15 +35,6 @@ in
       pkgs.swww
     ];
 
-    services.wob = {
-      enable = true;
-      settings = {
-        "" = {
-          timeout = 750;
-        };
-      };
-    };
-
     services.fnott = {
       enable = true;
       extraFlags = [ "-s" ];

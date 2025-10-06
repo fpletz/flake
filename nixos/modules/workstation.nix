@@ -302,7 +302,6 @@ in
     environment.systemPackages = [
       pkgs.alsa-utils
       pkgs.pulsemixer
-      pkgs.pamixer
       pkgs.wiremix
       pkgs.efibootmgr
     ]

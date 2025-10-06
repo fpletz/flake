@@ -128,8 +128,6 @@
   };
 
   nix = {
-    package = pkgs.nixVersions.git;
-
     registry = {
       fpletz.flake = inputs.self;
     };

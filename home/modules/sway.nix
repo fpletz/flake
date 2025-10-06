@@ -51,6 +51,7 @@
         };
         modifier = "Mod4";
         terminal = "systemd-run --user --scope --slice=app ${lib.getExe config.bpletza.workstation.terminal.default}";
+        defaultWorkspace = "workspace number 1";
         window = {
           titlebar = false;
           hideEdgeBorders = "smart";
@@ -112,6 +113,13 @@
             l = "resize grow width 5 px";
           };
         };
+        startup = [
+          {
+            command = "shikanectl reload";
+            always = true;
+          }
+        ];
+        workspaceAutoBackAndForth = true;
       };
       wrapperFeatures.gtk = true;
     };

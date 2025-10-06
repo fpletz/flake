@@ -227,7 +227,6 @@ in
     hardware.graphics = {
       enable = true;
       extraPackages = lib.optionals (pkgs.stdenv.hostPlatform.isx86) [
-        pkgs.libvdpau-va-gl
         pkgs.vulkan-validation-layers
       ];
       enable32Bit = pkgs.stdenv.hostPlatform.isx86_64 && cfg.gaming;

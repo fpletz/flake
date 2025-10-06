@@ -27,6 +27,25 @@ let
     pref("security.OCSP.require", false);
     pref("intl.regional_prefs.use_os_locales", true);
   '';
+  policies = {
+    ExtensionSettings = {
+      "uBlock0@raymondhill.net" = {
+        default_area = "menupanel";
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+        installation_mode = "force_installed";
+        private_browsing = true;
+      };
+    };
+    DisableFirefoxStudies = true;
+    DisableTelemetry = true;
+    DNSOverHTTPS.Enabled = false;
+    DontCheckDefaultBrowser = true;
+    OfferToSaveLogins = false;
+    PictureInPicture = true;
+    PostQuantumKeyAgreementEnabled = true;
+    SkipTermsOfUse = true;
+  };
+
 in
 {
   options.bpletza.workstation.browser = lib.mkOption {
@@ -77,6 +96,7 @@ in
         ''
         + extraPrefs;
       });
+      inherit policies;
       nativeMessagingHosts = [
         pkgs.keepassxc
         pkgs.tridactyl-native
@@ -88,6 +108,7 @@ in
       package = pkgs.firefox.override (_: {
         inherit extraPrefs;
       });
+      inherit policies;
     };
 
     programs.chromium = {

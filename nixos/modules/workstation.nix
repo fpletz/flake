@@ -69,7 +69,6 @@ in
         "kernel.nmi_watchdog" = 0;
       };
       kernelParams = [ "snd_hda_intel.power_save=1" ];
-      kernelPackages = pkgs.linuxPackages-xanmod;
       loader.grub = {
         ipxe = {
           netbootxyz = ''

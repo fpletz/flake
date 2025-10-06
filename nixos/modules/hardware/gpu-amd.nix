@@ -18,12 +18,8 @@
       };
     };
 
-    nixpkgs.config.rocmSupport = true;
-
     environment.systemPackages = [
       pkgs.radeontop
-      pkgs.rocmPackages.rocminfo
-      pkgs.rocmPackages.rocm-smi
     ];
   };
 }

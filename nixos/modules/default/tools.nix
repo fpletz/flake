@@ -4,6 +4,9 @@
     zsh = {
       enable = true;
       enableGlobalCompInit = false;
+      interactiveShellInit = ''
+        source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+      '';
     };
     vim = {
       enable = true;

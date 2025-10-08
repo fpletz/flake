@@ -50,6 +50,11 @@
             zprof
           fi
         '')
+        (lib.mkAfter ''
+          zvm_after_init_commands+=(eval "$(fzf --zsh)")
+          zvm_after_init_commands+=(eval "$(atuin init zsh)")
+          zvm_after_init_commands+=(eval "bindkey -M vicmd '^r' atuin-search-vicmd")
+        '')
       ];
       plugins = [
         {
@@ -75,6 +80,7 @@
 
     programs.fzf = {
       enable = true;
+      enableZshIntegration = false;
       changeDirWidgetCommand = "fd --type d --color always";
       changeDirWidgetOptions = [
         "--ansi"
@@ -153,6 +159,7 @@
 
     programs.atuin = {
       enable = true;
+      enableZshIntegration = false;
       daemon.enable = true;
       settings = {
         update_check = false;

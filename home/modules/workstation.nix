@@ -50,6 +50,7 @@ in
         just
         git-remote-gcrypt
         rclone
+        wiremix
 
         # GUI
         virt-manager
@@ -79,6 +80,29 @@ in
         llvmPackages.clang
       ]
       ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
+
+    xdg.configFile."wiremix/wiremix.toml".source = pkgs.writers.writeTOML "wiremix.toml" {
+      fps = 30;
+      names = {
+        stream = [ "{node:node.name}: {node:media.name}" ];
+        endpoint = [ "{node:node.description}" ];
+        device = [ "{device:device.description}" ];
+        overrides = [
+          {
+            types = [ "stream" ];
+            property = "node:node.name";
+            value = "spotify";
+            templates = [ "{node:node.name}" ];
+          }
+          {
+            types = [ "stream" ];
+            property = "node:node.name";
+            value = "mpv";
+            templates = [ "{node:media.name}" ];
+          }
+        ];
+      };
+    };
 
     programs.helix = {
       enable = true;

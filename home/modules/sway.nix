@@ -129,8 +129,7 @@
     };
 
     systemd.user.services.swayosd = {
-      # not wanted by graphical-session.target
-      Install.WantedBy = lib.mkForce [
+      Unit.PartOf = [
         "wayland-session@sway.target"
         "sway-session.target"
       ];

@@ -8,16 +8,16 @@
 }:
 let
   pname = "helium-browser";
-  version = "0.4.12.1";
+  version = "0.5.5.1";
 
   architectures = {
     "x86_64-linux" = {
       arch = "x86_64";
-      hash = "sha256-Za1erduSuuWvfrV/oggSz3ttj79SVV5g1CdXtlWfanU=";
+      hash = "sha256-FCLCt0T+U8JqUkFVAfl//OtnWsNoN8lWHIiMJws2Mqo=";
     };
     "aarch64-linux" = {
       arch = "arm64";
-      hash = "sha256-lBXz6qwwFmJekHUXerm2QOKR4dP2dDC7r55tXBsIw1w=";
+      hash = "sha256-KfQlOT4mMKQ40B8hWl+GlmRNVhZnEln59ptfXN0XCLc=";
     };
   };
 

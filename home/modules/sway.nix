@@ -134,5 +134,15 @@
         "sway-session.target"
       ];
     };
+
+    services.wpaperd = {
+      enable = true;
+      settings = {
+        default = {
+          duration = "1m";
+        };
+        any.path = ../../static/wallpapers;
+      };
+    };
   };
 }

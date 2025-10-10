@@ -58,7 +58,6 @@ in
 
     programs.sway = {
       enable = true;
-      package = null;
       extraPackages = [ ];
     };
 

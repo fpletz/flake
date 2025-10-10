@@ -201,6 +201,10 @@ in
       };
     };
 
+    programs.yazi = {
+      enable = true;
+    };
+
     systemd.user.services.keepassxc = {
       Unit = {
         Description = "KeepassXC";

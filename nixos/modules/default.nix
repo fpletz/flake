@@ -187,7 +187,7 @@
   };
 
   services = {
-    speechd.enable = lib.mkDefault false;
+    speechd.enable = false;
 
     # I know how to find the nixos manual
     getty.helpLine = lib.mkForce "";

@@ -46,6 +46,8 @@ in
   config = lib.mkIf cfg.enable {
     networking.useDHCP = false;
 
+    networking.networkmanager.enable = false;
+
     services.resolved.extraConfig = ''
       StaleRetentionSec=1800
       Cache=no-negative

@@ -45,7 +45,7 @@
       lua_ls.enable = false;
       nixd = {
         enable = true;
-        settings =
+        config =
           let
             localFlake = ''(builtins.getFlake "/home/fpletz/src/flake")'';
           in

@@ -94,7 +94,9 @@
     };
     diffview = {
       enable = true;
-      enhancedDiffHl = true;
+      settings = {
+        enhanced_diff_hl = true;
+      };
     };
     fidget.enable = true;
     lastplace.enable = true;

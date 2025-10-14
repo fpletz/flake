@@ -218,6 +218,8 @@ in
         gutenprint
       ];
     };
+    services.system-config-printer.enable = true;
+    programs.system-config-printer.enable = true;
 
     systemd.services."cups-browsed".wantedBy = lib.mkForce [ ];
 

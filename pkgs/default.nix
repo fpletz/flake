@@ -48,11 +48,12 @@ in
       wlroots_0_19 = prev.wlroots_0_19.overrideAttrs (
         { src, ... }:
         {
-          version = "0.19.2-unstable-2025-10-05";
+          version = "0.19.2-unstable-2025-10-17";
           src = src.override {
-            rev = "5529aae3e65aa182d88cecc1efa4b10a20b553eb";
-            hash = "sha256-pvc+SzNe1twhuaSzRUmiuhEQq7d3gYFgilrMlVPsguU=";
+            rev = "6d63871f059192b15d2fa0dfacfb391709f4952d";
+            hash = "sha256-LShsqWJ96lF8FoVvfatSfmizatOKGlyFUHlxtD3E5pQ=";
           };
+          patches = [ ];
         }
       );
       sway-unwrapped = prev.sway-unwrapped.overrideAttrs (

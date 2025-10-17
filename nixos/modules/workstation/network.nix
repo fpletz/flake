@@ -175,6 +175,10 @@ in
           pskRaw = "ext:psk_mobilpletz";
           priority = 42;
         };
+        fnord = {
+          pskRaw = "ext:psk_fnord";
+          priority = 42;
+        };
         muccc = {
           pskRaw = "ext:psk_muccc";
           priority = 23;

@@ -21,7 +21,7 @@ in
         sway = {
           prettyName = "Sway";
           comment = "Sway (UWSM)";
-          binPath = "/run/current-system/sw/bin/sway";
+          binPath = "/run/current-system/sw/bin/sway --unsupported-gpu";
         };
       };
     };

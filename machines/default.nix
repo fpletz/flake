@@ -85,23 +85,7 @@
 
       zocknix = nixos {
         system = "x86_64-linux";
-        module = {
-          networking.hostName = "zocknix";
-          fileSystems."/" = {
-            device = "/dev/disk/by-label/nixos";
-            fsType = "ext4";
-          };
-          boot.loader.systemd-boot = {
-            enable = true;
-          };
-
-          bpletza.hardware.cpu.amd = true;
-          bpletza.workstation = {
-            enable = true;
-            nvidia = true;
-            gaming = true;
-          };
-        };
+        module = import ./zocknix.nix;
       };
     };
 }

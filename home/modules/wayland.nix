@@ -122,6 +122,30 @@ in
           ]
           ++ lib.optionals (oscfg.internalDisplay != null) [
             {
+              name = "home-and-internal";
+              output = [
+                {
+                  search = homeLeft;
+                  enable = true;
+                  position.x = 0;
+                  position.y = 0;
+                }
+                {
+                  search = homeRight;
+                  enable = true;
+                  position.x = 2560;
+                  position.y = 0;
+                }
+                {
+                  search = internalDisplay;
+                  enable = true;
+                  scale = lib.mkIf (!isNull oscfg.displayScale) oscfg.displayScale;
+                  position.x = 0;
+                  position.y = 1440;
+                }
+              ];
+            }
+            {
               name = "builtin-and-external-default";
               output = [
                 {

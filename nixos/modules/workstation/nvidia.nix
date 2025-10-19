@@ -18,10 +18,15 @@ in
         "nvidia-settings"
         "cuda_cudart"
         "cuda_cccl"
+        "cuda_nvcc"
+        "cuda_nvrtc"
+        "cudnn"
         "libnpp"
         "libcublas"
         "libcufft"
-        "cuda_nvcc"
+        "libcurand"
+        "libcusparse"
+        "libnvjitlink"
       ];
       config = {
         cudaSupport = true;

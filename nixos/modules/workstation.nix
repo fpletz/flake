@@ -393,8 +393,6 @@ in
     programs.nh.enable = true;
 
     programs.ssh.knownHosts = {
-      "bauwagen.env.club.muc.ccc.de".publicKey =
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXa8mFvlyGE+zJv6u2SybG9+W/wA0FIkl7th45K6g80";
       "build-box.nix-community.org".publicKey =
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H";
       "aarch64-build-box.nix-community.org".publicKey =
@@ -420,71 +418,53 @@ in
         ];
       };
       distributedBuilds = true;
-      buildMachines = [
-        {
-          hostName = "bauwagen.env.club.muc.ccc.de";
-          protocol = "ssh-ng";
-          sshUser = "nix-build";
-          sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
-          systems = [
-            "i686-linux"
-            "x86_64-linux"
-          ];
-          supportedFeatures = [
-            "kvm"
-            "big-parallel"
-            "nixos-test"
-          ];
-          maxJobs = 24;
-          speedFactor = 6;
-        }
-      ]
-      ++ lib.optionals (config.networking.hostName != "zocknix") [
-        {
-          hostName = "zocknix.evs";
-          protocol = "ssh-ng";
-          sshUser = "nix-build";
-          sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
-          systems = [
-            "i686-linux"
-            "x86_64-linux"
-          ];
-          supportedFeatures = [
-            "kvm"
-            "big-parallel"
-            "nixos-test"
-          ];
-          maxJobs = 10;
-          speedFactor = 2;
-        }
-      ]
-      ++ [
-        {
-          hostName = "aarch64-build-box.nix-community.org";
-          protocol = "ssh-ng";
-          maxJobs = 8;
-          sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
-          sshUser = "${config.bpletza.home.user}";
-          system = "aarch64-linux";
-          supportedFeatures = [
-            "kvm"
-            "big-parallel"
-            "nixos-test"
-          ];
-        }
-        {
-          hostName = "darwin-build-box.nix-community.org";
-          protocol = "ssh-ng";
-          maxJobs = 4;
-          sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
-          sshUser = "${config.bpletza.home.user}";
-          system = "aarch64-darwin";
-          supportedFeatures = [
-            "kvm"
-            "big-parallel"
-          ];
-        }
-      ];
+      buildMachines =
+        lib.optionals (config.networking.hostName != "zocknix") [
+          {
+            hostName = "zocknix.evs";
+            protocol = "ssh-ng";
+            sshUser = "nix-build";
+            sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
+            systems = [
+              "i686-linux"
+              "x86_64-linux"
+            ];
+            supportedFeatures = [
+              "kvm"
+              "big-parallel"
+              "nixos-test"
+            ];
+            maxJobs = 10;
+            speedFactor = 2;
+          }
+        ]
+        ++ [
+          {
+            hostName = "aarch64-build-box.nix-community.org";
+            protocol = "ssh-ng";
+            maxJobs = 8;
+            sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
+            sshUser = "${config.bpletza.home.user}";
+            system = "aarch64-linux";
+            supportedFeatures = [
+              "kvm"
+              "big-parallel"
+              "nixos-test"
+            ];
+          }
+          {
+            hostName = "darwin-build-box.nix-community.org";
+            protocol = "ssh-ng";
+            maxJobs = 4;
+            sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
+            sshUser = "${config.bpletza.home.user}";
+            system = "aarch64-darwin";
+            supportedFeatures = [
+              "kvm"
+              "big-parallel"
+            ];
+          }
+        ];
     };
 
     virtualisation.libvirtd = {

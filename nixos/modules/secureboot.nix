@@ -30,6 +30,9 @@
           "efi/memtest86/memtest.efi" = "${pkgs.memtest86plus.efi}";
           "efi/netbootxyz/netboot.xyz.efi" = "${pkgs.netbootxyz-efi}";
         };
+        style = {
+          wallpapers = [ ];
+        };
       };
       systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;

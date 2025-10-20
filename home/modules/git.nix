@@ -22,7 +22,17 @@
       "*.pdf diff=pdf"
     ];
     ignores = [ ".direnv" ];
-    extraConfig = {
+    settings = {
+      alias = {
+        bp = "cherry-pick -x";
+        co = "commit -v";
+        cpa = "cherry-pick --abort";
+        cpc = "cherry-pick --continue";
+        pfush = "push --force-with-lease --force-if-includes";
+        recommit = "!git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG";
+        blame = "-w -M";
+        pr = "!\"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr\"";
+      };
       user = {
         name = "Franz Pletz";
         email = "fpletz@fnordicwalking.de";
@@ -101,23 +111,14 @@
         };
       };
     };
-    aliases = {
-      bp = "cherry-pick -x";
-      co = "commit -v";
-      cpa = "cherry-pick --abort";
-      cpc = "cherry-pick --continue";
-      pfush = "push --force-with-lease --force-if-includes";
-      recommit = "!git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG";
-      blame = "-w -M";
-      pr = "!\"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr\"";
-    };
-    delta = {
-      enable = true;
-      options = {
-        dark = true;
-        line-numbers = false;
-        hyperlinks = true;
-      };
+  };
+
+  programs.delta = {
+    enable = true;
+    options = {
+      dark = true;
+      line-numbers = false;
+      hyperlinks = true;
     };
   };
 
@@ -159,11 +160,11 @@
   programs.jujutsu = {
     enable = true;
     settings = {
-      user = { inherit (config.programs.git.extraConfig.user) name email; };
+      user = { inherit (config.programs.git.settings.user) name email; };
       signing = {
         behaviour = "own";
         backend = "gpg";
-        key = config.programs.git.extraConfig.user.signingkey;
+        key = config.programs.git.settings.user.signingkey;
       };
       git = {
         sign-on-push = true;

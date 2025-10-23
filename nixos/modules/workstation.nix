@@ -92,10 +92,6 @@ in
       settings.Manager.DefaultTimeoutStopSec = "20s";
     };
 
-    services.udev.packages = with pkgs; [
-      # platformio
-      android-udev-rules
-    ];
     services.udev.extraRules = ''
       # SDRs
       ATTR{idVendor}=="1d50", ATTR{idProduct}=="604b", SYMLINK+="hackrf-jawbreaker-%k", TAG+="uaccess"

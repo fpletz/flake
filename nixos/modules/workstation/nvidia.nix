@@ -32,7 +32,9 @@ in
         cudaSupport = true;
       };
     };
+
     services.xserver.videoDrivers = [ "nvidia" ];
+
     boot = {
       kernelParams = [ "nvidia-drm.fbdev=1" ];
       kernelModules = [
@@ -40,6 +42,7 @@ in
         "nvidia_uvm"
       ];
     };
+
     hardware = {
       nvidia = {
         package = config.boot.kernelPackages.nvidiaPackages.beta;
@@ -52,5 +55,7 @@ in
         pkgs.nvidia-vaapi-driver
       ];
     };
+
+    services.lact.enable = true;
   };
 }

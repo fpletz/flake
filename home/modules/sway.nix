@@ -139,7 +139,7 @@
       enable = true;
       settings = {
         default = {
-          duration = "5m";
+          duration = "60m";
         };
         any.path = ../../static/wallpapers;
       };

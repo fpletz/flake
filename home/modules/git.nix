@@ -6,7 +6,7 @@
 }:
 {
   home.packages = lib.optionals config.bpletza.workstation.enable [
-    pkgs.gitAndTools.tig
+    pkgs.tig
     pkgs.git-absorb
   ];
 

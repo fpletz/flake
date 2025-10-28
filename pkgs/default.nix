@@ -41,10 +41,12 @@ in
           doCheck = false;
         }
       );
+
       keepassxc = prev.keepassxc.override {
         withKeePassX11 = false;
         withKeePassYubiKey = false;
       };
+
       wlroots_0_19 = prev.wlroots_0_19.overrideAttrs (
         { src, ... }:
         {
@@ -56,6 +58,7 @@ in
           patches = [ ];
         }
       );
+
       sway-unwrapped = prev.sway-unwrapped.overrideAttrs (
         { src, ... }:
         {
@@ -66,6 +69,12 @@ in
           };
         }
       );
+
+      librewolf-unwrapped = prev.librewolf-unwrapped.override (attrs: {
+        onnxruntime = attrs.onnxruntime.override (_: {
+          cudaSupport = false;
+        });
+      });
 
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
     }

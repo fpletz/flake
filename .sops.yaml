@@ -24,3 +24,12 @@ creation_rules:
           - age10m6nkz6fngkeygfnsf4xkwx43qjt0lkefrzl2fntsma0ul8e5czs4qk9u2
           # trolovo
           - age1yc7l65hju8jagmh2dk63tteaykcvpzq6ntjyacm8nwkvjzhp5ugqsz0ext
+  - path_regex: secrets\/zocknix\.yaml$
+    key_groups:
+      - pgp:
+          - 8A39615DCE78AF082E23F303846FDED7792617B4
+        age:
+          - age1sj6kx043vqxcet6fv05mzjs9umpd0yu4xfln99yh8jpkt07w3e6sf9rzxh
+          - age10m6nkz6fngkeygfnsf4xkwx43qjt0lkefrzl2fntsma0ul8e5czs4qk9u2
+          # zocknix
+          - age1c3q8neuw3zrty97wkr5txqx4amydwn3d4h2uwc2zcpwcp3dcs3aq252etp

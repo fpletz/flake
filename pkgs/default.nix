@@ -76,6 +76,10 @@ in
         });
       });
 
+      hwloc = prev.hwloc.override (_: {
+        enableCuda = false;
+      });
+
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
     }
     // byNamePackages final;

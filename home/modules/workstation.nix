@@ -35,7 +35,7 @@ in
             configureFlags = configureFlags ++ [ "--with-boost=${boost.dev}" ];
           }
         ))
-        mpc-cli
+        mpc
         sipcalc
         units
         sops

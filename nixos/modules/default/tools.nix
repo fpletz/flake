@@ -43,7 +43,7 @@
     strace
     # filesystem
     ncdu
-    du-dust
+    dust
     dua
     ripgrep
     fd

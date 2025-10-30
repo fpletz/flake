@@ -71,7 +71,7 @@
         iperf
         pv
         ncdu
-        du-dust
+        dust
         dua
         socat
         nmap

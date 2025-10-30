@@ -18,7 +18,7 @@
     "usbhid"
   ];
   boot.kernelModules = [ "it87" ];
-  hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
+  hardware.firmware = with pkgs; [ linux-firmware ];
 
   # increase for big builds in tmpfs
   zramSwap.memoryPercent = 200;

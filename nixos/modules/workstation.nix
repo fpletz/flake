@@ -354,7 +354,7 @@ in
         font-awesome_5
         font-awesome_6
         b612
-        ubuntu_font_family
+        ubuntu-classic
         noto-fonts
         fira-code
         fira-mono

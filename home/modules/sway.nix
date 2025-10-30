@@ -25,7 +25,6 @@
       systemd = {
         enable = true;
         dbusImplementation = "broker";
-        extraCommands = [ ];
       };
       config = {
         input = {

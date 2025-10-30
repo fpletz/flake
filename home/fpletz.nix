@@ -65,27 +65,22 @@
       TZ = "Europe/Amsterdam";
     };
 
-    packages =
-      with pkgs;
-      [
-        iperf
-        pv
-        ncdu
-        dust
-        dua
-        socat
-        nmap
-        pwgen
-        wget
-        dnsutils
-        host
-        whois
-        traceroute
-        nix-output-monitor
-      ]
-      ++ lib.optionals (pkgs.stdenv.isx86_64 && (osConfig.bpletza.workstation.gaming or false)) [
-        steam
-      ];
+    packages = with pkgs; [
+      iperf
+      pv
+      ncdu
+      dust
+      dua
+      socat
+      nmap
+      pwgen
+      wget
+      dnsutils
+      host
+      whois
+      traceroute
+      nix-output-monitor
+    ];
   };
 
   nix = {

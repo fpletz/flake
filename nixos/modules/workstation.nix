@@ -229,6 +229,11 @@ in
       enable32Bit = pkgs.stdenv.hostPlatform.isx86_64 && cfg.gaming;
     };
 
+    programs.steam = {
+      enable = cfg.gaming;
+      gamescopeSession.enable = cfg.gaming;
+    };
+
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;

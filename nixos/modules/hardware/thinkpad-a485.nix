@@ -53,7 +53,6 @@
       trackpoint = {
         enable = true;
       };
-      wirelessRegulatoryDatabase = true;
     };
 
     services.fwupd.enable = true;

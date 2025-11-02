@@ -44,7 +44,6 @@
       trackpoint = {
         enable = true;
       };
-      wirelessRegulatoryDatabase = true;
       cpu.intel.updateMicrocode = true;
       graphics.extraPackages = [
         pkgs.intel-vaapi-driver

@@ -154,6 +154,8 @@ in
       wifi = { };
     };
 
+    hardware.wirelessRegulatoryDatabase = config.networking.wireless.enable;
+
     networking.wireless = {
       extraConfig = ''
         preassoc_mac_addr=1

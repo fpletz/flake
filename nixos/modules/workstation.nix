@@ -316,6 +316,15 @@ in
       enable = true;
     };
 
+    hardware.flipperzero.enable = true;
+    hardware.libftdi.enable = true;
+    hardware.gpgSmartcards.enable = true;
+    hardware.hackrf.enable = true;
+    hardware.keyboard.qmk = {
+      enable = true;
+      keychronSupport = true;
+    };
+
     virtualisation.podman = {
       enable = true;
       dockerCompat = true;

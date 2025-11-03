@@ -33,8 +33,6 @@
       basedpyright.enable = true;
       clangd.enable = true;
       cssls.enable = true;
-      docker_compose_language_service.enable = true;
-      dockerls.enable = true;
       gopls.enable = true;
       harper_ls.enable = true;
       html.enable = true;

@@ -72,8 +72,6 @@ in
         texlab
         jq-lsp
         gopls
-        docker-language-server
-        docker-compose-language-service
         bash-language-server
         mesonlsp
         taplo

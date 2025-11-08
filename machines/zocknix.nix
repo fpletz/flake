@@ -111,6 +111,8 @@
     ytdlMaxRes = 1440;
   };
 
+  bpletza.twitch.enable = true;
+
   sops = {
     secrets = {
       wg-muccc-private = {

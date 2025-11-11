@@ -91,6 +91,7 @@
   services.fwupd.enable = true;
 
   bpletza.hardware.cpu.amd = true;
+  bpletza.secureboot = true;
 
   home-manager.sharedModules = [
     {

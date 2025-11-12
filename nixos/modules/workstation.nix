@@ -392,6 +392,11 @@ in
       pinentryPackage = pkgs.pinentry-gnome3;
     };
 
+    programs.ausweisapp = {
+      enable = true;
+      openFirewall = true;
+    };
+
     programs.nh.enable = true;
 
     programs.ssh.knownHosts = {

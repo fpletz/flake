@@ -32,7 +32,7 @@
         no-symkey-cache = true;
         armor = true;
         use-agent = true;
-        keyserver = "hkps://keys.openpgp.org";
+        keyserver = "hkps://keys.gnupg.net";
         auto-key-locate = "wkd,dane,local";
         auto-key-retrieve = true;
       };

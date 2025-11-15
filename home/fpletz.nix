@@ -45,6 +45,7 @@
       gtk.enable = lib.mkDefault false;
       qt.enable = lib.mkDefault false;
       gnome.enable = lib.mkDefault false;
+      eog.enable = lib.mkDefault false;
       kde.enable = lib.mkDefault false;
       xresources.enable = lib.mkDefault false;
       font-packages.enable = lib.mkDefault false;

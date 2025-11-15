@@ -13,6 +13,7 @@
         packages = [
           "luci"
           "luci-ssl"
+          "luci-theme-material"
           "luci-mod-admin-full"
           "luci-mod-rpc"
           "luci-proto-wireguard"

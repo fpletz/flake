@@ -104,14 +104,13 @@ in
       # console/modem
       KERNEL=="ttyACM[0-9]*", TAG+="udev-acl", TAG+="uaccess"
 
-      # pci runtime power management
+      # runtime power management
       ACTION=="add", SUBSYSTEM=="pci", ATTR{power/control}="auto"
-    ''
-    + (lib.optionalString cfg.battery ''
+      ACTION=="add", SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="med_power_with_dipm"
       ACTION=="add|move", SUBSYSTEM=="net", ENV{INTERFACE}=="enp*", RUN+="${lib.getExe pkgs.ethtool} -s %k wol d"
       ACTION=="add|move", SUBSYSTEM=="net", ENV{INTERFACE}=="wlp*", RUN+="${lib.getExe pkgs.iw} dev %k set power_save on"
-      ACTION=="add", SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="med_power_with_dipm"
-
+    ''
+    + (lib.optionalString cfg.battery ''
       # Autosuspend for Generic EMV Smartcard Reader
       ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="2ce3", ATTR{idProduct}=="9563", TEST=="power/control", ATTR{power/control}="auto"
 
@@ -218,7 +217,7 @@ in
 
     systemd.services."cups-browsed".wantedBy = lib.mkForce [ ];
 
-    powerManagement.cpuFreqGovernor = if cfg.battery then "schedutil" else "performance";
+    powerManagement.cpuFreqGovernor = "schedutil";
 
     hardware.graphics = {
       enable = true;
@@ -276,7 +275,7 @@ in
     };
 
     services.upower = {
-      enable = mkIf cfg.battery true;
+      enable = true;
     };
 
     hardware.bluetooth = {

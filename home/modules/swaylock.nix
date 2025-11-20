@@ -32,11 +32,11 @@ in
         systemdTarget = "wayland-session@sway.target";
         timeouts = [
           {
-            timeout = 120;
+            timeout = 60;
             command = "${lib.getExe' systemdPackage "loginctl"} lock-session";
           }
           {
-            timeout = 180;
+            timeout = 70;
             command = ''${swaymsg} "output * dpms off"'';
             resumeCommand = ''${swaymsg} "output * dpms on"'';
           }

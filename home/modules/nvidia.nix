@@ -23,8 +23,6 @@
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       # libva stuff
       MOZ_DISABLE_RDD_SANDBOX = 1;
-      NVD_BACKEND = "direct";
-      LIBVA_DRIVER_NAME = "nvidia";
     };
   };
 }

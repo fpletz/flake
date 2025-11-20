@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -49,11 +48,8 @@ in
         modesetting.enable = true;
         forceFullCompositionPipeline = true;
         open = true;
+        videoAcceleration = false;
       };
-      graphics.extraPackages = [
-        pkgs.libva-vdpau-driver
-        pkgs.nvidia-vaapi-driver
-      ];
     };
 
     services.lact.enable = true;

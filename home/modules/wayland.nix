@@ -122,7 +122,7 @@ in
           ]
           ++ lib.optionals (oscfg.internalDisplay != null) [
             {
-              name = "home-and-internal";
+              name = "home-docked";
               output = [
                 {
                   search = homeLeft;
@@ -138,10 +138,7 @@ in
                 }
                 {
                   search = internalDisplay;
-                  enable = true;
-                  scale = lib.mkIf (!isNull oscfg.displayScale) oscfg.displayScale;
-                  position.x = 0;
-                  position.y = 1440;
+                  enable = false;
                 }
               ];
             }

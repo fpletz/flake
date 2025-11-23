@@ -210,8 +210,10 @@ in
       drivers = with pkgs; [
         foomatic-filters
         gutenprint
+        samsung-unified-linux-driver
       ];
     };
+    nixpkgs.permittedUnfreePackages = [ "samsung-unified-linux-driver" ];
     services.system-config-printer.enable = true;
     programs.system-config-printer.enable = true;
 

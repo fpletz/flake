@@ -153,8 +153,7 @@ in
       };
     };
 
-    # XXX: broken
-    services.easyeffects.enable = false;
+    services.easyeffects.enable = true;
 
     programs.mpv = {
       enable = true;

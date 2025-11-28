@@ -72,7 +72,7 @@ in
 
     hardware = {
       firmware = [
-        pkgs.firmwareLinuxNonfree
+        pkgs.linux-firmware
         pkgs.raspberrypiWirelessFirmware
       ];
       enableRedistributableFirmware = false;

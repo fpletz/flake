@@ -50,10 +50,10 @@ in
       wlroots_0_19 = prev.wlroots_0_19.overrideAttrs (
         { src, ... }:
         {
-          version = "0.19.2-unstable-2025-10-17";
+          version = "0.18.3-unstable-2025-11-25";
           src = src.override {
-            rev = "6d63871f059192b15d2fa0dfacfb391709f4952d";
-            hash = "sha256-LShsqWJ96lF8FoVvfatSfmizatOKGlyFUHlxtD3E5pQ=";
+            rev = "abf80b529e48823e21215a6ccc4653e2c2a4a565";
+            hash = "sha256-VJzFkh/UnJgHfTnt6DvQwRsvTV7jQZEaQiWludhs4Zk=";
           };
           patches = [ ];
         }
@@ -62,10 +62,10 @@ in
       sway-unwrapped = prev.sway-unwrapped.overrideAttrs (
         { src, ... }:
         {
-          version = "0.12-unstable-2025-10-05";
+          version = "0.12-unstable-2025-11-28";
           src = src.override {
-            rev = "90d3270970cc963454455b572883a051d3f376a1";
-            hash = "sha256-X/JYV5lBfi4xnRA8d8bk/+DTaC2UWasNOBz3KYFMFUU=";
+            rev = "f4aba22582184c9a4a20fd7a9ffd70c63b4b393d";
+            hash = "sha256-2k4M3H5E4+9QVR7uV2+R834fiA8vFNjUSDEZpR0fM/I=";
           };
         }
       );

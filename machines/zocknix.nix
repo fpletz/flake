@@ -107,7 +107,6 @@
     libvirt = true;
     nvidia = true;
     gaming = true;
-    ai = true;
     ytdlVideoCodec = "av01";
     ytdlMaxRes = 1440;
   };

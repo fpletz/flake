@@ -37,8 +37,6 @@ in
       default = 1080;
       description = "youtube-dl maximum resolution";
     };
-    ai = mkEnableOption "AI";
-
     internalDisplay = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
       default = null;
@@ -491,11 +489,6 @@ in
       user = config.bpletza.home.user;
       dataDir = "/home/${config.bpletza.home.user}";
       openDefaultPorts = true;
-    };
-
-    services.ollama = {
-      enable = cfg.ai;
-      host = "[::]";
     };
   };
 }

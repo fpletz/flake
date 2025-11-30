@@ -18,6 +18,7 @@
     "usbhid"
   ];
   boot.kernelModules = [ "it87" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.it87 ];
   hardware.firmware = with pkgs; [ linux-firmware ];
 
   # increase for big builds in tmpfs

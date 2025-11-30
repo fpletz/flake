@@ -21,6 +21,75 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.it87 ];
   hardware.firmware = with pkgs; [ linux-firmware ];
 
+  environment.etc = {
+    "sensors.d/gigabyte-x590-pro.conf".text = ''
+      chip "acpitz-acpi-0"
+          # These will provably never function (analysis of disassembled ACPI tables shows that for some reason,
+          # on my mobo these are hardcoded to always return 290 Kelvins)
+          ignore temp1
+          ignore temp2
+
+      chip "it8688-isa-0a40"
+          # Beware, this sometimes reports unrealistic values (300-400mV). Could it be due to C-states?
+          label in0 "CPU VCORE"
+
+          label in1 "+3.3V"
+          label in2 "+12V"
+          label in3 "+5V"
+          label in4 "CPU VCORE SoC"
+          label in5 "CPU VDDP"
+          label in6 "DRAM CH(A/B)"
+          label in7 "3VSB"
+          label in8 "VBAT"
+
+          compute in1 @ * (33/20), @ / (33/20)
+          compute in2 @ * (120/20), @ / (120/20)
+          compute in3 @ * (50/20), @ / (50/20)
+
+          label fan1 "CPU_FAN"
+          label fan2 "SYS_FAN1"
+          label fan3 "SYS_FAN2"
+          label fan4 "PCH_FAN"  # AKA SYS_FAN3
+          label fan5 "CPU_OPT"
+
+          label temp1 "System1"
+          label temp2 "EC_TEMP1"  # Will show -55C if open circuit (no thermistor plugged in)
+          ignore temp2  # Reenable if thermistor installed (removing it so it doesn't confuse UIs)
+          label temp3 "CPU"
+          label temp4 "PCIEX16"
+          label temp5 "VRM MOS"
+          label temp6 "PCH"
+
+          ignore intrusion0
+
+      chip "it8792-isa-0a60"
+          label in1 "DDRVTT CH(A/B)"
+          label in2 "Chipset Core"
+          label in4 "CPU VDD 18"
+          label in5 "PM_CLDO12"
+
+          # Unclear what these are
+          ignore in0
+          ignore in6
+
+          # Likely redundant with those on the IT8688
+          ignore in3
+          ignore in7
+          ignore in8
+
+          label fan1 "SYS_FAN5_PUMP"
+          label fan2 "SYS_FAN6_PUMP"
+          label fan3 "SYS_FAN4"
+
+          label temp1 "PCIEX8"
+          label temp2 "EC_TEMP2"  # Will show -55C if open circuit (no thermistor plugged in)
+          ignore temp2  # Reenable if thermistor installed (removing it so it doesn't confuse UIs)
+          label temp3 "System2"
+
+          ignore intrusion0
+    '';
+  };
+
   # increase for big builds in tmpfs
   zramSwap.memoryPercent = 200;
 

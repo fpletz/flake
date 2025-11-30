@@ -90,6 +90,12 @@
     '';
   };
 
+  services.hardware.openrgb = {
+    enable = true;
+    motherboard = "amd";
+    startupProfile = "default.orp";
+  };
+
   # increase for big builds in tmpfs
   zramSwap.memoryPercent = 200;
 

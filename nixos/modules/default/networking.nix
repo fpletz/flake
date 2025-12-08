@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   networking.useNetworkd = true;
 
@@ -68,5 +68,17 @@
       "fec0::/10" = 1;
       "3ffe::/16" = 1;
     };
+  };
+
+  services.tailscale = {
+    openFirewall = lib.mkDefault true;
+    disableUpstreamLogging = true;
+    useRoutingFeatures = lib.mkDefault "client";
+  };
+
+  networking.firewall = {
+    trustedInterfaces = [
+      "tailscale+"
+    ];
   };
 }

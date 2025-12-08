@@ -208,10 +208,7 @@ in
       };
     };
 
-    services.tailscale = {
-      enable = true;
-      openFirewall = true;
-    };
+    services.tailscale.enable = true;
 
     services.avahi = {
       enable = lib.mkDefault true;
@@ -224,7 +221,6 @@ in
       trustedInterfaces = [
         "podman+"
         "virbr+"
-        "tailscale+"
         "ve-+"
         "vb-+"
         "vz-+"

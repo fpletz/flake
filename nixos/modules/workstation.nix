@@ -406,7 +406,7 @@ in
       "darwin-build-box.nix-community.org".publicKey =
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKMHhlcn7fUpUuiOFeIhDqBzBNFsbNqq+NpzuGX3e6zv";
     }
-    // lib.genAttrs [ "zocknix" "zocknix.evs" ] (_: {
+    // lib.genAttrs [ "zocknix" "zocknix.t" ] (_: {
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZwZu77INAei0k/SmiQU3F6a2iO6Pz17oxm7bHmoxTe";
     });
 
@@ -427,7 +427,7 @@ in
       buildMachines =
         lib.optionals (config.networking.hostName != "zocknix") [
           {
-            hostName = "zocknix.evs";
+            hostName = "zocknix";
             protocol = "ssh-ng";
             sshUser = "nix-build";
             sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";

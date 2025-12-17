@@ -132,6 +132,10 @@
   fileSystems."/mnt/bcachefs" = {
     device = "/dev/disk/by-uuid/e41a16d8-e8c1-4cca-b092-e43d0153082f";
     fsType = "bcachefs";
+    options = [
+      "nofail"
+      "noatime"
+    ];
   };
 
   swapDevices = [

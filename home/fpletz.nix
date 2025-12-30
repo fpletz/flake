@@ -38,7 +38,7 @@
       };
     };
     opacity = {
-      terminal = 0.8;
+      terminal = 0.9;
     };
     targets = {
       # stylix pulls in lots of dependencies we don't need on servers

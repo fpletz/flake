@@ -60,7 +60,6 @@
         jq
         json
         json5
-        jsonc
         jsonnet
         just
         kcl

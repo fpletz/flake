@@ -50,6 +50,8 @@
           "ip-full"
           "kmod-jool-netfilter"
           "jool-tools-netfilter"
+          "avahi-dbus-daemon"
+          "avahi-utils"
         ];
       };
     }

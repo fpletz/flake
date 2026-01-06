@@ -49,7 +49,7 @@
           in
           {
             nixpkgs.expr = "import <nixpkgs> {}";
-            formatting.command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
+            formatting.command = [ (lib.getExe pkgs.nixfmt) ];
             options = {
               nixos.expr = "${localFlake}.nixosConfigurations.server.options";
               home-manager.expr = "${localFlake}.homeConfigurations.fpletz.options";

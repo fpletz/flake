@@ -296,6 +296,7 @@ in
       pkgs.pulsemixer
       pkgs.wiremix
       pkgs.efibootmgr
+      pkgs.android-tools
     ]
     ++ lib.optional config.hardware.bluetooth.enable pkgs.bluetuith;
 
@@ -371,7 +372,6 @@ in
       ];
     };
 
-    programs.adb.enable = pkgs.stdenv.hostPlatform.isx86_64;
     programs.dconf.enable = true;
     programs.iotop.enable = true;
     programs.iftop.enable = true;

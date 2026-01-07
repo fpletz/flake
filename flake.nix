@@ -98,8 +98,8 @@
       };
     };
 
-    potatofox = {
-      url = "git+https://codeberg.org/awwpotato/potatofox";
+    ff-ultima = {
+      url = "git+https://github.com/soulhotel/FF-ULTIMA.git";
       flake = false;
     };
   };

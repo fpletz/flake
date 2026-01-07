@@ -109,6 +109,22 @@
         "type": "github"
       }
     },
+    "ff-ultima": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767070421,
+        "narHash": "sha256-h6iW2XQXpCRwiluEzhUi/jLJ4sApmeU4JK6vAEtd8jw=",
+        "ref": "refs/heads/main",
+        "rev": "f1d855ae20940909c7247c1828c0e4b2c7bba9ac",
+        "revCount": 2985,
+        "type": "git",
+        "url": "https://github.com/soulhotel/FF-ULTIMA.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/soulhotel/FF-ULTIMA.git"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -514,26 +530,11 @@
         "type": "github"
       }
     },
-    "potatofox": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1765301642,
-        "narHash": "sha256-WkUJytR6zPmq0vMCMlaEf3J8UM9XkY0IJa2Jn5OrO48=",
-        "ref": "refs/heads/main",
-        "rev": "80e926aeb20f61a927ec0be7a73835d5533227eb",
-        "revCount": 402,
-        "type": "git",
-        "url": "https://codeberg.org/awwpotato/potatofox"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://codeberg.org/awwpotato/potatofox"
-      }
-    },
     "root": {
       "inputs": {
         "bad_gateway": "bad_gateway",
         "disko": "disko",
+        "ff-ultima": "ff-ultima",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
@@ -545,7 +546,6 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "openwrt-imagebuilder": "openwrt-imagebuilder",
-        "potatofox": "potatofox",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",

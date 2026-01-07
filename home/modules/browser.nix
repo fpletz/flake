@@ -58,8 +58,7 @@ in
 
     home.file = {
       ".librewolf/default/chrome" = {
-        source = "${inputs.potatofox}/chrome";
-        recursive = true;
+        source = inputs.ff-ultima;
       };
     };
 

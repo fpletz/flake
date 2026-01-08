@@ -12,15 +12,20 @@
         asm
         bash
         bibtex
-        bibtex
         c
         caddy
+        cairo
+        clojure
         cmake
         comment
         commonlisp
         cpp
+        c-sharp
         css
         csv
+        cuda
+        d
+        dart
         desktop
         devicetree
         dhall
@@ -34,30 +39,44 @@
         editorconfig
         elixir
         elm
+        elvish
+        embedded-template
         erlang
         fish
         fsh
+        fsharp
         git-config
         git-rebase
         gitattributes
         gitcommit
         gitignore
         gleam
+        glsl
         gnuplot
         go
+        godot-resource
         gomod
         gosum
         gotmpl
+        gpg
         graphql
+        gstlaunch
         haskell
         hcl
         helm
+        hjson
         html
+        htmldjango
         http
+        hyprlang
+        idris
         ini
         java
         javascript
+        jinja
+        jinja-inline
         jq
+        jsdoc
         json
         json5
         jsonnet
@@ -65,42 +84,84 @@
         kcl
         kdl
         latex
+        ledger
         liquidsoap
+        llvm
         lua
+        luadoc
         make
         markdown
         markdown-inline
+        matlab
         mermaid
         meson
         muttrc
+        nasm
+        nginx
+        nim
+        nim-format-string
         ninja
         nix
+        nu
+        objc
+        objdump
         ocaml
         ocaml-interface
-        objdump
+        odin
+        pascal
         passwd
         pem
         perl
         php
+        phpdoc
         po
+        pod
+        pony
         printf
+        prolog
         promql
+        properties
         proto
+        puppet
+        purescript
+        pymanifest
         python
+        ql
+        qmldir
+        qmljs
+        query
+        r
+        racket
+        re2c
+        readline
         regex
         requirements
-        robots
+        robots-txt
         ron
+        rst
         ruby
         rust
         scala
+        scfg
+        scheme
         scss
+        sflog
+        slang
+        slim
+        slint
+        smithy
         sql
         ssh-config
+        starlark
         strace
+        supercollider
         svelte
+        sway
+        swift
         systemtap
+        tcl
         terraform
+        textproto
         tmux
         todotxt
         toml
@@ -108,18 +169,28 @@
         tsx
         twig
         typescript
+        typespec
         typst
         udev
+        ungrammar
+        unison
+        v
         vala
         vim
         vimdoc
         vue
-        xml
+        wgsl
+        wgsl-bevy
+        wxml
         xcompose
+        xml
         xresources
         yaml
         zathurarc
         zig
+        ziggy
+        ziggy-schema
+        zsh
       ];
       settings = {
         highlight = {

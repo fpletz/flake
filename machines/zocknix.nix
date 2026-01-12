@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   system.stateVersion = "25.05";
 
@@ -17,6 +22,7 @@
     "ahci"
     "usbhid"
   ];
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages-xanmod;
   boot.kernelModules = [ "it87" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.it87 ];
   hardware.firmware = with pkgs; [ linux-firmware ];

@@ -190,17 +190,17 @@
     # I know how to find the nixos manual
     getty.helpLine = lib.mkForce "";
 
-    resolved = {
-      dnsovertls = "opportunistic";
+    resolved.settings.Resolve = {
+      DNSOverTLS = "opportunistic";
       # no google/cloudflare defaults
-      fallbackDns = [
+      FallbackDNS = [
         "2620:fe::10#dns.quad9.net"
         "2620:fe::fe:10#dns.quad9.net"
         "9.9.9.10#dns.quad9.net"
         "149.112.112.10#dns.quad9.net"
       ];
       # broken
-      dnssec = "false";
+      DNSSEC = false;
     };
 
     journald.extraConfig = ''

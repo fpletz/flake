@@ -48,10 +48,10 @@ in
 
     networking.networkmanager.enable = false;
 
-    services.resolved.extraConfig = ''
-      StaleRetentionSec=1800
-      Cache=no-negative
-    '';
+    services.resolved.settings.Resolve = {
+      StaleRetentionSec = 1800;
+      Cache = "no-negative";
+    };
 
     systemd.network.config = {
       dhcpV4Config = {

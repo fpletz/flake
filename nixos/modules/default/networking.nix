@@ -33,12 +33,10 @@
     "net.ipv4.tcp_l3mdev_accept" = 1;
   };
 
-  services.resolved = {
-    llmnr = "false";
-    extraConfig = ''
-      MulticastDNS=false
-      Cache=no-negative
-    '';
+  services.resolved.settings.Resolve = {
+    LLMNR = false;
+    MulticastDNS = false;
+    Cache = "no-negative";
   };
 
   networking.getaddrinfo = {

@@ -66,7 +66,7 @@ in
 
     systemd.user.services.uxplay = {
       serviceConfig = {
-        ExecStart = "${lib.getExe pkgs.uxplay} -p ${builtins.toString cfg.basePort} ${lib.concatStringsSep " " cfg.extraFlags}";
+        ExecStart = "${lib.getExe pkgs.uxplay} -p ${toString cfg.basePort} ${lib.concatStringsSep " " cfg.extraFlags}";
       };
     };
   };

@@ -3,7 +3,6 @@
   config,
   pkgs,
   inputs,
-  osConfig,
   ...
 }:
 {

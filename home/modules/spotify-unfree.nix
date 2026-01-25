@@ -31,7 +31,6 @@ in
           listPlaylistsWithSong
           playlistIntersection
           playingSource
-          addToQueueTop
           history
           fullAlbumDate
           playNext

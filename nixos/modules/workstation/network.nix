@@ -167,7 +167,7 @@ in
         fast_reauth=1
       '';
       fallbackToWPA2 = false;
-      userControlled.enable = true;
+      userControlled = true;
       allowAuxiliaryImperativeNetworks = true;
       secretsFile = config.sops.secrets.wifi.path;
       networks = {

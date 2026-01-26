@@ -34,9 +34,15 @@ in
       tailscale = prev.tailscale.overrideAttrs (
         {
           patches ? [ ],
+          src,
           ...
         }:
         {
+          version = "1.92.5";
+          src = src.override (_: {
+            hash = "sha256-S0aD+x8dUPHaNb5MdB41oeID/8eERB3FKKuuqlCqJkU=";
+          });
+          vendorHash = "sha256-jJSSXMyUqcJoZuqfSlBsKDQezyqS+jDkRglMMjG1K8g=";
           patches = patches ++ [ ../static/tailscale-magicdns-aaaa.patch ];
           doCheck = false;
         }

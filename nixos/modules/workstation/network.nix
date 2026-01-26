@@ -151,7 +151,9 @@ in
       };
 
     sops.secrets = lib.mkIf config.networking.wireless.enable {
-      wifi = { };
+      wifi = {
+        group = "wpa_supplicant";
+      };
     };
 
     hardware.wirelessRegulatoryDatabase = config.networking.wireless.enable;

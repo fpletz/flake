@@ -202,7 +202,7 @@
       };
     };
     treesitter-refactor = {
-      enable = true;
+      enable = false; # XXX: broken
       settings = {
         highlight_definitions.enable = true;
       };

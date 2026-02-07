@@ -53,12 +53,6 @@ in
         withKeePassYubiKey = false;
       };
 
-      librewolf-unwrapped = prev.librewolf-unwrapped.override (attrs: {
-        onnxruntime = attrs.onnxruntime.override (_: {
-          cudaSupport = false;
-        });
-      });
-
       hwloc = prev.hwloc.override (_: {
         enableCuda = false;
       });

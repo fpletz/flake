@@ -378,7 +378,7 @@ in
     programs.light.enable = true;
     programs.wireshark = {
       enable = true;
-      package = pkgs.wireshark-qt;
+      package = pkgs.wireshark;
     };
     programs.flashrom.enable = true;
     programs.git.package = pkgs.git;

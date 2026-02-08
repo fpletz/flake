@@ -63,7 +63,7 @@
       taplo.enable = true;
       texlab.enable = false;
       yamlls.enable = true;
-      zls.enable = true;
+      # zls.enable = true;  # XXX: broken
     };
     keymaps = [
       {

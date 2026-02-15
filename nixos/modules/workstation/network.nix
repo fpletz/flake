@@ -152,6 +152,7 @@ in
 
     sops.secrets = lib.mkIf config.networking.wireless.enable {
       wifi = {
+        owner = "wpa_supplicant";
         group = "wpa_supplicant";
       };
     };

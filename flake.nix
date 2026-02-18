@@ -45,6 +45,14 @@
       };
     };
 
+    terranix = {
+      url = "github:terranix/terranix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -120,6 +128,7 @@
         ./home
         ./nixos
         ./treefmt.nix
+        ./tf.nix
       ];
 
       perSystem =

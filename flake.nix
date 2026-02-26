@@ -145,6 +145,7 @@
               pkgs.ssh-to-age
               pkgs.nix-fast-build
               inputs.nixos-anywhere.packages.${system}.default
+              pkgs.nh
             ];
 
             inputsFrom = [

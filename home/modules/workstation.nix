@@ -192,6 +192,7 @@ in
 
     programs.yazi = {
       enable = true;
+      shellWrapperName = "y";
     };
 
     systemd.user.services.keepassxc = {

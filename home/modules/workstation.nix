@@ -26,15 +26,6 @@ in
         man-pages
         man-pages-posix
         python3Packages.ptpython
-        (ncmpcpp.overrideAttrs (
-          {
-            configureFlags ? [ ],
-            ...
-          }:
-          {
-            configureFlags = configureFlags ++ [ "--with-boost=${boost.dev}" ];
-          }
-        ))
         mpc
         sipcalc
         units

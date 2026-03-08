@@ -9,8 +9,8 @@
 let
   suffix = "xanmod1";
   modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-  version = "6.19.3";
-  hash = "sha256-F+OnaQr4wQ84NMmU15Gji6es59RMPO2EdsOZzpzSuMw=";
+  version = "6.19.6";
+  hash = "sha256-6b0N9Q8Z3d5pElXHZHJlb2lALCsd3vCWhXA9kBYhyLk=";
 in
 buildLinux {
   inherit version modDirVersion;
@@ -36,21 +36,40 @@ buildLinux {
       TCP_CONG_BBR = yes;
       DEFAULT_BBR = yes;
 
-      # Preemptive Full Tickless Kernel at 1000Hz
-      HZ = freeform "1000";
-      HZ_250 = no;
-      HZ_1000 = yes;
+      # Preemptive Full Tickless Kernel
+      HZ = freeform "250";
+      HZ_250 = yes;
+      NO_HZ = no;
+      NO_HZ_FULL = lib.mkOverride 60 no;
+      NO_HZ_IDLE = yes;
 
+      # RCU_BOOST and RCU_EXP_KTHREAD
       RCU_EXPERT = yes;
       RCU_FANOUT = freeform "64";
       RCU_FANOUT_LEAF = freeform "16";
       RCU_BOOST = yes;
       RCU_BOOST_DELAY = freeform "0";
       RCU_EXP_KTHREAD = yes;
+      RCU_NOCB_CPU = yes;
+      RCU_DOUBLE_CHECK_CB_TIME = yes;
 
       # Full preemption
-      PREEMPT = lib.mkOverride 60 yes;
+      PREEMPT = lib.mkOverride 70 no;
       PREEMPT_VOLUNTARY = lib.mkOverride 60 no;
+      PREEMPT_LAZY = yes;
+
+      # CPUFreq governor Performance
+      CPU_FREQ_DEFAULT_GOV_PERFORMANCE = lib.mkOverride 60 yes;
+      CPU_FREQ_DEFAULT_GOV_SCHEDUTIL = lib.mkOverride 60 no;
+
+      # CPU idle governors favored
+      CPU_IDLE_GOV_HALTPOLL = yes; # Already enabled
+      CPU_IDLE_GOV_LADDER = yes;
+      CPU_IDLE_GOV_TEO = yes;
+
+      # x86 features
+      X86_FRED = yes;
+      X86_POSTED_MSI = yes;
 
       # x86-64-v3 psABI
       GENERIC_CPU = yes;
@@ -69,8 +88,6 @@ buildLinux {
       ENERGY_MODEL = yes;
       WQ_POWER_EFFICIENT_DEFAULT = yes;
       CPU_FREQ_STAT = yes;
-      CPU_IDLE_GOV_LADDER = yes;
-      CPU_IDLE_GOV_TEO = yes;
       ARCH_MMAP_RND_BITS = if stdenv.hostPlatform.isx86_64 then freeform "32" else freeform "18";
       ARCH_MMAP_RND_COMPAT_BITS = freeform "16";
       RANDOMIZE_KSTACK_OFFSET_DEFAULT = yes;

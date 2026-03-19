@@ -9,7 +9,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     flake-root.url = "github:srid/flake-root";
-    flake-compat.url = "github:edolstra/flake-compat";
+    flake-compat.url = "github:NixOS/flake-compat";
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -86,7 +86,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
-        flake-root.follows = "flake-root";
         treefmt-nix.follows = "treefmt-nix";
       };
     };

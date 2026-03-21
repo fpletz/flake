@@ -57,7 +57,9 @@ in
           "network#wl"
           "bluetooth"
           "pulseaudio"
-          "upower"
+        ]
+        ++ lib.optional osConfig.bpletza.workstation.battery "upower"
+        ++ [
           "clock"
           "tray"
         ];

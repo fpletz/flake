@@ -162,6 +162,16 @@
   systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce "infinity";
 
   security = {
+    polkit = {
+      enable = true;
+      extraConfig = ''
+        polkit.addRule(function(action, subject) {
+          if (subject.isInGroup("wheel")) {
+            return polkit.Result.YES;
+          }
+        });
+      '';
+    };
     sudo.enable = false;
     sudo-rs = {
       enable = true;

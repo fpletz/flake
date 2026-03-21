@@ -99,6 +99,8 @@ in
       # qmk macropad
       ATTR{idVendor}=="f1f1", ATTR{idProduct}=="0315", SYMLINK+="winry315-%k", TAG+="uaccess"
 
+      # usb serial
+      KERNEL=="ttyUSB[0-9]*", TAG+="udev-acl", TAG+="uaccess"
       # console/modem
       KERNEL=="ttyACM[0-9]*", TAG+="udev-acl", TAG+="uaccess"
 

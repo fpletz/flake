@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ config, ... }:
 {
   variable.hcloud_token = {
     sensitive = true;

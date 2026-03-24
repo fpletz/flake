@@ -92,6 +92,7 @@ in
         gtk-xft-rgba = "rgb";
         gtk-decoration-layout = "menu:close";
       };
+      gtk4.theme = config.gtk.theme;
       gtk4.extraConfig = {
         gtk-hint-font-metrics = true;
         gtk-application-prefer-dark-theme = true;

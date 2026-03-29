@@ -61,12 +61,36 @@ in
       extraPackages = [ ];
     };
 
-    qt = {
+    programs.niri = {
       enable = true;
-      platformTheme = "gtk2";
-      style = "gtk2";
+      useNautilus = false;
     };
 
-    environment.systemPackages = [ pkgs.xwayland-satellite ];
+    systemd.user.services.noctalia-shell = {
+      wantedBy = [ "niri.service" ];
+      partOf = [ "niri.service" ];
+      after = [ "niri.service" ];
+      path = [
+        pkgs.bashNonInteractive
+        pkgs.curl
+        pkgs.fontconfig
+        pkgs.procps
+        pkgs.coreutils
+      ];
+      serviceConfig = {
+        ExecStart = lib.getExe pkgs.noctalia-shell;
+      };
+    };
+
+    qt = {
+      enable = true;
+      platformTheme = "qt5ct";
+      # style = "gtk2";
+    };
+
+    environment.systemPackages = [
+      pkgs.xwayland-satellite
+      pkgs.noctalia-shell
+    ];
   };
 }

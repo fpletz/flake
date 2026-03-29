@@ -64,45 +64,52 @@ in
       };
     };
 
+    stylix.targets.gtk.extraCss = "@import url(\"noctalia.css\");";
     gtk = {
       enable = true;
-      gtk2.extraConfig = ''
-        gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
-        gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
-        gtk-button-images=0
-        gtk-menu-images=0
-        gtk-enable-event-sounds=0
-        gtk-enable-input-feedback-sounds=0
-        gtk-xft-antialias=1
-        gtk-xft-hinting=1
-        gtk-xft-hintstyle="hintslight"
-        gtk-xft-rgba="rgb"
-      '';
-      gtk3.extraConfig = {
-        gtk-application-prefer-dark-theme = true;
-        gtk-menu-images = false;
-        gtk-button-images = false;
-        gtk-toolbar-style = "GTK_TOOLBAR_BOTH_HORIZ";
-        gtk-toolbar-icon-size = "GTK_ICON_SIZE_SMALL_TOOLBAR";
-        gtk-enable-event-sounds = false;
-        gtk-enable-input-feedback-sounds = false;
-        gtk-xft-antialias = 1;
-        gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintslight";
-        gtk-xft-rgba = "rgb";
-        gtk-decoration-layout = "menu:close";
+      gtk2 = {
+        extraConfig = ''
+          gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
+          gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
+          gtk-button-images=0
+          gtk-menu-images=0
+          gtk-enable-event-sounds=0
+          gtk-enable-input-feedback-sounds=0
+          gtk-xft-antialias=1
+          gtk-xft-hinting=1
+          gtk-xft-hintstyle="hintslight"
+          gtk-xft-rgba="rgb"
+        '';
       };
-      gtk4.theme = config.gtk.theme;
-      gtk4.extraConfig = {
-        gtk-hint-font-metrics = true;
-        gtk-application-prefer-dark-theme = true;
-        gtk-enable-event-sounds = false;
-        gtk-enable-input-feedback-sounds = false;
-        gtk-xft-antialias = 1;
-        gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintslight";
-        gtk-xft-rgba = "rgb";
-        gtk-decoration-layout = "menu:close";
+      gtk3 = {
+        extraConfig = {
+          gtk-application-prefer-dark-theme = true;
+          gtk-menu-images = false;
+          gtk-button-images = false;
+          gtk-toolbar-style = "GTK_TOOLBAR_BOTH_HORIZ";
+          gtk-toolbar-icon-size = "GTK_ICON_SIZE_SMALL_TOOLBAR";
+          gtk-enable-event-sounds = false;
+          gtk-enable-input-feedback-sounds = false;
+          gtk-xft-antialias = 1;
+          gtk-xft-hinting = 1;
+          gtk-xft-hintstyle = "hintslight";
+          gtk-xft-rgba = "rgb";
+          gtk-decoration-layout = "menu:close";
+        };
+      };
+      gtk4 = {
+        theme = config.gtk.theme;
+        extraConfig = {
+          gtk-hint-font-metrics = true;
+          gtk-application-prefer-dark-theme = true;
+          gtk-enable-event-sounds = false;
+          gtk-enable-input-feedback-sounds = false;
+          gtk-xft-antialias = 1;
+          gtk-xft-hinting = 1;
+          gtk-xft-hintstyle = "hintslight";
+          gtk-xft-rgba = "rgb";
+          gtk-decoration-layout = "menu:close";
+        };
       };
     };
 

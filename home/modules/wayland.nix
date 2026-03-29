@@ -53,6 +53,19 @@ in
       };
     };
 
+    systemd.user.services.fnott = {
+      Unit = {
+        PartOf = lib.mkForce [
+          "wayland-session@sway.target"
+          "sway-session.target"
+        ];
+        After = lib.mkForce [
+          "wayland-session@sway.target"
+          "sway-session.target"
+        ];
+      };
+    };
+
     programs.fuzzel = {
       enable = true;
       settings = {

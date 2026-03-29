@@ -128,10 +128,22 @@
     };
 
     systemd.user.services.swayosd = {
-      Unit.PartOf = [
-        "wayland-session@sway.target"
-        "sway-session.target"
-      ];
+      Install = {
+        WantedBy = lib.mkForce [
+          "wayland-session@sway.target"
+          "sway-session.target"
+        ];
+      };
+      Unit = {
+        PartOf = lib.mkForce [
+          "wayland-session@sway.target"
+          "sway-session.target"
+        ];
+        After = lib.mkForce [
+          "wayland-session@sway.target"
+          "sway-session.target"
+        ];
+      };
     };
 
     services.wpaperd = {
@@ -141,6 +153,25 @@
           duration = "60m";
         };
         any.path = ../../static/wallpapers;
+      };
+    };
+
+    systemd.user.services.wpaperd = {
+      Install = {
+        WantedBy = lib.mkForce [
+          "wayland-session@sway.target"
+          "sway-session.target"
+        ];
+      };
+      Unit = {
+        PartOf = lib.mkForce [
+          "wayland-session@sway.target"
+          "sway-session.target"
+        ];
+        After = lib.mkForce [
+          "wayland-session@sway.target"
+          "sway-session.target"
+        ];
       };
     };
   };

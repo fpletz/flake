@@ -40,7 +40,7 @@
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
         "volumeOverdrive": false,
-        "volumeStep": 5
+        "volumeStep": 3
     },
     "bar": {
         "autoHideDelay": 500,
@@ -417,7 +417,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": true,
-        "avatarImage": "",
+        "avatarImage": "/home/fpletz/.face",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "digital",

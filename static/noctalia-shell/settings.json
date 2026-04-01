@@ -123,6 +123,11 @@
                     "useDistroLogo": false
                 },
                 {
+                    "defaultSettings": {
+                    },
+                    "id": "plugin:mirror-mirror"
+                },
+                {
                     "compactMode": true,
                     "diskPath": "/",
                     "iconColor": "none",
@@ -174,6 +179,16 @@
                 }
             ],
             "right": [
+                {
+                    "defaultSettings": {
+                        "customColor": "none",
+                        "showConditionIcon": true,
+                        "showTempUnit": true,
+                        "showTempValue": true,
+                        "tooltipOption": "everything"
+                    },
+                    "id": "plugin:weather-indicator"
+                },
                 {
                     "displayMode": "onhover",
                     "iconColor": "none",
@@ -272,7 +287,7 @@
     "brightness": {
         "backlightDeviceMappings": [
         ],
-        "brightnessStep": 5,
+        "brightnessStep": 3,
         "enableDdcSupport": true,
         "enforceMinimum": true
     },
@@ -490,23 +505,23 @@
     "idle": {
         "customCommands": "[]",
         "enabled": true,
-        "fadeDuration": 5,
+        "fadeDuration": 9,
         "lockCommand": "",
-        "lockTimeout": 600,
+        "lockTimeout": 120,
         "resumeLockCommand": "",
         "resumeScreenOffCommand": "",
         "resumeSuspendCommand": "",
         "screenOffCommand": "",
         "screenOffTimeout": 300,
         "suspendCommand": "",
-        "suspendTimeout": 1800
+        "suspendTimeout": 0
     },
     "location": {
         "analogClockInCalendar": false,
         "firstDayOfWeek": 1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "Holzkirchen (Ortenburg)",
+        "name": "Holzkirchen-Ortenburg",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": true,
@@ -533,7 +548,7 @@
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
-        "nightTemp": "4000"
+        "nightTemp": "3754"
     },
     "noctaliaPerformance": {
         "disableDesktopWidgets": true,

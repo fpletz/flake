@@ -68,6 +68,7 @@ in
 
     systemd.user.services.noctalia-shell = {
       wantedBy = [ "niri.service" ];
+      bindsTo = [ "niri.service" ];
       partOf = [ "niri.service" ];
       after = [ "niri.service" ];
       path = [
@@ -79,6 +80,7 @@ in
       ];
       serviceConfig = {
         ExecStart = lib.getExe pkgs.noctalia-shell;
+        Slice = "session.slice";
       };
     };
 

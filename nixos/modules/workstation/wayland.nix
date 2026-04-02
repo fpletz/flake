@@ -67,20 +67,14 @@ in
     };
 
     systemd.user.services.noctalia-shell = {
-      wantedBy = [ "niri.service" ];
-      bindsTo = [ "niri.service" ];
-      partOf = [ "niri.service" ];
-      after = [ "niri.service" ];
-      path = [
-        pkgs.bashNonInteractive
-        pkgs.curl
-        pkgs.fontconfig
-        pkgs.procps
-        pkgs.coreutils
-      ];
+      wantedBy = [ "graphical-session.target" ];
+      partOf = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      environment.PATH = lib.mkForce null;
       serviceConfig = {
         ExecStart = lib.getExe pkgs.noctalia-shell;
         Slice = "session.slice";
+        Restart = "on-failure";
       };
     };
 

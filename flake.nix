@@ -81,15 +81,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixd = {
-      url = "github:nix-community/nixd";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
-
     openwrt-imagebuilder = {
       url = "github:Astro/nix-openwrt-imagebuilder";
       inputs = {

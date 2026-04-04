@@ -28,7 +28,8 @@ in
         "libnvjitlink"
       ];
       config = {
-        cudaSupport = true;
+        # FIXME: causes rebuild of firefox/librewolf without much benefit
+        cudaSupport = false;
       };
     };
 

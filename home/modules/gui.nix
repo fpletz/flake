@@ -64,7 +64,6 @@ in
       };
     };
 
-    stylix.targets.gtk.extraCss = "@import url(\"noctalia.css\");";
     gtk = {
       enable = true;
       gtk2 = {

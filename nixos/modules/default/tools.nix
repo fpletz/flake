@@ -53,7 +53,6 @@
     which
     # netwoking
     tcpdump
-    iptables
     ethtool
     rsync
     borgbackup

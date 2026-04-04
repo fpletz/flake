@@ -74,6 +74,10 @@
     useRoutingFeatures = lib.mkDefault "client";
   };
 
+  networking.nftables = {
+    enable = true;
+  };
+
   networking.firewall = {
     trustedInterfaces = [
       "tailscale+"

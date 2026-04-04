@@ -57,7 +57,7 @@ in
         modesetting.enable = true;
         forceFullCompositionPipeline = true;
         open = true;
-        videoAcceleration = false;
+        videoAcceleration = true;
       };
     };
 

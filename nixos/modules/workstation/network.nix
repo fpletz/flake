@@ -87,16 +87,13 @@ in
               DNSOverTLS = "opportunistic";
             };
             dhcpV4Config = {
-              UseHostname = true;
               UseDNS = true;
               UseNTP = true;
               inherit RouteMetric;
             };
             dhcpV6Config = {
-              UseHostname = true;
               UseDNS = true;
               UseNTP = true;
-              inherit RouteMetric;
             };
             ipv6AcceptRAConfig = {
               inherit RouteMetric;
@@ -141,7 +138,6 @@ in
           dhcpV6Config = {
             UseHostname = false;
             SendHostname = false;
-            RouteMetric = 23;
           };
           ipv6AcceptRAConfig = {
             RouteMetric = 23;

@@ -42,6 +42,7 @@ in
         git-remote-gcrypt
         rclone
         wiremix
+        netscanner
 
         # GUI
         virt-manager

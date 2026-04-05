@@ -87,6 +87,7 @@ in
     environment.systemPackages = [
       pkgs.xwayland-satellite
       pkgs.noctalia-shell
+      pkgs.evtest
     ];
   };
 }

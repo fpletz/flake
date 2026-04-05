@@ -231,8 +231,8 @@ window-rule {
 binds {
   Mod+Shift+Slash { show-hotkey-overlay; }
 
-  Mod+T { spawn "ghostty"; }
-  Mod+Return { spawn "ghostty"; }
+  Mod+T { spawn "alacritty"; }
+  Mod+Return { spawn "alacritty"; }
   Mod+D { spawn "fuzzel"; }
   Mod+Shift+D { spawn "emoji-picker"; }
   Mod+P { spawn "tessen"; }

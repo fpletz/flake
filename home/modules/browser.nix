@@ -92,7 +92,7 @@ in
           pref("webgl.disabled", false);
           pref("privacy.resistFingerprinting", false);
           pref("identity.fxaccounts.enabled", true);
-          pref("ultima.disable.windowcontrols.button", false);
+          pref("ultima.disable.windowcontrols.button", true);
           pref("ultima.sidebery.autohide", true);
         ''
         + extraPrefs;

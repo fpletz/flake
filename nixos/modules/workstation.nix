@@ -22,11 +22,6 @@ in
       type = types.bool;
       description = "libvirtd";
     };
-    waybar.wiredInterface = mkOption {
-      type = types.str;
-      default = "enp*";
-      description = "Interface name or wildcard for wired interface";
-    };
     ytdlVideoCodec = lib.mkOption {
       type = lib.types.str;
       default = "av01";

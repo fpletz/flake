@@ -59,7 +59,6 @@
 
     bpletza.workstation = {
       battery = true;
-      waybar.wiredInterface = "eno0";
       ytdlVideoCodec = "avc1";
       internalDisplay = "LVDS-1";
       displayScale = 1.0;

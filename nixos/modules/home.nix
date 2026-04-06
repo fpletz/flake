@@ -56,7 +56,6 @@ in
           "audio"
           "video"
           "docker"
-          "sway"
           "wireshark"
           "adbusers"
           "input"

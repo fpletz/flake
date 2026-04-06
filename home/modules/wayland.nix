@@ -18,7 +18,6 @@ in
     home.packages = [
       pkgs.libnotify
       pkgs.wdisplays
-      pkgs.swaybg
       pkgs.grim
       pkgs.slurp
       pkgs.waypipe
@@ -33,38 +32,6 @@ in
       pkgs.bzmenu
       pkgs.shikane
     ];
-
-    services.fnott = {
-      enable = true;
-      extraFlags = [ "-s" ];
-      settings = {
-        main = {
-          icon-theme = config.gtk.iconTheme.name;
-          max-icon-size = 64;
-          # default-timeout = 10;
-          # max-timeout = 30;
-          min-width = 300;
-          max-width = 1000;
-          selection-helper = "${lib.getExe pkgs.fuzzel} -d";
-          summary-format = "<b>%s</b>";
-          padding-vertical = 15;
-          padding-horizontal = 15;
-        };
-      };
-    };
-
-    systemd.user.services.fnott = {
-      Unit = {
-        PartOf = lib.mkForce [
-          "wayland-session@sway.target"
-          "sway-session.target"
-        ];
-        After = lib.mkForce [
-          "wayland-session@sway.target"
-          "sway-session.target"
-        ];
-      };
-    };
 
     programs.fuzzel = {
       enable = true;
@@ -229,49 +196,6 @@ in
             }
           ];
         };
-    };
-
-    programs.wleave = {
-      enable = true;
-      settings = {
-        margin = 200;
-        buttons-per-row = "1/2";
-        delay-command-ms = 100;
-        close-on-lost-focus = true;
-        show-keybinds = true;
-        no-version-info = true;
-        buttons = [
-          {
-            label = "lock";
-            action = "loginctl lock-session";
-            text = "Lock";
-            keybind = "l";
-            icon = "${pkgs.wleave}/share/wleave/icons/lock.svg";
-          }
-          {
-            label = "logout";
-            action = "loginctl terminate-user $USER";
-            text = "Logout";
-            keybind = "e";
-            icon = "${pkgs.wleave}/share/wleave/icons/logout.svg";
-          }
-          {
-            label = "suspend";
-            action = "systemctl suspend";
-            text = "Suspend";
-            keybind = "u";
-            icon = "${pkgs.wleave}/share/wleave/icons/suspend.svg";
-          }
-
-          {
-            label = "shutdown";
-            action = "systemctl poweroff";
-            text = "Shutdown";
-            keybind = "s";
-            icon = "${pkgs.wleave}/share/wleave/icons/shutdown.svg";
-          }
-        ];
-      };
     };
   };
 }

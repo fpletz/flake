@@ -200,10 +200,7 @@ in
       Unit = {
         Description = "KeepassXC";
         PartOf = [ "graphical-session.target" ];
-        After = [
-          "graphical-session.target"
-          "waybar.service"
-        ];
+        After = [ "graphical-session.target" ];
         ConditionEnvironment = "WAYLAND_DISPLAY";
       };
       Service = {

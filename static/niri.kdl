@@ -167,23 +167,6 @@ window-rule {
 }
 
 layer-rule {
-  match namespace="^swww-daemon$"
-  place-within-backdrop true
-}
-
-layer-rule {
-  match namespace="^waybar$"
-  shadow {
-    on
-    softness 40
-    spread 5
-    offset x=0 y=0
-    draw-behind-window true
-    color "#00000064"
-  }
-}
-
-layer-rule {
   match namespace="^notifications$"
   block-out-from "screencast"
   opacity 0.8

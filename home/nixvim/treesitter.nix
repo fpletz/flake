@@ -156,7 +156,6 @@
         strace
         supercollider
         svelte
-        sway
         swift
         systemtap
         tcl

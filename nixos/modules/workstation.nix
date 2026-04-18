@@ -284,6 +284,7 @@ in
       pkgs.wiremix
       pkgs.efibootmgr
       pkgs.android-tools
+      pkgs.pulseaudio
     ]
     ++ lib.optional config.hardware.bluetooth.enable pkgs.bluetuith;
 

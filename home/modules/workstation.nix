@@ -52,6 +52,7 @@ in
         gimp3
         claws-mail
         keepassxc
+        qbz
 
         # LSP servers
         nil

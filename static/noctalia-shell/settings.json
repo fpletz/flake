@@ -108,6 +108,7 @@
             "left": [
                 {
                     "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
                     "icon": "rocket",
@@ -121,7 +122,7 @@
                     "id": "plugin:mirror-mirror"
                 },
                 {
-                    "compactMode": false,
+                    "compactMode": true,
                     "diskPath": "/",
                     "iconColor": "none",
                     "id": "SystemMonitor",
@@ -145,6 +146,7 @@
                 {
                     "defaultSettings": {
                         "activeColor": "primary",
+                        "camFilterRegex": "",
                         "enableToast": true,
                         "hideInactive": false,
                         "iconSpacing": 4,

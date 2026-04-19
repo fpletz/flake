@@ -17,7 +17,6 @@ in
 
   config = {
     nixpkgs.permittedUnfreePackages = [
-      "spotify"
       "steam"
       "steam-unwrapped"
     ];

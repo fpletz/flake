@@ -32,8 +32,10 @@
     },
     "audio": {
         "mprisBlacklist": [
+            "chromium",
+            "librewolf"
         ],
-        "preferredPlayer": "mpv",
+        "preferredPlayer": "qbz",
         "spectrumFrameRate": 30,
         "spectrumMirrored": true,
         "visualizerType": "linear",
@@ -425,9 +427,7 @@
         ],
         "onlySameOutput": true,
         "pinnedApps": [
-            "com.mitchellh.ghostty",
-            "librewolf",
-            "chromium-browser"
+            "librewolf"
         ],
         "pinnedStatic": false,
         "position": "bottom",

@@ -433,19 +433,6 @@ in
         ]
         ++ [
           {
-            hostName = "build-box.nix-community.org";
-            protocol = "ssh-ng";
-            maxJobs = 8;
-            sshKey = "/home/${config.bpletza.home.user}/.ssh/id_build";
-            sshUser = "${config.bpletza.home.user}";
-            system = "x86_64-linux";
-            supportedFeatures = [
-              "kvm"
-              "big-parallel"
-              "nixos-test"
-            ];
-          }
-          {
             hostName = "aarch64-build-box.nix-community.org";
             protocol = "ssh-ng";
             maxJobs = 8;

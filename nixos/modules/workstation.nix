@@ -219,11 +219,39 @@ in
       alsa.enable = true;
       pulse.enable = true;
       jack.enable = true;
-      wireplumber.extraConfig.bluetoothEnhancements = {
-        "monitor.bluez.properties" = {
-          "bluez5.enable-sbc-xq" = true;
-          "bluez5.enable-msbc" = true;
-          "bluez5.enable-hw-volume" = true;
+      wireplumber.extraConfig = {
+        bluetoothEnhancements = {
+          "monitor.bluez.properties" = {
+            "bluez5.enable-sbc-xq" = true;
+            "bluez5.enable-msbc" = true;
+            "bluez5.enable-hw-volume" = true;
+          };
+        };
+        qbc-dac = {
+          "monitor.alsa.rules" = [
+            {
+              matches = [
+                {
+                  "node.name" = "alsa_output.pci-0000_0a_00.4.analog-stereo";
+                  "media.class" = "Audio/Sink";
+                }
+              ];
+              actions = {
+                update-props = {
+                  "audio.allowed-rates" = [
+                    44100
+                    48000
+                    88200
+                    96000
+                    176400
+                    192000
+                  ];
+                  "resample.disable" = true;
+                  "channelmix.disable" = true;
+                };
+              };
+            }
+          ];
         };
       };
       extraConfig = {
@@ -257,6 +285,32 @@ in
             "node.latency" = "32/48000";
             "resample.quality" = 8;
           };
+        };
+        pipewire."99-qbz-dac" = {
+          "context.properties"."default.clock.allowed-rates" = [
+            44100
+            48000
+            88200
+            96000
+            176400
+            192000
+          ];
+        };
+        client."qbz-bitperfect" = {
+          "stream.rules" = [
+            {
+              matches = [
+                { "application.process.binary" = ".qbz-wrapped"; }
+                { "application.name" = "PipeWire ALSA [.qbz-wrapped]"; }
+              ];
+              actions = {
+                update-props = {
+                  "resample.disable" = true;
+                  "channelmix.disable" = true;
+                };
+              };
+            }
+          ];
         };
       };
     };

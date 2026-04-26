@@ -218,11 +218,11 @@ in
     networking.firewall = {
       allowedUDPPorts = lib.optional config.services.avahi.enable 5353;
       trustedInterfaces = [
-        "podman+"
-        "virbr+"
-        "ve-+"
-        "vb-+"
-        "vz-+"
+        "podman*"
+        "virbr*"
+        "ve-*"
+        "vb-*"
+        "vz-*"
       ];
     };
   };

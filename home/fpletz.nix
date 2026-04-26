@@ -9,7 +9,6 @@
   imports = [
     inputs.nix-index-database.homeModules.nix-index
     inputs.stylix.homeModules.stylix
-    inputs.spicetify-nix.homeManagerModules.default
   ]
   ++ lib.filesystem.listFilesRecursive ./modules;
 

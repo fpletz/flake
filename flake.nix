@@ -89,13 +89,6 @@
       };
     };
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     ff-ultima = {
       url = "git+https://github.com/soulhotel/FF-ULTIMA.git";
       flake = false;

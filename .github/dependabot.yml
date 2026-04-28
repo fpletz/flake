@@ -4,8 +4,17 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers:
-      - fpletz
     labels:
       - actions
       - automated
+  - package-ecosystem: "nix"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - actions
+      - automated
+    groups:
+      flake-inputs:
+        patterns:
+          - "*"

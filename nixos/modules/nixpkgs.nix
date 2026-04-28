@@ -16,10 +16,6 @@ in
   };
 
   config = {
-    nixpkgs.permittedUnfreePackages = [
-      "steam"
-      "steam-unwrapped"
-    ];
     nixpkgs.config.allowUnfreePredicate =
       pkg: builtins.elem (lib.getName pkg) cfg.permittedUnfreePackages;
   };

@@ -12,7 +12,10 @@
           inherit inputs;
           osConfig = { };
         };
-        modules = [ ./fpletz.nix ];
+        modules = [
+          ../nixos/modules/nixpkgs.nix
+          ./fpletz.nix
+        ];
       };
     };
 }

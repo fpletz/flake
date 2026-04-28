@@ -21,6 +21,11 @@ in
       pkgs.heroic
     ];
 
+    nixpkgs.permittedUnfreePackages = [
+      "steam"
+      "steam-unwrapped"
+    ];
+
     programs.steam = {
       enable = cfg.gaming;
       gamescopeSession.enable = cfg.gaming;

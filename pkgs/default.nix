@@ -16,6 +16,12 @@ in
         overlays = [
           inputs.self.overlays.default
         ];
+        config.allowUnfreePredicate =
+          pkg:
+          builtins.elem (lib.getName pkg) [
+            "barbar.nvim"
+            "git-conflict.nvim"
+          ];
       };
 
       packages = {

@@ -220,14 +220,52 @@ in
       pulse.enable = true;
       jack.enable = true;
       wireplumber.extraConfig = {
-        bluetoothEnhancements = {
+        bluetooth = {
           "monitor.bluez.properties" = {
             "bluez5.enable-sbc-xq" = true;
             "bluez5.enable-msbc" = true;
             "bluez5.enable-hw-volume" = true;
+            "bluez5.default.rate" = 96000;
           };
+          "monitor.bluez.rules" = [
+            {
+              matches = [
+                {
+                  "node.name" = "bluez_output.88_C9_E8_DF_29_88.1";
+                  "media.class" = "Audio/Sink";
+                }
+              ];
+              actions = {
+                update-props = {
+                  "audio.allowed-rates" = [
+                    44100
+                    48000
+                    88200
+                    96000
+                  ];
+                  "resample.disable" = true;
+                  "channelmix.disable" = true;
+                };
+              };
+            }
+            {
+              matches = [
+                {
+                  "node.name" = "~bluez_input.*";
+                }
+                {
+                  "node.name" = "~bluez_output.*";
+                }
+              ];
+              actions = {
+                update-props = {
+                  "session.suspend-timeout-seconds" = 0;
+                };
+              };
+            }
+          ];
         };
-        qbc-dac = {
+        alsa-dac = {
           "monitor.alsa.rules" = [
             {
               matches = [
@@ -283,7 +321,7 @@ in
           };
           "stream.properties" = {
             "node.latency" = "32/48000";
-            "resample.quality" = 8;
+            "resample.quality" = 10;
           };
         };
         pipewire."99-qbz-dac" = {
@@ -295,6 +333,11 @@ in
             176400
             192000
           ];
+        };
+        client."resample" = {
+          "context.properties" = {
+            "resample.quality" = 10;
+          };
         };
         client."qbz-bitperfect" = {
           "stream.rules" = [
@@ -328,6 +371,7 @@ in
           MultiProfile = "multiple";
           Experimental = true;
           KernelExperimental = true;
+          FastConnectable = true;
         };
       };
     };

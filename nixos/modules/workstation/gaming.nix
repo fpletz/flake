@@ -28,7 +28,6 @@ in
 
     programs.steam = {
       enable = cfg.gaming;
-      gamescopeSession.enable = cfg.gaming;
     };
   };
 }

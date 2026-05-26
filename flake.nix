@@ -39,7 +39,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixos-stable.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
         disko.follows = "disko";
         treefmt-nix.follows = "treefmt-nix";
       };

@@ -413,11 +413,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1780161591,
-        "narHash": "sha256-eOiIbCMsYMP9JgZXzuT/m41djqDOEHTKjMFrm5NeVHM=",
+        "lastModified": 1780235872,
+        "narHash": "sha256-/TTVFhJQ5StCOrRFO+5NfSkYPSbAAekwymovcQzxNgE=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "57e5355a843618a717a19d43b2a726a8f27f0bd1",
+        "rev": "e5c7b40dc569f5c97ba2182d409f0fb54c02d7c1",
         "type": "github"
       },
       "original": {
@@ -462,15 +462,15 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1780054690,
-        "narHash": "sha256-sw6x6Sz5rPYjKY/sVxmcRtmJqo59reoJRYlTzCDimH8=",
-        "owner": "Astro",
+        "lastModified": 1780256166,
+        "narHash": "sha256-9uFoqur6GisRgPCv7yFe/zqn/YdGxCRXzcLIB50Jovs=",
+        "owner": "fpletz",
         "repo": "nix-openwrt-imagebuilder",
-        "rev": "4afb559e695c20f42c38c4565b5cf6a37017bf05",
+        "rev": "3cc4ebba054c19d3391818eafec42b893ec54c93",
         "type": "github"
       },
       "original": {
-        "owner": "Astro",
+        "owner": "fpletz",
         "repo": "nix-openwrt-imagebuilder",
         "type": "github"
       }

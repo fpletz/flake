@@ -97,7 +97,6 @@ in
         };
       };
       gtk4 = {
-        theme = config.gtk.theme;
         extraConfig = {
           gtk-hint-font-metrics = true;
           gtk-application-prefer-dark-theme = true;

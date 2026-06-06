@@ -80,7 +80,7 @@
 
   networking.firewall = {
     trustedInterfaces = [
-      "tailscale+"
+      "tailscale*"
     ];
   };
 }

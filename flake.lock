@@ -112,11 +112,11 @@
     "ff-ultima": {
       "flake": false,
       "locked": {
-        "lastModified": 1771281695,
-        "narHash": "sha256-ys0hr+WMldEq+wyPNJ584US7JKoaSwTcHaS5Dk7u/DI=",
+        "lastModified": 1780851132,
+        "narHash": "sha256-Cua5pPq55cTo7OSITUzPWpweZ5pqmSQ5DEsm1hQ/fuQ=",
         "ref": "refs/heads/main",
-        "rev": "f99ca1cbfee282d7d12d155d86c4e85a7c87b91a",
-        "revCount": 2994,
+        "rev": "d5ce77f5948db13393939208757d08ae1fc4fb90",
+        "revCount": 2995,
         "type": "git",
         "url": "https://github.com/soulhotel/FF-ULTIMA.git"
       },
@@ -413,11 +413,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1780836545,
-        "narHash": "sha256-Clz2BXj4mrEClzo7vP/JhTuzt99+53bHWsRn8iw6yNA=",
+        "lastModified": 1780849525,
+        "narHash": "sha256-yjtMubbmPi4Y4pgDSdmytqUutGJ+LJLcPgXGNNdXiUs=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "a509dd2645048641c255b34e3e95fe6c836ed097",
+        "rev": "98acb923e5882a6a6a2b660d99e8c5124e08b838",
         "type": "github"
       },
       "original": {

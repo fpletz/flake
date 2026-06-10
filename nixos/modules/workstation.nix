@@ -301,6 +301,12 @@ in
                 "pulse.latency" = 500;
               };
             }
+            {
+              name = "libpipewire-module-raop-discover";
+              args = {
+                "raop.latency.ms" = 500;
+              };
+            }
           ];
         };
         pipewire."92-low-latency" = {

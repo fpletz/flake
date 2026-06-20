@@ -16,6 +16,149 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    accounts.email = {
+      maildirBasePath = "Mail";
+      accounts.bpletza = {
+        primary = true;
+        realName = "Franz Pletz";
+        address = "fpletz@fnordicwalking.de";
+        userName = "fpletz";
+        passwordCommand = "${pkgs.pass}/bin/pass mail/bpletza.de/fpletz";
+        imap = {
+          host = "poststelle.bpletza.de";
+          port = 993;
+        };
+        smtp = {
+          host = "poststelle.bpletza.de";
+          port = 465;
+        };
+        thunderbird.enable = true;
+      };
+    };
+
+    programs.thunderbird = {
+      enable = true;
+      profiles.fpletz = {
+        isDefault = true;
+      };
+    };
+
+    accounts.contact = {
+      basePath = ".contacts";
+      accounts = {
+        bpletza = {
+          remote = {
+            type = "carddav";
+            url = "https://cb.bpletza.de/remote.php/dav";
+            userName = "fpletz";
+            passwordCommand = [
+              "pass"
+              "bpletza/cb.bpletza.de/fpletz"
+            ];
+          };
+          thunderbird = {
+            enable = true;
+            # color = "green";
+          };
+          khard = {
+            enable = true;
+            type = "discover";
+          };
+          vdirsyncer = {
+            enable = true;
+            useVcard4 = true;
+            collections = [ "contacts" ];
+          };
+        };
+      };
+    };
+
+    accounts.calendar = {
+      basePath = ".calendar";
+      accounts = {
+        bpletza = {
+          primary = true;
+          primaryCollection = "personal";
+          remote = {
+            type = "caldav";
+            url = "https://cb.bpletza.de/remote.php/dav";
+            userName = "fpletz";
+            passwordCommand = [
+              "pass"
+              "bpletza/cb.bpletza.de/fpletz"
+            ];
+          };
+          thunderbird = {
+            enable = true;
+            color = "green";
+          };
+          khal = {
+            enable = true;
+            addresses = [ "fpletz@fnordicwalking.de" ];
+            type = "discover";
+            color = "light green";
+            priority = 23;
+          };
+          vdirsyncer = {
+            enable = true;
+            useVcard4 = true;
+            collections = [
+              "personal"
+              "tasks"
+            ];
+          };
+        };
+        feiertage_bayern = {
+          remote = {
+            type = "http";
+            url = "https://ics.tools/Feiertage/bayern.ics";
+          };
+          thunderbird = {
+            enable = true;
+            color = "red";
+          };
+          khal = {
+            enable = true;
+            readOnly = true;
+            color = "light red";
+            priority = 21;
+          };
+          vdirsyncer = {
+            enable = true;
+          };
+        };
+        muccc = {
+          remote = {
+            type = "http";
+            url = "https://api.muc.ccc.de/events/all.ics";
+          };
+          thunderbird = {
+            enable = true;
+            color = "yellow";
+          };
+          khal = {
+            enable = true;
+            readOnly = true;
+            color = "yellow";
+            priority = 5;
+          };
+          vdirsyncer = {
+            enable = true;
+          };
+        };
+      };
+    };
+
+    programs.vdirsyncer = {
+      enable = true;
+    };
+    programs.khal = {
+      enable = true;
+    };
+    programs.khard = {
+      enable = true;
+    };
+
     home.packages =
       with pkgs;
       [

@@ -216,6 +216,14 @@ in
       ]
       ++ (lib.optionals pkgs.stdenv.isx86_64 [ pkgs.lurk ]);
 
+    xdg.autostart = {
+      enable = true;
+      readOnly = true;
+      entries = [
+        "${pkgs.keepassxc}/share/applications/org.keepassxc.KeePassXC.desktop"
+      ];
+    };
+
     xdg.configFile."wiremix/wiremix.toml".source = pkgs.writers.writeTOML "wiremix.toml" {
       fps = 30;
       names = {
@@ -339,20 +347,6 @@ in
     programs.yazi = {
       enable = true;
       shellWrapperName = "y";
-    };
-
-    systemd.user.services.keepassxc = {
-      Unit = {
-        Description = "KeepassXC";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-        ConditionEnvironment = "WAYLAND_DISPLAY";
-      };
-      Service = {
-        ExecStart = lib.getExe pkgs.keepassxc;
-        Restart = "on-failure";
-      };
-      Install.WantedBy = [ "graphical-session.target" ];
     };
   };
 }

@@ -52,7 +52,7 @@ in
         gimp3
         claws-mail
         keepassxc
-        libreoffice
+        libreoffice-fresh
         qbz
 
         # LSP servers

@@ -16,6 +16,12 @@
       vi = "vim";
     };
 
+    home.shell = {
+      enableBashIntegration = true;
+      enableNushellIntegration = true;
+      enableZshIntegration = true;
+    };
+
     programs.nushell = {
       enable = true;
       environmentVariables = {

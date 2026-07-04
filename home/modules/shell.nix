@@ -75,17 +75,21 @@
 
     programs.fzf = {
       enable = true;
-      changeDirWidgetCommand = "fd --type d --color always";
-      changeDirWidgetOptions = [
-        "--ansi"
-        "--preview 'tree -C {} | head -200'"
-      ];
       defaultCommand = "fd --type f --color always";
-      fileWidgetCommand = "fd --type f --color always";
-      fileWidgetOptions = [
-        "--ansi"
-        "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
-      ];
+      changeDirWidget = {
+        command = "fd --type d --color always";
+        options = [
+          "--ansi"
+          "--preview 'tree -C {} | head -200'"
+        ];
+      };
+      fileWidget = {
+        command = "fd --type f --color always";
+        options = [
+          "--ansi"
+          "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+        ];
+      };
       historyWidget.command = "";
     };
 

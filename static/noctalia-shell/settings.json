@@ -32,8 +32,6 @@
     },
     "audio": {
         "mprisBlacklist": [
-            "chromium",
-            "librewolf"
         ],
         "preferredPlayer": "qbz",
         "spectrumFrameRate": 30,

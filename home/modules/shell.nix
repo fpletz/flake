@@ -56,6 +56,10 @@
             zprof
           fi
         '')
+        (lib.mkAfter ''
+          zvm_after_init_commands+=(eval "bindkey -M viins '^r' atuin-search-viins")
+          zvm_after_init_commands+=(eval "bindkey -M vicmd '^r' atuin-search-vicmd")
+        '')
       ];
       plugins = [
         {

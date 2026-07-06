@@ -126,10 +126,12 @@
     enable = config.bpletza.workstation.enable;
     settings = {
       git = {
-        paging = {
-          colorArgs = "always";
-          pager = "delta --paging=never";
-        };
+        pagers = [
+          {
+            colorArg = "always";
+            pager = "delta --paging=never";
+          }
+        ];
       };
       gui = {
         nerdFontsVersion = "3";

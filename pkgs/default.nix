@@ -36,28 +36,6 @@ in
   flake.overlays.default =
     final: prev:
     {
-      tailscale = prev.tailscale.overrideAttrs (
-        {
-          patches ? [ ],
-          src,
-          ...
-        }:
-        {
-          version = "1.92.5";
-          src = src.override (_: {
-            hash = "sha256-S0aD+x8dUPHaNb5MdB41oeID/8eERB3FKKuuqlCqJkU=";
-          });
-          vendorHash = "sha256-jJSSXMyUqcJoZuqfSlBsKDQezyqS+jDkRglMMjG1K8g=";
-          patches = patches ++ [ ../static/tailscale-magicdns-aaaa.patch ];
-          doCheck = false;
-        }
-      );
-
-      keepassxc = prev.keepassxc.override {
-        withKeePassX11 = false;
-        withKeePassYubiKey = false;
-      };
-
       vulkan-validation-layers = prev.vulkan-validation-layers.overrideAttrs (attrs: {
         cmakeFlags = attrs.cmakeFlags ++ [ "-DUPDATE_DEPS=OFF" ];
       });

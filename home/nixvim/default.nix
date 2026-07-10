@@ -20,6 +20,9 @@
     ./yanky.nix
   ];
 
+  # FIXME: fails to build with recent nixpkgs unstable
+  enableMan = false;
+
   withRuby = false;
 
   performance = {

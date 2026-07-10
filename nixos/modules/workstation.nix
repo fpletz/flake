@@ -176,6 +176,7 @@ in
       longitude = 13.2;
     };
     services.geoclue2.enable = lib.mkForce false;
+    programs.fuse.enable = true;
     services.udisks2.enable = true;
     services.gnome.gnome-keyring.enable = false;
 

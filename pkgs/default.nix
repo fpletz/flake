@@ -36,10 +36,6 @@ in
   flake.overlays.default =
     final: prev:
     {
-      vulkan-validation-layers = prev.vulkan-validation-layers.overrideAttrs (attrs: {
-        cmakeFlags = attrs.cmakeFlags ++ [ "-DUPDATE_DEPS=OFF" ];
-      });
-
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
     }
     // byNamePackages final;

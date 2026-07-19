@@ -67,13 +67,13 @@ in
         subGidRanges = [
           {
             count = 65536;
-            startGid = 100001;
+            startGid = 100000;
           }
         ];
         subUidRanges = [
           {
             count = 65536;
-            startUid = 100001;
+            startUid = 100000;
           }
         ];
         openssh.authorizedKeys.keys = [

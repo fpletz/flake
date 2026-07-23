@@ -95,7 +95,6 @@
         matlab
         mermaid
         meson
-        muttrc
         nasm
         nginx
         nim
@@ -118,7 +117,6 @@
         pod
         pony
         printf
-        prolog
         promql
         properties
         proto
@@ -161,7 +159,6 @@
         tcl
         terraform
         textproto
-        tmux
         todotxt
         toml
         tsv
@@ -185,7 +182,6 @@
         xml
         xresources
         yaml
-        zathurarc
         zig
         ziggy
         ziggy-schema

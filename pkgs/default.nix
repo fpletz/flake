@@ -34,9 +34,12 @@ in
     };
 
   flake.overlays.default =
-    final: _prev:
+    final: prev:
     {
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
+      borgbackup = prev.borgbackup.overrideAttrs (_: {
+        patches = [ ];
+      });
     }
     // byNamePackages final;
 }

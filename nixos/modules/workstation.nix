@@ -305,7 +305,7 @@ in
             {
               name = "libpipewire-module-raop-discover";
               args = {
-                "raop.latency.ms" = 500;
+                "raop.latency.ms" = 1000;
               };
             }
           ];

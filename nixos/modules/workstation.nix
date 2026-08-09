@@ -393,14 +393,6 @@ in
     ]
     ++ lib.optional config.hardware.bluetooth.enable pkgs.bluetuith;
 
-    systemd.user.services.mpris-proxy.wantedBy = lib.mkIf config.hardware.bluetooth.enable [
-      "graphical-session.target"
-    ];
-
-    services.uxplay = {
-      enable = true;
-    };
-
     hardware.flipperzero.enable = true;
     hardware.libftdi.enable = true;
     hardware.gpgSmartcards.enable = true;

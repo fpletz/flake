@@ -19,7 +19,6 @@
           "luci-proto-wireguard"
           "luci-app-uhttpd"
           "luci-app-lldpd"
-          "luci-app-vnstat2"
           "luci-app-sqm"
           "luci-app-uhttpd"
           "luci-app-acme"

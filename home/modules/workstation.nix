@@ -195,7 +195,7 @@ in
         gimp3
         claws-mail
         keepassxc
-        libreoffice-fresh
+        libreoffice-stable
         qbz
 
         # LSP servers

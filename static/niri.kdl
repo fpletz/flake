@@ -229,7 +229,7 @@ binds {
   XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
   XF86AudioMute allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
   Mod+XF86AudioRaiseVolume allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "increaseInput"; }
-  Mod+XF86AudioLowerVolume allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "decreaseOutput"; }
+  Mod+XF86AudioLowerVolume allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "decreaseInput"; }
   Mod+XF86AudioMute allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
   XF86AudioMicMute allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
   XF86MonBrightnessDown { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }

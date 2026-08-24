@@ -37,6 +37,7 @@
   globals = {
     mapleader = " ";
     timeoutlen = 500;
+    transparent_enabled = true;
   };
 
   opts = {
@@ -123,6 +124,7 @@
     nvim-surround = {
       enable = true;
     };
+    transparent.enable = true;
     web-devicons.enable = true;
     which-key = {
       enable = true;

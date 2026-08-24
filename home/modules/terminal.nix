@@ -13,7 +13,7 @@
 
     default = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.alacritty;
+      default = pkgs.ghostty;
     };
   };
 
@@ -31,17 +31,9 @@
         hints = {
           enabled = [
             {
-              regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\\\s{-}\\\\^⟨⟩`]+";
               command = "xdg-open";
+              hyperlinks = true;
               post_processing = true;
-              mouse = {
-                enabled = true;
-                mods = "None";
-              };
-              binding = {
-                key = "U";
-                mods = "Control|Shift";
-              };
             }
           ];
         };
@@ -53,15 +45,16 @@
 
     programs.ghostty = {
       enable = true;
+      systemd.enable = true;
       settings = {
         background = "black";
+        background-opacity = 0.85;
+        background-blur = false;
         window-padding-color = "background";
-        font-family = "0xProto";
-        font-size = 10;
-        mouse-hide-while-typing = true;
         auto-update = "off";
         gtk-titlebar = false;
         shell-integration = "none";
+        shell-integration-features = "cursor,sudo,title";
         linux-cgroup = "always";
         resize-overlay = "never";
       };

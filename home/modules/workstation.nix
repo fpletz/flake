@@ -248,7 +248,7 @@ in
     };
 
     programs.helix = {
-      enable = true;
+      enable = false;
       settings = {
         editor = {
           statusline = {

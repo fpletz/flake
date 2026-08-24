@@ -91,8 +91,8 @@
       };
     };
 
-    ff-ultima = {
-      url = "git+https://github.com/soulhotel/FF-ULTIMA.git";
+    flexfox = {
+      url = "git+https://github.com/yuuqilin/FlexFox.git";
       flake = false;
     };
   };

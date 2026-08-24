@@ -57,8 +57,11 @@ in
     programs.browserpass.enable = true;
 
     home.file = {
+      ".librewolf/default/user.js" = {
+        source = "${inputs.flexfox}/user.js";
+      };
       ".librewolf/default/chrome" = {
-        source = inputs.ff-ultima;
+        source = "${inputs.flexfox}/chrome";
       };
     };
 

@@ -109,22 +109,6 @@
         "type": "github"
       }
     },
-    "ff-ultima": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780851132,
-        "narHash": "sha256-Cua5pPq55cTo7OSITUzPWpweZ5pqmSQ5DEsm1hQ/fuQ=",
-        "ref": "refs/heads/main",
-        "rev": "d5ce77f5948db13393939208757d08ae1fc4fb90",
-        "revCount": 2995,
-        "type": "git",
-        "url": "https://github.com/soulhotel/FF-ULTIMA.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://github.com/soulhotel/FF-ULTIMA.git"
-      }
-    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -189,6 +173,22 @@
         "owner": "srid",
         "repo": "flake-root",
         "type": "github"
+      }
+    },
+    "flexfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786382692,
+        "narHash": "sha256-0C3mT6QGio9EFvL0v4iUtl99O10/rcAp3nMwKt3zhY8=",
+        "ref": "refs/heads/main",
+        "rev": "90c6b178d4679f55889899f0abd29e4531c3c4a8",
+        "revCount": 180,
+        "type": "git",
+        "url": "https://github.com/yuuqilin/FlexFox.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/yuuqilin/FlexFox.git"
       }
     },
     "fromYaml": {
@@ -474,10 +474,10 @@
       "inputs": {
         "bad_gateway": "bad_gateway",
         "disko": "disko",
-        "ff-ultima": "ff-ultima",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
+        "flexfox": "flexfox",
         "git-hooks": "git-hooks",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",

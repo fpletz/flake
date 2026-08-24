@@ -30,7 +30,6 @@
   lsp = {
     servers = {
       bashls.enable = true;
-      basedpyright.enable = true;
       clangd.enable = true;
       cssls.enable = true;
       gopls.enable = true;
@@ -56,10 +55,10 @@
       };
       marksman.enable = true;
       markdown_oxide.enable = true;
-      pylsp.enable = true;
       ruff.enable = true;
       taplo.enable = true;
       texlab.enable = false;
+      ty.enable = true;
       yamlls.enable = true;
       # zls.enable = true;  # XXX: broken
     };

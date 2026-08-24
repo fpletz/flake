@@ -163,8 +163,6 @@ in
       with pkgs;
       [
         nixfmt
-        docker-compose
-        podman-compose
         stdmanpages
         man-pages
         man-pages-posix

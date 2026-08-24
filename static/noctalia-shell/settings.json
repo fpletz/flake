@@ -186,26 +186,13 @@
                     "showAlbumArt": true,
                     "showArtistFirst": true,
                     "showProgressRing": true,
-                    "showVisualizer": true,
+                    "showVisualizer": false,
                     "textColor": "none",
                     "useFixedWidth": false,
                     "visualizerType": "linear"
                 }
             ],
             "right": [
-                {
-                    "defaultSettings": {
-                        "catColor": "default",
-                        "catOffsetY": 0,
-                        "catSize": 1,
-                        "idleTimeout": 150,
-                        "raveMode": false,
-                        "tappyMode": false,
-                        "useMprisFilter": false,
-                        "waitingTimeout": 30000
-                    },
-                    "id": "plugin:slowbongo"
-                },
                 {
                     "defaultSettings": {
                         "customColor": "none",

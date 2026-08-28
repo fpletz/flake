@@ -12,7 +12,7 @@
   };
 
   config = lib.mkIf config.bpletza.workstation.xorg-settings {
-    stylix.targets.xresources.enable = true;
+    stylix.targets.x11.enable = true;
     xresources.properties = {
       "Xft.hinting" = "1";
       "Xft.hintstyle" = "hintslight";

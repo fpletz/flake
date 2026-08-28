@@ -45,7 +45,7 @@
       gnome.enable = lib.mkDefault false;
       eog.enable = lib.mkDefault false;
       kde.enable = lib.mkDefault false;
-      xresources.enable = lib.mkDefault false;
+      x11.enable = lib.mkDefault false;
       font-packages.enable = lib.mkDefault false;
       fontconfig.enable = lib.mkDefault false;
       sxiv.enable = false;

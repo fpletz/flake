@@ -114,7 +114,11 @@
     stateVersion = lib.mkOverride 1001 "25.05";
 
     # include git rev of this repo/flake into the nixos-version
-    configurationRevision = if inputs.self ? rev then lib.substring 0 8 inputs.self.rev else "dirty";
+    configurationRevision =
+      if inputs.self ? shortRev then
+        inputs.self.shortRev
+      else
+        with inputs.self.sourceInfo; "${dirtyShortRev}-${lastModifiedDate}";
 
     nixos = {
       revision = inputs.nixpkgs.rev;

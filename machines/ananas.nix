@@ -38,9 +38,7 @@
     ];
   };
 
-  services.journald.extraConfig = ''
-    Storage=volatile
-  '';
+  services.journald.settings.Journal.Storage = "volatile";
 
   environment.systemPackages = with pkgs; [ ipmitool ];
 

@@ -216,10 +216,10 @@
       DNSSEC = false;
     };
 
-    journald.extraConfig = ''
-      SystemMaxUse=100M
-      MaxRetentionSec=3days
-    '';
+    journald.settings.Journal = {
+      SystemMaxUse = "100M";
+      MaxRetentionSec = "3days";
+    };
 
     userborn.enable = true;
 

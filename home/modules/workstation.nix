@@ -3,6 +3,7 @@
   osConfig,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -194,7 +195,7 @@ in
         claws-mail
         keepassxc
         libreoffice-stable
-        qbz
+        inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.qbz
 
         # LSP servers
         nil

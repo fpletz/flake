@@ -15,8 +15,8 @@
       "-f AUTHPRIV"
       "-l INFO"
     ];
-    moduliFile = ../../../static/ssh-moduli;
     settings = {
+      ModuliFile = ../../../static/ssh-moduli;
       PasswordAuthentication = false;
       PubkeyAuthOptions = "verify-required";
       # crypto hardening

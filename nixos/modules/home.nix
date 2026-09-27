@@ -59,6 +59,7 @@ in
           "wireshark"
           "adbusers"
           "input"
+          "dialout"
           "podman"
           "systemd-journal"
         ];

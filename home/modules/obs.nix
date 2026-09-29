@@ -25,7 +25,6 @@
         obs-text-pthread
         waveform
         obs-vintage-filter
-        obs-composite-blur
         obs-source-record
         obs-source-clone
       ];

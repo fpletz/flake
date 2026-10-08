@@ -102,7 +102,6 @@ in
           };
           vdirsyncer = {
             enable = true;
-            useVcard4 = true;
             collections = [
               "personal"
               "tasks"

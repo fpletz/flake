@@ -177,7 +177,6 @@ in
         claws-mail
         keepassxc
         libreoffice-stable
-        inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.qbz
 
         # LSP servers
         nil

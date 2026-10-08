@@ -1,0 +1,250 @@
+[audio]
+enable_sounds = false
+
+[bar]
+order = [ "default" ]
+
+    [bar.default]
+    background_opacity = 0.79999998211860657
+    end = [
+        "media",
+        "status",
+        "status_2",
+        "notifications",
+        "clipboard",
+        "bar_2",
+        "bar",
+        "network",
+        "bluetooth",
+        "volume",
+        "brightness",
+        "battery",
+        "tray",
+        "control-center",
+        "session"
+    ]
+    margin_ends = 0
+    start = [ "launcher", "active-workspace", "ribbon", "bar_3", "mirror", "temp", "network_rx", "network_tx", "privacy" ]
+
+[brightness]
+enable_ddcutil = true
+
+[calendar]
+enabled = true
+
+[config]
+
+[control_center.calendar]
+show_week_numbers = true
+
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[idle]
+behavior_order = [ "lock", "screen-off" ]
+pre_action_fade_seconds = 5
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = false
+    timeout = 120
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = false
+    timeout = 300
+
+[location]
+address = "Ortenburg, Germany"
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@DP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 720.0
+    cx = 1280.0
+    cy = 1321.0
+    output = "DP-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1321.0
+    output = "DP-3"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[plugin_settings."mindnbytes/nix-status"]
+flake_dir = "/home/fpletz/src/flake"
+
+[plugin_settings."pozzoo/hassio"]
+ha_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MTczMGM5NjI0Yzg0Y2M3YjUxNTY3ZWZlZmQ2MzFhMiIsImlhdCI6MTc5MTUwMDE2NSwiZXhwIjoyMTA2ODYwMTY1fQ.XkXkkiMkpUrujgZEH2DdMigwBi3bLZK9v_Cv87_ynS4"
+ha_url = "http://homeassistant.as.bpletza.de:8123"
+
+[plugin_settings."rylos/syncthing"]
+config_path = "/home/fpletz/.config/syncthing/config.xml"
+
+[plugins]
+enabled = [
+    "pozzoo/hassio",
+    "noctalia/kaomoji",
+    "mindnbytes/nix-status",
+    "raycursive/niri-displays",
+    "ayagmar/obs-control",
+    "rylos/syncthing",
+    "rylos/tailnet",
+    "dunarand/tmux-provider",
+    "elijaharch/wl-screen-mirror",
+    "yocraft/qrcode",
+    "salemsayed/niri-active-workspace",
+    "luochen1990/niri-ribbon",
+    "zhangdm-520/niri-media-idle"
+]
+
+[shell]
+avatar_path = "/home/fpletz/.face"
+launch_apps_as_systemd_services = true
+niri_overview_type_to_launch_enabled = true
+polkit_agent = true
+settings_show_advanced = true
+settings_window_translucent = true
+
+    [shell.launcher]
+    pinned = [ "librewolf", "chromium-browser" ]
+
+    [shell.panel]
+    launcher_compact = true
+
+    [shell.screen_corners]
+    enabled = true
+
+[templates]
+
+[theme]
+builtin = "Tokyo-Night"
+community_palette = "Tokyo Night Moon"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "btop", "gtk3", "gtk4", "ghostty", "niri", "qt" ]
+    community_ids = [ "claude-code", "ungoogled-chromium", "zed", "steam", "fuzzel", "obs", "thunderbird", "zathura", "bat", "yazi" ]
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+transition_on_startup = true
+
+    [wallpaper.automation]
+    enabled = true
+
+    [wallpaper.default]
+    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_5dzxv1.jpg"
+
+    [wallpaper.last]
+    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_5dzxv1.jpg"
+
+    [wallpaper.monitors.DP-1]
+    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_5dzxv1.jpg"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_5dzxv1.jpg"
+
+[widget.active-workspace]
+type = "salemsayed/niri-active-workspace:active-workspace"
+
+[widget.bar]
+type = "rylos/tailnet:bar"
+
+[widget.bar_2]
+type = "rylos/syncthing:bar"
+
+[widget.bar_3]
+type = "raycursive/niri-displays:bar"
+
+[widget.cat]
+input_devices = [ "/dev/input/by-id/usb-Keychron*", "/dev/input/by-id/usb-Winry315*" ]
+type = "noctalia/bongocat:cat"
+
+[widget.clock]
+format = "{:%a %d %b} {:%H:%M}"
+
+[widget.date]
+vertical_format = "{:%a\\n%d}"
+
+[widget.media]
+max_length = 400
+
+[widget.mirror]
+type = "elijaharch/wl-screen-mirror:mirror"
+
+[widget.privacy]
+hide_inactive = true
+
+[widget.ribbon]
+type = "luochen1990/niri-ribbon:ribbon"
+
+[widget.status]
+type = "pozzoo/hassio:status"
+
+[widget.status_2]
+type = "mindnbytes/nix-status:status"
+
+[widget.sysmon]
+stat = "net_rx"

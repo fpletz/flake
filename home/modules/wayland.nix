@@ -31,6 +31,7 @@ in
       pkgs.emoji-picker
       pkgs.bzmenu
       pkgs.shikane
+      pkgs.ddcutil
     ];
 
     programs.fuzzel = {
@@ -45,6 +46,13 @@ in
           use-bold = true;
         };
       };
+    };
+
+    stylix.targets.noctalia.enable = false;
+    programs.noctalia = {
+      enable = true;
+      systemd.enable = true;
+      settings = fromTOML (builtins.readFile ../../static/noctalia-config.toml);
     };
 
     systemd.user.services.shikane = {

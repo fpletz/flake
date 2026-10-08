@@ -20,18 +20,6 @@ in
       useNautilus = false;
     };
 
-    systemd.user.services.noctalia-shell = {
-      wantedBy = [ "graphical-session.target" ];
-      partOf = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      environment.PATH = lib.mkForce null;
-      serviceConfig = {
-        ExecStart = lib.getExe pkgs.noctalia-shell;
-        Slice = "session.slice";
-        Restart = "on-failure";
-      };
-    };
-
     qt = {
       enable = true;
       platformTheme = "qt5ct";
@@ -40,7 +28,6 @@ in
 
     environment.systemPackages = [
       pkgs.xwayland-satellite
-      pkgs.noctalia-shell
       pkgs.evtest
     ];
   };

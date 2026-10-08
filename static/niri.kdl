@@ -220,20 +220,19 @@ binds {
   Mod+Shift+D { spawn "emoji-picker"; }
   Mod+P { spawn "tessen"; }
 
-  Mod+Alt+L { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lock"; }
-  Mod+E { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lock"; }
-  Mod+Shift+E { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+  Mod+Alt+L { spawn "loginctl" "lock-session"; }
+  Mod+E { spawn "loginctl" "lock-session"; }
   Ctrl+Alt+Delete { quit; }
 
-  XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-  XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-  XF86AudioMute allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-  Mod+XF86AudioRaiseVolume allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "increaseInput"; }
-  Mod+XF86AudioLowerVolume allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "decreaseInput"; }
-  Mod+XF86AudioMute allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-  XF86AudioMicMute allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-  XF86MonBrightnessDown { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-  XF86MonBrightnessUp { spawn "noctalia-shell" "ipc" "call" "brigthness" "decrease"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-up"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-down"; }
+  XF86AudioMute allow-when-locked=true { spawn  "noctalia" "msg" "volume-mute"; }
+  Mod+XF86AudioRaiseVolume allow-when-locked=true { spawn  "noctalia" "msg" "mic-volume-up"; }
+  Mod+XF86AudioLowerVolume allow-when-locked=true { spawn  "noctalia" "msg" "mic-volume-down" ; }
+  Mod+XF86AudioMute allow-when-locked=true { spawn  "noctalia" "msg" "mic-mute"; }
+  XF86AudioMicMute allow-when-locked=true { spawn "noctalia" "msg" "mic-mute"; }
+  XF86MonBrightnessUp { spawn "noctalia" "msg" "brigthness-up"; }
+  XF86MonBrightnessDown { spawn "noctalia" "msg" "brightness-down"; }
 
   Mod+Q { close-window; }
   Mod+Shift+Q { close-window; }

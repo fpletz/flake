@@ -107,6 +107,7 @@ in
               "tasks"
             ];
           };
+          noctalia.enable = true;
         };
         feiertage_bayern = {
           remote = {
@@ -126,25 +127,7 @@ in
           vdirsyncer = {
             enable = true;
           };
-        };
-        muccc = {
-          remote = {
-            type = "http";
-            url = "https://api.muc.ccc.de/events/all.ics";
-          };
-          thunderbird = {
-            enable = true;
-            color = "yellow";
-          };
-          khal = {
-            enable = true;
-            readOnly = true;
-            color = "yellow";
-            priority = 5;
-          };
-          vdirsyncer = {
-            enable = true;
-          };
+          noctalia.enable = true;
         };
       };
     };

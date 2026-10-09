@@ -224,6 +224,9 @@ binds {
   Mod+E { spawn "loginctl" "lock-session"; }
   Ctrl+Alt+Delete { quit; }
 
+  Mod+Space { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+  Mod+S { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
+
   XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-up"; }
   XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-down"; }
   XF86AudioMute allow-when-locked=true { spawn  "noctalia" "msg" "volume-mute"; }
@@ -380,6 +383,54 @@ gestures {
   hot-corners {
     off
   }
+}
+
+window-rule {
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
+layer-rule {
+  match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+    // blur false
+  }
+}
+
+layer-rule {
+  match namespace="noctalia-window-switcher"
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
+blur {
+  passes 2
+  offset 2.0
+  noise 0.03
+  saturation 1.0
+}
+
+// Floating Noctalia settings window.
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
+layer-rule {
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
 }
 
 include "./noctalia.kdl"

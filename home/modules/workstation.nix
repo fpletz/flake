@@ -3,7 +3,6 @@
   osConfig,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 

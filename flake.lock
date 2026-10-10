@@ -178,11 +178,11 @@
     "flexfox": {
       "flake": false,
       "locked": {
-        "lastModified": 1791481934,
-        "narHash": "sha256-ZQxC0bog7KXN49Y7w9s5zL4AW9zIYuLZiqV5WLG4NVE=",
+        "lastModified": 1791527450,
+        "narHash": "sha256-zBD5UeJkcdn2VC/t81URSqfzbE+conjW7t1PQJCfk/k=",
         "ref": "refs/heads/main",
-        "rev": "4cb33d53e4ff40eeb3f34881e04c87146b4ef734",
-        "revCount": 189,
+        "rev": "60973efe3dd8d61c57f27a0d6f4e92523031eecd",
+        "revCount": 191,
         "type": "git",
         "url": "https://github.com/yuuqilin/FlexFox.git"
       },
@@ -256,11 +256,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791484883,
-        "narHash": "sha256-iKxFHJrg7Sltwhq3ssCZYQ4CFEDVvReVVuVuO9dj3sE=",
+        "lastModified": 1791600313,
+        "narHash": "sha256-/2gb2WTztITD/JU1XUCg63vDsIfJGLr0LDsjSCTTJc8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "dfadbe5162d5e86bc0808badec8f346f81b4b3f0",
+        "rev": "427c74a88a93cc9f856c8bb99bf6b4a5187a6b33",
         "type": "github"
       },
       "original": {
@@ -383,11 +383,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1791456040,
-        "narHash": "sha256-H83yz/do+hjOO0uujHyH8RgtIQP2v7Mw+cLwcZK/xKc=",
+        "lastModified": 1791600815,
+        "narHash": "sha256-yApdUojdRQI2adjRTzttpOkEORoZ/9Y3Cum0crEdeY4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e7439b6b14ad3cc35d05608ebca9bce01a25f5f8",
+        "rev": "fd63ca2d4ddab8484241df55d8c9daa300cf31f7",
         "type": "github"
       },
       "original": {
@@ -408,11 +408,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1791413357,
-        "narHash": "sha256-5l8P7oeBdNQC8QhhyjcadWnDL2NWqfCjhyiEHzf5gMs=",
+        "lastModified": 1791574898,
+        "narHash": "sha256-hZbiKS5wzcqoKR0xwzxhJAyp1JuTL2CloYON040FJNk=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "2e18a1aee60f0b8193169ca225aa698d424c0d07",
+        "rev": "2c6d56d2df7c159ef629871cfd673de237e1fc38",
         "type": "github"
       },
       "original": {
@@ -457,11 +457,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1791298392,
-        "narHash": "sha256-qxJ1qfHnXfgAUgRF31kt09SoGWptzGrIH5G4pK98wgU=",
+        "lastModified": 1791558887,
+        "narHash": "sha256-8+0AAs+xA3xqNv3yORGaHps8BNG1o5FrG91sPCD9Mgg=",
         "owner": "Astro",
         "repo": "nix-openwrt-imagebuilder",
-        "rev": "4cafa1bf12f973f23f663dd7083b878b79bfd0a8",
+        "rev": "b7f8ed6383ad067bd8b96f6541ad216850ba141f",
         "type": "github"
       },
       "original": {
@@ -533,11 +533,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1790880877,
-        "narHash": "sha256-j42XqSKOAtuqtfHiElyHre2YS/h3Y3q1DjFnKODN1/k=",
+        "lastModified": 1791574276,
+        "narHash": "sha256-UMnLnZ3JlA7UTBNNNx1rNsXYoPP/cirXLCKGiQ/yDx8=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "7c065d1ed05381fceb2403b963c5ad150f32fe39",
+        "rev": "2856c4c6a845b9bec98828ef197abe176e4806bb",
         "type": "github"
       },
       "original": {

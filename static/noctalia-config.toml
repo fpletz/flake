@@ -1,6 +1,9 @@
 [audio]
 enable_sounds = false
 
+[backdrop]
+enabled = true
+
 [bar]
 order = [ "default" ]
 
@@ -8,8 +11,6 @@ order = [ "default" ]
     background_opacity = 0.79999998211860657
     end = [
         "media",
-        "status",
-        "status_2",
         "notifications",
         "clipboard",
         "bar_2",
@@ -24,13 +25,37 @@ order = [ "default" ]
         "session"
     ]
     margin_ends = 0
-    start = [ "launcher", "active-workspace", "ribbon", "bar_3", "mirror", "temp", "network_rx", "network_tx", "privacy" ]
+    start = [
+        "launcher",
+        "active-workspace",
+        "ribbon",
+        "bar_3",
+        "mirror",
+        "power_profile",
+        "cat_2",
+        "temp",
+        "network_rx",
+        "network_tx",
+        "privacy"
+    ]
 
 [brightness]
 enable_ddcutil = true
 
 [calendar]
 enabled = true
+
+    [calendar.account.bpletza]
+    color = "primary"
+    name = "bpletza"
+    path = "/home/fpletz/.calendar/bpletza"
+    type = "vdir"
+
+    [calendar.account.feiertage_bayern]
+    color = "primary"
+    name = "feiertage_bayern"
+    path = "/home/fpletz/.calendar/feiertage_bayern"
+    type = "vdir"
 
 [config]
 
@@ -51,17 +76,17 @@ widget_order = []
 
 [idle]
 behavior_order = [ "lock", "screen-off" ]
-pre_action_fade_seconds = 5
+pre_action_fade_seconds = 10
 
     [idle.behavior.lock]
     action = "lock"
-    enabled = false
-    timeout = 120
+    enabled = true
+    timeout = 120.0
 
     [idle.behavior.screen-off]
     action = "screen_off"
-    enabled = false
-    timeout = 300
+    enabled = true
+    timeout = 300.0
 
 [location]
 address = "Ortenburg, Germany"
@@ -130,6 +155,33 @@ widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@DP-1" ]
         show_unlock_hint = true
         show_weather = true
 
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "HDMI-A-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
 [plugin_settings."mindnbytes/nix-status"]
 flake_dir = "/home/fpletz/src/flake"
 
@@ -142,9 +194,7 @@ config_path = "/home/fpletz/.config/syncthing/config.xml"
 
 [plugins]
 enabled = [
-    "pozzoo/hassio",
     "noctalia/kaomoji",
-    "mindnbytes/nix-status",
     "raycursive/niri-displays",
     "ayagmar/obs-control",
     "rylos/syncthing",
@@ -154,7 +204,8 @@ enabled = [
     "yocraft/qrcode",
     "salemsayed/niri-active-workspace",
     "luochen1990/niri-ribbon",
-    "zhangdm-520/niri-media-idle"
+    "zhangdm-520/niri-media-idle",
+    "dotnetrob/cat"
 ]
 
 [shell]
@@ -195,21 +246,25 @@ transition_on_startup = true
     enabled = true
 
     [wallpaper.default]
-    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_5dzxv1.jpg"
+    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_1p55dw.jpg"
 
     [wallpaper.last]
-    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_5dzxv1.jpg"
+    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_1p55dw.jpg"
 
     [wallpaper.monitors.DP-1]
-    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_5dzxv1.jpg"
+    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_1p55dw.jpg"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_5dzxv1.jpg"
+    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_1p55dw.jpg"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_28dgpm.jpg"
 
 [widget.active-workspace]
 type = "salemsayed/niri-active-workspace:active-workspace"
 
 [widget.bar]
+show_count = false
 type = "rylos/tailnet:bar"
 
 [widget.bar_2]
@@ -221,6 +276,9 @@ type = "raycursive/niri-displays:bar"
 [widget.cat]
 input_devices = [ "/dev/input/by-id/usb-Keychron*", "/dev/input/by-id/usb-Winry315*" ]
 type = "noctalia/bongocat:cat"
+
+[widget.cat_2]
+type = "dotnetrob/cat:cat"
 
 [widget.clock]
 format = "{:%a %d %b} {:%H:%M}"

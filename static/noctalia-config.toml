@@ -21,7 +21,6 @@ order = [ "default" ]
         "brightness",
         "battery",
         "tray",
-        "control-center",
         "session"
     ]
     margin_ends = 0
@@ -36,6 +35,7 @@ order = [ "default" ]
         "temp",
         "network_rx",
         "network_tx",
+        "sysmon",
         "privacy"
     ]
 
@@ -91,103 +91,16 @@ pre_action_fade_seconds = 10
 [location]
 address = "Ortenburg, Germany"
 
+[lockscreen]
+transition = [ "wipe" ]
+
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@DP-1" ]
-
-    [lockscreen_widgets.grid]
-    cell_size = 16
-    major_interval = 4
-    visible = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
-    box_height = 196.0
-    box_width = 720.0
-    cx = 1280.0
-    cy = 1321.0
-    output = "DP-1"
-    placement_height = 1440.0
-    placement_width = 2560.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 1280.0
-    cy = 1321.0
-    output = "DP-3"
-    placement_height = 1440.0
-    placement_width = 2560.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 1280.0
-    cy = 1258.0
-    output = "HDMI-A-1"
-    placement_height = 1440.0
-    placement_width = 2560.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
+widget_order = [ ]
 
 [plugin_settings."mindnbytes/nix-status"]
 flake_dir = "/home/fpletz/src/flake"
-
-[plugin_settings."pozzoo/hassio"]
-ha_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MTczMGM5NjI0Yzg0Y2M3YjUxNTY3ZWZlZmQ2MzFhMiIsImlhdCI6MTc5MTUwMDE2NSwiZXhwIjoyMTA2ODYwMTY1fQ.XkXkkiMkpUrujgZEH2DdMigwBi3bLZK9v_Cv87_ynS4"
-ha_url = "http://homeassistant.as.bpletza.de:8123"
 
 [plugin_settings."rylos/syncthing"]
 config_path = "/home/fpletz/.config/syncthing/config.xml"
@@ -240,25 +153,11 @@ wallpaper_scheme = "m3-content"
 
 [wallpaper]
 directory = "~/Pictures/Wallpapers"
+transition = [ "wipe" ]
 transition_on_startup = true
 
     [wallpaper.automation]
     enabled = true
-
-    [wallpaper.default]
-    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_1p55dw.jpg"
-
-    [wallpaper.last]
-    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_1p55dw.jpg"
-
-    [wallpaper.monitors.DP-1]
-    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_1p55dw.jpg"
-
-    [wallpaper.monitors.DP-3]
-    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_1p55dw.jpg"
-
-    [wallpaper.monitors.HDMI-A-1]
-    path = "/home/fpletz/Pictures/Wallpapers/wallhaven_28dgpm.jpg"
 
 [widget.active-workspace]
 type = "salemsayed/niri-active-workspace:active-workspace"
@@ -298,11 +197,5 @@ hide_inactive = true
 [widget.ribbon]
 type = "luochen1990/niri-ribbon:ribbon"
 
-[widget.status]
-type = "pozzoo/hassio:status"
-
-[widget.status_2]
-type = "mindnbytes/nix-status:status"
-
 [widget.sysmon]
-stat = "net_rx"
+stat = "disk_used_pct"

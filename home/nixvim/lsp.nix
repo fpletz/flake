@@ -119,7 +119,8 @@
       };
     };
     typescript-tools = {
-      enable = true;
+      # XXX: fails on nixpkgs unstable
+      enable = false;
       settings.settings = {
         expose_as_code_action = "all";
       };

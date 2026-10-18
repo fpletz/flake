@@ -175,7 +175,7 @@ in
         gimp3
         claws-mail
         keepassxc
-        libreoffice-stable
+        libreoffice
 
         # LSP servers
         nil

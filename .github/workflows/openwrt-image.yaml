@@ -1,0 +1,48 @@
+name: OpenWrt Image
+on:
+  push:
+    branches: [main]
+    paths:
+      - openwrt/**
+      - flake.lock
+      - .github/workflows/openwrt-image.yaml
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Install Lix
+        uses: samueldr/lix-gha-installer-action@latest
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: fpletz-flake
+          signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Build router image
+        run: nix build .#openwrtImages.router --out-link result-router
+      - name: Stage release assets
+        run: |
+          mkdir staging
+          cp result-router/*-sysupgrade.bin staging/openwrt-router-sysupgrade.bin
+          cp result-router/sha256sums staging/
+          cp result-router/*.manifest staging/openwrt-router.manifest
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release delete router-latest --cleanup-tag --yes || true
+          gh release create router-latest staging/* \
+            --target "$GITHUB_SHA" --prerelease \
+            --title "OpenWrt router image" \
+            --notes "Built from $GITHUB_SHA"

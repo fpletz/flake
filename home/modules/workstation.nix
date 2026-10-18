@@ -327,5 +327,10 @@ in
       enable = true;
       shellWrapperName = "y";
     };
+
+    programs.opencode = {
+      enable = true;
+      web.enable = true;
+    };
   };
 }

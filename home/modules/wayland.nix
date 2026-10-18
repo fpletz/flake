@@ -11,7 +11,7 @@ in
 {
   options.bpletza.workstation.wayland = lib.mkOption {
     type = lib.types.bool;
-    default = config.bpletza.workstation.enable;
+    default = oscfg.gui;
   };
 
   config = lib.mkIf config.bpletza.workstation.wayland {

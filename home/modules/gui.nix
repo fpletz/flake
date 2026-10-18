@@ -7,12 +7,13 @@
 }:
 let
   cfg = config.bpletza.workstation;
+  oscfg = osConfig.bpletza.workstation;
 in
 {
   options.bpletza.workstation = {
     gui = lib.mkOption {
       type = lib.types.bool;
-      default = config.bpletza.workstation.wayland;
+      default = oscfg.gui;
     };
     ytdlVideoCodec = lib.mkOption {
       type = lib.types.str;

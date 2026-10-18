@@ -14,6 +14,7 @@ Personal Nix flake (flake-parts) for infra: NixOS modules, home-manager, custom 
 - Enter shell: `nix develop` (direnv `use flake` + `.env`). Provides sops, nix-fast-build, nixos-anywhere, nh, treefmt.
 - Full check (same as CI): `nix run .#check` (wraps `nix-fast-build --no-nom --no-download`; extra args pass through)
 - Deploy machines with `nh os switch .#<host>` (add `--target-host <host>` for remote); real hosts: ananas, hal, fpine, trolovo, lolnovo, zocknix.
+- Update inputs: `nix run .#update [-- input...]` (runs `nix flake update` and commits `flake.lock` with a conventional message; never use `--commit-lock-file`).
 - Format: `nix fmt` (treefmt; pre-commit runs `treefmt --fail-on-change`).
 - Terraform: `nix run .#apply` / `.#destroy` (copies generated `config.tf.json`, runs tofu init + apply interactively). Don't run apply without being asked.
 

@@ -20,6 +20,7 @@ Nix flake ([flake-parts](https://flake.parts)) with the expressions for my perso
 nix develop                                        # dev shell (sops, nh, nixos-anywhere, treefmt, ...)
 nix fmt                                            # format with treefmt
 nix run .#check                                    # run all checks (same as CI)
+nix run .#update                                   # update flake.lock and commit it (conventional message)
 nix run .#apply                                    # generate config.tf.json and apply DNS via tofu
 nh os switch .#<host>                              # deploy a machine (use nh, add --target-host for remote)
 ```

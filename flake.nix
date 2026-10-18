@@ -137,6 +137,58 @@
             );
           };
 
+          apps.update = {
+            type = "app";
+            program = pkgs.lib.getExe (
+              pkgs.writeShellApplication {
+                name = "update";
+                runtimeInputs = [
+                  pkgs.nix
+                  pkgs.git
+                  pkgs.jq
+                  pkgs.coreutils
+                ];
+                text = ''
+                  old=$(mktemp)
+                  trap 'rm -f "$old"' EXIT
+                  cp flake.lock "$old"
+
+                  nix flake update "$@"
+
+                  if git diff --quiet -- flake.lock; then
+                    echo "flake.lock: nothing to update"
+                    exit 0
+                  fi
+
+                  body=$(jq -nr --slurpfile o "$old" --slurpfile n flake.lock '
+                    def locks(l):
+                      l.nodes as $nodes
+                      | l.nodes.root.inputs
+                      | to_entries
+                      | map(select(.value | type == "string"))
+                      | map({key, value: ($nodes[.value].locked // {})})
+                      | from_entries;
+                    def id(x): x.rev // x.narHash // "unknown";
+                    def short(x):
+                      if x.rev then x.rev[0:7] else (x.narHash // "?")[0:14] end;
+                    def date(x):
+                      if x.lastModified then (x.lastModified | strftime("%Y-%m-%d")) else "?" end;
+                    locks($o[0]) as $a
+                    | locks($n[0]) as $b
+                    | ([($a | keys[]), ($b | keys[])] | unique[]) as $k
+                    | if $a[$k] == null then "- \($k): added (\(short($b[$k])))"
+                      elif $b[$k] == null then "- \($k): removed"
+                      elif id($a[$k]) == id($b[$k]) then empty
+                      else "- \($k): \(short($a[$k])) -> \(short($b[$k])) (\(date($a[$k])) -> \(date($b[$k])))"
+                      end
+                  ')
+
+                  git commit -m "chore(flake): update flake.lock" -m "$body" -- flake.lock
+                '';
+              }
+            );
+          };
+
           devShells.default = pkgs.mkShellNoCC {
             packages = [
               pkgs.sops

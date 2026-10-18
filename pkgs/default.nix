@@ -37,8 +37,8 @@ in
     final: prev:
     {
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
-      borgbackup = prev.borgbackup.overrideAttrs (_: {
-        patches = [ ];
+      khal = prev.khal.overrideAttrs (_: {
+        sphinxBuilders = [ "html man" ];
       });
     }
     // byNamePackages final;

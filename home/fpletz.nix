@@ -12,6 +12,8 @@
   ]
   ++ lib.filesystem.listFilesRecursive ./modules;
 
+  nixpkgs.overlays = [ inputs.self.overlays.default ];
+
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes.src}/base24/chalk.yaml";

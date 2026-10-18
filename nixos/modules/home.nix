@@ -34,7 +34,6 @@ in
     };
 
     home-manager = lib.mkIf (!config.boot.isContainer) {
-      useGlobalPkgs = true;
       useUserPackages = true;
       users.${cfg.user} = ../../home/${cfg.user}.nix;
       extraSpecialArgs = {

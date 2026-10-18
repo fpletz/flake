@@ -61,6 +61,7 @@ in
           "dialout"
           "podman"
           "systemd-journal"
+          "ollama"
         ];
         home = "/home/${cfg.user}";
         shell = "/run/current-system/sw/bin/zsh";

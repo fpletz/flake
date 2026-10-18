@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -15,8 +16,10 @@ in
       permittedUnfreePackages = [
         "nvidia-x11"
         "nvidia-settings"
-        "cuda_cudart"
+        "cccl"
         "cuda_cccl"
+        "cuda_crt"
+        "cuda_cudart"
         "cuda_nvcc"
         "cuda_nvrtc"
         "cudnn"
@@ -26,11 +29,16 @@ in
         "libcurand"
         "libcusparse"
         "libnvjitlink"
+        "libnvvm"
       ];
       config = {
-        # FIXME: causes rebuild of firefox/librewolf without much benefit
-        cudaSupport = false;
+        cudaSupport = true;
       };
+    };
+
+    services.ollama = {
+      enable = true;
+      package = pkgs.ollama-cuda;
     };
 
     nix.settings = {

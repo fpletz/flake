@@ -124,6 +124,19 @@
           ...
         }:
         {
+          apps.check = {
+            type = "app";
+            program = pkgs.lib.getExe (
+              pkgs.writeShellApplication {
+                name = "check";
+                runtimeInputs = [ pkgs.nix-fast-build ];
+                text = ''
+                  nix-fast-build --no-nom --no-download "$@"
+                '';
+              }
+            );
+          };
+
           devShells.default = pkgs.mkShellNoCC {
             packages = [
               pkgs.sops

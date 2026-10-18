@@ -1,0 +1,10 @@
+rules:
+  type-format:
+    level: error
+    format: ^(build|bump|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)$
+  type-empty:
+    level: error
+  description-empty:
+    level: error
+  subject-empty:
+    level: error

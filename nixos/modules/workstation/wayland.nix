@@ -9,10 +9,9 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    services.greetd = {
+    services.displayManager.noctalia-greeter = {
       enable = true;
-      settings.default_session.command = "${lib.getExe pkgs.tuigreet} --remember-session";
-      useTextGreeter = true;
+      passwordlessSyncUsers = [ config.bpletza.home.user ];
     };
 
     programs.niri = {

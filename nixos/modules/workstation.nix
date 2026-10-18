@@ -418,19 +418,19 @@ in
         defaultFonts = {
           emoji = [ "Noto Color Emoji" ];
           monospace = [
-            "0xProto"
+            "CommitMono"
             "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
           ];
           sansSerif = [
-            "Recursive Sans Casual Static"
+            "Inter"
             "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"
           ];
           serif = [
-            "Recursive Sans Casual Static"
+            "Noto Serif"
             "Noto Color Emoji"
             "Font Awesome 6 Free"
             "Font Awesome 5 Free"

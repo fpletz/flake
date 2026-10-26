@@ -53,7 +53,6 @@ in
         memtest86.enable = true;
         netbootxyz.enable = true;
       };
-      initrd.systemd.enable = true;
       binfmt.emulatedSystems = lib.optional pkgs.stdenv.hostPlatform.isx86_64 "aarch64-linux";
     };
 

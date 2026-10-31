@@ -24,6 +24,7 @@
 
     programs.nushell = {
       enable = true;
+      loadSessionVariables = true;
       environmentVariables = {
         CARAPACE_BRIDGES = "zsh,bash,inshellisense";
       };

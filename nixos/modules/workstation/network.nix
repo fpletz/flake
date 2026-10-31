@@ -211,8 +211,10 @@ in
 
     services.avahi = {
       enable = lib.mkDefault true;
-      ipv4 = true;
-      ipv6 = true;
+      settings.server = {
+        use-ipv4 = true;
+        use-ipv6 = true;
+      };
     };
 
     networking.firewall = {

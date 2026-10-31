@@ -31,7 +31,7 @@ order = [ "default" ]
         "bar_3",
         "mirror",
         "power_profile",
-        "cat_2",
+        "cat",
         "temp",
         "network_rx",
         "network_tx",
@@ -86,7 +86,7 @@ pre_action_fade_seconds = 10
     [idle.behavior.screen-off]
     action = "screen_off"
     enabled = true
-    timeout = 300.0
+    timeout = 180.0
 
 [location]
 address = "Ortenburg, Germany"
@@ -117,7 +117,7 @@ enabled = [
     "yocraft/qrcode",
     "salemsayed/niri-active-workspace",
     "luochen1990/niri-ribbon",
-    "zhangdm-520/niri-media-idle",
+    "whyoolw/sharednd",
     "dotnetrob/cat"
 ]
 
@@ -125,6 +125,7 @@ enabled = [
 avatar_path = "/home/fpletz/.face"
 launch_apps_as_systemd_services = true
 niri_overview_type_to_launch_enabled = true
+password_style = "random"
 polkit_agent = true
 settings_show_advanced = true
 settings_window_translucent = true
@@ -173,10 +174,6 @@ type = "rylos/syncthing:bar"
 type = "raycursive/niri-displays:bar"
 
 [widget.cat]
-input_devices = [ "/dev/input/by-id/usb-Keychron*", "/dev/input/by-id/usb-Winry315*" ]
-type = "noctalia/bongocat:cat"
-
-[widget.cat_2]
 type = "dotnetrob/cat:cat"
 
 [widget.clock]
@@ -198,4 +195,4 @@ hide_inactive = true
 type = "luochen1990/niri-ribbon:ribbon"
 
 [widget.sysmon]
-stat = "disk_used_pct"
+stat = "disk_free"

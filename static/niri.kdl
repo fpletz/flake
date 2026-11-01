@@ -216,8 +216,7 @@ binds {
 
   Mod+T { spawn "ghostty"; }
   Mod+Return { spawn "ghostty"; }
-  Mod+D { spawn "fuzzel"; }
-  Mod+Shift+D { spawn "emoji-picker"; }
+  Mod+D { spawn "noctalia" "msg" "panel-open" "launcher"; }
   Mod+P { spawn "tessen"; }
 
   Mod+Alt+L { spawn "loginctl" "lock-session"; }

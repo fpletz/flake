@@ -28,7 +28,6 @@ in
       pkgs.wlr-randr
       pkgs.wtype
       pkgs.tessen
-      pkgs.emoji-picker
       pkgs.bzmenu
       pkgs.shikane
       pkgs.ddcutil

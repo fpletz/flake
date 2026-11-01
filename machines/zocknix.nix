@@ -97,7 +97,7 @@
   services.hardware.openrgb = {
     enable = true;
     motherboard = "amd";
-    startupProfile = "default.orp";
+    startupProfile = "default";
   };
 
   # increase for big builds in tmpfs

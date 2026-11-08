@@ -37,9 +37,6 @@ in
     final: prev:
     {
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
-      khal = prev.khal.overrideAttrs (_: {
-        sphinxBuilders = [ "html man" ];
-      });
     }
     // byNamePackages final;
 }

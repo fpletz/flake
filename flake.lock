@@ -178,11 +178,11 @@
     "flexfox": {
       "flake": false,
       "locked": {
-        "lastModified": 1793204542,
-        "narHash": "sha256-GWh59ezbKQfgX9HpbQ48sQundH3kr6EhLJh2LcmipZY=",
+        "lastModified": 1794141353,
+        "narHash": "sha256-YPhAhT3UXIwD8Agbi0oNq7yjjB5x8GXwKeGn+E1KxDw=",
         "ref": "refs/heads/main",
-        "rev": "8f8dc37b4b1926f3cace50ec55309f4ecc75002a",
-        "revCount": 209,
+        "rev": "d0d52dcc97b7118655787a57d0f2ff3c3bbe9499",
+        "revCount": 214,
         "type": "git",
         "url": "https://github.com/yuuqilin/FlexFox.git"
       },
@@ -291,11 +291,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793543282,
-        "narHash": "sha256-PHtGxKYM99f8WhGR5YD7iiCiwemKa2wUD4yVI2oALFg=",
+        "lastModified": 1794132860,
+        "narHash": "sha256-iGNtQnUZsi+v6/4NbtYr+dsmASa6GkzXtUcTpE8F3mE=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "cee0f879d338cf08f814210fa6c2b280594ade0a",
+        "rev": "af9249ca33bc2efaae5d071e4c67ddef19dcb681",
         "type": "github"
       },
       "original": {

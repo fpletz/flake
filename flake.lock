@@ -96,11 +96,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792526520,
-        "narHash": "sha256-3hSJlv8mUVnZPMWK2+CM7a9O+nR6Z4mCh27NfLCmTPc=",
+        "lastModified": 1794328522,
+        "narHash": "sha256-h2BYMW4nTFpIqnMd8gwAPFmJAp/1wWLQ6vT0NfL5qt4=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "cedd626e11b635470fa6f9fdb8ad79b0075dd7f9",
+        "rev": "1dd30c29c88d99ce295f15e27f93c49bc5fbae07",
         "type": "github"
       },
       "original": {
@@ -178,11 +178,11 @@
     "flexfox": {
       "flake": false,
       "locked": {
-        "lastModified": 1793204542,
-        "narHash": "sha256-GWh59ezbKQfgX9HpbQ48sQundH3kr6EhLJh2LcmipZY=",
+        "lastModified": 1794290130,
+        "narHash": "sha256-TUY6pfjAlEjmmYxa3tFmPkglib2FISeGNxYLx8T7Kmo=",
         "ref": "refs/heads/main",
-        "rev": "8f8dc37b4b1926f3cace50ec55309f4ecc75002a",
-        "revCount": 209,
+        "rev": "17ce135864c4c8a66d31c6721f413ddcc2e73e78",
+        "revCount": 230,
         "type": "git",
         "url": "https://github.com/yuuqilin/FlexFox.git"
       },
@@ -256,11 +256,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793979366,
-        "narHash": "sha256-7OoWDsYO9teiPxl0QdlS5lYE20Pue8/5mpscSL32FUA=",
+        "lastModified": 1794278858,
+        "narHash": "sha256-rkrJwLgLSHBnXfgoSKIDa+2LLGdTqynsV3GAxOTGhUU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2c0c1f01521469cf0271180c453c79782d53c2f6",
+        "rev": "82ce401aa350502897c3f2e85f384d61cd3b0b6d",
         "type": "github"
       },
       "original": {
@@ -291,11 +291,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793543282,
-        "narHash": "sha256-PHtGxKYM99f8WhGR5YD7iiCiwemKa2wUD4yVI2oALFg=",
+        "lastModified": 1794132860,
+        "narHash": "sha256-iGNtQnUZsi+v6/4NbtYr+dsmASa6GkzXtUcTpE8F3mE=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "cee0f879d338cf08f814210fa6c2b280594ade0a",
+        "rev": "af9249ca33bc2efaae5d071e4c67ddef19dcb681",
         "type": "github"
       },
       "original": {
@@ -383,11 +383,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1794070417,
-        "narHash": "sha256-leOOarLQ85CtX6NUcHuqNoOCwHbNKLRj6mNK59enKAA=",
+        "lastModified": 1794406962,
+        "narHash": "sha256-qjmHl3Lvvjld2DywBMATg+nRpX7Mol5fqPZAcJcrNE8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d63e5b96ca17ae27b5d248d29564e31ff7a83f02",
+        "rev": "39b15f146050cf402c45e0f0ea09170da0293fba",
         "type": "github"
       },
       "original": {
@@ -408,11 +408,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1792203519,
-        "narHash": "sha256-yJ072hxngo/srNdLTp4BlFeo0hedwnKicI3TGlSXLFE=",
+        "lastModified": 1794408140,
+        "narHash": "sha256-vS4BTt6CkLn2BLcYA7kZUxFNnZpPgW0GJ73s/VoPhWc=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "453dc9c5037e6d1bec81d2a51ddacd58a2f44e9c",
+        "rev": "44849d3d24b28d59fa963bd832ec59c60c56a34c",
         "type": "github"
       },
       "original": {
@@ -457,11 +457,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1794075434,
-        "narHash": "sha256-ofxzSwVmfu7rhdB/0JP1xsTAOloIaKbeyZ8ek55wuak=",
+        "lastModified": 1794413033,
+        "narHash": "sha256-ixL/1G5IM2pN4MH5hebFBdldbNiy3y3jt9D8FAMnzk0=",
         "owner": "Astro",
         "repo": "nix-openwrt-imagebuilder",
-        "rev": "fc3cb64bab949ced999ed169696b93cfe7fcda38",
+        "rev": "1847db66cf7a60f1c6bd840945ec719ef6ab2fd4",
         "type": "github"
       },
       "original": {
@@ -498,11 +498,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793995029,
-        "narHash": "sha256-ZlE4BtMjWhfC6rFXLO9Qimn36Ene1INqCgKDDvazjhc=",
+        "lastModified": 1794261845,
+        "narHash": "sha256-Ivif/kuD68yEOKcZZG3zSwNMFUuIgzUgeJuzcHrQy+8=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "89a234ce2daf6e568a7d4b4fe250afdd23d84e20",
+        "rev": "fe7b4228405aeac2ce7192c2049a6e2bc8637082",
         "type": "github"
       },
       "original": {

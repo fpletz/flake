@@ -34,7 +34,7 @@ in
     };
 
   flake.overlays.default =
-    final: prev:
+    final: _prev:
     {
       linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
     }

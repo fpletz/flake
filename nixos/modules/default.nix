@@ -156,6 +156,7 @@
       builders-use-substitutes = true;
       log-lines = lib.mkDefault 25;
       narinfo-cache-negative-ttl = 300;
+      commit-lock-file-summary = "chore(flake): update flake.lock";
     };
 
     daemonCPUSchedPolicy = lib.mkDefault "batch";

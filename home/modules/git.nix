@@ -168,9 +168,6 @@
         backend = "gpg";
         key = config.programs.git.settings.user.signingkey;
       };
-      git = {
-        sign-on-push = true;
-      };
       ui = {
         default-command = "log";
         diff-formatter = "delta";
@@ -183,6 +180,9 @@
             1
           ];
         };
+      };
+      revsets = {
+        git-sign-on-push = "~signed() & mine()";
       };
       revset-aliases = {
         "immutable_heads()" = "builtin_immutable_heads() | (trunk().. & ~mine())";

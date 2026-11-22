@@ -211,19 +211,27 @@ in
 
     services.avahi = {
       enable = lib.mkDefault true;
-      settings.server = {
-        use-ipv4 = true;
-        use-ipv6 = true;
+      settings = {
+        publish = {
+          disable-publishing = false;
+          disable-user-service-publishing = false;
+        };
+        server = {
+          use-ipv4 = true;
+          use-ipv6 = true;
+        };
       };
     };
 
     networking.firewall = {
-      allowedUDPPorts =
-        lib.optional config.services.avahi.enable 5353
-        ++ lib.optionals config.services.pipewire.enable [
-          6001
-          6002
-        ];
+      allowedUDPPorts = [
+        1716 # kdeconnect
+      ]
+      ++ lib.optional config.services.avahi.enable 5353
+      ++ lib.optionals config.services.pipewire.enable [
+        6001
+        6002
+      ];
       trustedInterfaces = [
         "podman*"
         "virbr*"

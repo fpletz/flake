@@ -166,6 +166,10 @@ in
     };
 
     services.easyeffects.enable = true;
+    services.kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
 
     programs.mpv = {
       enable = true;

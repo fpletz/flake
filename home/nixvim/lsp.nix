@@ -60,7 +60,7 @@
       texlab.enable = false;
       ty.enable = true;
       yamlls.enable = true;
-      # zls.enable = true;  # XXX: broken
+      zls.enable = true;
     };
     keymaps = [
       {
@@ -119,8 +119,7 @@
       };
     };
     typescript-tools = {
-      # XXX: fails on nixpkgs unstable
-      enable = false;
+      enable = true;
       settings.settings = {
         expose_as_code_action = "all";
       };

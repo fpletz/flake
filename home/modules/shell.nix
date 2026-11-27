@@ -76,6 +76,11 @@
       historyIgnore = [ "exit" ];
     };
 
+    programs.dircolors = {
+      enable = true;
+      settings = lib.importJSON ../../static/dircolors.json;
+    };
+
     programs.zoxide.enable = config.bpletza.workstation.enable;
 
     programs.direnv = {

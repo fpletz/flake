@@ -61,8 +61,8 @@ in
           "dialout"
           "podman"
           "systemd-journal"
-          "ollama"
-        ];
+        ]
+        ++ lib.optional config.services.ollama.enable "ollama";
         home = "/home/${cfg.user}";
         shell = "/run/current-system/sw/bin/zsh";
         subGidRanges = [

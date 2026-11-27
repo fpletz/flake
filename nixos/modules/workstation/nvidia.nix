@@ -37,7 +37,7 @@ in
     };
 
     services.ollama = {
-      enable = true;
+      enable = false; # FIXME: ollama-cuda build is broken
       package = pkgs.ollama-cuda;
     };
 

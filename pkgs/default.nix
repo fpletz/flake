@@ -33,10 +33,5 @@ in
       // byNamePackages pkgs;
     };
 
-  flake.overlays.default =
-    final: _prev:
-    {
-      linuxPackages-xanmod = final.linuxPackagesFor final.linux-xanmod;
-    }
-    // byNamePackages final;
+  flake.overlays.default = final: _prev: byNamePackages final;
 }

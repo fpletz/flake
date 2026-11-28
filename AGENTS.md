@@ -19,7 +19,7 @@ Personal Nix flake (flake-parts) for infra: NixOS modules, home-manager, custom 
 - Terraform: `nix run .#apply` / `.#destroy` (copies generated `config.tf.json`, runs tofu init + apply interactively). Don't run apply without being asked.
 
 ## Notes
-- `.pre-commit-config.yaml`, `config.tf.json`, `result*`, `.terraform*` are generated/ignored; don't edit.
+- `.pre-commit-config.yaml`, `config.tf.json`, `result*`, `.terraform/` are generated/ignored; don't edit. `.terraform.lock.hcl` is tracked.
 - nixpkgs is `nixos-unstable-small`; most inputs `follows` nixpkgs, so keep that when adding inputs.
 - Commits must follow Conventional Commits (`type(scope): subject`); enforced by a commitlint-rs commit-msg hook (`.commitlintrc.yml`), installed on `nix develop`.
 - New files must be `git add`ed (or tracked by jj) to be visible to flake evaluation.

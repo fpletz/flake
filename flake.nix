@@ -150,6 +150,7 @@
               pkgs.nix-fast-build
               inputs.nixos-anywhere.packages.${system}.default
               pkgs.nh
+              pkgs.opentofu
             ];
 
             inputsFrom = [

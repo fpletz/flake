@@ -3,6 +3,5 @@ result*
 .pre-commit-config.yaml
 .env
 config.tf.json
-.terraform.lock.hcl
 .terraform/
 terraform.tfstate*

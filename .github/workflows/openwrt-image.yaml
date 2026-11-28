@@ -10,33 +10,47 @@ on:
 
 permissions: {}
 
+concurrency:
+  group: openwrt-image
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 180
     permissions:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - name: Install Nix
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@3dc140bfc76c49fbd4dd958429132e3746bcb086 # v31
       - name: Setup Cachix
-        uses: cachix/cachix-action@v17
+        uses: cachix/cachix-action@38b082610b782e7e93e209c35fd730d399dee866 # v17
         with:
           name: fpletz-flake
           signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      # The upstream OpenWrt source hashes change regularly, so this build is
+      # allowed to fail. On failure the previous release is left untouched.
       - name: Build router image
+        id: build
+        continue-on-error: true
         run: nix build .#openwrtImages.router --out-link result-router
+      - name: Warn about failed build
+        if: steps.build.outcome == 'failure'
+        run: echo "::warning title=OpenWrt build failed::Router image failed to build; the existing router-latest release was kept."
       - name: Stage release assets
+        if: steps.build.outcome == 'success'
         run: |
           mkdir staging
           cp result-router/*-sysupgrade.bin staging/openwrt-router-sysupgrade.bin
           cp result-router/sha256sums staging/
           cp result-router/*.manifest staging/openwrt-router.manifest
       - name: Publish release
+        if: steps.build.outcome == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
